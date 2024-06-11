@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-06-08 Sat 13:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linux for DevOps</title>
+<meta name="author" content="D Karthik" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="icon" type="image/png" href="https://deepalgorithms.in/assets/icons/favicon.png">
+<link rel="stylesheet" type="text/css" href="/home/karthik/mynotes/org2html/org-theme-collection/readtheorg-htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/home/karthik/mynotes/org2html/org-theme-collection/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/home/karthik/mynotes/org2html/org-theme-collection/jquery-stickytableheaders.js"></script>
+<script type="text/javascript"  src="/home/karthik/mynotes/org2html/org-theme-collection/readtheorg.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Linux for DevOps</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd4c253f">asdfasdf</a>
+<ul>
+<li><a href="#org7fefc2f">asdfads</a></li>
+</ul>
+</li>
+<li><a href="#orged75d46">rfasvacs</a>
+<ul>
+<li><a href="#orgada34bb">asdfsaddf</a></li>
+<li><a href="#org646867c">afasdf sdfasd</a></li>
+<li><a href="#org71adac9">qe RGV DSF</a></li>
+</ul>
+</li>
+<li><a href="#orgdf5ae26">sdfsdf</a>
+<ul>
+<li><a href="#org4483fa1">adsfd</a></li>
+</ul>
+</li>
+<li><a href="#org23dcc91">js</a>
+<ul>
+<li><a href="#org7e5bf90">Function to Collapse TOC Elements on Click</a></li>
+<li><a href="#org5fbf978">Document Ready Event 1</a></li>
+<li><a href="#org65517c5">Function to Replace Admonitions</a></li>
+<li><a href="#org0755936">Document Ready Event 2</a></li>
+<li><a href="#org38bfed7">Document Ready Event 3</a></li>
+<li><a href="#orgb9d9104">SphinxRtdTheme Initialization</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<ul class="org-ul">
+<li>JavaScript Code for ReadTheOrg Theme</li>
+</ul>
+<div id="outline-container-orgd4c253f" class="outline-2">
+<h2 id="orgd4c253f">asdfasdf</h2>
+<div class="outline-text-2" id="text-orgd4c253f">
+</div>
+<div id="outline-container-org7fefc2f" class="outline-3">
+<h3 id="org7fefc2f">asdfads</h3>
+</div>
+</div>
+<div id="outline-container-orged75d46" class="outline-2">
+<h2 id="orged75d46">rfasvacs</h2>
+<div class="outline-text-2" id="text-orged75d46">
+</div>
+<div id="outline-container-orgada34bb" class="outline-3">
+<h3 id="orgada34bb">asdfsaddf</h3>
+</div>
+<div id="outline-container-org646867c" class="outline-3">
+<h3 id="org646867c">afasdf sdfasd</h3>
+</div>
+<div id="outline-container-org71adac9" class="outline-3">
+<h3 id="org71adac9">qe RGV DSF</h3>
+</div>
+</div>
+<div id="outline-container-orgdf5ae26" class="outline-2">
+<h2 id="orgdf5ae26">sdfsdf</h2>
+<div class="outline-text-2" id="text-orgdf5ae26">
+</div>
+<div id="outline-container-org4483fa1" class="outline-3">
+<h3 id="org4483fa1">adsfd</h3>
+</div>
+</div>
+<div id="outline-container-org23dcc91" class="outline-2">
+<h2 id="org23dcc91">js</h2>
+<div class="outline-text-2" id="text-org23dcc91">
+</div>
+<div id="outline-container-org7e5bf90" class="outline-3">
+<h3 id="org7e5bf90">Function to Collapse TOC Elements on Click</h3>
+<div class="outline-text-3" id="text-org7e5bf90">
+<div class="org-src-container">
+<pre class="src src-javascript"><span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">collapse_toc_elements_on_click</span><span style="color: #3a81c3;">(</span><span style="color: #715ab1;">nav_li_a</span><span style="color: #3a81c3;">){</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">/*</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">      When an `a' element in the TOC is clicked, its parent</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">      `li' element's active attribute is toggled.  This causes</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">      the element to toggle between minimized and maximized</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">      states.  The active attribute is documented in bootstrap.</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">      https://getbootstrap.com/docs/4.0/components/navbar/#nav</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">    */</span>
+    $<span style="color: #6c3163;">(</span>nav_li_a<span style="color: #6c3163;">)</span>.parent<span style="color: #6c3163;">()</span>.toggleClass<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"active"</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+<p>
+<b>Purpose</b>: This function is designed to toggle the <code>active</code> class on the parent <code>li</code> element of a clicked <code>a</code> element within the Table of Contents (TOC).
+How it works:
+</p>
+<ul class="org-ul">
+<li>It takes an a element as a parameter (<code>nav_li_a</code>).</li>
+<li>It finds the parent <code>li</code> element of the clicked <code>a</code> element.</li>
+<li>It toggles the <code>active</code> class on this <code>li</code> element, which affects its CSS styling, causing it to expand or collapse.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5fbf978" class="outline-3">
+<h3 id="org5fbf978">Document Ready Event 1</h3>
+<div class="outline-text-3" id="text-org5fbf978">
+<div class="org-src-container">
+<pre class="src src-javascript">$<span style="color: #3a81c3;">(</span> document <span style="color: #3a81c3;">)</span>.ready<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">When the document is loaded and ready, bind the</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">function `collapse_toc_elements_on_click' to the</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">`a' elements in the table of contents.</span>
+    $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">"#text-table-of-contents a"</span><span style="color: #2d9574;">)</span>.click<span style="color: #2d9574;">(</span><span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #67b11d;">()</span> <span style="color: #67b11d;">{</span>
+        collapse_toc_elements_on_click<span style="color: #b1951d;">(</span><span style="color: #4e3163;">this</span><span style="color: #b1951d;">)</span>;
+    <span style="color: #67b11d;">}</span><span style="color: #2d9574;">)</span>;
+<span style="color: #6c3163;">}</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+<p>
+<b>Purpose</b>: To bind the <code>collapse_toc_elements_on_click</code> function to all <code>a</code> elements within the TOC when the document is fully loaded. <br />
+How it works:
+</p>
+<ul class="org-ul">
+<li>The code uses jQuery’s ready function to ensure the DOM is fully loaded before executing.</li>
+<li>It binds a click event to each a element within the TOC (<code>#text-table-of-contents a</code>).</li>
+<li>When an a element is clicked, it calls <code>collapse_toc_elements_on_click</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org65517c5" class="outline-3">
+<h3 id="org65517c5">Function to Replace Admonitions</h3>
+<div class="outline-text-3" id="text-org65517c5">
+<div class="org-src-container">
+<pre class="src src-javascript">$<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">replace_admonition</span> <span style="color: #2d9574;">(</span><span style="color: #715ab1;">tag</span>, <span style="color: #715ab1;">readable</span><span style="color: #2d9574;">)</span> <span style="color: #2d9574;">{</span>
+        $<span style="color: #67b11d;">(</span><span style="color: #2d9574;">`span.${tag}:not(#table-of-contents *)`</span><span style="color: #67b11d;">)</span> .parent<span style="color: #67b11d;">()</span>.parent<span style="color: #67b11d;">()</span>
+            .replaceWith<span style="color: #67b11d;">(</span><span style="color: #2d9574;">`&lt;p id='${this.id}' class='admonition-title ${tag}'&gt;${readable}&lt;/p&gt;`</span><span style="color: #67b11d;">)</span>;
+        $<span style="color: #67b11d;">(</span><span style="color: #2d9574;">`div.${tag}`</span><span style="color: #67b11d;">)</span>.before<span style="color: #67b11d;">(</span><span style="color: #2d9574;">`&lt;p class='admonition-title ${tag}'&gt;${readable}&lt;/p&gt;`</span><span style="color: #67b11d;">)</span>
+    <span style="color: #2d9574;">}</span>
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'note'</span>, <span style="color: #2d9574;">'Note'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'seealso'</span>, <span style="color: #2d9574;">'See also'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'warning'</span>, <span style="color: #2d9574;">'Warning'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'caution'</span>, <span style="color: #2d9574;">'Caution'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'attention'</span>, <span style="color: #2d9574;">'Attention'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'tip'</span>, <span style="color: #2d9574;">'Tip'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'important'</span>, <span style="color: #2d9574;">'Important'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'hint'</span>, <span style="color: #2d9574;">'Hint'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'error'</span>, <span style="color: #2d9574;">'Error'</span><span style="color: #2d9574;">)</span>;
+    replace_admonition<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'danger'</span>, <span style="color: #2d9574;">'Danger'</span><span style="color: #2d9574;">)</span>;
+<span style="color: #6c3163;">}</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<p>
+<b>Purpose</b>: To replace certain HTML elements that have specific classes (like note, seealso, warning, etc.) with more readable formats.
+How it works:
+</p>
+
+<ul class="org-ul">
+<li>The replace_admonition function takes two parameters: tag (the class of the element to be replaced) and readable (the text to replace it with).</li>
+<li>It finds all span elements with the specified class, excluding those within the TOC.</li>
+<li>It replaces these spans' grandparent elements with a paragraph element containing the readable text.</li>
+<li>It also inserts a paragraph with the readable text before each div with the specified class.</li>
+<li>The function is then called for each specified class (e.g., note, seealso, warning, etc.).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0755936" class="outline-3">
+<h3 id="org0755936">Document Ready Event 2</h3>
+<div class="outline-text-3" id="text-org0755936">
+<div class="org-src-container">
+<pre class="src src-javascript">$<span style="color: #3a81c3;">(</span> document <span style="color: #3a81c3;">)</span>.ready<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Shift nav in mobile when clicking the menu.</span>
+    $<span style="color: #2d9574;">(</span>document<span style="color: #2d9574;">)</span>.on<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'click'</span>, <span style="color: #2d9574;">"[data-toggle='wy-nav-top']"</span>, <span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #67b11d;">()</span> <span style="color: #67b11d;">{</span>
+      $<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"[data-toggle='wy-nav-shift']"</span><span style="color: #b1951d;">)</span>.toggleClass<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"shift"</span><span style="color: #b1951d;">)</span>;
+      $<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"[data-toggle='rst-versions']"</span><span style="color: #b1951d;">)</span>.toggleClass<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"shift"</span><span style="color: #b1951d;">)</span>;
+    <span style="color: #67b11d;">}</span><span style="color: #2d9574;">)</span>;
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Close menu when you click a link.</span>
+    $<span style="color: #2d9574;">(</span>document<span style="color: #2d9574;">)</span>.on<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'click'</span>, <span style="color: #2d9574;">".wy-menu-vertical .current ul li a"</span>, <span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #67b11d;">()</span> <span style="color: #67b11d;">{</span>
+      $<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"[data-toggle='wy-nav-shift']"</span><span style="color: #b1951d;">)</span>.removeClass<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"shift"</span><span style="color: #b1951d;">)</span>;
+      $<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"[data-toggle='rst-versions']"</span><span style="color: #b1951d;">)</span>.toggleClass<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"shift"</span><span style="color: #b1951d;">)</span>;
+    <span style="color: #67b11d;">}</span><span style="color: #2d9574;">)</span>;
+    $<span style="color: #2d9574;">(</span>document<span style="color: #2d9574;">)</span>.on<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'click'</span>, <span style="color: #2d9574;">"[data-toggle='rst-current-version']"</span>, <span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #67b11d;">()</span> <span style="color: #67b11d;">{</span>
+      $<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"[data-toggle='rst-versions']"</span><span style="color: #b1951d;">)</span>.toggleClass<span style="color: #b1951d;">(</span><span style="color: #2d9574;">"shift-up"</span><span style="color: #b1951d;">)</span>;
+    <span style="color: #67b11d;">}</span><span style="color: #2d9574;">)</span>;
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Make tables responsive</span>
+    $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">"table.docutils:not(.field-list)"</span><span style="color: #2d9574;">)</span>.wrap<span style="color: #2d9574;">(</span><span style="color: #2d9574;">"&lt;div class='wy-table-responsive'&gt;&lt;/div&gt;"</span><span style="color: #2d9574;">)</span>;
+<span style="color: #6c3163;">}</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<p>
+<b>Purpose</b>: To add interactivity to the navigation and make tables responsive.
+How it works:
+</p>
+
+<ul class="org-ul">
+<li>It sets up click event handlers to toggle CSS classes, adding responsive and interactive behavior to the navigation elements.</li>
+<li>It ensures that clicking the navigation menu in mobile view toggles the shift class, affecting the layout.</li>
+<li>It removes the shift class from the navigation when a menu link is clicked.</li>
+<li>It adds a shift-up class when clicking the current version toggle.</li>
+<li>It wraps all non-field list tables in a wy-table-responsive div, making tables responsive.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org38bfed7" class="outline-3">
+<h3 id="org38bfed7">Document Ready Event 3</h3>
+<div class="outline-text-3" id="text-org38bfed7">
+<div class="org-src-container">
+<pre class="src src-javascript">$<span style="color: #3a81c3;">(</span> document <span style="color: #3a81c3;">)</span>.ready<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'#text-table-of-contents ul'</span><span style="color: #2d9574;">)</span>.first<span style="color: #2d9574;">()</span>.addClass<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'nav'</span><span style="color: #2d9574;">)</span>;
+                                        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ScrollSpy also requires that we use</span>
+                                        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">a Bootstrap nav component.</span>
+    $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'body'</span><span style="color: #2d9574;">)</span>.scrollspy<span style="color: #2d9574;">(</span><span style="color: #67b11d;">{</span>target: <span style="color: #2d9574;">'#text-table-of-contents'</span><span style="color: #67b11d;">}</span><span style="color: #2d9574;">)</span>;
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">DON'T add sticky table headers (Fix issue #69?)</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">$('table').stickyTableHeaders();</span>
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">set the height of tableOfContents</span>
+    <span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">$postamble</span> = $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'#postamble'</span><span style="color: #2d9574;">)</span>;
+    <span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">$tableOfContents</span> = $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'#table-of-contents'</span><span style="color: #2d9574;">)</span>;
+    $tableOfContents.css<span style="color: #2d9574;">(</span><span style="color: #67b11d;">{</span>paddingBottom: $postamble.outerHeight<span style="color: #b1951d;">()</span><span style="color: #67b11d;">}</span><span style="color: #2d9574;">)</span>;
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">add TOC button</span>
+    <span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">toggleSidebar</span> = $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'&lt;div id="toggle-sidebar"&gt;&lt;a href="#table-of-contents"&gt;&lt;h2&gt;Table of Contents&lt;/h2&gt;&lt;/a&gt;&lt;/div&gt;'</span><span style="color: #2d9574;">)</span>;
+    $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'#content'</span><span style="color: #2d9574;">)</span>.prepend<span style="color: #2d9574;">(</span>toggleSidebar<span style="color: #2d9574;">)</span>;
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">add close button when sidebar showed in mobile screen</span>
+    <span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">closeBtn</span> = $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'&lt;a class="close-sidebar" href="#"&gt;Close&lt;/a&gt;'</span><span style="color: #2d9574;">)</span>;
+    <span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">tocTitle</span> = $<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'#table-of-contents'</span><span style="color: #2d9574;">)</span>.find<span style="color: #2d9574;">(</span><span style="color: #2d9574;">'h2'</span><span style="color: #2d9574;">)</span>;
+    tocTitle.append<span style="color: #2d9574;">(</span>closeBtn<span style="color: #2d9574;">)</span>;
+<span style="color: #6c3163;">}</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+<p>
+<b>Purpose</b>: To set up the TOC and its interactivity.
+How it works:
+</p>
+<ul class="org-ul">
+<li>It adds the nav class to the first ul element in the TOC, required for Bootstrap's ScrollSpy.</li>
+<li>It initializes ScrollSpy on the body to highlight the TOC items based on scroll position.</li>
+<li>It sets the padding of the TOC to match the height of the postamble element, ensuring proper spacing.</li>
+<li>It adds a TOC button to toggle the sidebar, and a close button within the TOC for mobile screens.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb9d9104" class="outline-3">
+<h3 id="orgb9d9104">SphinxRtdTheme Initialization</h3>
+<div class="outline-text-3" id="text-orgb9d9104">
+<div class="org-src-container">
+<pre class="src src-javascript">window.SphinxRtdTheme = <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163;">(</span><span style="color: #715ab1;">jquery</span><span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">stickyNav</span> = <span style="color: #2d9574;">(</span><span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #67b11d;">()</span> <span style="color: #67b11d;">{</span>
+        <span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">navBar</span>,
+            win,
+            stickyNavCssClass = <span style="color: #2d9574;">'stickynav'</span>,
+            applyStickNav = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #b1951d;">()</span> <span style="color: #b1951d;">{</span>
+                <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>navBar.height<span style="color: #6c3163;">()</span> &lt;= win.height<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+                    navBar.addClass<span style="color: #6c3163;">(</span>stickyNavCssClass<span style="color: #6c3163;">)</span>;
+                <span style="color: #3a81c3;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #3a81c3;">{</span>
+                    navBar.removeClass<span style="color: #6c3163;">(</span>stickyNavCssClass<span style="color: #6c3163;">)</span>;
+                <span style="color: #3a81c3;">}</span>
+            <span style="color: #b1951d;">}</span>,
+            enable = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #b1951d;">()</span> <span style="color: #b1951d;">{</span>
+                applyStickNav<span style="color: #3a81c3;">()</span>;
+                win.on<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'resize'</span>, applyStickNav<span style="color: #3a81c3;">)</span>;
+            <span style="color: #b1951d;">}</span>,
+            init = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #b1951d;">()</span> <span style="color: #b1951d;">{</span>
+                navBar = jquery<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'nav.wy-nav-side:first'</span><span style="color: #3a81c3;">)</span>;
+                win    = jquery<span style="color: #3a81c3;">(</span>window<span style="color: #3a81c3;">)</span>;
+            <span style="color: #b1951d;">}</span>;
+        jquery<span style="color: #b1951d;">(</span>init<span style="color: #b1951d;">)</span>;
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #b1951d;">{</span>
+            enable : enable
+        <span style="color: #b1951d;">}</span>;
+    <span style="color: #67b11d;">}()</span><span style="color: #2d9574;">)</span>;
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">{</span>
+        StickyNav : stickyNav
+    <span style="color: #2d9574;">}</span>;
+<span style="color: #6c3163;">}(</span>$<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<p>
+<b>Purpose</b>: To handle sticky navigation.
+How it works:
+</p>
+<ul class="org-ul">
+<li>It defines a <code>stickyNav</code> module that makes the  <code>navigation bar</code> sticky if its height is less than or equal to the window height.</li>
+<li>It initializes the navigation bar and window references.</li>
+<li>It adds or removes the stickynav class based on the height condition.</li>
+<li>It sets up an event listener to apply the sticky logic on window resize.</li>
+</ul>
+
+<p>
+Overall, this JavaScript code enhances the interactivity and responsiveness of a webpage, particularly focusing on the Table of Contents and navigation elements, using jQuery for DOM manipulation and event handling.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: D Karthik</p>
+<p class="date">Created: 2024-06-08 Sat 13:34</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

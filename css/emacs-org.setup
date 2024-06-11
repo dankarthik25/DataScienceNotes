@@ -1,0 +1,21 @@
+#+AUTHOR: Karthik D
+#+OPTIONS: num:nil
+# Numering the TOC is set to null 
+
+#+OPTIONS: broken-links:t
+# some-time emacs org export fail to export if it found any broken-links or links which are not assigned
+
+#+OPTIONS: ^:nil p:t      
+# sup, sub prefix is set to null
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/jupyter2org.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/readtheorg-htmlize.css"/>
+
+#+HTML_HEAD: <script src="css/jquery.min.js"></script>
+#+HTML_HEAD: <script src="css/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="css/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="css/readtheorg.js"></script>
+
+
+
