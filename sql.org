@@ -1,0 +1,1706 @@
+#+TITLE: mysql
+#+SETUPFILE:css/emacs-org.setup
+[  [[./index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
+-----
+
+Mysql : https://www.youtube.com/watch?v=HXV3zeQKqGY
+- freeCodeCamp.org
+- Mike Dane
+
+* Introduction
+* What is a Database?
+** What is Database (DB) ?
+Orgainsed way of storing the data 
+- Any collection of related information
+  - Phone Book
+  - Shopping List
+  - Todo List
+  - Your 5 best friends
+  - Facebook User Base
+** Datebases can be stored in different ways
+  - On paper
+  - In your mind
+  - On a computer
+  - powerpoint
+  - Comments Section
+**  Advantage of Database
+   - Keeps track of Products, Reviews, Purchase Order, CreditCards, User, Media, etc
+   - Trillions of pieces of information need to be stored and readily avaiable
+   - Information is extremely valuable and critical to functioning
+   - Security is essential, stores peoples personal information
+     - Credit card, , Address, phone
+   - Information is stored on a computer
+** Database Management System
+- A special software program  that help users create and maintain a database
+  - Makes it easy to manage large amount of information
+  - Handles Security
+  - Backups
+  - Importing/exporting data
+  - Concurrency
+  - Interacts with sofware application
+    - Programming Language          
+** CRUD : Create Read Update Delete
+** Type of Databases 
+  - Relational Databases (SQL)
+    - Organize data into one or more tables
+      - Each table has columns and rows
+      - A unique key identifiers each row
+          
+  - Non- Relation (noSQL/not just SQL)
+      - Key-value stores
+      - Documents (JSON, XML,etc)
+      - Graphs,
+      - Flexible Tables
+              
+** Relational Databases Management System (RDMS)
+- Help users create and maintain a relation database
+  - mySQL, Oracle, postgreSQL, mariaDB, etc.
+- Structured Query Language (SQL)
+  - Standardized language for interacting with RDMS
+  - Used to perform =CRUD= operatoins, as well other administrative task (user management, security , backup, etc)
+  - SQL code used on one RDMS is not always portable to another without modification.
+
+** Non- Relational Databases (no-SQL/not just SQL )
+#+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-21T21-21-23.png]]
+
+** Non-Relation Database Management System (NRDBMS)
+- Help users create and maintain a relation database
+  - mongoDB, dynamoDB, apache cassandra, firebase, etc.
+- Implementation Specific
+  - Any non-relational database falls under this category, so there's no set language standard.
+  - Monst NRDBMS will implement their own language for performing =CRUD= and administrative operations on the database.
+** Database Queries
+- Database Queries are requests made to the database management system for specific information
+- As the database's structe become more and more complex, it becomes more difficult to get the specific pieces of information we want.
+- A google seach is a query
+  
+** Wrap Up
+- Database is any collection of related information
+- Computer are great for storing database
+- Database Management System (DBMS) make it easy to create, maintain and secure a database.
+- DBMS allow you to  perform the CRUD operation and other administrative tasks
+- Two types of Databases, Relational & Non-Relational
+- Relational dataases use SQL and store data in tables with rows and columns
+- Non- Relational data stor data using other data structure            
+* Tables & Keys 
+- Relational db OR Table consist of row and columns with header
+- has atleast one unique key
+- table are linke by a =foregin key= in main table
+  #+STARTUP: inlineimages
+  [[file:./images/company-database.png]]
+ 
+- =Composit key or composit key=
+  - eg: Branch Supplier : the primary key is combination of both =branch_id= and =supplier_name=
+   
+* SQL Basics 
+** Structured Qured Language (SQL)
+- SQL is a language used for interacting with Relational Database Management Systems (RDMS)
+  - You can use SQL to get the RDBMS to do things for you
+    - Create, retrive, update & delete data
+    - Create & Manage databases
+    - Design & create databases tables
+    - Perform administration tasks (security, user management, import/export, etc)
+- SQL implementations vary between systems
+  - Not all RDMS follow the SQL strandard to a 'T'
+  - The concpets are the same but the implementatin may vary
+
+- SQL is actually a hybrid language, it's basically 4 types of languages in one
+  - *Data Query Language (DQL)*
+    - Used to query the database for information.
+    - Get information that is already stored there
+  - *Data Definition Language(DDL)*
+    - Used for defining database schemas.
+  - *Data Control Language (DCL)*
+    - Used for contorlling access to the data in database.
+    - Used & permission magnement
+  - *Data Manipualtion Lanaguage (DML)*
+    - Used for inserting, updating and deleting data from the database
+** Queries
+- A quer is a set of instructions given to the RDBMS (written is SQL ) that tell the RDMS what information you want in to retrive for you
+  - TONS of data in a DB
+  - Often hidden in a complex schemas
+  - Goal is to only get teh data
+    #+begin_src sql
+SELECT employee.name , employee.age
+FROM employee
+WHERE employee.salary > 3000 ;
+    #+end_src
+
+* Installation     
+** MySQL Windows Installation  (52:26)
+mysql and
+pop-sql to visuallize the 
+install mysql community edition
+
+- Download mySQL Community Server - https://dev.mysql.com/downloads/mysql/
+   - Be sure to go to the windows installer page
+- Run installer
+- Choose ‘Custom Installation’ and install the server and the shell
+- Create a root password
+- Go into start menu, open MySQL Shell and login
+- Create a database
+  #+begin_src sql 
+CREATE DATABASE giraffe_db;
+  #+end_src
+** MySQL Mac Installation  (1:01:59)
+- Download mySQL Community Server - https://dev.mysql.com/downloads/mysql/
+- Run installer
+- Write down temporary password
+- Open ‘MySQL’ in System Preferences and start the server
+- Configure Termianl command line to recognize ‘mysql’ command
+  #+begin_src sh
+echo ‘export PATH=/usr/local/mysql/bin:$PATH’ >> ~/.bash_profile
+. ~/.bash_profile
+  #+end_src
+- Login with root user =mysql -u root -p=
+  - Enter temporary password from step 3 when prompted
+    Change temporary password
+#+begin_src sql
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+#+end_src
+- Test to make sure new password worked
+  #+begin_src sh
+exit
+mysql -u root -p # - Enter new password when prompted
+  #+end_src
+- Create a database
+  #+begin_src sql
+CREATE DATABASE giraffe_db;
+  #+end_src
+
+
+  
+
+    Done!
+
+** TODO Linux Installation     
+* Creating Tables
+** DataType in sql 
+#+begin_src sql
+INT                           -- Whole Numbers
+DECIMAL(M,N)                  -- Decimal Numbers - Exact Value
+                              -- M : total no of digits in Number
+                              -- N : total no of decimal places in Number
+
+VARCHAR(l)                    -- String of text of length l
+BLOB                          -- Binary Large Object, Stores large data
+                              -- images, files 
+DATE                          -- 'YYYY-MM-DD'
+TIMESTAMP                     -- 'YYYY-MM-DD HH:MM:SS' - used for recording events
+#+end_src
+
+MySQL
+String Types
+- CHAR(M) - Fixed-length string between 1 and 255 chars. Right-padded with spaces to the specified length when stored. M is optional, defaults to 1. Ex - CHAR(5)
+- VARCHAR(M) - variable-length string between 1 and 255 chars. M is must. Ex - VARCHAR(30)
+- BLOB or TEXT - "Binary Large Objects", Max length of 65535 chars. Store binary data like images. BLOB - Sorts and comparisons on the stored data are case sensitive. TEXT - Sorts and comparisons are not case sensitive. No need to specify length.
+- TINYBLOB or TINYTEXT - BLOB or TEXT column with a max length of 255 chars. No need to specify length.
+- MEDIUMBLOB or MEDIUMTEXT - BLOB or TEXT column with a max length of 16777215 chars. No need to specify length.
+- LONGBLOB or LONGTEXT - BLOB or TEXT column with a max length of 4294967295 chars. No need to specify length.
+- ENUM - List of fixed items from which the value must be selected. Ex - mylist ENUM('0','1','2')
+** Create a table 
+#+begin_src sql
+
+-- Creating tables
+CREATE TABLE student (
+  student_id INT PRIMARY KEY,
+  name VARCHAR(40),
+  major VARCHAR(40)
+  -- PRIMARY KEY(student_id)
+);
+
+DESCRIBE student; -- show table 
+DROP TABLE student; -- delete table student 
+ALTER TABLE student ADD gpa DECIMAL;
+ALTER TABLE student DROP COLUMN gpa;
+
+#+end_src
+** Show table
+source : https://database.guide/4-ways-to-list-all-tables-in-a-mysql-database/
+#+begin_src sqls
+SHOW TABLES;
+#+end_src
+| Tables_in_music |
++-----------------+
+| Albums          |
+| Artists         |
+| Genres          |
+| valbumsartists  |
+| valbumsgenres   |
+| vallalbums      |
+| vallartists     |
+| vallgenres      |
+
+#+begin_src 
+SHOW FULL TABLES;
+#+end_src
+| Tables_in_music | Table_type |
++-----------------+------------+
+| Albums          | BASE TABLE |
+| Artists         | BASE TABLE |
+| Genres          | BASE TABLE |
+| valbumsartists  | VIEW       |
+| valbumsgenres   | VIEW       |
+| vallalbums      | VIEW       |
+| vallartists     | VIEW       |
+| vallgenres      | VIEW       |
+
+#+begin_src 
+SHOW FULL TABLES
+WHERE Table_type = 'BASE TABLE';
+#+end_src
+| Tables_in_music | Table_type |
++-----------------+------------+
+| Albums          | BASE TABLE |
+| Artists         | BASE TABLE |
+| Genres          | BASE TABLE |
+
+
+#+begin_src 
+SHOW TABLES
+LIKE 'a%';
+#+end_src
+| Tables_in_music (a%) |
++----------------------+
+| Albums               |
+| Artists              |
+* Inserting Data 
+#+begin_src sql 
+INSERT INTO student VALUES(1, 'Jack', 'Biology');
+INSERT INTO student VALUES(2, 'Kate', 'Sociology');
+INSERT INTO student(student_id, name) VALUES(3, 'Claire');
+INSERT INTO student VALUES(4, 'Jack', 'Biology');
+INSERT INTO student VALUES(5, 'Mike', 'Computer Science');
+#+end_src
+* Constraints 
+#+begin_src sql 
+CREATE TABLE student (
+  student_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(40) NOT NULL,
+  -- name VARCHAR(40) UNIQUE,
+  major VARCHAR(40) DEFAULT 'undecided',
+);
+#+end_src
+* Update & Delete
+** Update
+#+begin_src sql
+UPDATE student
+SET major = 'Undecided';
+
+UPDATE student
+SET name = 'Johnny'
+WHERE student_id = 4;
+
+UPDATE student
+SET major = 'Biological Sciences'
+WHERE major = 'Biology';
+
+UPDATE student
+SET major = 'Biosociology'
+WHERE major = 'Biology' OR major = 'sociology'
+
+UPDATE student
+SET major = 'Undecided', name = 'Tom'
+WHERE student_id = 4;
+
+#+end_src
+** Delete 
+#+begin_src sql 
+DELETE FROM student;
+
+DELETE FROM student
+WHERE student_id = 4;
+
+DELETE FROM student
+WHERE major = 'Sociology' AND name = 'Kate';
+
+
+#+end_src
+* Basic Queries 
+#+begin_src sql
+SELECT *
+FROM student;
+
+SELECT student.name, student.major
+FROM student;
+
+SELECT student.name, student.major
+FROM student
+ORDER BY name;
+
+SELECT student.name, student.major
+FROM student
+ORDER BY name DESC;
+
+SELECT student.name, student.major
+FROM student
+ORDER BY major name  ASC;
+
+-- Limit n : show only the top n result 
+SELECT student.name, student.major
+FROM student
+ORDER BY major name  ASC;
+LIMIT 2;
+
+-- WHERE
+-- Condtions in where are
+-- [ <, >, <=, >=, =,<>(NOT Equal), AND, OR]
+
+SELECT *
+FROM student
+WHERE name = 'Jack';
+
+SELECT *
+FROM student
+WHERE student_id > 2;
+
+SELECT *
+FROM student
+-- show all student whoes id is < 2 and don't include Jack 
+WHERE student_id <= 2 AND name <> 'Jack';
+
+SELECT *
+FROM student
+WHERE major = 'Biology' AND student_id > 1;
+-- IN
+SELECT *
+FROM student
+WHERE major IN ('Biology', 'Chemistry') AND student_id >2;
+
+#+end_src
+* Company Database Intro
+   #+STARTUP: inlineimage
+[[file:./images/company-database.png]]
+       
+* Creating Company Database
+** Create Tables 
+#+begin_src sql
+
+CREATE TABLE employee (
+  emp_id INT PRIMARY KEY,
+  first_name VARCHAR(40),
+  last_name VARCHAR(40),
+  birth_day DATE,
+  sex VARCHAR(1),
+  salary INT,
+  super_id INT, -- super_id is foreign key but superviser table is not  created at so 
+  branch_id INT -- branch_id is foregin key but branch table is not created at
+);
+
+CREATE TABLE branch (
+  branch_id INT PRIMARY KEY,
+  branch_name VARCHAR(40),
+  mgr_id INT,
+  mgr_start_date DATE,
+  FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL
+);
+
+-- set branch_id as foreign key in main table employee 
+ALTER TABLE employee
+ADD FOREIGN KEY(branch_id)
+REFERENCES branch(branch_id)
+ON DELETE SET NULL;
+
+-- set super_id as foreign key in main table employee 
+ALTER TABLE employee
+ADD FOREIGN KEY(super_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;
+
+CREATE TABLE client (
+  client_id INT PRIMARY KEY,
+  client_name VARCHAR(40),
+  branch_id INT,
+  FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE SET NULL
+);
+
+CREATE TABLE works_with (
+  emp_id INT,
+  client_id INT,
+  total_sales INT,
+  PRIMARY KEY(emp_id, client_id),
+  FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE,
+  FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE
+);
+
+-- This table has composit key require more than 1  field as primary 
+CREATE TABLE branch_supplier (
+  branch_id INT,
+  supplier_name VARCHAR(40),
+  supply_type VARCHAR(40),
+  PRIMARY KEY(branch_id, supplier_name),
+  FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE CASCADE
+);
+
+
+
+#+end_src
+** Insert 
+#+begin_src sql
+
+----------------------------------------------------------
+
+-- Corporate
+INSERT INTO employee VALUES(100, 'David', 'Wallace', '1967-11-17', 'M', 250000, NULL, NULL); -- here branch_id, super_id is not created at 
+
+INSERT INTO branch VALUES(1, 'Corporate', 100, '2006-02-09');
+
+UPDATE employee
+SET branch_id = 1
+WHERE emp_id = 100;
+
+INSERT INTO employee VALUES(101, 'Jan', 'Levinson', '1961-05-11', 'F', 110000, 100, 1);
+
+-- Scranton
+INSERT INTO employee VALUES(102, 'Michael', 'Scott', '1964-03-15', 'M', 75000, 100, NULL);
+
+INSERT INTO branch VALUES(2, 'Scranton', 102, '1992-04-06');
+
+UPDATE employee
+SET branch_id = 2
+WHERE emp_id = 102;
+
+INSERT INTO employee VALUES(103, 'Angela', 'Martin', '1971-06-25', 'F', 63000, 102, 2);
+INSERT INTO employee VALUES(104, 'Kelly', 'Kapoor', '1980-02-05', 'F', 55000, 102, 2);
+INSERT INTO employee VALUES(105, 'Stanley', 'Hudson', '1958-02-19', 'M', 69000, 102, 2);
+
+-- Stamford
+INSERT INTO employee VALUES(106, 'Josh', 'Porter', '1969-09-05', 'M', 78000, 100, NULL);
+
+INSERT INTO branch VALUES(3, 'Stamford', 106, '1998-02-13');
+
+UPDATE employee
+SET branch_id = 3
+WHERE emp_id = 106;
+
+INSERT INTO employee VALUES(107, 'Andy', 'Bernard', '1973-07-22', 'M', 65000, 106, 3);
+INSERT INTO employee VALUES(108, 'Jim', 'Halpert', '1978-10-01', 'M', 71000, 106, 3);
+
+
+-- BRANCH SUPPLIER
+INSERT INTO branch_supplier VALUES(2, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Patriot Paper', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'J.T. Forms & Labels', 'Custom Forms');
+INSERT INTO branch_supplier VALUES(3, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(3, 'Stamford Lables', 'Custom Forms');
+
+-- CLIENT
+INSERT INTO client VALUES(400, 'Dunmore Highschool', 2);
+INSERT INTO client VALUES(401, 'Lackawana Country', 2);
+INSERT INTO client VALUES(402, 'FedEx', 3);
+INSERT INTO client VALUES(403, 'John Daly Law, LLC', 3);
+INSERT INTO client VALUES(404, 'Scranton Whitepages', 2);
+INSERT INTO client VALUES(405, 'Times Newspaper', 3);
+INSERT INTO client VALUES(406, 'FedEx', 2);
+
+-- WORKS_WITH
+INSERT INTO works_with VALUES(105, 400, 55000);
+INSERT INTO works_with VALUES(102, 401, 267000);
+INSERT INTO works_with VALUES(108, 402, 22500);
+INSERT INTO works_with VALUES(107, 403, 5000);
+INSERT INTO works_with VALUES(108, 403, 12000);
+INSERT INTO works_with VALUES(105, 404, 33000);
+INSERT INTO works_with VALUES(107, 405, 26000);
+INSERT INTO works_with VALUES(102, 406, 15000);
+INSERT INTO works_with VALUES(105, 406, 130000);
+#+end_src
+* More Basic Queries 
+#+begin_src sql
+
+-- Find all employees
+SELECT *
+FROM employee;
+
+-- Find all clients
+SELECT *
+FROM clients;
+
+-- Find all employees ordered by salary
+SELECT *
+from employee
+ORDER BY salary ASC/DESC;
+
+-- Find all employees ordered by sex then name
+SELECT *
+from employee
+ORDER BY sex, name;
+
+-- Find the first 5 employees in the table
+SELECT *
+from employee
+LIMIT 5;
+
+-- Find the first and last names of all employees
+SELECT first_name, employee.last_name
+FROM employee;
+
+-- Find the forename and surnames names of all employees
+SELECT first_name AS forename, employee.last_name AS surname
+FROM employee;
+
+-- Find out all the different genders
+SELECT DISCINCT sex
+FROM employee;
+-- Find out all the different branch in company 
+SELECT DISCINCT branch_id
+FROM employee;
+
+
+-- Find all male employees
+SELECT *
+FROM employee
+WHERE sex = 'M';
+
+-- Find all employees at branch 2
+SELECT *
+FROM employee
+WHERE branch_id = 2;
+
+-- Find all employee's id's and names who were born after 1969
+SELECT emp_id, first_name, last_name
+FROM employee
+WHERE birth_day >= 1970-01-01;
+
+-- Find all female employees at branch 2
+SELECT *
+FROM employee
+WHERE branch_id = 2 AND sex = 'F';
+
+-- Find all employees who are female & born after 1969 or who make over 80000
+SELECT *
+FROM employee
+WHERE (birth_day >= '1970-01-01' AND sex = 'F') OR salary > 80000;
+
+-- Find all employees born between 1970 and 1975
+SELECT *
+FROM employee
+WHERE birth_day BETWEEN '1970-01-01' AND '1975-01-01';
+
+-- Find all employees named Jim, Michael, Johnny or David
+SELECT *
+FROM employee
+WHERE first_name IN ('Jim', 'Michael', 'Johnny', 'David');
+#+end_src
+* Functions 
+#+begin_src sql
+-- Find the number of employees
+SELECT COUNT(emp_id)
+FROM employee;
+
+-- How many employees has super visor 
+SELECT COUNT(super_id)
+FROM employee;
+
+-- Find the average of all employee's salaries
+SELECT AVG(salary)
+FROM employee;
+
+-- Find the sum of all employee's salaries
+SELECT SUM(salary)
+FROM employee;
+
+-- Find out how many males and females there are
+SELECT COUNT(sex), sex
+FROM employee
+GROUP BY sex
+
+-- Find the total sales of each salesman
+SELECT SUM(total_sales), emp_id
+FROM works_with
+GROUP BY client_id;
+
+-- Find the total amount of money spent by each client
+SELECT SUM(total_sales), client_id
+FROM works_with
+GROUP BY client_id;
+#+end_src
+
+* Wildcards  
+#+begin_src sql
+-- { % : any no.of characters }
+
+-- { _ : any single character}
+
+-- Find any client's who are an LLC
+SELECT *
+FROM client
+WHERE client_name LIKE '%LLC';
+
+-- Find any branch suppliers who are in the label business
+SELECT *
+FROM branch_supplier
+WHERE supplier_name LIKE '% Label%';
+
+-- Find any employee born on the 10th day of the month
+SELECT *
+FROM employee
+WHERE birth_day LIKE '_____10%';
+
+-- Find any clients who are schools
+SELECT *
+FROM client
+WHERE client_name LIKE '%Highschool%';
+#+end_src
+* Union  
+#+begin_src sql
+-- Find a list of employee and branch names
+SELECT employee.first_name AS Employee_Branch_Names
+FROM employee
+UNION
+SELECT branch.branch_name
+FROM branch;
+
+-- Find a list of all clients & branch suppliers' names
+SELECT client.client_name AS Non-Employee_Entities, client.branch_id AS Branch_ID
+FROM client
+UNION
+SELECT branch_supplier.supplier_name, branch_supplier.branch_id
+FROM branch_supplier;
+#+end_src
+* TODO Joins 
+There are different type of join
+- Inter Join
+- Left Join
+- Right Join
+- Full Outer Join
+         
+#+begin_src sql
+-- Add the extra branch
+INSERT INTO branch VALUES(4, "Buffalo", NULL, NULL);
+
+
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+JOIN branch   -- Inner Join; By default it is inner join
+ON employee.emp_id = branch.mgr_id;
+
+-- LEFT JOIN
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+LEFT JOIN branch   -- Inner Join
+ON employee.emp_id = branch.mgr_id;
+
+-- RIGHT JOIN
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+RIGHT JOIN branch   -- Inner Join
+ON employee.emp_id = branch.mgr_id;
+
+-- Union Join
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+LEFT JOIN branch  
+ON employee.emp_id = branch.mgr_id;
+Union
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+RIGHT JOIN branch   
+ON employee.emp_id = branch.mgr_id;
+
+
+-- Table Abbrevatoin
+SELECT e.emp_id, e.first_name, b.branch_name
+FROM employee e
+LEFT JOIN branch b                -- Inner Join
+ON e.emp_id = b.mgr_id;
+Union
+SELECT b.emp_id, e.first_name, b.branch_name
+FROM employee
+RIGHT JOIN branch   -- Inner Join
+ON employee.emp_id = branch.mgr_id;
+
+
+-- USING CLAUSE
+SELECT m.movie_id, title, budget, revenu, currency, unit
+FROM movies m
+RIGHT JOIN financials f
+USING (movie_id) -- search in coloum in both talbe moives, and financials and select if one is not defined select other table coloumn 
+
+#+end_src
+
+Inner Join: Join the *coloum_element* which are *present* in *both*  Table 
+Outer Join: Left, Right, Union Join also know as Inner Join
+- Left Join  : Table ignore if *element* is not present in *Right Table*
+- Right Join : Table ignore if *element* is not present in *Left Table*
+- Union Join : Table ignore if *element* is not present in *both Table*
+      
+
+** TODO Self Join
+Self-Join means joining of a table with itself.\\
+In above 'emp' table, column 'mgrempid' stores employee id of manager of each employee and manager is also an employee existing in same 'emp' table.
+
+So, if we want to display employee name followed by employee's manager name in same rows, then self-join has to be used.
+#+begin_src sql
+select e.empid, concat(e.empfname,' ',e.emplname) "employee", e.mgrempid, concat(m.empfname,' ',m.emplname) "manager"
+from emp e, emp m
+where e.mgrempid = m.empid
+order by 1,2
+;
+#+end_src
+
+
+ANSI join syntax:
+#+begin_src sql
+select e.empid, concat(e.empfname,' ',e.emplname) "employee", e.mgrempid, concat(m.empfname,' ',m.emplname) "manager"
+from emp e join emp m
+on e.mgrempid = m.empid
+order by 1,2
+;
+#+end_src
+All above joins are called Inner joins where there will be output only if columns in WHERE clause have matching data in both tables.
+In above output, empid 1 is not displayed because it doesn't have any manager.
+#+begin_src sql
+select * from emp where empid = 1;
+#+end_src
+
+So, how to display record for that employee sans manager detail?
+
+* Nested Querie 
+#+begin_src sql
+-- Find names of all employees who have sold over 50,000
+SELECT employee.first_name, employee.last_name
+FROM employee
+WHERE employee.emp_id IN (SELECT works_with.emp_id
+                          FROM works_with
+                          WHERE works_with.total_sales > 50000);
+
+-- Find all clients who are handles by the branch that Michael Scott manages
+-- Assume you know Michael's ID
+SELECT client.client_id, client.client_name
+FROM client
+WHERE client.branch_id = (SELECT branch.branch_id
+                          FROM branch
+                          WHERE branch.mgr_id = 102);
+
+ -- Find all clients who are handles by the branch that Michael Scott manages
+ -- Assume you DONT'T know Michael's ID
+ SELECT client.client_id, client.client_name
+ FROM client
+ WHERE client.branch_id = (SELECT branch.branch_id
+                           FROM branch
+                           WHERE branch.mgr_id = (SELECT employee.emp_id
+                                                  FROM employee
+                                                  WHERE employee.first_name = 'Michael' AND employee.last_name ='Scott'
+                                                  LIMIT 1));
+
+
+-- Find the names of employees who work with clients handled by the scranton branch
+SELECT employee.first_name, employee.last_name
+FROM employee
+WHERE employee.emp_id IN (
+                         SELECT works_with.emp_id
+                         FROM works_with
+                         )
+AND employee.branch_id = 2;
+
+-- Find the names of all clients who have spent more than 100,000 dollars
+SELECT client.client_name
+FROM client
+WHERE client.client_id IN (
+                          SELECT client_id
+                          FROM (
+                                SELECT SUM(works_with.total_sales) AS totals, client_id
+                                FROM works_with
+                                GROUP BY client_id) AS total_client_sales
+                          WHERE totals > 100000
+);
+#+end_src
+
+* Inline SELECT
+
+In this method, a column of a 'select' itself is a result of another 'select' query.
+#+begin_src sql
+SELECT e.*,(SELECT d.depcity FROM deptt d WHERE d.depid = e.depid) dep_city from emp e;
+#+end_src
+
+* On Delete entry when they have foreign in them
+Let consider employee =Michael Scott= with emp_id = 102
+
+We want to delete the employee but this employee is linked to =branch= table where he is managaer of branch =Scranton=
+
+Type of Delete entry with Foreign Key
+- ON Delete set Null 
+- ON Delete set CASCASDE   
+#+begin_src sql
+CREATE TABLE branch (
+  branch_id INT PRIMARY KEY,
+  branch_name VARCHAR(40),
+  mgr_id INT,
+  mgr_start_date DATE,
+  FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL
+);
+
+DELETE FROM employee
+WHERE emp_id=102;
+
+SELECT * FROM branch; # you can see mag_id columns where it is 102 is replaced by NULL 
+SELECT * FROM employee;
+
+
+-- On delete Cascade
+
+CREATE TABLE branch_supplier (
+  branch_id INT,
+  supplier_name VARCHAR(40),
+  supply_type VARCHAR(40),
+  PRIMARY KEY(branch_id, supplier_name),
+  FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE CASCADE
+);
+
+DELETE FROM branch
+WHERE branch_id =2;
+
+SELECT * from branch_suppliers; 
+#+end_src
+
+* Triggers
+#+begin_src sql
+-- CREATE
+--     TRIGGER `event_name` BEFORE/AFTER INSERT/UPDATE/DELETE
+--     ON `database`.`table`
+--     FOR EACH ROW BEGIN
+-- 		-- trigger body
+-- 		-- this code is applied to every
+-- 		-- inserted/updated/deleted row
+--     END;
+
+CREATE TABLE trigger_test (
+     message VARCHAR(100)
+);
+
+
+
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+        INSERT INTO trigger_test VALUES('added new employee');
+    END$$
+DELIMITER ;
+INSERT INTO employee
+VALUES(109, 'Oscar', 'Martinez', '1968-02-19', 'M', 69000, 106, 3);
+
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+        INSERT INTO trigger_test VALUES(NEW.first_name);
+    END$$
+DELIMITER ;
+INSERT INTO employee
+VALUES(110, 'Kevin', 'Malone', '1978-02-19', 'M', 69000, 106, 3);
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+         IF NEW.sex = 'M' THEN
+               INSERT INTO trigger_test VALUES('added male employee');
+         ELSEIF NEW.sex = 'F' THEN
+               INSERT INTO trigger_test VALUES('added female');
+         ELSE
+               INSERT INTO trigger_test VALUES('added other employee');
+         END IF;
+    END$$
+DELIMITER ;
+INSERT INTO employee
+VALUES(111, 'Pam', 'Beesly', '1988-02-19', 'F', 69000, 106, 3);
+
+
+DROP TRIGGER my_trigger;
+#+end_src
+* TODO Aggregate Functions
+An aggregate function is a function where the values of multiple rows are grouped together to form a single value of more significant meaning or measurements such as a set, a bag or a list.
+#+begin_src sql
+select max(empsal) from emp;
+
+select avg(empsal) from emp;
+
+select sum(empsal) from emp;
+
+select count(empsal) from emp;
+#+end_src
+
+* TODO HAVING clause
+It works as WHERE clause for aggregate functions.
+Example - You need to know city wise max salaries of employees where the max salary is more than 2150.
+#+begin_src sql
+select max(e.empsal) max_sal, d.depcity
+from emp e, deptt d
+where e.depid = d.depid
+group by d.depcity
+having max(e.empsal) > 2150 -- to show max sal > 2150
+order by d.depcity
+;
+#+end_src
+
+* TODO Grouping on Aggregate Functions
+
+Same Aggregate Functions are applied on grouped data. Grouping is done on the required columns of the table.
+
+For example, you need to know manager wise sum of salaries of employees.
+
+#+begin_src sql
+select sum(empsal) sum_sal,mgrempid from emp
+group by mgrempid
+order by mgrempid
+;
+#+end_src
+
+
+
+
+* TODO Constraint Keys on Tables - Foreign Key
+
+Foreign Key
+- In a typical RDBMS, tables have parent/child relationships which are enforced by Referential Keys.
+- Each value in referencing column of child table must exist in the referenced column of parent table.
+
+Create table command with foreign key
+#+begin_src sql
+use retail_db
+drop table emp;
+create table emp(
+empid int not null auto_increment,
+empname varchar(100) not null,
+depid int not null,
+mgrempid int,
+primary key ( empid ),
+foreign key fk_emp_depid (depid) references deptt(depid) on delete restrict
+);
+#+end_src
+*ON DELETE RESTRICT* -> It prevents delete from parent table if records are present in the child table. \\
+Above example gives system named constraint. \\
+Referential keys can also be added after the table creation if not added in the table creation statement.
+#+begin_src sql
+show create table emp;
+alter table emp drop foreign key emp_ibfk_1;
+
+alter table emp
+add constraint fk_emp_depid 
+foreign key (depid) references deptt(depid);
+#+end_src
+Above example gives a user named constraint.
+
+Self-referencing Foreign Key
+
+It is a foreign key which refers to another column in same table. \\
+For example, data of employees and their managers have to be kept in the same table as all are employees only at the end. \\
+At the same time, to represent manager for each employee, we have a column 'mgrempid' which is employee id of the manager.\\
+This column will refer to 'empid' of the same table which will have full details of the manager as an employees.\\
+#+begin_src sql
+alter table emp
+add constraint fk_emp_mgrempid
+foreign key (mgrempid) references emp(empid);
+#+end_src
+
+* TODO ALTER
+ALTER command can be used to add/modify definition of various aspects of database and its objects.\\
+*Dropping, Adding or Repositioning a Column*
+#+begin_src sql
+--drop existing column
+alter table test_tbl  drop i;
+--add the same column at the end of the table
+alter table test_tbl add i int;
+
+--drop existing column
+alter table test_tbl drop i;
+--add the same column at top of the able
+alter table test_tbl add i int first;
+
+--drop existing column
+alter table test_tbl drop i;
+--add same column at after column c
+alter table test_tbl add i int after c;
+#+end_src
+
+*Changing a Column Definition or a Name*
+#+begin_src sql
+--change datatype
+alter table test_tbl modify col1 char(10);
+--change column name
+alter table test_tbl change col1 col1new bigint;
+--change datatype
+alter table test_tbl change col1new col1new int(1);
+
+--setting the default value
+alter table test_tbl modify i bigint not null default 100;
+#+end_src
+
+Changing a Column's Default Value<br>
+#+begin_src sql
+
+--setting a default value of a column
+alter table test_tbl i set default 1000;
+--remove the default value of a column
+alter table test_tbl alter i drop default;
+
+#+end_src
+
+Changing a Table Type
+#+begin_src sql
+--change the db engine type for a given table
+alter table test_tbl type = myisam;
+#+end_src
+Renaming a Table
+#+begin_src sql
+--rename a table
+alter table test_tbl rename to alter_tbl;
+#+end_src
+
+* TODO Indexes
+
+What are indexes?
+Indexes on a table are similar to indexes found at the end of a book to help you reach the required topics/chapters quickly without flipping through the whole book.
+Indexes are data structures storing the pointer to the actual physical location of records on the disk.
+These index data structures themselves are stored on disk to make them persistent.
+Indexes are generally created on columns which are most likely to be part of the SELECT expression, WHERE clauses and ORDER BY expression.
+If such a query is run whose all columns are present in one or more indexes, then the query may not need to touch the tables at all. Rather, the query will get all the data from indexes only.
+SELECT becomes faster because of indexes.SELECT expression.
+INSERT/UPDATE/DELETE become slower because of indexes as indexes also need to be updated accordingly in runtime.SELECT expression.
+
+Indexes can have of 2 types of data structures:
+- Btree (Ordered binary tree, defaul type) -> Good for =, !=, >=, >=, BETWEEN, LIKE, IN operators.
+- Hash (Not ordered, Hash values based, more like key-value pair) -> Good for = operator.
+
+Indexes can be *Unique* or *Non-Unique*: 
+- Unique -> Primary key of a table or any other set of one or more columns which would identify a unique record in the table.
+  For example - Emp Id OR Customer Id and Bank Account No
+- Non-Unique -> Any set of one or more columns to speed up the query on non-unique columns.
+  For example - Index on First name and Last name.
+
+Creating Indexes:
+#+begin_src sql
+create unique index using btree dep_name_idx on deptt (depname);
+create unique index dep_name_idx on deptt (depname);
+#+end_src
+
+--here, name of index is given by user
+#+begin_src sql
+create index emp_names on emp (empfname, emplname);
+#+end_src
+
+--here, the name of the index will be generated by the system
+#+begin_src sql
+alter table emp add index (empfname, emplname) using hash;
+#+end_src
+
+
+Dropping index:
+#+begin_src sql
+drop index emp_names on emp;
+alter table emp drop index emp_namess;     
+#+end_src
+
+Viewing indexes on a table:
+#+begin_src sql
+show index from emp;
+#+end_src
+
+* Designing an ER Diagram 
+** Company Data Storage Requirements
+
+The company is organized into branches. Each branch has a unique number, a name, and a particular employee who manages it.
+
+The company makes it’s money by selling to clients. Each client has a name and a unique number to identify it.
+
+The foundation of the company is it’s employees. Each employee has a name, birthday, sex, salary and a unique number.
+
+An employee can work for one branch at a time, and each branch will be managed by one of the employees that work there. We’ll also want to keep track of when the current manager started as manager.
+
+An employee can act as a supervisor for other employees at the branch, an employee may also act as the supervisor for employees at other branches. An employee can have at most one supervisor.
+
+A branch may handle a number of clients, with each client having a name and a unique number to identify it. A single client may only be handled by one branch at a time.
+
+Employees can work with clients controlled by their branch to sell them stuff. If nescessary multiple employees can work with the same client. We’ll want to keep track of how many dollars worth of stuff each employee sells to each client they work with.
+
+Many branches will need to work with suppliers to buy inventory. For each supplier we’ll keep track of their name and the type of product they’re selling the branch. A single supplier may supply products to multiple branches.
+
+ #+STARTUP: inlineimage
+[[file:./images/erd-template.png]]
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-37-24.png]]
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-37-00.png]]
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-39-04.png]]
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T07-10-55.png]]
+* Converting ER Diagrams to Schemas and  ER Diagram Mapping 
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-09-45.png]]
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-09-57.png]]
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-10-25.png]]
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-10-55.png]]
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-11-51.png]]
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-12-30.png]]
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-12-38.png]]
+#+STARTUP:inlineimage
+[[file:./images/Screenshots_2022-08-22T08-13-15.png]]
+
+
+#+STARTUP:inlineimage
+[[file:./images/company-relations.png]]
+
+
+* ER Diagrams Intro
+*Entity* : An object we want to model & store information about
+
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-31-06.png]]
+*Attributes*- Specific pieces of information about an entity
+
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-32-48.png]]
+
+
+*Primary Key* : An attribute's that uniquely identify an entity in the database table
+#+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-33-03.png]]
+
+
+*Composite Attribute*: An attribute that can be broken up into sub-attributes 
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-33-22.png]]
+
+
+*Multi-valued Attribute* - An attributes that can have more than one value 
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-35-00.png]]
+
+*Derived Attribute* : AN attribute that can be derived from the other attributes
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-35-17.png]]
+
+*Multiple Entities*: You can define more than one entity in the diagram
+#+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-35-44.png]]
+
+*Relationships* : defines a relationship between two entities
+
+*Total Participation*: All members must participate in the relationship
+
+ #+STARTUP: inlineimage
+[[file:./images/Screenshot2022-08-22T06-35-59.png]]
+*Overview*: 
+#+STARTUP: inlineimage
+[[file:./images/erd-template.png]]
+
+* TO DO EER Diagram
+
+#+STARTUP:inlineimage
+[[file:./images/eer-db_test.PNG]]
+
+* ToDo Link database with class in python
+* Same SQL Note on sqllite, postgresql, sqlalchemy
+* TODO MySQL GUI demo 
+*  Temporary Tables
+Used to store temporary data.\\
+Table and data are deleted when the current client session terminates. \\
+Not listed in the output of SHOW TABLES command. \\
+
+Example:
+#+begin_src sql
+create temporary table salessummary (
+   -> product_name varchar(50) not null,
+   -> total_sales decimal(12,2) not null default 0.00
+);
+#+end_src
+Insert some data and select the same.
+Now log out of the session or log back in. Try to select the data. You will see there is no such table or data.
+
+* Transactions in MySQL
+- What is a transaction?
+  - A database transaction is a sequential group of database manipulation operations, which is performed as if it were one single work unit.
+  - All individual operations must succeed or we must revert changes done by each operation in order to call this unit of work as a valid transaction.
+  - All transactions have four standard properties - Atomicity, Consistency, Isolation, Durability (ACID).
+
+MySQL transaction features:
+- In MySQL, by default, each statement is a transaction i.e. each modification is instantly committed into the database and you can not rollback the changes made. The behavior of transaction is controlled by autocommit.
+- MySQL starts the session for each new connection with autocommit enabled, so MySQL does a commit after each SQL statement if that statement did not return an error. If a statement returns an error, the commit or rollback behavior depends on the error.
+- A session that has autocommit enabled can perform a multiple-statement transaction by starting it with an explicit start transaction or begin statement and ending it with a commit or rollback statement.
+- If autocommit mode is disabled within a session with set autocommit = 0, the session always has a transaction open. A commit or rollback statement ends the current transaction and a new one starts.
+- If a session that has autocommit disabled ends without explicitly committing the final transaction, MySQL rolls back that transaction.
+- Some statements implicitly end a transaction, as if you had done a commit before executing the statement. For example - create, drop, alter and many others.
+- autocommit -> 1 (ON) (enabled, default value) -> Each SQL statement (until and unless started in an explicit transaction using start transaction) is considered a complete transaction and committed by default when it finishes.
+- autocommit -> 0 (OFF) (disabled, using command set autocommit = 0) -> Subsequent statements acts like a transaction and no activities are committed until an explicit commit statement is issued.
+- If autocommit is 0 and you change it to 1, MySQL performs an automatic commit of any open transaction.
+- To turn off autocommit globally for all so that clients always begin with a default of 0, we have below options: Add a autocommit=0 variable in my.cnf configuration file in MySQL and restart the MySQL server. Start the server with the --autocommit=0 option
+- You can see current autocommit mode using below commands: show variables like 'autocommit'; select @@autocommit;
+
+To illustrate, we need to transfer amount x from account A to account B.\\
+Sample pseudo syntax can be as follows:
+#+begin_src sql
+-- begin a new transaction
+begin work; -- or start transaction; -- or set autocommit = 0;
+A.balance = A.balance - x;
+If above fails -> rollback;
+B.balance = B.balance + x;
+If above fails -> rollback;
+Update ledger table;
+If above fails -> rollback;
+Send email and SMS notification to both account holders.
+If above fails -> rollback;
+commit; --or begin work; to start next new transaction.
+-- transaction has ended.
+#+end_src
+
+* Database Import
+Importing Data with LOAD DATA
+- LOAD DATA is used to import the data from the file created using the export method of SELECT ... INTO OUTFILE statement or using method of mysqldump .
+- Target tables should be pre-created.
+
+Example:
+#+begin_src sql
+LOAD DATA LOCAL INFILE 'emp_dump.txt' INTO TABLE table1;
+#+end_src
+
+
+LOCAL -> This keyword means dump file will be searched for on current client server. If this LOCAL keyword is omitted, then dump file will be searched for on MySQL host server.
+- Default expected format of input file -> Lines terminated by linefeeds (newlines) and data values within a line separated by tabs.
+- Custom options can be given according to the format of file.
+
+For example, if the file contains values separated by colons and lines terminated by carriage returns and newline character, then use below command.
+
+LOAD DATA LOCAL INFILE 'emp_dump.txt' INTO TABLE emp FIELDS TERMINATED BY ':' LINES TERMINATED BY '\r\n';
+
+LOAD DATA expects that columns order in the file is same as in target table.
+If the order is not same, the correct list can be specified in the command.
+If your table has columns a, b, and c but successive columns in the data file correspond to columns b, c, and a, then you need to specify the column order.
+
+Example:
+#+begin_src 
+LOAD DATA LOCAL INFILE 'emp_dump.txt' INTO TABLE mytbl (b, c, a);
+#+end_src
+
+Importing Data with mysqlimport
+- mysqlimport is a wrapper around LOAD DATA.
+- Target tables should be pre-created.
+#+begin_src sql
+mysqlimport -u sqoopuser -p --local db_name dump_emp.txt
+#+end_src
+
+
+
+
+Example:
+
+#+begin_src sql
+mysqlimport -u sqoopuser -p --local db_name dump_emp.txt
+#+end_src
+You can also specify format.
+
+#+begin_src sql
+mysqlimport -u sqoopuser -p --local --fields-terminated-by = ":" --lines-terminated-by = "\r\n"  db_name emp_dump.txt
+#+end_src
+
+You can specify columns order too here.
+#+begin_src sql
+mysqlimport -u sqoopuser -p --local --columns=b,c,a db_name dump.txt
+#+end_src
+
+Importing Data with mysql
+If the file has table create and insert statements, then use below.
+#+begin_src sql
+mysql -u sqoopuser -p < dump.txt
+#+end_src
+
+* Database Export
+Export of data may be needed to have a backup of the data or to migrate data from one database to another.
+
+Exporting Data with the SELECT ... INTO OUTFILE Statement
+- The file is always created on the server side on MySQL host.
+- Default output format is tab-delimited, linefeed-terminated file.
+
+Example:
+#+begin_src 
+select * from emp into outfile '/tmp/emp.txt';
+#+end_src
+The output format can be customized. For example, to get the output file in CSV format with CRLF-terminated lines, use below code:
+
+#+begin_src 
+select * from emp into outfile '/tmp/emp.txt'
+fields terminated by ',' enclosed by '"'
+lines terminated by '\r\n';
+#+end_src
+
+*Exporting Tables using mysqldump program* \\
+mysqldump program is used to dump data into files either in raw data format or in create/insert statements format.
+
+Syntax:
+#+begin_src sql
+$ mysqldump [options] db_name [tbl_name ...]
+$ mysqldump [options] --databases db_name ...
+$ mysqldump [options] --all-databases
+#+end_src
+
+
+Exporting as Raw Data
+- We specify a directory where output files will be written.
+- Produce tab-separated text-format data files.
+- For each dumped table, mysqldump creates a tbl_name.sql file that contains the CREATE TABLE statement that creates the table, and the server writes a tbl_name.txt file that contains its data.
+- The option value is the directory in which to write the files.
+
+Below command will export data of emp and deptt tables from retail_db database into /tmp directory into files emp.txt and deptt.txt, and will write 'create table' statements into files emp.sql and deptt.sql.
+#+begin_src sh
+mysqldump -u sqoopuser -p --tab=/tmp retail_db emp,deptt
+#+end_src
+If --no-create-info option is used, then 'create table' statements files are not created as shown below.
+
+#+begin_src sh
+mysqldump -u sqoopuser -p --tab=/tmp retail_db emp,deptt
+#+end_src
+
+*Exporting as Create/Insert statements*
+Done using mysqldump but without --tab option.
+Exporting certain tables:
+
+Below will export the tables into a file which will have 'create table' statements for the tables and 'insert' statements for the data.
+#+begin_src sh
+mysqldump -u sqoopuser -p retail_db emp,deptt > emp_dump.txt
+#+end_src
+
+Exporting whole database:
+#+begin_src sh
+mysqldump -u sqoopuser -p retail_db > retail_db_dump.txt
+#+end_src
+
+Exporting all databases:
+#+begin_src sh
+mysqldump -u sqoopuser -p --all-databases > all_database_dump.txt
+#+end_src
+
+
+Copying Tables or Databases to Another Host \\
+Export into a dump file from source database:
+#+begin_src 
+mysqldump -u sqoopuser -p retail_db emp,deptt > tables_dump.txt
+#+end_src
+
+Import the dump into target database:
+Create database retail_db_new before hand on target server.
+#+begin_src 
+mysql -u sqoopuser -p retail_db_new < tables_dump.txt
+#+end_src
+
+
+Export / Import directly without intermediate dump file
+If you have access to a remote MySQL database from source database server, then you can directly copy databases/tables from current server to a remote server over the network without creating any dump file.
+#+begin_src 
+mysqldump -u sqoopuser -p retail_db | mysql -h remote-host.com retail_db_new
+#+end_src
+
+* ACID
+ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties of database transactions intended to guarantee validity even in the event of errors, power failures, etc.
+
+In the context of databases, a sequence of database operations that satisfies the ACID properties, and thus can be perceived as a single logical operation on the data, is called a transaction.
+For example, a transfer of funds from one bank account to another involves debiting from one account and crediting to another, and this whole process is a single transaction.
+- *Atomicity*: All statements of a transaction must succeed completely, or fail completely in each and every situation, including power failures, errors and crashes. Example - Debiting and crediting in a money transfer transaction, both must happen either together or not at all.
+- *Consistency*: The database must remain in a consistent state after any transaction. Data in the database should not have any changes other than intended after the transaction completion.
+- *Isolation*: Isolation ensures that concurrent execution of transactions leaves the database in the same state that would have been obtained if the transactions were executed sequentially.
+- *Durability*: Durability guarantees that once a transaction has been committed, it will remain committed even in the case of a system failure which actually means recording the completed transactions (or their effects) in non-volatile memory.
+
+* Transaction Isolation Levels
+Isolation Levels indicate what kind of modified/committed/uncommitted data are visible to database users to maintain the data integrity and consistency.
+- MySQL uses InnoDB engine for DBMS and supports all 4 isolation levels as dictated by SQL:1992 standards: \\
+  *READ UNCOMMITTED READ COMMITTED REPEATABLE READ SERIALIZABLE*.
+- The *default isolation level* for InnoDB is *REPEATABLE READ*. which can be changed using SET TRANSACTION command.
+
+Different RDBMSs would have one of these as default isolation level but they also provide a mechanism to switch to any required isolation level.
+Isolation levels are defined in terms of below three phenomena that are either permitted or not at a given isolation level:
+- *Dirty read*: The meaning of this term is as bad as it sounds. You're permitted to read uncommitted, or dirty, data. You can achieve this effect by just opening an OS file that someone else is writing and reading whatever data happens to be there. Data integrity is compromised, foreign keys are violated, and unique constraints are ignored.
+- *Nonrepeatable read*: This simply means that if you read a row at time T1 and try to reread that row at time T2, the row may have changed. It may have disappeared, it may have been updated, and so on.
+- *Phantom read*: This means that if you execute a query at time T1 and re-execute it at time T2, additional rows may have been added to the database, which may affect your results. This differs from a nonrepeatable read in that with a phantom read, data you already read hasn't been changed, but instead, more data satisfies your query criteria than before.
+
+Different isolation levels are a combination of the above factors.
+#+begin_src 
+Isolation Level    Dirty Read   Nonrepeatable Read    Phantom Read
+READ UNCOMMITTED   Permitted    Permitted             Permitted
+READ COMMITTED     --           Permitted             Permitted
+REPEATABLE READ    --           --                    Permitted
+SERIALIZABLE       --           --                    --
+#+end_src
+
+* Managing MySQL Database
+Database management is done by Database Administrators (DBAs) who:
+- Maintain the infrastructure of the database
+- Maintain the storage of the database
+- Stop and start the database
+- Backup and restore the database
+- Tune the database for optimum performance
+- Grants to and revokes permissions from other users as needed
+
+Database developers and end users don't need to perform these tasks. We will have a brief look at a few of the DBA tasks.
+
+** Starting MySQL Server:
+- MySQL Server binary mysqld is used to start the database server.
+- root access is required.
+- root$ =/usr/bin/safe_mysqld &=
+- To get database instance started at server boot:
+- Edit file /etc/rc.local and add below line in the file:
+- /etc/init.d/mysqld start
+- Process mysqld is core process of MySQL Server.
+
+** Shutting down MySQL Server:
+
+Done using administrators tasks binary mysqladmin
+root$ =/usr/bin/mysqladmin -u root -p shutdown=
+Enter password: =*******=
+
+* Creating and dropping database
+- A database is set of physical files on the disks in which set of logical objects like tables, views, procedures etc are stored.
+- When MySQL Server starts, it becomes ready to access the database stored on the disks.
+- When a user sends a request for read/write from a client machine, MySQL Server process accesses the database stored on the disks and does the needful.
+- When a new database is created, a new set of files are created on the disks corresponding to that database and all data for this database would be stored in those files.
+- By default, only DBAs can create and drop databases but other users can be given permissions to perform these tasks.
+
+In MySQL, each database is a collection of tables, indexes, views etc.
+
+*Creating a database*:
+[root@host]# mysqladmin -u root -p create mydb1
+Enter password:**
+OR
+mysql> CREATE DATABASE mydb1;
+
+*Dropping a database*:
+[root@host]# mysqladmin -u root -p drop mydb1
+Enter password:**
+OR
+mysql> DROP DATABASE mydb1;
+
+*Switching to a different database*:
+When a user connects to MySQL Server, user is not connected to any database by default (until and unless specified in local file .my.cnf).
+User has to use use command to switch and connect to the required database.
+
+Example:
+mysql> use retail_db;
+
+* Getting database information
+
+Once you connect to MySQL Server and/or switch to a database, and you may use various commands to get information about database environment and your session.
+
+- Current userid and local hostname
+  =SELECT USER();=
+- Connection Id to database
+  =SELECT CONNECTION_ID();=
+- Database name you are connected to
+  =SELECT DATABASE();=
+- MySQL Server version
+  =SELECT VERSION();=
+- List of all databases in MySQL Server
+  =SHOW DATABASES;=
+- MySQL Server port
+  =SHOW VARIABLES WHERE Variable_name = 'port';=
+- MySQL Server hostname
+  =SHOW VARIABLES WHERE Variable_name = 'hostname';=
+
+All information in one go using 'status' command
+#+begin_src 
+MySQL [retail_db]> status
+--------------
+mysql Ver 15.1 Distrib 5.5.47-MariaDB, for Linux (x86_64) using readline 5.1
+
+Connection id: 25175
+Current database: retail_db
+Current user: sqoopuser@ip-172-##-##-179.ec2.internal
+SSL: Not in use
+Current pager: stdout
+Using outfile: ''
+Using delimiter: ;
+Server: MySQL
+Server version: 5.6.30 MySQL Community Server (GPL)
+Protocol version: 10
+Connection: ip-172-##-##-154 via TCP/IP
+Server characterset: latin1
+Db characterset: latin1
+Client characterset: utf8
+Conn. characterset: utf8
+TCP port: 3306
+Uptime: 81 days 14 hours 57 min 30 sec
+
+Threads: 25 Questions: 2214929171 Slow queries: 258 Opens: 217072 Flush tables: 1 Open tables: 431 Queries per second avg: 314.074
+--------------
+
+MySQL [retail_db]>
+#+end_src    
+* QnA
+** q
+ Constraint Keys on Tables - Primary and Unique Key
+
+Primary Key and Unique Key
+
+    Tables represent some real-world data and in most of the cases, one row in a table represents one real-world entity. Hence, exact data should not be repeating across the columns.
+    For example, in a table storing students information, one roll number should not occur more than once but names can repeat because more than one students can have same name.
+    To enforce such a requirement, the database provides a constraint mechanism called Primary Key which is created at the table level comprising of the columns which can not repeat in the table.
+    In the current example, roll number would be the column of the Primary Key.
+    Unique Key is another type of table constraint to enforce the uniqueness of the data in a table with certain differences when compared to Primary Key.
+
+Primary Key vs Unique Key
+
+    Primary Key columns cannot be the NULLABLE columns and cannot have null values while Unique Key columns can have.
+    A table can have only one Primary Key but can have multiple Unique Keys.
+
+Auto Generation of Primary/Unique Keys
+
+    Primary/Unique Key values can have predefined values or can be generated using AUTO_INCREMENT option for a column in real time as data in inserted in tables.
+    AUTO_INCREMENT option automatically generates next number and assigns to Primary/Unique key column.
+    There can be only one column with an AUTO_INCREMENT option in a given table.
+    If AUTO_INCREMENT is used, Primary/Unique Key must be defined as part of table creation itself using the AUTO_INCREMENT column.
+    If AUTO_INCREMENT is not used, Primary/Unique Key may be defined as part of table creation or may be added later.
+    Column with such an option must be added as Primary Key while creating the table.
+    You can get last inserted id value using below command and we will see examples on this later.
+    SELECT LAST_INSERT_ID();
+
+Let's see all above in action.
+
+With AUTO_INCREMENT and Primary key
+#+begin_src sql
+use retail_db
+drop table deptt;
+create table deptt (
+    depid int not null auto_increment,
+    depname varchar(100) not null,
+    depcity varchar(100) not null,
+    depstreet varchar(100) not null,
+    depopendate date,
+    primary key ( depid )
+);
+#+end_src
+
+
+Without AUTO_INCREMENT and with Primary key
+#+begin_src sql
+use retail_db
+drop table deptt;
+create table deptt (
+    depid int not null,
+    depname varchar(100) not null,
+    depcity varchar(100) not null,
+    depstreet varchar(100) not null,
+    depopendate date,
+    primary key ( depid )
+);
+
+#+end_src
+
+Without AUTO_INCREMENT and with the Primary key added later
+
+#+begin_src sql
+use retail_db
+drop table deptt;
+create table deptt (
+    depid int not null,
+    depname varchar(100) not null,
+    depcity varchar(100) not null,
+    depstreet varchar(100) not null,
+    depopendate date
+);
+--system named primary key
+alter table deptt add primary key (depid);
+alter table deptt drop primary key;
+--user named primary key
+alter table deptt add primary key pk_deptt (depid);
+alter table deptt drop primary key;
+
+#+end_src
+View the table definition using below commands:
+#+begin_src sql
+describe deptt;
+-- OR
+show create table deptt;
+#+end_src
+
+** 2
+Prepare data for Questions\\
+Connect to a MySQL database run below commands to prepare the data for subsequent questions.
+#+begin_src sql
+use retail_db;
+drop table emp;
+drop table deptt;
+create table deptt (
+   depid int not null auto_increment,
+   depname varchar(100) not null,
+   depcity varchar(100) not null,
+   depstreet varchar(100) not null,
+   depopendate date,
+   primary key ( depid )
+);
+
+insert into deptt (depname,depcity, depstreet,depopendate)
+values('Accounts','Bengaluru','Daker Street',NOW());
+
+insert into deptt (depname,depcity, depstreet,depopendate)
+values('HR','Delhi','Baker Street',NOW());
+
+insert into deptt (depname,depcity, depstreet,depopendate)
+values('Finance','Mumbai','Laker Street',NOW());
+
+insert into deptt (depname,depcity, depstreet,depopendate)
+values('Travel','Pune','Haker Street',NOW());
+
+create table emp(
+   empid int not null auto_increment,
+   empfname varchar(100) not null,
+   emplname varchar(100) not null,
+   depid int not null,
+   doj datetime,
+   empsal int not null,
+   mgrempid int,
+   primary key ( empid )
+   ,foreign key (depid) references deptt(depid) on delete restrict
+);
+
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Beck','Dot',2,'2014-09-10',2500,1);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Jack','Den',2,'2017-10-28',2400,3);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Emil','Bon',3,'2018-01-20',2100,1);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Siera','Leck',3,'2014-02-17',2000,4);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Koe','Hoker',3,'2016-03-16',2900,4);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Kate','Huds',4,'2017-11-22',2500,3);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Rene','Swaz',4,'2017-09-19',2450,3);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Zack','Night',4,'2013-05-15',2800,3);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Beck','Decker',4,'2015-06-23',2350,3);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Bruno','Mars',2,'1985-10-08',2350,1);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Kale','Hacker',2,'1984-12-17',2800,1);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Colt','Speed',4,'1987-11-18',2800,2);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Etal','Femme',1,'1985-01-01',2425,2);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Mont','Blanc',1,'1987-05-01',2425,2);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Iron','Man',4,'1984-12-17',2800,3);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Spider','Man',2,'2015-06-23',2350,3);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Captain','America',2,'2014-02-17',2000,1);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Super','Hulk',1,'2014-02-17',2000,2);
+insert into emp (empfname, emplname, depid, doj, empsal,mgrempid)
+values('Cat','Woman',2,'2016-05-22',2375,3);
+#+end_src
+

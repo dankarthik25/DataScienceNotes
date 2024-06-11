@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-06-11 Tue 21:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My Gitconfig</title>
+<meta name="author" content="Karthik D" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/jupyter2org.css" />
+<link rel="stylesheet" type="text/css" href="css/readtheorg-htmlize.css"/>
+<script src="css/jquery.min.js"></script>
+<script src="css/bootstrap.min.js"></script>
+<script type="text/javascript" src="css/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="css/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">My Gitconfig</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org7698bb7">Git GUI</a></li>
+<li><a href="#org707be0f">My Git Configuration</a>
+<ul>
+<li><a href="#org72479a3">Manage Multiple git account  in  github, gitlab, aws-codecommit</a>
+<ul>
+<li><a href="#org740320c">Create ssh key and share to github/gitlab/aws-commit</a></li>
+<li><a href="#orgc2010d1">Config ssh wit</a></li>
+<li><a href="#org85a5dc6">Test ssh connection</a></li>
+<li><a href="#org991f062">Test your ssh is connect with git</a></li>
+<li><a href="#org318714d">config git</a></li>
+</ul>
+</li>
+<li><a href="#org82fa20a">git cmd</a></li>
+</ul>
+</li>
+<li><a href="#org59b9cd7">gitlab tutorial</a>
+<ul>
+<li><a href="#org1167f44">Branchig Strategies</a></li>
+<li><a href="#org3daaefb">gitlab CI/CD pipeline</a></li>
+<li><a href="#org4dc8408">Create CI/CD pipeline</a></li>
+<li><a href="#org7b116d4">Gitlab Migrating</a></li>
+<li><a href="#orgd237e84">Gitlab Pipeline</a>
+<ul>
+<li><a href="#org7553007">Package Registries</a></li>
+<li><a href="#org0bd2668">Container Registries</a></li>
+<li><a href="#orgbd43d2f">Infrasture Registries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7178f77">Manage Multiple git account  in  github, gitlab, aws-codecommit</a>
+<ul>
+<li><a href="#org84df85f">Create ssh key and share to github/gitlab/aws-commit</a></li>
+<li><a href="#org09721ec">Config ssh wit</a></li>
+<li><a href="#org9dc09bd">Test your ssh is connect with git</a></li>
+</ul>
+</li>
+<li><a href="#org783f98a">Real time Example</a></li>
+<li><a href="#org92ac7f2">git cmd</a></li>
+<li><a href="#org4a4b461">gitlab tutorial</a>
+<ul>
+<li><a href="#org78d9c69">Branchig Strategies</a></li>
+<li><a href="#org89d9dc5">gitlab CI/CD pipeline</a></li>
+<li><a href="#org827052d">Create CI/CD pipeline</a></li>
+<li><a href="#org53b57d0">Gitlab Migrating</a></li>
+<li><a href="#org7372ee9">Gitlab Pipeline</a>
+<ul>
+<li><a href="#org83e629d">Package Registries</a></li>
+<li><a href="#org464ebed">Container Registries</a></li>
+<li><a href="#org4fd163e">Infrasture Registries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org165dc28">Git AWS Setting</a></li>
+</ul>
+</div>
+</div>
+<p>
+[  <a href="./index.html">Home</a> ]  \(&ensp;\)  | \(&ensp;\) \(&ensp;\) [text] \(&ensp;\)  \(&ensp;\) | \(&ensp;\) \(&ensp;\) [link] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [title] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [icon] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [target]  \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [expanded]  \(&ensp;\) \(&ensp;\)
+</p>
+<hr />
+
+
+<div id="outline-container-org7698bb7" class="outline-2">
+<h2 id="org7698bb7">Git GUI</h2>
+<div class="outline-text-2" id="text-org7698bb7">
+<p>
+GUI
+git kraken    PAID git diff
+Sublime merge PAID
+git tower    paid
+git sourcetree   free    dev: git bucket  available: win, mac , Not Linux
+github
+git ahead   free 
+Webstore
+VS Code + git panel + inbuild termial
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org707be0f" class="outline-2">
+<h2 id="org707be0f">My Git Configuration</h2>
+<div class="outline-text-2" id="text-org707be0f">
+</div>
+<div id="outline-container-org72479a3" class="outline-3">
+<h3 id="org72479a3">Manage Multiple git account  in  github, gitlab, aws-codecommit</h3>
+<div class="outline-text-3" id="text-org72479a3">
+<p>
+Manage differnet ssh-key for different account and servers like (github, gitlab, aws-codecommit
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=lLgWWtOk7gk">https://www.youtube.com/watch?v=lLgWWtOk7gk</a>
+</p>
+</div>
+<div id="outline-container-org740320c" class="outline-4">
+<h4 id="org740320c">Create ssh key and share to github/gitlab/aws-commit</h4>
+<div class="outline-text-4" id="text-org740320c">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #3a81c3;">cd</span> ~/.ssh
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ssh-keygen -t rsa -b -C karthik.dahchuka@deepalgorithms.in "gitlab-deepalgo"</span>
+ssh-keygen -o -t rsa -C karthik.dahchuka@deepalgorithms.in <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span>
+ssh-keygen -t ed25519 -C <span style="color: #2d9574;">"karthik.dahchuka@deepalgorithms.in"</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ed25519 is more secure than rsa</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">save as id_rsa_gitlab-deepalgo with password :</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Enter file in which to save the key (~/.ssh/id_rsa): id_rsa_gitlab_deepalgo</span>
+cat id_rsa_gitlab_deepalgo.pub
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">copy code and past in github or gitlab ssh key</span>
+
+ssh-keygen -t rsa -b 4096 -C <span style="color: #2d9574;">"gitlab-dankarthik25"</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">save as id_rsa_gitlab-dan25 with password</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc2010d1" class="outline-4">
+<h4 id="orgc2010d1">Config ssh wit</h4>
+<div class="outline-text-4" id="text-orgc2010d1">
+<pre class="example">
+pwd
+# ~/.ssh/
+touch config
+
+# Work account - default config
+Host gitlab.com-deepalgo
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_gitlab-deepalgo
+
+# Personal Account - 
+Host github.com-codertrain
+HostName github.com
+User git
+Identityfile ~/.ssh/id_rsa_gitlab-dan25
+</pre>
+</div>
+</div>
+<div id="outline-container-org85a5dc6" class="outline-4">
+<h4 id="org85a5dc6">Test ssh connection</h4>
+<div class="outline-text-4" id="text-org85a5dc6">
+<pre class="example">
+cd ..
+ssh-add -D  # remove all previous keys 
+ssh-add id_rsa_sagarjunnu   # add below keys 
+ssh-add id_codertrain
+
+# check existing kesy
+ssh-add -l
+
+# check ssh connection
+ssh -T github.com-sagarjunnu
+ssh -T github.com-codertrain
+
+# clone and push repo
+#NOTE: in gitclone with ssh replace &lt;git@github.com:&gt; with &lt;git@github.com-codertrain&gt;
+# If not git will use default user
+
+# Example
+git clone git@github.com-codertrain:coder-train/multipel-git-accounts-demo.git
+
+# check git user
+git config user.name
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org991f062" class="outline-4">
+<h4 id="org991f062">Test your ssh is connect with git</h4>
+<div class="outline-text-4" id="text-org991f062">
+<p>
+Test if ssh is  working or not
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">get newly created  url : git clone git@gitlab.com:deepalgorithms1/cross-account-codepipeline-in-aws.git</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">check clone with ssh</span>
+git clone git@gitlab.com-deepalgo:deepalgorithms1/cross-account-codepipeline-in-aws.git
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">link existing project to newly created gitlab repo</span>
+git remove add gitlab-deepalgo git@gitlab.com-deepalgo:deepalgorithms1/cross-account-codepipeline-in-aws.git
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # ###########################</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # ############################</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">check original remote origin url</span>
+git remote -v  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">list all remote repo links </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">origin git@github.com:user1/my-repo.git</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">change it to use your custom `user1-github` hostname</span>
+git remote rm origin
+git remote add origin git@user1-github:user1/my-repo.git
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org318714d" class="outline-4">
+<h4 id="org318714d">config git</h4>
+<div class="outline-text-4" id="text-org318714d">
+<pre class="example">
+cd ..
+mkdir work
+nano ~/work/.gitconfig
+# paste below block 
+# ########################################
+[user]
+   name =  Coder Train
+   email = codertrain@gmail.com
+
+
+
+# ###################################
+cd ~/.gitconfig
+
+[user]
+    name = Sagar Junnarkar
+    email =sagarjunnu@gmail.com
+
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82fa20a" class="outline-3">
+<h3 id="org82fa20a">git cmd</h3>
+<div class="outline-text-3" id="text-org82fa20a">
+<pre class="example">
+# get user name and email
+
+git config user.name
+git config user.email
+git config credential.username
+git config --get user.name
+git config --get user.email
+
+
+# Create user name and email
+git config --global user.name "Mona Lisa"
+git config --global user.email "monalisa@gmail.com"
+
+# list all users in git 
+git config -l
+git config --list
+
+git remote -v
+git remote add origin https://github.com/dankarthik25/mynotes
+git remote add gitlab-dan25 git@gitlab:
+git remote rm gitlab-dan25  
+</pre>
+
+
+
+<p>
+git remote list
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org59b9cd7" class="outline-2">
+<h2 id="org59b9cd7">gitlab tutorial</h2>
+<div class="outline-text-2" id="text-org59b9cd7">
+<p>
+<a href="https://youtu.be/8aV5AxJrHDg?t=2928">https://youtu.be/8aV5AxJrHDg?t=2928</a>
+</p>
+</div>
+<div id="outline-container-org1167f44" class="outline-3">
+<h3 id="org1167f44">Branchig Strategies</h3>
+<div class="outline-text-3" id="text-org1167f44">
+<p>
+Github Branching Strategies
+Git branching Strategies
+Github branching Strategies
+</p>
+</div>
+</div>
+<div id="outline-container-org3daaefb" class="outline-3">
+<h3 id="org3daaefb">gitlab CI/CD pipeline</h3>
+<div class="outline-text-3" id="text-org3daaefb">
+<p>
+pipeline : with in pipeline we can define stages and Jobs
+Stages: Define chronological order of jobs 
+job:
+</p>
+<ul class="org-ul">
+<li>define actual steps  to executed (such as running(jenkins jobs) commands to complie code )</li>
+</ul>
+<p>
+Runners:
+</p>
+<ul class="org-ul">
+<li>Open-source application that executes the instruction defined with jobs</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4dc8408" class="outline-3">
+<h3 id="org4dc8408">Create CI/CD pipeline</h3>
+<div class="outline-text-3" id="text-org4dc8408">
+<p>
+create a yaml in git repo : with name : <code>.gitlab-ci.yaml</code>
+Method of create yaml file :
+</p>
+<ul class="org-ul">
+<li>from gitlab git reposiotory : <code>add new files/dir</code></li>
+<li>LeftSideBar : CI/CD section : <code>Editor</code></li>
+<li>local repo create and push</li>
+</ul>
+
+<p>
+Choose from Editor will give template   
+</p>
+<pre class="example">
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org7b116d4" class="outline-3">
+<h3 id="org7b116d4">Gitlab Migrating</h3>
+<div class="outline-text-3" id="text-org7b116d4">
+<p>
+Jenkins Jobs :  Gitlab Runner
+Jenkins "environment" dir : Gitlab "variables" key
+Jenkins "tools" dir :
+</p>
+</div>
+</div>
+<div id="outline-container-orgd237e84" class="outline-3">
+<h3 id="orgd237e84">Gitlab Pipeline</h3>
+<div class="outline-text-3" id="text-orgd237e84">
+<p>
+Deploy artifacts from a gitlab pipeline to <code>Gitlab Package Registry</code>
+Describe Gitlab releases
+Describe Gitlab Package, Container and Infrastructure registries
+</p>
+</div>
+
+
+<div id="outline-container-org7553007" class="outline-4">
+<h4 id="org7553007">Package Registries</h4>
+</div>
+<div id="outline-container-org0bd2668" class="outline-4">
+<h4 id="org0bd2668">Container Registries</h4>
+</div>
+<div id="outline-container-orgbd43d2f" class="outline-4">
+<h4 id="orgbd43d2f">Infrasture Registries</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org7178f77" class="outline-2">
+<h2 id="org7178f77">Manage Multiple git account  in  github, gitlab, aws-codecommit</h2>
+<div class="outline-text-2" id="text-org7178f77">
+<p>
+Manage differnet ssh-key for different account and servers like (github, gitlab, aws-codecommit
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=lLgWWtOk7gk">https://www.youtube.com/watch?v=lLgWWtOk7gk</a>
+</p>
+</div>
+<div id="outline-container-org84df85f" class="outline-3">
+<h3 id="org84df85f">Create ssh key and share to github/gitlab/aws-commit</h3>
+<div class="outline-text-3" id="text-org84df85f">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #3a81c3;">cd</span> ~/.ssh
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ssh-keygen -t rsa -b -C karthik.dahchuka@deepalgorithms.in "gitlab-deepalgo"</span>
+ssh-keygen -o -t rsa -C karthik.dahchuka@deepalgorithms.in <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span>
+ssh-keygen -t ed25519 -C <span style="color: #2d9574;">"karthik.dahchuka@deepalgorithms.in"</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ed25519 is more secure than rsa</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">save as id_rsa_gitlab-deepalgo with password :</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Enter file in which to save the key (~/.ssh/id_rsa): id_rsa_gitlab_deepalgo</span>
+cat id_rsa_gitlab_deepalgo.pub
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">copy code and past in github or gitlab ssh key</span>
+
+ssh-keygen -t rsa -b 4096 -C <span style="color: #2d9574;">"gitlab-dankarthik25"</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">save as id_rsa_gitlab-dan25 with password</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org09721ec" class="outline-3">
+<h3 id="org09721ec">Config ssh wit</h3>
+<div class="outline-text-3" id="text-org09721ec">
+<pre class="example">
+pwd
+# ~/.ssh/
+touch config
+
+# Work account - default config
+Host gitlab.com-deepalgo
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_gitlab-deepalgo
+
+# Personal Account - 
+Host github.com-codertrain
+HostName github.com
+User git
+Identityfile ~/.ssh/id_rsa_gitlab-dan25
+</pre>
+</div>
+</div>
+<div id="outline-container-org9dc09bd" class="outline-3">
+<h3 id="org9dc09bd">Test your ssh is connect with git</h3>
+<div class="outline-text-3" id="text-org9dc09bd">
+<p>
+Test if ssh is  working or not
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">get newly created  url : git clone git@gitlab.com:deepalgorithms1/cross-account-codepipeline-in-aws.git</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">check clone with ssh</span>
+git clone git@gitlab.com-deepalgo:deepalgorithms1/cross-account-codepipeline-in-aws.git
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">link existing project to newly created gitlab repo</span>
+git remove add gitlab-deepalgo git@gitlab.com-deepalgo:deepalgorithms1/cross-account-codepipeline-in-aws.git
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # ###########################</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # ############################</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">check original remote origin url</span>
+git remote -v  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">list all remote repo links </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">origin git@github.com:user1/my-repo.git</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">change it to use your custom `user1-github` hostname</span>
+git remote rm origin
+git remote add origin git@user1-github:user1/my-repo.git
+</pre>
+</div>
+
+<p>
+config git 
+</p>
+<pre class="example">
+cd ..
+mkdir work
+nano ~/work/.gitconfig
+# paste below block 
+# ########################################
+[user]
+   name =  Coder Train
+   email = codertrain@gmail.com
+
+
+
+# ###################################
+cd ~/.gitconfig
+
+[user]
+    name = Sagar Junnarkar
+    email =sagarjunnu@gmail.com
+
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org783f98a" class="outline-2">
+<h2 id="org783f98a">Real time Example</h2>
+<div class="outline-text-2" id="text-org783f98a">
+<pre class="example">
+cd ..
+ssh-add -D  # remove all previous keys 
+ssh-add id_rsa_sagarjunnu   # add below keys 
+ssh-add id_codertrain
+
+# check existing kesy
+ssh-add -l
+
+# check ssh connection
+ssh -T github.com-sagarjunnu
+ssh -T github.com-codertrain
+
+# clone and push repo
+#NOTE: in gitclone with ssh replace &lt;git@github.com:&gt; with &lt;git@github.com-codertrain&gt;
+# If not git will use default user
+
+# Example
+git clone git@github.com-codertrain:coder-train/multipel-git-accounts-demo.git
+
+# check git user
+git config user.name
+
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org92ac7f2" class="outline-2">
+<h2 id="org92ac7f2">git cmd</h2>
+<div class="outline-text-2" id="text-org92ac7f2">
+<pre class="example">
+# get user name and email
+
+git config user.name
+git config user.email
+git config credential.username
+git config --get user.name
+git config --get user.email
+
+
+# Create user name and email
+git config --global user.name "Mona Lisa"
+git config --global user.email "monalisa@gmail.com"
+
+# list all users in git 
+git config -l
+git config --list
+
+git remote -v
+git remote add origin https://github.com/dankarthik25/mynotes
+git remote add gitlab-dan25 git@gitlab:
+git remote rm gitlab-dan25  
+</pre>
+
+
+
+<p>
+git remote list
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org4a4b461" class="outline-2">
+<h2 id="org4a4b461">gitlab tutorial</h2>
+<div class="outline-text-2" id="text-org4a4b461">
+<p>
+<a href="https://youtu.be/8aV5AxJrHDg?t=2928">https://youtu.be/8aV5AxJrHDg?t=2928</a>
+</p>
+</div>
+<div id="outline-container-org78d9c69" class="outline-3">
+<h3 id="org78d9c69">Branchig Strategies</h3>
+<div class="outline-text-3" id="text-org78d9c69">
+<p>
+Github Branching Strategies
+Git branching Strategies
+Github branching Strategies
+</p>
+</div>
+</div>
+<div id="outline-container-org89d9dc5" class="outline-3">
+<h3 id="org89d9dc5">gitlab CI/CD pipeline</h3>
+<div class="outline-text-3" id="text-org89d9dc5">
+<p>
+pipeline : with in pipeline we can define stages and Jobs
+Stages: Define chronological order of jobs 
+job:
+</p>
+<ul class="org-ul">
+<li>define actual steps  to executed (such as running(jenkins jobs) commands to complie code )</li>
+</ul>
+<p>
+Runners:
+</p>
+<ul class="org-ul">
+<li>Open-source application that executes the instruction defined with jobs</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org827052d" class="outline-3">
+<h3 id="org827052d">Create CI/CD pipeline</h3>
+<div class="outline-text-3" id="text-org827052d">
+<p>
+create a yaml in git repo : with name : <code>.gitlab-ci.yaml</code>
+Method of create yaml file :
+</p>
+<ul class="org-ul">
+<li>from gitlab git reposiotory : <code>add new files/dir</code></li>
+<li>LeftSideBar : CI/CD section : <code>Editor</code></li>
+<li>local repo create and push</li>
+</ul>
+
+<p>
+Choose from Editor will give template   
+</p>
+<pre class="example">
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org53b57d0" class="outline-3">
+<h3 id="org53b57d0">Gitlab Migrating</h3>
+<div class="outline-text-3" id="text-org53b57d0">
+<p>
+Jenkins Jobs :  Gitlab Runner
+Jenkins "environment" dir : Gitlab "variables" key
+Jenkins "tools" dir :
+</p>
+</div>
+</div>
+<div id="outline-container-org7372ee9" class="outline-3">
+<h3 id="org7372ee9">Gitlab Pipeline</h3>
+<div class="outline-text-3" id="text-org7372ee9">
+<p>
+Deploy artifacts from a gitlab pipeline to <code>Gitlab Package Registry</code>
+Describe Gitlab releases
+Describe Gitlab Package, Container and Infrastructure registries
+</p>
+</div>
+
+
+<div id="outline-container-org83e629d" class="outline-4">
+<h4 id="org83e629d">Package Registries</h4>
+</div>
+<div id="outline-container-org464ebed" class="outline-4">
+<h4 id="org464ebed">Container Registries</h4>
+</div>
+<div id="outline-container-org4fd163e" class="outline-4">
+<h4 id="org4fd163e">Infrasture Registries</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org165dc28" class="outline-2">
+<h2 id="org165dc28">Git AWS Setting</h2>
+<div class="outline-text-2" id="text-org165dc28">
+<p>
+<a href="https://stackoverflow.com/questions/50635130/aws-codecommit-fatal-repository-https-git-codecommit-us-east-1-not-foun">AWS CodeCommit - fatal: repository 'https://git-codecommit.us-east-1..' not found</a>
+</p>
+<pre class="example">
+git config --global credential.UseHttpPath true
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Karthik D</p>
+<p class="date">Created: 2024-06-11 Tue 21:13</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

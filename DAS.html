@@ -1,0 +1,1866 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-06-11 Tue 21:16 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DAS</title>
+<meta name="author" content="Karthik D" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/jupyter2org.css" />
+<link rel="stylesheet" type="text/css" href="css/readtheorg-htmlize.css"/>
+<script src="css/jquery.min.js"></script>
+<script src="css/bootstrap.min.js"></script>
+<script type="text/javascript" src="css/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="css/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">DAS</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgaab7f0f">Data Structure and Algorithm Intro</a>
+<ul>
+<li><a href="#orgeb80fa3">Variable</a></li>
+<li><a href="#orgc8f1565">Data Structure</a></li>
+<li><a href="#org785cb48">Abstract Data Type:</a></li>
+<li><a href="#org95995cb">Complexity Analysis:</a>
+<ul>
+<li><a href="#org31f74b1">Complexity Type:</a></li>
+<li><a href="#org003f6a5">Big O Notation</a></li>
+<li><a href="#orgf6c24d5">Big O Property</a></li>
+<li><a href="#orgbc022db">When Big \(O\) is not Concern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc4bb199">Data Structures</a>
+<ul>
+<li><a href="#orgdbaba05">Arrays</a></li>
+<li><a href="#org64cf388">Static Array</a></li>
+<li><a href="#orgdf3d877">Dynamic Array</a></li>
+<li><a href="#org558248a">LinkedList</a></li>
+<li><a href="#org399192f">Single LinkedList</a></li>
+<li><a href="#org047ac1c">Double LinkedList</a></li>
+<li><a href="#org2d26ac5">Stack</a></li>
+<li><a href="#org46a2d70">Stack Using Array</a></li>
+<li><a href="#orga441651">Queues</a></li>
+<li><a href="#org8beb5df"><span class="todo TODO">TODO</span> Tree</a></li>
+<li><a href="#org77ac5b3"><span class="todo TODO">TODO</span> Binary Tree</a></li>
+<li><a href="#orgc2fae40"><span class="todo TODO">TODO</span> Graph</a></li>
+<li><a href="#org7e77a4d">Hashing</a></li>
+<li><a href="#orgc1fcf7d">Hashing with LL</a></li>
+</ul>
+</li>
+<li><a href="#org5bd17b0">Algorithms</a>
+<ul>
+<li><a href="#org488aff9">Recersicve function</a>
+<ul>
+<li><a href="#org9d2785a">Fibonacci number</a></li>
+<li><a href="#org9f269bf">Factorial (n!)</a></li>
+<li><a href="#org570219d">Sum of digit</a></li>
+<li><a href="#orgca37b2c">power of a base number \({b}^{n}\)</a></li>
+<li><a href="#org4bf0a7d"><span class="todo TODO">TODO</span> Hanoi Tower</a></li>
+</ul>
+</li>
+<li><a href="#orgd024ade">Search</a>
+<ul>
+<li><a href="#org6e42cee">Binary Search</a></li>
+</ul>
+</li>
+<li><a href="#org639a0de">Sorting</a>
+<ul>
+<li><a href="#orgd170bc0">Linear Searching</a></li>
+<li><a href="#org75e571d">Bubble Sort</a></li>
+<li><a href="#orgaedcf47">Quick Sort</a></li>
+<li><a href="#orgc17ba61">Merge Sort</a></li>
+<li><a href="#org8c238a5">Selection</a></li>
+<li><a href="#org1379941"><span class="done DONE">DONE</span> Insertion Sort</a></li>
+<li><a href="#org3ac3634">Sleep Sort</a></li>
+<li><a href="#orgcdc0159">Monkey Sort</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org83e8d1f">Resource</a></li>
+</ul>
+</div>
+</div>
+<p>
+[  <a href="./index.html">Home</a> ]  \(&ensp;\)  | \(&ensp;\) \(&ensp;\) [text] \(&ensp;\)  \(&ensp;\) | \(&ensp;\) \(&ensp;\) [link] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [title] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [icon] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [target]  \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [expanded]  \(&ensp;\) \(&ensp;\)
+</p>
+<hr />
+
+<div id="outline-container-orgaab7f0f" class="outline-2">
+<h2 id="orgaab7f0f">Data Structure and Algorithm Intro</h2>
+<div class="outline-text-2" id="text-orgaab7f0f">
+<blockquote>
+<p>
+<b>Definition</b>: An algorithm is a finite sequence of instructions, each of <br />
+which has a clear meaning and can be performed with a finite amount of <br />
+effort in a finite length of time.[<a href="https://theswissbay.ch/pdf/Gentoomen%20Library/Data%20Structures/Data%20Structures%20and%20Algorithms%20-%20Alfred%20V.%20Aho.pdf">Alfred V.Aho</a>] <br />
+</p>
+</blockquote>
+
+<p>
+Computational efficiency of Algorithm are greatly desireable
+</p>
+
+<p>
+An Algorithm as described , is a sequence of finit instructions, executed by the computer <br />
+in order to obtain the desired output. <br />
+It  manipulates Data which are stored in the memory of the computer, and  this is done through Variables
+</p>
+</div>
+<div id="outline-container-orgeb80fa3" class="outline-3">
+<h3 id="orgeb80fa3">Variable</h3>
+<div class="outline-text-3" id="text-orgeb80fa3">
+<blockquote>
+<p>
+<b>Variable</b>: A variable is a named location in a the computer memory, it  holds data. <br />
+It can represent various types of information, such as numbers, text, or objects, and <br />
+its value can change during program execution. <br />
+</p>
+</blockquote>
+
+<p>
+<b>Walkthough Variable</b>: Variable consist of three parts
+</p>
+
+<ul class="org-ul">
+<li><b>Name</b> of variable</li>
+<li><b>DataType</b> of variable</li>
+<li><b>Value</b> of variable</li>
+</ul>
+
+<p>
+Before using variable we need to define,declare,inicilze <br />
+Note: For non primitive or custom variable we need to define the variable either
+<b>struct</b> or <b>object</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">type</th>
+<th scope="col" class="org-left">range</th>
+<th scope="col" class="org-left">examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">int</td>
+<td class="org-left">Integer - ∞ to +∞</td>
+<td class="org-left">10 , +5 , - 2500 , -50</td>
+</tr>
+
+<tr>
+<td class="org-left">float</td>
+<td class="org-left">real - ∞ to +∞</td>
+<td class="org-left">10.0055, - 3.14325, 2.5 e^12</td>
+</tr>
+
+<tr>
+<td class="org-left">char</td>
+<td class="org-left">alphanumeric symbole</td>
+<td class="org-left">‘a', ‘b', ‘Z', ‘#', ‘$' &#x2026; ec</td>
+</tr>
+
+<tr>
+<td class="org-left">char[]</td>
+<td class="org-left">A sequence of character</td>
+<td class="org-left">“annaba”, “Algerie”, “karim”</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgc8f1565" class="outline-3">
+<h3 id="orgc8f1565">Data Structure</h3>
+<div class="outline-text-3" id="text-orgc8f1565">
+<blockquote>
+<p>
+A collection of var, possible of several different data type, connected in various ways
+</p>
+</blockquote>
+
+<p>
+A data structure is a way of organizing and storing data in a computer so that, <br />
+it can be accessed and used efficiently. <br />
+It refers to the logical or mathematical representation of data, as well as the implementation in a computer program.
+</p>
+
+<p>
+The general Operation Performed on DataStructure are
+</p>
+<ul class="org-ul">
+<li>Insert:</li>
+<li>Access: iteration, Traverse</li>
+<li>Search:</li>
+<li>Delete</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org785cb48" class="outline-3">
+<h3 id="org785cb48">Abstract Data Type:</h3>
+<div class="outline-text-3" id="text-org785cb48">
+<ul class="org-ul">
+<li>Mathematical Model with collection of operation defined on model"
+[Aho]</li>
+<li>A abstraction of DataStructure which provides only interface to which
+Data Structure must adhere to</li>
+<li>Just Input-OUT Interface</li>
+<li>Does not specify how to implement</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95995cb" class="outline-3">
+<h3 id="org95995cb">Complexity Analysis:</h3>
+<div class="outline-text-3" id="text-org95995cb">
+<ul class="org-ul">
+<li>Computation Time</li>
+<li>Computation Space (Memory: RAM)</li>
+</ul>
+</div>
+<div id="outline-container-org31f74b1" class="outline-4">
+<h4 id="org31f74b1">Complexity Type:</h4>
+<div class="outline-text-4" id="text-org31f74b1">
+<ul class="org-ul">
+<li>Big O :{Worst Case} Complexity that is going to be less or equal worst case</li>
+<li>Big \(\Omega\) :{Best Case} Complexity that is going to be less than  best case.</li>
+<li>Big \(\Theta\) :{Average Case} COmplexity that is bounds the worst case and best case</li>
+</ul>
+
+<div id="org7b389a1" class="figure">
+<p><img src="dWet_YU-5072Kcko7LzsuQ.jpg" alt="dWet_YU-5072Kcko7LzsuQ.jpg" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org003f6a5" class="outline-4">
+<h4 id="org003f6a5">Big O Notation</h4>
+<div class="outline-text-4" id="text-org003f6a5">
+<ul class="org-ul">
+<li>An Upper Bound on the complexity in the worst case</li>
+<li>Helps to quantify performance as the input size \(n\) becomes large.
+\(\displaystyle{\lim_{n \to \infty}}\)</li>
+</ul>
+
+<p>
+<b><b>Definition</b></b>: If the running time of a program T(\(n\)) is \(O\)(\(f\)(\(n\))), <br />
+there exist positive constants \(c\), \(n\)o such that <br />
+\(T\)(\(n\)) ≤ \(c\) \(f\)(\(n\)) ; ∀ \(n\) ≥ \(n\)o
+</p>
+
+<p>
+Big O : describe the efficiency of alogirthum
+</p>
+
+<p>
+\(O(1)\) &lt; \(O\)( Log(\(n\)) ) &lt; \(O(n)\) &lt; \(O(nLog(n) )\) &lt;
+\(O\)(\(n^2\)) &lt; \(O\)(\(2^n\)) &lt; \(O\)(\(n!\))
+</p>
+</div>
+</div>
+<div id="outline-container-orgf6c24d5" class="outline-4">
+<h4 id="orgf6c24d5">Big O Property</h4>
+<div class="outline-text-4" id="text-orgf6c24d5">
+<p>
+\(O\) (\(n\)+\(c\)) = \(O\)(\(n\)) <br />
+\(O\) (\(cn\)) = \(O\) (n) ; \(c\) &gt; 0
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org010b1e3"></a>Algorithim run time Complexity<br />
+<div class="outline-text-5" id="text-org010b1e3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Complexity</th>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">O(1)</td>
+<td class="org-left">Constant</td>
+<td class="org-left">accessing a specific element in array</td>
+</tr>
+
+<tr>
+<td class="org-left">O( Log(\(n\)) )</td>
+<td class="org-left">Logarithmic</td>
+<td class="org-left">Find an element in sorted array</td>
+</tr>
+
+<tr>
+<td class="org-left">O(\(n\))</td>
+<td class="org-left">Linear</td>
+<td class="org-left">Loop through array element</td>
+</tr>
+
+<tr>
+<td class="org-left">O(\(n\) Log(\(n\)) )</td>
+<td class="org-left">Linear Logarithmic</td>
+<td class="org-left">Merge Sort Time Complexity</td>
+</tr>
+
+<tr>
+<td class="org-left">O(\(n^2\))</td>
+<td class="org-left">Quadratic</td>
+<td class="org-left">Looking a 2d-array at evey index</td>
+</tr>
+
+<tr>
+<td class="org-left">O(\(2^n\))</td>
+<td class="org-left">Exponential</td>
+<td class="org-left">Double recursion in Fibonacci</td>
+</tr>
+
+<tr>
+<td class="org-left">O(\(n!\))</td>
+<td class="org-left">Factorial</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgbc022db" class="outline-4">
+<h4 id="orgbc022db">When Big \(O\) is not Concern</h4>
+<div class="outline-text-4" id="text-orgbc022db">
+<ul class="org-ul">
+<li>A rarely used program: do not over-optimize
+<ul class="org-ul">
+<li>Better to write a quick dirty code and save time in
+writing/debugging</li>
+</ul></li>
+<li>When comprehensibilty is more important</li>
+<li>to be readable/maintainable by other</li>
+</ul>
+
+<p>
+When Big \(O\) is concern:
+</p>
+<ul class="org-ul">
+<li>memory space, stability, accuracy.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc4bb199" class="outline-2">
+<h2 id="orgc4bb199">Data Structures</h2>
+<div class="outline-text-2" id="text-orgc4bb199">
+</div>
+<div id="outline-container-orgdbaba05" class="outline-3">
+<h3 id="orgdbaba05">Arrays</h3>
+<div class="outline-text-3" id="text-orgdbaba05">
+<p>
+Arrays are two types
+</p>
+<ul class="org-ul">
+<li>Static Array (const size)</li>
+<li>Dynamic Array (size vary)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org64cf388" class="outline-3">
+<h3 id="org64cf388">Static Array</h3>
+<div class="outline-text-3" id="text-org64cf388">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">StaticArray</span>:
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">sArray</span>= <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'apple'</span>,<span style="color: #2d9574;">'mango'</span>,<span style="color: #2d9574;">'pineapple'</span><span style="color: #3a81c3;">]</span>
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">search</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,targe<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.sArray<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>:
+            <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.sArray<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span>==targe:
+                <span style="color: #3a81c3; font-weight: bold;">return</span> i
+        <span style="color: #3a81c3; font-weight: bold;">return</span> -1
+
+<span style="color: #715ab1;">a</span> = StaticArray<span style="color: #3a81c3;">()</span>
+a.search<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'apple'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Complexity </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Access O(1)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Search: O(n)            </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Insert: O(n)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Delete: O(n)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf3d877" class="outline-3">
+<h3 id="orgdf3d877">Dynamic Array</h3>
+<div class="outline-text-3" id="text-orgdf3d877">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> ctypes
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">to create C type int array</span>
+
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">DynamicArray</span>:
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span> = 1
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">n</span> = 0
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">create a C type array with size -&gt; self.size</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">A</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.__make_array<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.size<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__len__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.n
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">append</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,item<span style="color: #3a81c3;">)</span>:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">check if vacant</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.n == <span style="color: #3a81c3; font-weight: bold;">self</span>.size:
+      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">array is full -&gt; resize</span>
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.__resize<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.size*2<span style="color: #3a81c3;">)</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">A</span><span style="color: #3a81c3;">[</span><span style="color: #3a81c3; font-weight: bold;">self</span>.n<span style="color: #3a81c3;">]</span> = item
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">n</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.n + 1
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">pop</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.n == 0:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">'Empty List'</span>
+    <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.A<span style="color: #6c3163;">[</span><span style="color: #3a81c3; font-weight: bold;">self</span>.n-1<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">n</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.n - 1
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">clear</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">n</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span> = 1
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">find</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,item<span style="color: #3a81c3;">)</span>:
+
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.n<span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.A<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span> == item:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> i
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">'ValueError - not in list'</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">insert</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,pos,item<span style="color: #3a81c3;">)</span>:
+
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.n == <span style="color: #3a81c3; font-weight: bold;">self</span>.size:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.__resize<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.size*2<span style="color: #3a81c3;">)</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.n,pos,-1<span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">A</span><span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.A<span style="color: #3a81c3;">[</span>i-1<span style="color: #3a81c3;">]</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">A</span><span style="color: #3a81c3;">[</span>pos<span style="color: #3a81c3;">]</span> = item
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">n</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.n + 1
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">remove</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,item<span style="color: #3a81c3;">)</span>:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">search and get pos</span>
+    <span style="color: #715ab1;">pos</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.find<span style="color: #3a81c3;">(</span>item<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">type</span><span style="color: #3a81c3;">(</span>pos<span style="color: #3a81c3;">)</span> == <span style="color: #3a81c3;">int</span>:
+      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">delete</span>
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.__delitem__<span style="color: #3a81c3;">(</span>pos<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> pos
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__resize</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,new_capacity<span style="color: #3a81c3;">)</span>:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">create a new array with new capacity</span>
+    <span style="color: #715ab1;">B</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.__make_array<span style="color: #3a81c3;">(</span>new_capacity<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span> = new_capacity
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">copy the content of old array to new one</span>
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.n<span style="color: #3a81c3;">)</span>:
+      <span style="color: #715ab1;">B</span><span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.A<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">reassign A</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">A</span> = B
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__str__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">result</span> = <span style="color: #2d9574;">''</span>
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.n<span style="color: #3a81c3;">)</span>:
+      <span style="color: #715ab1;">result</span> = result + <span style="color: #3a81c3;">str</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.A<span style="color: #6c3163;">[</span>i<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span> + <span style="color: #2d9574;">','</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">'['</span> + result<span style="color: #3a81c3;">[</span>:-1<span style="color: #3a81c3;">]</span> + <span style="color: #2d9574;">']'</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__getitem__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,index<span style="color: #3a81c3;">)</span>:
+
+    <span style="color: #3a81c3; font-weight: bold;">if</span> 0&lt;= index &lt; <span style="color: #3a81c3; font-weight: bold;">self</span>.n:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.A<span style="color: #3a81c3;">[</span>index<span style="color: #3a81c3;">]</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">'IndexError'</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__delitem__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,pos<span style="color: #3a81c3;">)</span>:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">delete pos wala item</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> 0&lt;= pos &lt; <span style="color: #3a81c3; font-weight: bold;">self</span>.n:
+      <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>pos,<span style="color: #3a81c3; font-weight: bold;">self</span>.n-1<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">A</span><span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.A<span style="color: #3a81c3;">[</span>i+1<span style="color: #3a81c3;">]</span>
+
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">n</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.n - 1
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__make_array</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,capacity<span style="color: #3a81c3;">)</span>:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">referential array(C type)</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3;">(</span>capacity*ctypes.py_object<span style="color: #3a81c3;">)()</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #715ab1;">L</span> = DynaticArray<span style="color: #3a81c3;">()</span>
+L.append<span style="color: #3a81c3;">(</span>1<span style="color: #3a81c3;">)</span>
+L.append<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'hello'</span><span style="color: #3a81c3;">)</span>
+L.append<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">False</span><span style="color: #3a81c3;">)</span>
+L.append<span style="color: #3a81c3;">(</span>4.5<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>L<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; [1,False]</span>
+L.remove<span style="color: #3a81c3;">(</span>4.5<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 'ValueError -not in List '</span>
+<span style="color: #715ab1;">L</span> = <span style="color: #3a81c3;">[</span>10,20,30<span style="color: #3a81c3;">]</span>
+L <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; [10,20,30]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org558248a" class="outline-3">
+<h3 id="org558248a">LinkedList</h3>
+</div>
+
+<div id="outline-container-org399192f" class="outline-3">
+<h3 id="org399192f">Single LinkedList</h3>
+<div class="outline-text-3" id="text-org399192f">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Node</span>: 
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,value<span style="color: #3a81c3;">)</span> :
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span> =value
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #3a81c3;">next</span>=<span style="color: #4e3163;">None</span>
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">SingleLinkedList</span>:
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init_</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,node<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span>=node
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">tail</span>=node
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">access</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,i<span style="color: #3a81c3;">)</span>:
+        <span style="color: #715ab1;">node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+        <span style="color: #3a81c3; font-weight: bold;">for</span> j <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>i<span style="color: #3a81c3;">)</span>:
+            <span style="color: #715ab1;">node</span> = node.<span style="color: #3a81c3;">next</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span> node.data
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">search</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,target<span style="color: #3a81c3;">)</span>:
+        <span style="color: #715ab1;">node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+        <span style="color: #715ab1;">i</span> =0
+        <span style="color: #3a81c3; font-weight: bold;">while</span> node.<span style="color: #3a81c3;">next</span> <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+            <span style="color: #715ab1;">node</span> = node.<span style="color: #3a81c3;">next</span>
+            <span style="color: #3a81c3; font-weight: bold;">if</span> node.data==target:
+                <span style="color: #3a81c3; font-weight: bold;">return</span> i
+            <span style="color: #3a81c3; font-weight: bold;">else</span>:
+                <span style="color: #715ab1;">i</span> += 1 
+        <span style="color: #3a81c3; font-weight: bold;">return</span> -1
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">append</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,data<span style="color: #3a81c3;">)</span>:
+        <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>data<span style="color: #3a81c3;">)</span>
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.tail.<span style="color: #3a81c3;">next</span> = new_node
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">tail</span>=new_node
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">insert</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,newnode,i<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">if</span> i &lt;0:
+            <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"InputError:index less than zero"</span><span style="color: #3a81c3;">)</span>
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1. move to i-1 Node </span>
+        <span style="color: #715ab1;">node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.access<span style="color: #3a81c3;">(</span>i-1<span style="color: #3a81c3;">)</span>
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2. (i-1) th node should point to the newnode </span>
+        node.<span style="color: #3a81c3;">next</span>=newnode.<span style="color: #3a81c3;">next</span>
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">3. newnode should point to the old ith node.</span>
+        node.<span style="color: #3a81c3;">next</span>=newnode
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">print</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+        <span style="color: #715ab1;">node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+        <span style="color: #3a81c3; font-weight: bold;">while</span> node.<span style="color: #3a81c3;">next</span> <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+            <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>node.data, sep=<span style="color: #2d9574;">', '</span><span style="color: #3a81c3;">)</span>
+            <span style="color: #715ab1;">node</span> = node.<span style="color: #3a81c3;">next</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org047ac1c" class="outline-3">
+<h3 id="org047ac1c">Double LinkedList</h3>
+<div class="outline-text-3" id="text-org047ac1c">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">code  :</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">https://www.sanfoundry.com/python-program-implement-doubly-linked-list-provide-insertion-deletion-display-operations/</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">C++ code  https://gist.github.com/echo-akash/8543929a7fba6e22bffcf70cd7e65a7f</span>
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Node</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">object</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, data, prev=<span style="color: #4e3163;">None</span>, <span style="color: #3a81c3;">next</span>=<span style="color: #4e3163;">None</span><span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span> = data
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">prev</span> = prev
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #3a81c3;">next</span> = <span style="color: #3a81c3;">next</span>
+
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">DoubleList</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">object</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">head</span> = <span style="color: #4e3163;">None</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">(Node Null)</span>
+    <span style="color: #715ab1;">tail</span> = <span style="color: #4e3163;">None</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">(Node Null)</span>
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">append</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, data<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.head <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #4e3163;">None</span>:
+            <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>data<span style="color: #3a81c3;">)</span>
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.tail = new_node
+        <span style="color: #3a81c3; font-weight: bold;">else</span>:
+                        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Double link tail(Node) to new_node (previous tail linked to new_node,)</span>
+            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># MAKE new_node (next) pointing to NULL</span>
+            <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>data,<span style="color: #3a81c3; font-weight: bold;">self</span>.tail,<span style="color: #4e3163;">None</span><span style="color: #3a81c3;">)</span>
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.tail.<span style="color: #3a81c3;">next</span> = new_node
+                        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># Make new_node as tail(Node)</span>
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">tail</span> = new_node
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">push</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,data<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.head <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #4e3163;">None</span>:
+            <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>data<span style="color: #3a81c3;">)</span>
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span> = new_node
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">tail</span> = new_node
+        <span style="color: #3a81c3; font-weight: bold;">else</span>:
+                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Double link new_node to tail(Node)(previous head linked to new_node,)</span>
+            <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>data,<span style="color: #4e3163;">None</span>,<span style="color: #3a81c3; font-weight: bold;">self</span>.head<span style="color: #3a81c3;">)</span>
+
+            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new_node.next = self.head</span>
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.head.<span style="color: #715ab1;">prev</span> = new_node
+                        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># MAKE new_node (previous) pointing to NULL</span>
+            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new_node.prev = None</span>
+            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># make new_node as head</span>
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span> = new_node
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">insertAfter</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,given_node,data<span style="color: #3a81c3;">)</span>:
+
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">DoubleLink  : new_node to NextNode(previous Node)</span>
+        <span style="color: #3a81c3; font-weight: bold;">if</span> given_node.<span style="color: #3a81c3;">next</span> <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>: <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">next node is not tail</span>
+            <span style="color: #3a81c3; font-weight: bold;">if</span> given_node.prev <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span> :<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">prev node is not head</span>
+                <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>data,,given_node.<span style="color: #3a81c3;">next</span><span style="color: #3a81c3;">)</span>
+            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new_node.next = prev_node.next</span>
+            given_node.<span style="color: #3a81c3;">next</span>.<span style="color: #715ab1;">prev</span> = given_node
+        <span style="color: #3a81c3; font-weight: bold;">else</span>: <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">next node is tail</span>
+            <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">tail</span> = new_node
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">DoubleLink : prev_node to next</span>
+        prev_node.<span style="color: #3a81c3;">next</span> = new_node
+        new_node.<span style="color: #715ab1;">prev</span> = prev_node
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">def insertBefore(self,next_node,data):</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#     </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new_node = Node(data)</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#     </span><span style="color: #2aa1ae; background-color: #ecf3ec;">#DoubleLink : new_node to next_node</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#     </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new_node.next = next_node</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#     </span><span style="color: #2aa1ae; background-color: #ecf3ec;">if new_node.prev is not None:</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#         </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new_node.prev.next = new_node</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">remove</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, node_value<span style="color: #3a81c3;">)</span>:
+        <span style="color: #715ab1;">current_node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+        <span style="color: #3a81c3; font-weight: bold;">while</span> current_node <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+            <span style="color: #3a81c3; font-weight: bold;">if</span> current_node.data == node_value:
+                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">if it's not the first element</span>
+                <span style="color: #3a81c3; font-weight: bold;">if</span> current_node.prev <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+                    current_node.prev.<span style="color: #3a81c3;">next</span> = current_node.<span style="color: #3a81c3;">next</span>
+                    current_node.<span style="color: #3a81c3;">next</span>.<span style="color: #715ab1;">prev</span> = current_node.prev
+                <span style="color: #3a81c3; font-weight: bold;">else</span>:
+                    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span> = current_node.<span style="color: #3a81c3;">next</span>
+                    current_node.<span style="color: #3a81c3;">next</span>.<span style="color: #715ab1;">prev</span> = <span style="color: #4e3163;">None</span>
+            <span style="color: #715ab1;">current_node</span> = current_node.<span style="color: #3a81c3;">next</span>
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">show</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"Show list data:"</span><span style="color: #3a81c3;">)</span>
+        <span style="color: #715ab1;">current_node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+        <span style="color: #3a81c3; font-weight: bold;">while</span> current_node <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+            <span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span>current_node.data,end=<span style="color: #2d9574;">" &lt;=&gt; "</span><span style="color: #3a81c3;">)</span>
+            <span style="color: #715ab1;">current_node</span> = current_node.<span style="color: #3a81c3;">next</span>
+        <span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span> <span style="color: #2d9574;">"</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">"</span> +<span style="color: #2d9574;">"*"</span>*50<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">show_rev</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"Show list data:"</span><span style="color: #3a81c3;">)</span>
+        <span style="color: #715ab1;">current_node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.tail
+        <span style="color: #3a81c3; font-weight: bold;">while</span> current_node <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print current_node.prev.data if hasattr(current_node.prev, "data") else None,</span>
+            <span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span>current_node.data,end=<span style="color: #2d9574;">" &lt;=&gt; "</span><span style="color: #3a81c3;">)</span>
+            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print current_node.next.data if hasattr(current_node.next, "data") else None</span>
+            <span style="color: #715ab1;">current_node</span> = current_node.prev
+        <span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span> <span style="color: #2d9574;">"</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">"</span> +<span style="color: #2d9574;">"*"</span>*50<span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #715ab1;">d</span> = DoubleList<span style="color: #3a81c3;">()</span>
+
+d.append<span style="color: #3a81c3;">(</span>5<span style="color: #3a81c3;">)</span>
+d.append<span style="color: #3a81c3;">(</span>6<span style="color: #3a81c3;">)</span>
+d.append<span style="color: #3a81c3;">(</span>50<span style="color: #3a81c3;">)</span>
+d.append<span style="color: #3a81c3;">(</span>30<span style="color: #3a81c3;">)</span>
+d.show_rev<span style="color: #3a81c3;">()</span>
+d.remove<span style="color: #3a81c3;">(</span>50<span style="color: #3a81c3;">)</span>
+d.remove<span style="color: #3a81c3;">(</span>5<span style="color: #3a81c3;">)</span>
+d.show<span style="color: #3a81c3;">()</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2d26ac5" class="outline-3">
+<h3 id="org2d26ac5">Stack</h3>
+<div class="outline-text-3" id="text-org2d26ac5">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Node</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span> = value
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #3a81c3;">next</span> = <span style="color: #4e3163;">None</span>
+
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Stack</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">top</span> = <span style="color: #4e3163;">None</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">push</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>value<span style="color: #3a81c3;">)</span>
+    new_node.<span style="color: #3a81c3;">next</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.top
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">top</span> = new_node
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">pop</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.top <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Stack Empty"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #715ab1;">data</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.top.data
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">top</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.top.<span style="color: #3a81c3;">next</span>
+      <span style="color: #3a81c3; font-weight: bold;">return</span> data
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">is_empty</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.top == <span style="color: #4e3163;">None</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">peek</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.top <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Stack Empty"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.top.data
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">traverse</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.top
+    <span style="color: #3a81c3; font-weight: bold;">while</span> temp <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>temp.data,end=<span style="color: #2d9574;">' '</span><span style="color: #3a81c3;">)</span>
+      <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">size</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.top
+    <span style="color: #715ab1;">counter</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">while</span> temp <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+      <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+      <span style="color: #715ab1;">counter</span>+=1
+    <span style="color: #3a81c3; font-weight: bold;">return</span> counter
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org46a2d70" class="outline-3">
+<h3 id="org46a2d70">Stack Using Array</h3>
+<div class="outline-text-3" id="text-org46a2d70">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Stack</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,size<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span> = size
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">__stack</span> = <span style="color: #3a81c3;">[</span><span style="color: #4e3163;">None</span><span style="color: #3a81c3;">]</span> * <span style="color: #3a81c3; font-weight: bold;">self</span>.size
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">top</span> = -1
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">push</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.top == <span style="color: #3a81c3; font-weight: bold;">self</span>.size - 1:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Overflow"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">top</span>+=1
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">stack</span><span style="color: #3a81c3;">[</span><span style="color: #3a81c3; font-weight: bold;">self</span>.top<span style="color: #3a81c3;">]</span> = value
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">pop</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.top == -1:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Empty"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #715ab1;">data</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.stack<span style="color: #3a81c3;">[</span><span style="color: #3a81c3; font-weight: bold;">self</span>.top<span style="color: #3a81c3;">]</span>
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">top</span>-=1
+      <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>data<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">traverse</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.top + 1<span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.stack<span style="color: #6c3163;">[</span>i<span style="color: #6c3163;">]</span>,end=<span style="color: #2d9574;">' '</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">s</span> = Stack<span style="color: #3a81c3;">(</span>3<span style="color: #3a81c3;">)</span>
+s.stack <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[4, 5, 6]</span>
+s.push<span style="color: #3a81c3;">(</span>4<span style="color: #3a81c3;">)</span>
+s.push<span style="color: #3a81c3;">(</span>5<span style="color: #3a81c3;">)</span>
+s.push<span style="color: #3a81c3;">(</span>6<span style="color: #3a81c3;">)</span>
+s.pop<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">6</span>
+s.pop<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">5</span>
+s.pop<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">4</span>
+s.pop<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">'Empty'</span>
+s.traverse<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">5 </span>
+s.push<span style="color: #3a81c3;">(</span>5<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga441651" class="outline-3">
+<h3 id="orga441651">Queues</h3>
+<div class="outline-text-3" id="text-orga441651">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Node</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span> = value
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #3a81c3;">next</span> = <span style="color: #4e3163;">None</span>
+
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Queue</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">front</span> = <span style="color: #4e3163;">None</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">rear</span> = <span style="color: #4e3163;">None</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">enqueue</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>value<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.front == <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">front</span> = new_node
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">rear</span> = new_node
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.rear.<span style="color: #3a81c3;">next</span> = new_node
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">rear</span> = new_node
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">dequeue</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.front == <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Queue empty"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">front</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.front.<span style="color: #3a81c3;">next</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">is_empty</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.front == <span style="color: #4e3163;">None</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">front_item</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.is_empty<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.front.data
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Empty queue"</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">rear_item</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.is_empty<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.rear.data
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Empty queue"</span>
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">traverse</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.front
+    <span style="color: #3a81c3; font-weight: bold;">while</span> temp <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>temp.data,end=<span style="color: #2d9574;">' '</span><span style="color: #3a81c3;">)</span>
+      <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+
+<span style="color: #715ab1;">q</span> = Queue<span style="color: #3a81c3;">()</span>
+q.enqueue<span style="color: #3a81c3;">(</span>3<span style="color: #3a81c3;">)</span>
+q.enqueue<span style="color: #3a81c3;">(</span>4<span style="color: #3a81c3;">)</span>
+q.enqueue<span style="color: #3a81c3;">(</span>5<span style="color: #3a81c3;">)</span>
+q.enqueue<span style="color: #3a81c3;">(</span>7<span style="color: #3a81c3;">)</span>
+q.traverse<span style="color: #3a81c3;">()</span>
+q.dequeue<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">'Queue empty'</span>
+q.enqueue<span style="color: #3a81c3;">(</span>8<span style="color: #3a81c3;">)</span>
+q.is_empty<span style="color: #3a81c3;">()</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">False</span>
+q.front_item<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">4</span>
+q.rear_item<span style="color: #3a81c3;">()</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">7</span>
+q.dequeue<span style="color: #3a81c3;">()</span>    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8beb5df" class="outline-3">
+<h3 id="org8beb5df"><span class="todo TODO">TODO</span> Tree</h3>
+</div>
+<div id="outline-container-org77ac5b3" class="outline-3">
+<h3 id="org77ac5b3"><span class="todo TODO">TODO</span> Binary Tree</h3>
+</div>
+<div id="outline-container-orgc2fae40" class="outline-3">
+<h3 id="orgc2fae40"><span class="todo TODO">TODO</span> Graph</h3>
+</div>
+<div id="outline-container-org7e77a4d" class="outline-3">
+<h3 id="org7e77a4d">Hashing</h3>
+<div class="outline-text-3" id="text-org7e77a4d">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Dictionary</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, size<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span> = size
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">slots</span> = <span style="color: #3a81c3;">[</span><span style="color: #4e3163;">None</span><span style="color: #3a81c3;">]</span> * <span style="color: #3a81c3; font-weight: bold;">self</span>.size
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span> = <span style="color: #3a81c3;">[</span><span style="color: #4e3163;">None</span><span style="color: #3a81c3;">]</span> * <span style="color: #3a81c3; font-weight: bold;">self</span>.size
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">put</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, key, value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">hash_value</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.hash_function<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>hash_value<span style="color: #3a81c3;">]</span> == <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">slots</span><span style="color: #3a81c3;">[</span>hash_value<span style="color: #3a81c3;">]</span> = key
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span><span style="color: #3a81c3;">[</span>hash_value<span style="color: #3a81c3;">]</span> = value
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>hash_value<span style="color: #3a81c3;">]</span> == key:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span><span style="color: #3a81c3;">[</span>hash_value<span style="color: #3a81c3;">]</span> = value
+      <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #715ab1;">new_hash_value</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.rehash<span style="color: #3a81c3;">(</span>hash_value<span style="color: #3a81c3;">)</span>
+
+        <span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>new_hash_value<span style="color: #3a81c3;">]</span> != <span style="color: #4e3163;">None</span> <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>new_hash_value<span style="color: #3a81c3;">]</span> != key:
+          <span style="color: #715ab1;">new_hash_value</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.rehash<span style="color: #3a81c3;">(</span>new_hash_value<span style="color: #3a81c3;">)</span>
+
+        <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>new_hash_value<span style="color: #3a81c3;">]</span> == <span style="color: #4e3163;">None</span>:
+          <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">slots</span><span style="color: #3a81c3;">[</span>new_hash_value<span style="color: #3a81c3;">]</span> = key
+          <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span><span style="color: #3a81c3;">[</span>new_hash_value<span style="color: #3a81c3;">]</span> = value
+        <span style="color: #3a81c3; font-weight: bold;">else</span>:
+          <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">data</span><span style="color: #3a81c3;">[</span>new_hash_value<span style="color: #3a81c3;">]</span> = value
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">start_position</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.hash_function<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">current_position</span> = start_position
+
+    <span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>current_position<span style="color: #3a81c3;">]</span> != <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>current_position<span style="color: #3a81c3;">]</span> == key:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.data<span style="color: #3a81c3;">[</span>current_position<span style="color: #3a81c3;">]</span>
+      <span style="color: #715ab1;">current_position</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.rehash<span style="color: #3a81c3;">(</span>current_position<span style="color: #3a81c3;">)</span>
+      <span style="color: #3a81c3; font-weight: bold;">if</span> current_position == start_position:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Not Found"</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"None wala Not Found"</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__str__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span> != <span style="color: #4e3163;">None</span>:
+        <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.slots<span style="color: #6c3163;">[</span>i<span style="color: #6c3163;">]</span>,<span style="color: #2d9574;">":"</span>,<span style="color: #3a81c3; font-weight: bold;">self</span>.data<span style="color: #6c3163;">[</span>i<span style="color: #6c3163;">]</span>,end=<span style="color: #2d9574;">' '</span><span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">""</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__getitem__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.get<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__setitem__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key,value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.put<span style="color: #3a81c3;">(</span>key,value<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">rehash</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, old_hash<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3;">(</span>old_hash + 1<span style="color: #3a81c3;">)</span> % <span style="color: #3a81c3; font-weight: bold;">self</span>.size
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">hash_function</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3;">abs</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">hash</span><span style="color: #6c3163;">(</span>key<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> % <span style="color: #3a81c3; font-weight: bold;">self</span>.size     
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Result</span>
+<span style="color: #3a81c3;">hash</span><span style="color: #3a81c3;">(</span>123<span style="color: #3a81c3;">)</span> 123
+<span style="color: #3a81c3;">abs</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">hash</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">"python"</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> % 5 <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1</span>
+<span style="color: #3a81c3;">hash</span><span style="color: #3a81c3;">(</span>1.5<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">115292150460684697</span>
+<span style="color: #3a81c3;">hash</span><span style="color: #3a81c3;">(</span><span style="color: #6c3163;">(</span>1,2,3<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2528502973977326415</span>
+<span style="color: #715ab1;">D1</span> = Dictionary<span style="color: #3a81c3;">(</span>3<span style="color: #3a81c3;">)</span> 
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>D1.slots<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>D1.data<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[None, None, None]</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[None, None, None]</span>
+
+<span style="color: #715ab1;">D1</span><span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'python'</span><span style="color: #3a81c3;">]</span> = 56
+<span style="color: #715ab1;">D1</span><span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'c'</span><span style="color: #3a81c3;">]</span> = 1000
+D1<span style="color: #3a81c3;">[</span><span style="color: #2d9574;">"dtjtr"</span><span style="color: #3a81c3;">]</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">'None wala Not Found'</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>D1<span style="color: #3a81c3;">)</span> 
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; c : 1000 python : 56 </span>
+
+D1<span style="color: #3a81c3;">[</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">[</span>1,2,3<span style="color: #2d9574;">]</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">]</span> = <span style="color: #2d9574;">"Hello"</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">TypeError </span>
+<span style="color: #715ab1;">D2</span> = <span style="color: #3a81c3;">{</span><span style="color: #6c3163;">[</span>1,2,3<span style="color: #6c3163;">]</span>:<span style="color: #2d9574;">"Hello"</span><span style="color: #3a81c3;">}</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">TypeError</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc1fcf7d" class="outline-3">
+<h3 id="orgc1fcf7d">Hashing with LL</h3>
+<div class="outline-text-3" id="text-orgc1fcf7d">
+<div class="org-src-container">
+<pre class="src src-python">lass Node:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key,value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">key</span> = key
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">value</span> = value
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #3a81c3;">next</span> = <span style="color: #4e3163;">None</span>
+
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">LL</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span> = <span style="color: #4e3163;">None</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">add</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, key, value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">new_node</span> = Node<span style="color: #3a81c3;">(</span>key, value<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.head == <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span> = new_node
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+      <span style="color: #3a81c3; font-weight: bold;">while</span> temp.<span style="color: #3a81c3;">next</span> != <span style="color: #4e3163;">None</span>:
+        <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+      temp.<span style="color: #3a81c3;">next</span> = new_node
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">delete_head</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.head == <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Empty"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">head</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head.<span style="color: #3a81c3;">next</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">remove</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.head.key == key:
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.delete_head<span style="color: #3a81c3;">()</span>
+      <span style="color: #3a81c3; font-weight: bold;">return</span> 
+    <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.head == <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Empty"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+      <span style="color: #3a81c3; font-weight: bold;">while</span> temp.<span style="color: #3a81c3;">next</span> != <span style="color: #4e3163;">None</span>:
+        <span style="color: #3a81c3; font-weight: bold;">if</span> temp.<span style="color: #3a81c3;">next</span>.key == key:
+          <span style="color: #3a81c3; font-weight: bold;">break</span>
+        <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+      <span style="color: #3a81c3; font-weight: bold;">if</span> temp.<span style="color: #3a81c3;">next</span> == <span style="color: #4e3163;">None</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Not Found"</span>
+      <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        temp.<span style="color: #3a81c3;">next</span> = temp.<span style="color: #3a81c3;">next</span>.<span style="color: #3a81c3;">next</span>
+
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">traverse</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+    <span style="color: #3a81c3; font-weight: bold;">while</span> temp != <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>temp.key,<span style="color: #2d9574;">"--&gt;"</span>,temp.value,<span style="color: #2d9574;">" "</span>, end=<span style="color: #2d9574;">" "</span><span style="color: #3a81c3;">)</span>
+      <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">size</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+    <span style="color: #715ab1;">counter</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">while</span> temp != <span style="color: #4e3163;">None</span>:
+      <span style="color: #715ab1;">counter</span> += 1
+      <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> counter
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">search</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+    <span style="color: #715ab1;">pos</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">while</span> temp != <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> temp.key == key:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> pos
+      <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+      <span style="color: #715ab1;">pos</span> += 1
+    <span style="color: #3a81c3; font-weight: bold;">return</span> -1
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_node_at_index</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,index<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">temp</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.head
+    <span style="color: #715ab1;">counter</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">while</span> temp <span style="color: #3a81c3; font-weight: bold;">is</span> <span style="color: #3a81c3; font-weight: bold;">not</span> <span style="color: #4e3163;">None</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> counter == index:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> temp
+      <span style="color: #715ab1;">temp</span> = temp.<span style="color: #3a81c3;">next</span>
+      <span style="color: #715ab1;">counter</span>+=1
+
+<span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">Dictionary</span>:
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__init__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, capacity<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">capacity</span> = capacity
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span> = 0
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">create array of LL</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">buckets</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.make_array<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.capacity<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">make_array</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,capacity<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">L</span> = <span style="color: #3a81c3;">[]</span>
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>capacity<span style="color: #3a81c3;">)</span>:
+      L.append<span style="color: #3a81c3;">(</span>LL<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> L
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__setitem__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key,value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.put<span style="color: #3a81c3;">(</span>key,value<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__getitem__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.get<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__delitem__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">bucket_index</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.hash_function<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets<span style="color: #3a81c3;">[</span>bucket_index<span style="color: #3a81c3;">]</span>.remove<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__str__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets:
+      i.traverse<span style="color: #3a81c3;">()</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">""</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">__len__</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3; font-weight: bold;">self</span>.size
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">bucket_index</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.hash_function<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">res</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets<span style="color: #3a81c3;">[</span>bucket_index<span style="color: #3a81c3;">]</span>.search<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">if</span> res == -1:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Not Present"</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #715ab1;">node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets<span style="color: #3a81c3;">[</span>bucket_index<span style="color: #3a81c3;">]</span>.get_node_at_index<span style="color: #3a81c3;">(</span>res<span style="color: #3a81c3;">)</span>
+      <span style="color: #3a81c3; font-weight: bold;">return</span> node.value
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">put</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>, key, value<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">bucket_index</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.hash_function<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">node_index</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.get_node_index<span style="color: #3a81c3;">(</span>bucket_index, key<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> node_index == -1:
+      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">insert</span>
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets<span style="color: #3a81c3;">[</span>bucket_index<span style="color: #3a81c3;">]</span>.add<span style="color: #3a81c3;">(</span>key,value<span style="color: #3a81c3;">)</span>
+      <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span>+=1
+      <span style="color: #715ab1;">load_factor</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.size/<span style="color: #3a81c3; font-weight: bold;">self</span>.capacity
+      <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>load_factor<span style="color: #3a81c3;">)</span>
+      <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>load_factor &gt;= 2<span style="color: #3a81c3;">)</span>:
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.rehash<span style="color: #3a81c3;">()</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">update</span>
+      <span style="color: #715ab1;">node</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets<span style="color: #3a81c3;">[</span>bucket_index<span style="color: #3a81c3;">]</span>.get_node_at_index<span style="color: #3a81c3;">(</span>node_index<span style="color: #3a81c3;">)</span>
+      node.<span style="color: #715ab1;">value</span> = value
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">rehash</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">capacity</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.capacity * 2
+    <span style="color: #715ab1;">old_buckets</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">size</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">self</span>.<span style="color: #715ab1;">buckets</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.make_array<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>.capacity<span style="color: #3a81c3;">)</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> old_buckets:
+      <span style="color: #3a81c3; font-weight: bold;">for</span> j <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>i.size<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>:
+        <span style="color: #715ab1;">node</span> = i.get_node_at_index<span style="color: #3a81c3;">(</span>j<span style="color: #3a81c3;">)</span>
+        <span style="color: #715ab1;">key_item</span> = node.key
+        <span style="color: #715ab1;">value_item</span> = node.value
+        <span style="color: #3a81c3; font-weight: bold;">self</span>.put<span style="color: #3a81c3;">(</span>key_item,value_item<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">get_node_index</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,bucket_index, key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">node_index</span> = <span style="color: #3a81c3; font-weight: bold;">self</span>.buckets<span style="color: #3a81c3;">[</span>bucket_index<span style="color: #3a81c3;">]</span>.search<span style="color: #3a81c3;">(</span>key<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> node_index
+
+  <span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">hash_function</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">self</span>,key<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3;">abs</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">hash</span><span style="color: #6c3163;">(</span>key<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> % <span style="color: #3a81c3; font-weight: bold;">self</span>.capacity
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Result</span>
+
+<span style="color: #715ab1;">L</span> = <span style="color: #3a81c3;">[]</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>3<span style="color: #3a81c3;">)</span>:
+  L.append<span style="color: #3a81c3;">(</span>LL<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3;">type</span><span style="color: #3a81c3;">(</span>L<span style="color: #6c3163;">[</span>0<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">__main__.LL</span>
+
+<span style="color: #715ab1;">L</span> = <span style="color: #3a81c3;">[</span>LL<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">]</span> * 3 
+L
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#     </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[&lt;__main__.LL at 0x7f9d693902b0&gt;,</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#      </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&lt;__main__.LL at 0x7f9d693902b0&gt;,</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#      </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&lt;__main__.LL at 0x7f9d693902b0&gt;]</span>
+
+<span style="color: #715ab1;">L</span> = LL<span style="color: #3a81c3;">()</span>
+L.add<span style="color: #3a81c3;">(</span>2,3<span style="color: #3a81c3;">)</span>
+L.add<span style="color: #3a81c3;">(</span>4,5<span style="color: #3a81c3;">)</span>
+L.add<span style="color: #3a81c3;">(</span>6,7<span style="color: #3a81c3;">)</span>
+L.traverse<span style="color: #3a81c3;">()</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 2 --&gt; 3   4 --&gt; 5   6 --&gt; 7   </span>
+L.get_node_at_index<span style="color: #3a81c3;">(</span>0<span style="color: #3a81c3;">)</span>.key <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2</span>
+<span style="color: #715ab1;">D1</span> = Dictionary<span style="color: #3a81c3;">(</span>3<span style="color: #3a81c3;">)</span>
+D1.put<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"c"</span>,20000<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0.3333333333333333</span>
+D1<span style="color: #3a81c3;">[</span><span style="color: #2d9574;">"java"</span><span style="color: #3a81c3;">]</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">'Not Present'</span>
+<span style="color: #3a81c3; font-weight: bold;">del</span> D1<span style="color: #3a81c3;">[</span><span style="color: #2d9574;">"java"</span><span style="color: #3a81c3;">]</span>
+D1.put<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"Java"</span>,56<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0.5</span>
+<span style="color: #715ab1;">D1</span> = Dictionary<span style="color: #3a81c3;">(</span>4<span style="color: #3a81c3;">)</span>
+D1.put<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"php"</span>,34<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0.6666666666666666 </span>
+<span style="color: #715ab1;">D1</span><span style="color: #3a81c3;">[</span><span style="color: #2d9574;">"matlab"</span><span style="color: #3a81c3;">]</span> = 45  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1.0</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>D1<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">php --&gt; 34   matlab --&gt; 45   c --&gt; 20000   </span>
+<span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>D1<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">3</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5bd17b0" class="outline-2">
+<h2 id="org5bd17b0">Algorithms</h2>
+<div class="outline-text-2" id="text-org5bd17b0">
+<ul class="org-ul">
+<li>Recersive</li>
+<li>Search</li>
+<li>Sorting</li>
+</ul>
+</div>
+<div id="outline-container-org488aff9" class="outline-3">
+<h3 id="org488aff9">Recersicve function</h3>
+<div class="outline-text-3" id="text-org488aff9">
+<p>
+<b>When to use Recursive ?</b> <br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">point</th>
+<th scope="col" class="org-left">Recursion</th>
+<th scope="col" class="org-left">Iteration</th>
+<th scope="col" class="org-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Space Effiecient ?</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+<td class="org-left">No stack memory required in case of interation</td>
+</tr>
+
+<tr>
+<td class="org-left">Time Effiecient ?</td>
+<td class="org-left">No</td>
+<td class="org-left">Yes</td>
+<td class="org-left">pop and push elements increase time</td>
+</tr>
+
+<tr>
+<td class="org-left">Easy to code ?</td>
+<td class="org-left">Yes</td>
+<td class="org-left">No</td>
+<td class="org-left">recursion is used especially when problem is sub divided into subproblem</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+When to use/Avoid Recursion When to use it ?
+</p>
+
+<ul class="org-ul">
+<li>If we can easily breakdown a problem into similar subproblem</li>
+<li>When we are fine with extra overhead (both time and space) that comes
+with it</li>
+<li>When we need a quick working solution insted of efficient one</li>
+<li>When traverse a tree</li>
+<li>When we use <b>memoization</b> in recursion</li>
+</ul>
+
+<p>
+When to avoid it ?
+</p>
+
+<ul class="org-ul">
+<li>If time and space complexity matters for us</li>
+<li>Recursion uses more memory.If we use embedded memory. For example an application that takes more memory in the phone is not efficient</li>
+<li>Recursions can be slow</li>
+</ul>
+
+<p>
+When u desinging mobile app, quick solution (car air-bag) we don't used recursion
+</p>
+</div>
+
+<div id="outline-container-org9d2785a" class="outline-4">
+<h4 id="org9d2785a">Fibonacci number</h4>
+<div class="outline-text-4" id="text-org9d2785a">
+<ul class="org-ul">
+<li>Fibonacci series : 0,1,1,2,3,5,8,13,21,34</li>
+<li>Find ith element in Fibonaccia seriers</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">fibonacci</span><span style="color: #3a81c3;">(</span>n<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">assert</span> n &gt;=0 <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3;">int</span><span style="color: #3a81c3;">(</span>n<span style="color: #3a81c3;">)</span> == n, <span style="color: #2d9574;">'The number should be Non-Negative and Non-floting (int) number'</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> n <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">[</span>0,1<span style="color: #3a81c3;">]</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> n
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> fibonacci<span style="color: #3a81c3;">(</span>n-1<span style="color: #3a81c3;">)</span>+ fibonacci<span style="color: #3a81c3;">(</span>n-2<span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>fibonacci<span style="color: #6c3163;">(</span>7<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">13</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f269bf" class="outline-4">
+<h4 id="org9f269bf">Factorial (n!)</h4>
+<div class="outline-text-4" id="text-org9f269bf">
+<ul class="org-ul">
+<li>n ! = n * (n-1) * (n-2) * (n-3) * (n-4)&#x2026;&#x2026;4 * 3 * 2 * 1</li>
+<li>0! = 1</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">factorial</span><span style="color: #3a81c3;">(</span>n<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">assert</span> n&gt;=0 <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3;">int</span><span style="color: #3a81c3;">(</span>n<span style="color: #3a81c3;">)</span> ==n, <span style="color: #2d9574;">'The number must  be positive intergeter'</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> n <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">[</span>0,1<span style="color: #3a81c3;">]</span>:
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#     </span><span style="color: #2aa1ae; background-color: #ecf3ec;">if n ==1 or n ==0:</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span> 1
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> n * factorial<span style="color: #3a81c3;">(</span>n-1<span style="color: #3a81c3;">)</span>
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>factorial<span style="color: #6c3163;">(</span>0<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>factorial<span style="color: #6c3163;">(</span>1<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>factorial<span style="color: #6c3163;">(</span>4<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">24 </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(factorial(-1))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org570219d" class="outline-4">
+<h4 id="org570219d">Sum of digit</h4>
+<div class="outline-text-4" id="text-org570219d">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;">### </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Find sum of digitals of a positive integer number using recursive</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Logic sub_digit(n) = Reminder(n/10) + sum_digit(Question(n/10) </span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">sum_digit</span><span style="color: #3a81c3;">(</span>n<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> n//10 ==0:
+        <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>F<span style="color: #2d9574;">'n= </span>{n}<span style="color: #2d9574;"> and sum(</span>{n}<span style="color: #2d9574;">) =</span>{n%10}<span style="color: #2d9574;">'</span><span style="color: #3a81c3;">)</span>
+        <span style="color: #3a81c3; font-weight: bold;">return</span> n%10
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>F<span style="color: #2d9574;">'n= </span>{n}<span style="color: #2d9574;"> and sum(</span>{n}<span style="color: #2d9574;">) = sum_digit(</span>{n//10}<span style="color: #2d9574;">) +</span>{n%10}<span style="color: #2d9574;">'</span><span style="color: #3a81c3;">)</span>        
+        <span style="color: #3a81c3; font-weight: bold;">return</span> sum_digit<span style="color: #3a81c3;">(</span>n//10<span style="color: #3a81c3;">)</span> + n%10
+sum_digit<span style="color: #3a81c3;">(</span>1234<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+<pre class="example" id="org599ebb0">
+n= 1234 and sum(1234) = sum_digit(123) +4
+n= 123 and sum(123) = sum_digit(12) +3
+n= 12 and sum(12) = sum_digit(1) +2
+n= 1 and sum(1) =1
+</pre>
+
+<pre class="example">
+10
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgca37b2c" class="outline-4">
+<h4 id="orgca37b2c">power of a base number \({b}^{n}\)</h4>
+<div class="outline-text-4" id="text-orgca37b2c">
+<p>
+Logic power(b,n) = power(b,n-1) * b
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">power_base</span><span style="color: #3a81c3;">(</span>b,n<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">assert</span> <span style="color: #3a81c3;">int</span><span style="color: #3a81c3;">(</span>n<span style="color: #3a81c3;">)</span> ==n <span style="color: #3a81c3; font-weight: bold;">and</span> b!=0 , <span style="color: #2d9574;">'n should be int and base should be non-zero'</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> n ==0 :
+        <span style="color: #3a81c3; font-weight: bold;">return</span> 1
+    <span style="color: #3a81c3; font-weight: bold;">if</span> n ==1:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> b
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> power_base<span style="color: #3a81c3;">(</span>b,n-1<span style="color: #3a81c3;">)</span>*b
+    <span style="color: #3a81c3; font-weight: bold;">if</span> n&lt;0:
+        <span style="color: #3a81c3; font-weight: bold;">return</span> power_base<span style="color: #3a81c3;">(</span>1/b,n<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#         </span><span style="color: #2aa1ae; background-color: #ecf3ec;">return 1/power_base(b,-n)</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4bf0a7d" class="outline-4">
+<h4 id="org4bf0a7d"><span class="todo TODO">TODO</span> Hanoi Tower</h4>
+</div>
+</div>
+
+<div id="outline-container-orgd024ade" class="outline-3">
+<h3 id="orgd024ade">Search</h3>
+<div class="outline-text-3" id="text-orgd024ade">
+</div>
+<div id="outline-container-org6e42cee" class="outline-4">
+<h4 id="org6e42cee">Binary Search</h4>
+<div class="outline-text-4" id="text-org6e42cee">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Binary Search</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Sorted Array </span>
+
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">binary_search</span><span style="color: #3a81c3;">(</span>arr, low, high, item<span style="color: #3a81c3;">)</span>:
+
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">print("low = ",low,"high = ",high,end=' ')</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">if</span> low &lt;= high:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">search</span>
+
+    <span style="color: #715ab1;">mid</span> = <span style="color: #3a81c3;">(</span>low + high<span style="color: #3a81c3;">)</span>//2
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">print("mid value is",arr[mid])</span>
+
+    <span style="color: #3a81c3; font-weight: bold;">if</span> arr<span style="color: #3a81c3;">[</span>mid<span style="color: #3a81c3;">]</span> == item:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> mid
+    <span style="color: #3a81c3; font-weight: bold;">elif</span> arr<span style="color: #3a81c3;">[</span>mid<span style="color: #3a81c3;">]</span> &gt; item:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> binary_search<span style="color: #3a81c3;">(</span>arr, low, mid-1,item<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> binary_search<span style="color: #3a81c3;">(</span>arr,mid+1,high,item<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3; font-weight: bold;">else</span>:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> -1
+
+<span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>12,24,35,46,57,68,80,99,100<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>binary_search<span style="color: #6c3163;">(</span>arr,0,<span style="color: #3a81c3;">len</span><span style="color: #2d9574;">(</span>arr<span style="color: #2d9574;">)</span>-1,-5<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">-1</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org639a0de" class="outline-3">
+<h3 id="org639a0de">Sorting</h3>
+<div class="outline-text-3" id="text-org639a0de">
+</div>
+<div id="outline-container-orgd170bc0" class="outline-4">
+<h4 id="orgd170bc0">Linear Searching</h4>
+<div class="outline-text-4" id="text-orgd170bc0">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Linear Search</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Brute Force</span>
+
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">linear_search</span><span style="color: #3a81c3;">(</span>arr,item<span style="color: #3a81c3;">)</span>:
+  <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span>arr<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> arr<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span> == item:
+      <span style="color: #3a81c3; font-weight: bold;">return</span> i
+  <span style="color: #3a81c3; font-weight: bold;">return</span> -1
+
+<span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>12,34,56,1,67,100,47,99<span style="color: #3a81c3;">]</span>
+linear_search<span style="color: #3a81c3;">(</span>arr,121<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">-1</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Time Complexity is O(N)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">No sorting required</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org75e571d" class="outline-4">
+<h4 id="org75e571d">Bubble Sort</h4>
+<div class="outline-text-4" id="text-org75e571d">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">bubble_sort</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>:
+  <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span>arr<span style="color: #6c3163;">)</span> - 1<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">flag</span> = 0
+    <span style="color: #3a81c3; font-weight: bold;">for</span> j <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span>arr<span style="color: #6c3163;">)</span> - 1 - i<span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> arr<span style="color: #3a81c3;">[</span>j<span style="color: #3a81c3;">]</span> &gt; arr<span style="color: #3a81c3;">[</span>j+1<span style="color: #3a81c3;">]</span>:
+        <span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span><span style="color: #715ab1;">j</span><span style="color: #3a81c3;">]</span>,<span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span>j+1<span style="color: #3a81c3;">]</span> = arr<span style="color: #3a81c3;">[</span>j+1<span style="color: #3a81c3;">]</span>,arr<span style="color: #3a81c3;">[</span>j<span style="color: #3a81c3;">]</span>
+        <span style="color: #715ab1;">flag</span> =1
+    <span style="color: #3a81c3; font-weight: bold;">if</span> flag == 0:
+      <span style="color: #3a81c3; font-weight: bold;">break</span>  
+  <span style="color: #3a81c3; font-weight: bold;">return</span> arr
+
+<span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>23,12,34,11,100,56,78<span style="color: #3a81c3;">]</span>
+bubble_sort<span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[11, 12, 23, 34, 56, 78, 100]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaedcf47" class="outline-4">
+<h4 id="orgaedcf47">Quick Sort</h4>
+<div class="outline-text-4" id="text-orgaedcf47">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">quick_sort</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>:
+
+  <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span> &lt;= 1:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> arr
+
+  <span style="color: #715ab1;">pivot</span> = arr.pop<span style="color: #3a81c3;">()</span>
+
+  <span style="color: #715ab1;">items_left</span> = <span style="color: #3a81c3;">[]</span>
+  <span style="color: #715ab1;">items_right</span> = <span style="color: #3a81c3;">[]</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">for</span> item <span style="color: #3a81c3; font-weight: bold;">in</span> arr:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> item &lt; pivot:
+      items_left.append<span style="color: #3a81c3;">(</span>item<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">else</span>:
+      items_right.append<span style="color: #3a81c3;">(</span>item<span style="color: #3a81c3;">)</span>
+
+  <span style="color: #3a81c3; font-weight: bold;">return</span> quick_sort<span style="color: #3a81c3;">(</span>items_left<span style="color: #3a81c3;">)</span> + <span style="color: #3a81c3;">[</span>pivot<span style="color: #3a81c3;">]</span> + quick_sort<span style="color: #3a81c3;">(</span>items_right<span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>2,1,4,6,3,7,5<span style="color: #3a81c3;">]</span>
+quick_sort<span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7]</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">partition</span><span style="color: #3a81c3;">(</span>arr,low,high<span style="color: #3a81c3;">)</span>:
+  <span style="color: #715ab1;">i</span> = low - 1
+  <span style="color: #715ab1;">pivot</span> = arr<span style="color: #3a81c3;">[</span>high<span style="color: #3a81c3;">]</span>
+  <span style="color: #3a81c3; font-weight: bold;">for</span> j <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>low,high<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> arr<span style="color: #3a81c3;">[</span>j<span style="color: #3a81c3;">]</span> &lt;= pivot:
+      <span style="color: #715ab1;">i</span>+=1
+      <span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span><span style="color: #715ab1;">i</span><span style="color: #3a81c3;">]</span>,<span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span>j<span style="color: #3a81c3;">]</span> = arr<span style="color: #3a81c3;">[</span>j<span style="color: #3a81c3;">]</span>,arr<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span>
+  <span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span><span style="color: #715ab1;">i</span>+1<span style="color: #3a81c3;">]</span>,<span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span>high<span style="color: #3a81c3;">]</span> = arr<span style="color: #3a81c3;">[</span>high<span style="color: #3a81c3;">]</span>,arr<span style="color: #3a81c3;">[</span>i+1<span style="color: #3a81c3;">]</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> i+1
+
+<span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>10, 7, 8, 9, 1, 5<span style="color: #3a81c3;">]</span> 
+<span style="color: #715ab1;">n</span> = <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span> 
+quick_sort<span style="color: #3a81c3;">(</span>arr, 0, n-1<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span> 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc17ba61" class="outline-4">
+<h4 id="orgc17ba61">Merge Sort</h4>
+<div class="outline-text-4" id="text-orgc17ba61">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">merge_arrays</span><span style="color: #3a81c3;">(</span>arr1,arr2<span style="color: #3a81c3;">)</span>:
+  <span style="color: #715ab1;">i</span> = 0
+  <span style="color: #715ab1;">j</span> = 0
+  <span style="color: #715ab1;">new_arr</span> = <span style="color: #3a81c3;">[]</span>
+  <span style="color: #3a81c3; font-weight: bold;">while</span> i
+
+<span style="color: #715ab1;">arr1</span> = <span style="color: #3a81c3;">[</span>1,2,6,7,8<span style="color: #3a81c3;">]</span>
+<span style="color: #715ab1;">arr2</span> = <span style="color: #3a81c3;">[</span>2,3,5<span style="color: #3a81c3;">]</span>
+merge_arrays<span style="color: #3a81c3;">(</span>arr1,arr2<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[1, 2, 2, 3, 5, 6, 7, 8]</span>
+
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">merge_sort</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>:
+  <span style="color: #715ab1;">mid</span> = <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>//2
+  <span style="color: #715ab1;">left</span> = arr<span style="color: #3a81c3;">[</span>:mid<span style="color: #3a81c3;">]</span>
+  <span style="color: #715ab1;">right</span> = arr<span style="color: #3a81c3;">[</span>mid:<span style="color: #3a81c3;">]</span>
+  <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>left<span style="color: #3a81c3;">)</span> == 1 <span style="color: #3a81c3; font-weight: bold;">and</span> <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>right<span style="color: #3a81c3;">)</span> == 1:
+    <span style="color: #3a81c3; font-weight: bold;">return</span> merge_arrays<span style="color: #3a81c3;">(</span>left,right<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3; font-weight: bold;">else</span>:
+    merge_sort<span style="color: #3a81c3;">(</span>left<span style="color: #3a81c3;">)</span>
+    merge_sort<span style="color: #3a81c3;">(</span>right<span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #3a81c3;">[</span>2,5,1,6,4,7,9,0<span style="color: #3a81c3;">]</span>
+<span style="color: #715ab1;">left</span> = <span style="color: #3a81c3;">[</span>2,5,1,6<span style="color: #3a81c3;">]</span>
+<span style="color: #715ab1;">right</span> = <span style="color: #3a81c3;">[</span>4,7,9,0<span style="color: #3a81c3;">]</span>
+
+merge sort on left
+<span style="color: #715ab1;">left1</span> = <span style="color: #3a81c3;">[</span>2,5<span style="color: #3a81c3;">]</span>
+<span style="color: #715ab1;">right1</span> = <span style="color: #3a81c3;">[</span>1,6<span style="color: #3a81c3;">]</span>
+
+merge on left1
+<span style="color: #715ab1;">left2</span> = <span style="color: #3a81c3;">[</span>2<span style="color: #3a81c3;">]</span>
+<span style="color: #715ab1;">right2</span> = <span style="color: #3a81c3;">[</span>5<span style="color: #3a81c3;">]</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ERROR : Syntax Error </span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8c238a5" class="outline-4">
+<h4 id="org8c238a5">Selection</h4>
+<div class="outline-text-4" id="text-org8c238a5">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">selection_sort</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>:
+  <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span>arr<span style="color: #6c3163;">)</span> - 1<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3;">min</span> = i
+    <span style="color: #3a81c3; font-weight: bold;">for</span> j <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>i+1,<span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span>arr<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>:
+      <span style="color: #3a81c3; font-weight: bold;">if</span> arr<span style="color: #3a81c3;">[</span>j<span style="color: #3a81c3;">]</span> &lt; arr<span style="color: #3a81c3;">[</span><span style="color: #3a81c3;">min</span><span style="color: #3a81c3;">]</span>:
+        <span style="color: #3a81c3;">min</span> = j
+    <span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span><span style="color: #715ab1;">i</span><span style="color: #3a81c3;">]</span>,<span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">[</span><span style="color: #3a81c3;">min</span><span style="color: #3a81c3;">]</span> = arr<span style="color: #3a81c3;">[</span><span style="color: #3a81c3;">min</span><span style="color: #3a81c3;">]</span>,arr<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> arr
+
+<span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>23,12,34,11,100,56,78<span style="color: #3a81c3;">]</span>
+selection_sort<span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1379941" class="outline-4">
+<h4 id="org1379941"><span class="done DONE">DONE</span> Insertion Sort</h4>
+<div class="outline-text-4" id="text-org1379941">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2024-06-11 Tue 13:32]</span></span></p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-org3ac3634" class="outline-4">
+<h4 id="org3ac3634">Sleep Sort</h4>
+<div class="outline-text-4" id="text-org3ac3634">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Sorting</span>
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">is_sorted</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>:
+  <span style="color: #3a81c3;">sorted</span> = <span style="color: #4e3163;">True</span>
+  <span style="color: #3a81c3; font-weight: bold;">for</span> i <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">len</span><span style="color: #6c3163;">(</span>arr<span style="color: #6c3163;">)</span> - 1<span style="color: #3a81c3;">)</span>:
+    <span style="color: #3a81c3; font-weight: bold;">if</span> arr<span style="color: #3a81c3;">[</span>i<span style="color: #3a81c3;">]</span>&gt;arr<span style="color: #3a81c3;">[</span>i+1<span style="color: #3a81c3;">]</span>:
+      <span style="color: #3a81c3;">sorted</span> = <span style="color: #4e3163;">False</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #3a81c3;">sorted</span>
+
+<span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>1,2,3,4,8,6<span style="color: #3a81c3;">]</span>
+is_sorted<span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">False</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcdc0159" class="outline-4">
+<h4 id="orgcdc0159">Monkey Sort</h4>
+<div class="outline-text-4" id="text-orgcdc0159">
+<div class="org-src-container">
+<pre class="src src-python"> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Monkey sort</span>
+<span style="color: #3a81c3; font-weight: bold;">import</span> random
+<span style="color: #715ab1;">a</span>=<span style="color: #3a81c3;">[</span>1,2,3,4<span style="color: #3a81c3;">]</span>
+random.shuffle<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</span>
+a <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[2, 1, 3, 4]</span>
+
+
+<span style="color: #3a81c3; font-weight: bold;">import</span> time
+<span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">monkey_sort</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>:
+  <span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3; font-weight: bold;">not</span> is_sorted<span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>:
+    time.sleep<span style="color: #3a81c3;">(</span>1<span style="color: #3a81c3;">)</span>
+    random.shuffle<span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>
+    <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>arr<span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">a</span> = <span style="color: #3a81c3;">[</span>12,24,11,56,34,20<span style="color: #3a81c3;">]</span>
+monkey_sort<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</span>
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Result </span>
+<span style="color: #3a81c3;">[</span>24, 20, 11, 56, 12, 34<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>11, 34, 12, 56, 20, 24<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>20, 11, 24, 12, 34, 56<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>24, 20, 34, 56, 11, 12<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>56, 34, 12, 20, 11, 24<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>34, 12, 11, 20, 56, 24<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>56, 34, 20, 12, 11, 24<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>11, 20, 34, 56, 24, 12<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>24, 12, 11, 34, 56, 20<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>20, 56, 11, 24, 34, 12<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>56, 12, 24, 20, 11, 34<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>56, 20, 24, 34, 11, 12<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>56, 20, 24, 11, 34, 12<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>56, 12, 24, 20, 34, 11<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>11, 12, 20, 24, 34, 56<span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3;">[</span>11, 12, 20, 24, 34, 56<span style="color: #3a81c3;">]</span>
+12 24 45 5 16
+5 12 16 24 45
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org83e8d1f" class="outline-2">
+<h2 id="org83e8d1f">Resource</h2>
+<div class="outline-text-2" id="text-org83e8d1f">
+<p>
+Free Book : Data Structures and Algorithms By Alfred V. Aho<br />
+<a href="https://theswissbay.ch/pdf/Gentoomen%20Library/Data%20Structures/Data%20Structures%20and%20Algorithms%20-%20Alfred%20V.%20Aho.pdf">https://theswissbay.ch/pdf/Gentoomen%20Library/Data%20Structures/Data%20Structures%20and%20Algorithms%20-%20Alfred%20V.%20Aho.pdf</a>
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=f9Aje_cN_CY&amp;t=35332s">https://www.youtube.com/watch?v=f9Aje_cN_CY&amp;t=35332s</a> <br />
+<a href="https://github.com/campusx-official/dsa-using-python/tree/main">https://github.com/campusx-official/dsa-using-python/tree/main</a> <br />
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Karthik D</p>
+<p class="date">Created: 2024-06-11 Tue 21:16</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,15 +1,17 @@
 #+TITLE: Notes
 #+SETUPFILE:css/emacs-org.setup
-[  [[./Index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
+[  [[./index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
 -----
 
-
-* [[./01_00_Git.html][Git]]
-* [[./01_01_GitMyConfig.html][Git My Configuration ]]
-* [[./02_LinuxBasic.html][Linux Basic]]
-* [[./02_Shell.html][Shell/Bash Script ]]
-* [[./03_01_Python.html][Python]]
-* [[./03_02_Pandas.html][Pandas]]
-* TODO [[./04_01_SQL.html][SQL]]
-* [[./04_DAS.html][Data Structure and Algorithms]]
+* Git 
+** [[./git.html][Git]]
+** [[./gitMyConfig.html][Git My Configuration ]]
+* Linux , Shell 
+** [[./linuxBasic.html][Linux Basic]]
+** [[./shell.html][Shell/Bash Script ]]
+* [[./python.html][Python]]
+** [[./pandas.html][Pandas]]
+** [[./numpy.html][Numpy]]
+* TODO [[./sql.html][SQL]]
+* [[./DAS.html][Data Structure and Algorithms]]
 
