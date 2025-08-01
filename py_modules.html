@@ -1,0 +1,2730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-01 Fri 04:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My Python Notes</title>
+<meta name="author" content="Karthik Karthik D" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/jupyter2org.css" />
+<link rel="stylesheet" type="text/css" href="css/readtheorg-htmlize.css"/>
+<script src="css/jquery.min.js"></script>
+<script src="css/bootstrap.min.js"></script>
+<script type="text/javascript" src="css/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="css/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">My Python Notes</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgfaf5f80">Os module</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgd741e26">Intoduction Shortcut method:</a></li>
+<li><a href="#org9e1ad61">Ex of Dir managements</a></li>
+<li><a href="#org336e5a8">Os walk [tree of all file/sub-dir]</a></li>
+<li><a href="#org7280abe">Os path [JOIN AND SPLIT PATH]</a></li>
+<li><a href="#orgc7ed113">Os Flags</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9a07b7d">Datetime module</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org3104b32">Introduction</a></li>
+<li><a href="#orgcb2cef8">Date</a></li>
+<li><a href="#org3c1c11e">Time</a></li>
+<li><a href="#orgcec0a54">timedelda</a></li>
+<li><a href="#orga020a7f">datetime  tz-naive or with default Timezone</a></li>
+<li><a href="#org693ff04">From datetime to only time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org145416d">datetime tz-aware</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org85ba43f">pytz module for Timezone</a></li>
+<li><a href="#org6e8a5c5">List of Timezone</a></li>
+<li><a href="#org4e46229">set timezone with datatime.timezone</a></li>
+<li><a href="#orgc52aa33">Convert timezone or remove timezone</a></li>
+<li><a href="#org604321d">Change one timezone to other timezone(using astimezone)</a></li>
+<li><a href="#orge84e749">Naive to timezone (tz -naive dt) to (tz-aware dt) or (naive dt to datetime withtimezone)</a></li>
+<li><a href="#org0d49472">String 2 Datetime or Datetime 2 String</a></li>
+<li><a href="#org56e6d96">Ex Datetime and</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd5ce4ce">File Module or File Object</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgb7ccf96">File acess modes</a></li>
+<li><a href="#orga373622">Contant manager</a></li>
+<li><a href="#org057cea5">Write mode or Overwrite mode with Contant Manager</a></li>
+<li><a href="#org4028e1b">Append Mode with Contant Manager</a></li>
+<li><a href="#orgbd81558">Rename mulitple files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb61aca7">Read CSV module- read, parse, write</a></li>
+<li><a href="#orgec0a86d">Time Module</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org292b068">time</a></li>
+<li><a href="#org170dcab">Time Tuple</a></li>
+<li><a href="#org17c6a4f">Getting Current Time</a></li>
+<li><a href="#orgdd794ee">Getting Formatted Time</a></li>
+<li><a href="#org16b3ea0">Getting Calendar for a Month</a></li>
+<li><a href="#orge794409">Time Module</a></li>
+<li><a href="#org2ff2ff0">Calender Module</a></li>
+<li><a href="#org15cb207">Other Module &amp; Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org263b380">pprint</a></li>
+<li><a href="#orgfdd090c">Json Module</a></li>
+<li><a href="#orgeaa7a7a">Regular expression</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgf31624d">Cheat Sheet:</a></li>
+<li><a href="#org3b86899">Quantifiers</a></li>
+<li><a href="#org17bebbf">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9f55f1d">Random module</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgb7496ae">Introdution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd07876e">Subprocess</a></li>
+<li><a href="#org62c7d02">Subprocess Details Explaination</a></li>
+</ul>
+</div>
+</div>
+<p>
+[  <a href="./index.html">Home</a> ]  \(&ensp;\)  | \(&ensp;\) \(&ensp;\) [text] \(&ensp;\)  \(&ensp;\) | \(&ensp;\) \(&ensp;\) [link] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [title] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [icon] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [target]  \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [expanded]  \(&ensp;\) \(&ensp;\)
+</p>
+<hr />
+
+<p>
+Grouping related method,attribues, class into a module
+</p>
+
+<ul class="org-ul">
+<li>Easier to understand and Write</li>
+<li>Module  allows to logically organize your code</li>
+<li>Module in py  is objects  with arbitrarily named attributes that you can bind and reference</li>
+<li>Simply a module is a file <code>.py file</code> consistign of py code</li>
+<li>Module can define functions,classes and varibale</li>
+<li>Module can also include runnable code</li>
+</ul>
+<div id="outline-container-orgfaf5f80" class="outline-2">
+<h2 id="orgfaf5f80">Os module</h2>
+<div class="outline-text-2" id="text-orgfaf5f80">
+</div>
+<div id="outline-container-orgd741e26" class="outline-4">
+<h4 id="orgd741e26">Intoduction Shortcut method:</h4>
+<div class="outline-text-4" id="text-orgd741e26">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> os 
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.__file__<span style="color: #3a81c3;">)</span>             <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">/usr/lib/python2.7/os.pyc</span>
+
+</pre>
+</div>
+<p>
+all the method are linux based cmd
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">method</th>
+<th scope="col" class="org-left">Describtion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">os.getcwd()</td>
+<td class="org-left">'<i>User/coreyshafer/Desktop</i>'</td>
+</tr>
+
+<tr>
+<td class="org-left">os.listdir(path)</td>
+<td class="org-left">return list names of files in current dir</td>
+</tr>
+
+<tr>
+<td class="org-left">os.chdir(path)</td>
+<td class="org-left">change dir to path</td>
+</tr>
+
+<tr>
+<td class="org-left">os.makedir(path)</td>
+<td class="org-left">create dir and it sub dir (mkdir can't)</td>
+</tr>
+
+<tr>
+<td class="org-left">os.mkdir(path[, mode])</td>
+<td class="org-left">create a directory</td>
+</tr>
+
+<tr>
+<td class="org-left">os.rmdir(path)</td>
+<td class="org-left">remove dir path</td>
+</tr>
+
+<tr>
+<td class="org-left">os.removedirs(path)</td>
+<td class="org-left">remove dir ectory and it sub directory</td>
+</tr>
+
+<tr>
+<td class="org-left">os.remdir(path)</td>
+<td class="org-left">re directory</td>
+</tr>
+
+<tr>
+<td class="org-left">os.rename (src,dst)</td>
+<td class="org-left">rename file or dir src to dst</td>
+</tr>
+
+<tr>
+<td class="org-left">os.chroot(path)</td>
+<td class="org-left">change root dir to current working path</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">os.status(file)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">os.open(file,flags[,model])</td>
+<td class="org-left">open file, set flags and mode</td>
+</tr>
+
+<tr>
+<td class="org-left">os.read(fd,n)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">os.closed(fd)</td>
+<td class="org-left">clsoe the file descriptor</td>
+</tr>
+
+<tr>
+<td class="org-left">os.chflags(path,flags)</td>
+<td class="org-left">set flags of path to numeric flags</td>
+</tr>
+
+<tr>
+<td class="org-left">os.chmod(path,mode)</td>
+<td class="org-left">Change mode of path to numeric mode</td>
+</tr>
+
+<tr>
+<td class="org-left">os.chown(path,uid,gid)</td>
+<td class="org-left">Change owner and group id of path to numerial uid and gid</td>
+</tr>
+
+<tr>
+<td class="org-left">os.symlink(src,dst)</td>
+<td class="org-left">Create a symbolic link(short cut) point to src name dst</td>
+</tr>
+
+<tr>
+<td class="org-left">os.remove(path)</td>
+<td class="org-left">remove the file for the path</td>
+</tr>
+
+<tr>
+<td class="org-left">os.write</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">os.path.isdir(dir_path)</td>
+<td class="org-left">True if dir exist</td>
+</tr>
+
+<tr>
+<td class="org-left">os.path.exists(file_path)</td>
+<td class="org-left">True if file exist</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python">os.stat<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'103041478_electricity_bill_11_payment.pdf'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; os.stat_result(st_mode=33279, st_ino=14816496, st_dev=2049, st_nlink=1, st_uid=1000, st_gid=1000, st_size=108238, st_atime=1545121417, st_mtime=1542892011, st_ctime=1543569248)</span>
+
+ os.stat<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'103041478_electricity_bill_11_payment.pdf'</span><span style="color: #3a81c3;">)</span>.st_size
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 108238</span>
+
+<span style="color: #715ab1;">mod_time</span> = os.stat<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'103041478_electricity_bill_11_payment.pdf'</span><span style="color: #3a81c3;">)</span>.st_mtime
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1542892011.625957 time stamp formate  for human readable formate</span>
+
+<span style="color: #3a81c3; font-weight: bold;">from</span> datetime <span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>datetime.fromtimestamp<span style="color: #6c3163;">(</span>mod_time<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-22 18:36:51.625957</span>
+
+</pre>
+</div>
+</div>
+<ul class="org-ul">
+<li><a id="org873f41a"></a>File Objects<br />
+<ul class="org-ul">
+<li><a id="org38c22e9"></a>Cheat Sheet<br />
+<div class="outline-text-6" id="text-org38c22e9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">method</td>
+<td class="org-left">Describtion</td>
+</tr>
+
+<tr>
+<td class="org-left">os.read</td>
+<td class="org-left">open file in editor</td>
+</tr>
+
+<tr>
+<td class="org-left">os.write</td>
+<td class="org-left">write a file</td>
+</tr>
+
+<tr>
+<td class="org-left">os.rename(test001.txt, test02.txt)</td>
+<td class="org-left">Rename test001.txt to test002.txt</td>
+</tr>
+
+<tr>
+<td class="org-left">os.remove(test001.txt)</td>
+<td class="org-left">Delete test001.txt</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><a id="org817334b"></a>read,write, rename, remove,<br /></li>
+<li><a id="org8af00ed"></a>change dir, make dir , del dir<br /></li>
+<li><a id="org0044802"></a>Example writing/reading a file using 'os.open'<br />
+<div class="outline-text-6" id="text-org0044802">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> os,sys
+
+<span style="color: #715ab1;">fd</span> = os.<span style="color: #3a81c3;">open</span> <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"f1.txt"</span>, os.O_RDWR|os.O_CREAT<span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Writing one string</span>
+<span style="color: #715ab1;">line</span> = <span style="color: #2d9574;">"this is test"</span>
+<span style="color: #715ab1;">b</span> = <span style="color: #3a81c3;">str</span>.encode<span style="color: #3a81c3;">(</span>line<span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">ret</span> = os.write<span style="color: #3a81c3;">(</span>fd,b<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">consist of no of bytes writen in f1.txt</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"the no of bytes written: "</span>, ret<span style="color: #3a81c3;">)</span>
+os.close<span style="color: #3a81c3;">(</span>fd<span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"Closed the file successfully!"</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">input</span><span style="color: #3a81c3;">()</span>
+
+<span style="color: #715ab1;">fd</span> = os.<span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"f1.txt"</span>,os.O_RDWR<span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">ret</span> = os.read<span style="color: #3a81c3;">(</span>fd,12<span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>ret.decode<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
+os.close<span style="color: #3a81c3;">(</span>fd<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"Closed the file successfully!"</span><span style="color: #3a81c3;">)</span>
+
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orge54f129"></a>Rename and Del file<br />
+<div class="outline-text-6" id="text-orge54f129">
+<div class="org-src-container">
+<pre class="src src-python">os.rename<span style="color: #3a81c3;">(</span>current_file.txt, new_file_name.txt<span style="color: #3a81c3;">)</span>
+os.remove<span style="color: #3a81c3;">(</span>current_file_name.txt<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org002ebc8"></a>Directory mange<br />
+<div class="outline-text-6" id="text-org002ebc8">
+<div class="org-src-container">
+<pre class="src src-python">os.mkdir<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"newdir"</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">make a dir</span>
+os.chdir<span style="color: #3a81c3;">(</span>dir_path<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">change current dir</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">find at which dir you are present</span>
+os.getcwd<span style="color: #3a81c3;">()</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">del dir</span>
+os.rmdir<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"test"</span><span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orgbdd3dd7"></a>File Objet Ex2<br />
+<div class="outline-text-5" id="text-orgbdd3dd7">
+<p>
+Whether you use destop or web applications File Objest are basics used
+</p>
+
+<p>
+built-in open cmd :
+         Noraml is not re-commanded
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #715ab1;">f</span>= <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'text.txt'</span>,<span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">In general dir :'path' is given  , defalut: current dir, python searchpath</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f.name<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f.mode<span style="color: #3a81c3;">)</span>
+
+f.close<span style="color: #3a81c3;">()</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">f.close()  is complusory defined</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">If file is n't close then it may memory leak</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">So content-text manger is used insted of open()</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'text.txt'</span>,<span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> f:
+    <span style="color: #3a81c3; font-weight: bold;">pass</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Advantages</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Automatically close file</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">auto close if there is exception</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">EX</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f.closed<span style="color: #3a81c3;">)</span>          <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt; True</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">return True if file is closed</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(f.read()) # VALUE ERROR: i/O operator of closed file</span>
+
+</pre>
+</div>
+</div>
+<ul class="org-ul">
+<li><a id="org344754b"></a>os.open<br />
+<div class="outline-text-6" id="text-org344754b">
+<p>
+os.open (file, flags, mode)
+os.read,os.close
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">os.<span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">file</span>, flage<span style="color: #6c3163;">[</span>, mode<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">flag</th>
+<th scope="col" class="org-left">Describtion</th>
+<th scope="col" class="org-left">mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">os.O_RDONLY</td>
+<td class="org-left">open for reading only</td>
+<td class="org-left">'r'</td>
+</tr>
+
+<tr>
+<td class="org-left">os.O_WRONLY</td>
+<td class="org-left">open for writing only</td>
+<td class="org-left">'w'</td>
+</tr>
+
+<tr>
+<td class="org-left">os.O_RDWR</td>
+<td class="org-left">open for reading and wring</td>
+<td class="org-left">'r+'</td>
+</tr>
+
+<tr>
+<td class="org-left">os.O_NONBLOCK</td>
+<td class="org-left">do not block on open</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">os.O_APPEND</td>
+<td class="org-left">append on each write</td>
+<td class="org-left">'a'</td>
+</tr>
+
+<tr>
+<td class="org-left">os.O_CREAT</td>
+<td class="org-left">create file if it does not exist</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org9e1ad61" class="outline-4">
+<h4 id="org9e1ad61">Ex of Dir managements</h4>
+<div class="outline-text-4" id="text-org9e1ad61">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> os
+form datetime <span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">dir</span><span style="color: #6c3163;">(</span>os<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">show all attribues and method in module</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Get current working Dir [os.getcwd()]   [pwd in linux]</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.getcwd<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>              <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">/home/dan</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Change Dir</span>
+os.chdir<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'/home/dan/Desktop'</span><span style="color: #3a81c3;">)</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">/home/dan/Desktop</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.getcwd<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">List of file and folders in current dir</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.listdir<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Make a dir</span>
+os.mkdir<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Os-Demo-1'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">os.mkdir('Os-Demo-1/Sub-DEMO') # ERROR: CANNOT CREATE DIR INSIDE</span>
+os.makedirs<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Os-Demo-1/Sub-DEMO'</span><span style="color: #3a81c3;">)</span>    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">advange os makedirs is it can create dir inside dirs</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Delete a dir(folders)</span>
+os.rmdir<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Os-Demo-1'</span><span style="color: #3a81c3;">)</span>
+os.remodedirs<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Os-Demo-1'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Rename a dir</span>
+os.rename<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'old.txt'</span>, <span style="color: #2d9574;">'new.txt'</span><span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Status of demo</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.stat<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'demo.txt'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; os.stat_result(st_mode=16877, st_ino=8524201, st_dev=2049, st_nlink=2, st_uid=1000, st_gid=1000, st_size=4096, st_atime=1543198458, st_mtime=1543082778, st_ctime=1543082778)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Size of file</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Size of file: demo.txt is :'</span> + os.status<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'demo.txt'</span><span style="color: #6c3163;">)</span>.st_size<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt; 4096</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Last Modified Time </span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.stat<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'demo.txt'</span><span style="color: #6c3163;">)</span>.st_mtime<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 1543082778 (this is in timestamp formate )</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Modified time stamps</span>
+<span style="color: #715ab1;">mod_time</span> = os.stat<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'demo.txt'</span><span style="color: #3a81c3;">)</span>.st_mtime
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>datetime.fromtimestap<span style="color: #6c3163;">(</span>mod_time<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 2018-11-24 23:36:18.194036</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">See entire directory (child director)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org336e5a8" class="outline-4">
+<h4 id="org336e5a8">Os walk [tree of all file/sub-dir]</h4>
+<div class="outline-text-4" id="text-org336e5a8">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> os
+
+<span style="color: #715ab1;">path</span> = <span style="color: #2d9574;">'/home/dan/Desktop'</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> dirpath <span style="color: #3a81c3; font-weight: bold;">in</span> os.walk<span style="color: #3a81c3;">(</span>path<span style="color: #3a81c3;">)</span>:
+  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">dirpath  = ('seach_path', [list of dir in search_path],[list of files in search_path])</span>
+  <span style="color: #715ab1;">drp</span> = dirpath<span style="color: #3a81c3;">[</span>0<span style="color: #3a81c3;">]</span>
+  <span style="color: #715ab1;">dirnames</span> = dirpath<span style="color: #3a81c3;">[</span>1<span style="color: #3a81c3;">]</span>
+  <span style="color: #715ab1;">filenames</span> = dirpath<span style="color: #3a81c3;">[</span>2<span style="color: #3a81c3;">]</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'path :'</span>,drp<span style="color: #6c3163;">[</span><span style="color: #3a81c3;">len</span><span style="color: #2d9574;">(</span>path<span style="color: #2d9574;">)</span>:<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'dir:'</span>+ <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">  '</span> +  <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">  '</span>.join<span style="color: #6c3163;">(</span>dirnames<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'files:'</span>+ <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">   '</span> + <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;"> '</span>.join<span style="color: #6c3163;">(</span>filenames<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">()</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7280abe" class="outline-4">
+<h4 id="org7280abe">Os path [JOIN AND SPLIT PATH]</h4>
+<div class="outline-text-4" id="text-org7280abe">
+<div class="org-src-container">
+<pre class="src src-python"> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Joining , Spiliting,</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.environ.get<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'HOME'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt; /User/jayradhe</span>
+
+<span style="color: #715ab1;">file_path</span> = os.path.join<span style="color: #3a81c3;">(</span>os.environ.get<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'HOME'</span><span style="color: #6c3163;">)</span>, <span style="color: #2d9574;">'text.txt'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>file_path<span style="color: #3a81c3;">)</span>
+
+os.path.basename<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'/temp/test.txt'</span><span style="color: #3a81c3;">)</span><span style="color: #e0211d; text-decoration: overline;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">test.txt</span>
+os.path.dirname<span style="color: #e0211d; text-decoration: overline;">(</span><span style="color: #2d9574;">'/temp/test.txt'</span><span style="color: #e0211d; text-decoration: overline;">))</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">/temp</span>
+os.path.split<span style="color: #e0211d; text-decoration: overline;">(</span><span style="color: #2d9574;">'/temp/test.txt'</span><span style="color: #e0211d; text-decoration: overline;">))</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">('/temp', 'test.txt')</span>
+os.path.exists<span style="color: #e0211d; text-decoration: overline;">(</span><span style="color: #2d9574;">'/temp/test.txt'</span><span style="color: #e0211d; text-decoration: overline;">))</span>
+os.path.isdir<span style="color: #e0211d; text-decoration: overline;">(</span><span style="color: #2d9574;">'/temp/test.txt'</span><span style="color: #e0211d; text-decoration: overline;">))</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">False</span>
+os.path.isfile<span style="color: #e0211d; text-decoration: overline;">(</span><span style="color: #2d9574;">'/temp/test.txt'</span><span style="color: #e0211d; text-decoration: overline;">))</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">False</span>
+os.path.splitext<span style="color: #e0211d; text-decoration: overline;">(</span><span style="color: #2d9574;">'/temp/test.txt'</span><span style="color: #e0211d; text-decoration: overline;">))</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">('/temp/test','.txt')</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc7ed113" class="outline-4">
+<h4 id="orgc7ed113">Os Flags</h4>
+<div class="outline-text-4" id="text-orgc7ed113">
+<div class="org-src-container">
+<pre class="src src-python">os.environ.get<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'HOME'</span><span style="color: #3a81c3;">)</span>                                      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;'/home/dan'</span>
+<span style="color: #715ab1;">path1</span> = os.environ.get<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'HOME'</span><span style="color: #3a81c3;">)</span> + <span style="color: #2d9574;">'/'</span> + <span style="color: #2d9574;">'test.txt'</span>           <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;'/home/dan/test.txt'</span>
+<span style="color: #715ab1;">path2</span> = os.path.join<span style="color: #3a81c3;">(</span>os.environ.get<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'HOME'</span><span style="color: #6c3163;">)</span>,<span style="color: #2d9574;">'text.txt'</span><span style="color: #3a81c3;">)</span>     <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; '/home/dan/text.txt'</span>
+
+<span style="color: #715ab1;">temp</span> = <span style="color: #2d9574;">'/home/dan/text.txt'</span>
+
+os.path.basename<span style="color: #3a81c3;">(</span>temp<span style="color: #3a81c3;">)</span>      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;'text.txt'</span>
+os.path.dirname<span style="color: #3a81c3;">(</span>temp<span style="color: #3a81c3;">)</span>       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;'/home/dan'</span>
+os.path.split<span style="color: #3a81c3;">(</span>temp<span style="color: #3a81c3;">)</span>         <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;('/home/dan', 'text.txt')</span>
+os.path.exists<span style="color: #3a81c3;">(</span>temp<span style="color: #3a81c3;">)</span>        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;False</span>
+os.path.isdir<span style="color: #3a81c3;">(</span>temp<span style="color: #3a81c3;">)</span>         <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;False</span>
+os.path.isfile<span style="color: #3a81c3;">(</span>temp<span style="color: #3a81c3;">)</span>        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; False</span>
+os.path.splitext<span style="color: #3a81c3;">(</span>temp<span style="color: #3a81c3;">)</span>      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ('/home/dan/text', '.txt')</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9a07b7d" class="outline-2">
+<h2 id="org9a07b7d">Datetime module</h2>
+<div class="outline-text-2" id="text-org9a07b7d">
+</div>
+<div id="outline-container-org3104b32" class="outline-4">
+<h4 id="org3104b32">Introduction</h4>
+<div class="outline-text-4" id="text-org3104b32">
+<p>
+There are two types of model 
+</p>
+<ul class="org-ul">
+<li>navie datetime</li>
+<li>aware datetime</li>
+</ul>
+
+<p>
+In navie datetime consist of 
+</p>
+<ul class="org-ul">
+<li>date      [year, month, day, weekday]</li>
+<li>time      [hh,mm,ss,msec]</li>
+<li>date&amp;time [year, month, day, weekday],[hh,mm,ss,msec]</li>
+</ul>
+
+<p>
+In aware datetime in addtion to navie consist of timezone
+</p>
+<ul class="org-ul">
+<li>timezone +/- 00:00</li>
+</ul>
+
+<p>
+In general datetime module does n't consist of database of timezone
+so we use other package like pytz, dateulti.tz 
+</p>
+</div>
+</div>
+<div id="outline-container-orgcb2cef8" class="outline-4">
+<h4 id="orgcb2cef8">Date</h4>
+<div class="outline-text-4" id="text-orgcb2cef8">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">navie datetime, aware datetime</span>
+<span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #715ab1;">d</span> = datetime.date<span style="color: #3a81c3;">(</span>2016,7,24<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">YYYY,MM,DD</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>d<span style="color: #3a81c3;">)</span>      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;2016-07-24</span>
+
+<span style="color: #715ab1;">tday</span> = datetime.date.today<span style="color: #3a81c3;">()</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tday<span style="color: #3a81c3;">)</span>     <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-28</span>
+
+<span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+
+
+<span style="color: #715ab1;">tday</span> = datetime.date.today<span style="color: #3a81c3;">()</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tday.year<span style="color: #3a81c3;">)</span>                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tday.month<span style="color: #3a81c3;">)</span>               <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">11</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tday.day<span style="color: #3a81c3;">)</span>                 <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">26</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tday<span style="color: #3a81c3;">)</span>                     <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-20</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tday.weekday<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>           <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0 # weekday MONDAY :0, SUNDAY :6</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tday.isoweekday<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1 # iso weekday MONDAY:1 SUNDAY:7</span>
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3c1c11e" class="outline-4">
+<h4 id="org3c1c11e">Time</h4>
+<div class="outline-text-4" id="text-org3c1c11e">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+
+<span style="color: #715ab1;">t</span> = datetime.time<span style="color: #3a81c3;">(</span>9, 30, 45, 100000<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">hh,mm,ss,micro ss</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>t<span style="color: #3a81c3;">)</span>                  <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">09:30:45.100000</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>t.hour<span style="color: #3a81c3;">)</span>               <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">9</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>t.<span style="color: #3a81c3;">min</span><span style="color: #3a81c3;">)</span>                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">00:00:00</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>t.minute<span style="color: #3a81c3;">)</span>             <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">30</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>t.<span style="color: #3a81c3;">min</span><span style="color: #3a81c3;">)</span>                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">00:00:00</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>t.minute<span style="color: #3a81c3;">)</span>             <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">30</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcec0a54" class="outline-4">
+<h4 id="orgcec0a54">timedelda</h4>
+<div class="outline-text-4" id="text-orgcec0a54">
+<p>
+<a href="https://pynatixbve.com/python-timedelta/">https://pynatixbve.com/python-timedelta/</a>
+</p>
+
+<p>
+<a href="https://www.includehelp.com/python/timedelta-total_seconds-method-with-example.aspx">https://www.includehelp.com/python/timedelta-total_seconds-method-with-example.aspx</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-pythons">import datetime
+datetime.timedelta(weeks=0, days=0, hours=0,  minutes=0, seconds=0, milliseconds=0, microseconds=0 )
+#Returns : Date
+
+###############
+#  tdelta
+#################
+tday = datetime.datetime.now()
+tdelta = dt.timedelta(days=7)
+
+# print(tday +tdelta)                 # 2018-12-03
+# print(tday - tdelta)                # 2018-11-19
+bday = datetime.datetime(2022,8,25,0,0,0)
+till_day = bday-tday
+print(f'bday \t\t= {bday}')
+print(f'till_day \t={till_day} and has remaing days {till_day.days}')                     # -93 days, 0:00:00
+
+
+
+print("Calculate time")
+total_seconds = till_day.total_seconds()
+remain_seconds = int(total_seconds % 60)
+remain_minutes = int(((total_seconds -remain_seconds)% 3600) // 60)
+remain_hours =  total_seconds//3600
+remain_days = int(remain_hours//24)
+remain_hours = int(remain_hours - remain_days*24)
+print(f"\t remaining time = {remain_days} days {remain_hours}:{remain_minutes}:{remain_seconds}")
+print(f"\t total minutes \t= {(remain_days*24 + remain_hours)*60 + remain_minutes}")
+print(f"\t total hours \t= {(remain_days*24 + remain_hours) }")
+print(f"\t total second \t= {till_day.total_seconds()}")     # -8035200.0
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga020a7f" class="outline-4">
+<h4 id="orga020a7f">datetime  tz-naive or with default Timezone</h4>
+<div class="outline-text-4" id="text-orga020a7f">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #715ab1;">dt_today</span> = datetime.datetime.today<span style="color: #3a81c3;">()</span>        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">current local time NO-TIMEZOME</span>
+<span style="color: #715ab1;">dt_now</span> = datetime.datetime.now<span style="color: #3a81c3;">()</span>            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">give TIMEZONE : default: NONE</span>
+<span style="color: #715ab1;">dt_utcnow</span> = datetime.datetime.utcnow<span style="color: #3a81c3;">()</span>      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">UTC info: NONE</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>dt_today<span style="color: #3a81c3;">)</span>             <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-26 21:20:31.829934</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>dt_now<span style="color: #3a81c3;">)</span>               <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-26 21:20:49.192463</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>dt_utcnow<span style="color: #3a81c3;">)</span>            <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-26 15:51:51.149416</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org693ff04" class="outline-4">
+<h4 id="org693ff04">From datetime to only time</h4>
+<div class="outline-text-4" id="text-org693ff04">
+<div class="org-src-container">
+<pre class="src src-nil">from datetime import datetime
+
+strg = "2017-07-20-10-30"
+
+dt = datetime.strptime(strg, '%Y-%m-%d-%H-%M')
+tme = dt.time()
+print(tme)  # 10:30:00
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org145416d" class="outline-2">
+<h2 id="org145416d">datetime tz-aware</h2>
+<div class="outline-text-2" id="text-org145416d">
+</div>
+<div id="outline-container-org85ba43f" class="outline-4">
+<h4 id="org85ba43f">pytz module for Timezone</h4>
+<div class="outline-text-4" id="text-org85ba43f">
+<p>
+by default python set timezone :default +00:00 or utc time 
+indian time zone <code>'Asia/Kolkata'</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> pytz
+<span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #3a81c3; font-weight: bold;">import</span> pytz
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">"</span>.join<span style="color: #6c3163;">(</span>pytz.all_timezones<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">dt_today</span> = datetime.datetime.today<span style="color: #3a81c3;">()</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span>
+<span style="color: #715ab1;">yy</span> = dt_today.year
+<span style="color: #715ab1;">mm</span> = dt_today.month
+<span style="color: #715ab1;">dd</span> = dt_today.day
+<span style="color: #715ab1;">hh</span> = dt_today.hour
+<span style="color: #715ab1;">mn</span> = dt_today.minute
+<span style="color: #715ab1;">sec</span> = dt_today.second
+<span style="color: #715ab1;">msec</span> = dt_today.microsecond
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">WRONG :</span>
+<span style="color: #715ab1;">dt</span> = datetime.datetime<span style="color: #3a81c3;">(</span>yy,mm,dd,hh,mn,sec,msec,tzinfo=pytz.UTC<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># we are in timezone india(koltala) we can't assign timzone to default</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'datetime.today:</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">'</span>,dt<span style="color: #3a81c3;">)</span>               <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-27 12:30:45+00:00</span>
+
+
+<span style="color: #715ab1;">dt_now</span> = datetime.datetime.now<span style="color: #3a81c3;">(</span>tz=pytz.UTC<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'datetime.now:</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">'</span>,dt_now<span style="color: #3a81c3;">)</span>           <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-26 20:32:32.911316+00:00</span>
+
+<span style="color: #715ab1;">dt_utcnow</span> = datetime.datetime.utcnow<span style="color: #3a81c3;">()</span>.replace<span style="color: #3a81c3;">(</span>tzinfo=pytz.UTC<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'utcnow:</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;"> </span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">'</span>,dt_utcnow<span style="color: #3a81c3;">)</span>        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-26 20:33:24.122555+00:00</span>
+
+<span style="color: #715ab1;">dt_dtz</span> = datetime.datetime.now<span style="color: #3a81c3;">(</span>tz=pytz.UTC<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"time zone defalut :</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">"</span>, dt_dtz<span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">dt_UsMountain_tz</span> = dt_dtz.astimezone<span style="color: #3a81c3;">(</span>pytz.timezone<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'US/Mountain'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"time zone US/Moun : </span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">"</span>, dt_UsMountain_tz<span style="color: #3a81c3;">)</span>                                 <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-26 13:36:10.214904-07:00</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6e8a5c5" class="outline-4">
+<h4 id="org6e8a5c5">List of Timezone</h4>
+<div class="outline-text-4" id="text-org6e8a5c5">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;">## </span><span style="color: #2aa1ae; background-color: #ecf3ec;">List of all timezones</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> tz <span style="color: #3a81c3; font-weight: bold;">in</span> pytz.all_timezones:
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>tz<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4e46229" class="outline-4">
+<h4 id="org4e46229">set timezone with datatime.timezone</h4>
+<div class="outline-text-4" id="text-org4e46229">
+<p>
+<a href="https://queirozf.com/entries/python-datetime-with-timezones-examples-and-reference">https://queirozf.com/entries/python-datetime-with-timezones-examples-and-reference</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc52aa33" class="outline-4">
+<h4 id="orgc52aa33">Convert timezone or remove timezone</h4>
+</div>
+<div id="outline-container-org604321d" class="outline-4">
+<h4 id="org604321d">Change one timezone to other timezone(using astimezone)</h4>
+<div class="outline-text-4" id="text-org604321d">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">temp_date.tz_convert(None)</span>
+<span style="color: #3a81c3; font-weight: bold;">import</span> datetime <span style="color: #3a81c3; font-weight: bold;">as</span> dt
+<span style="color: #3a81c3; font-weight: bold;">import</span> pytz
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Naive Date Time </span>
+<span style="color: #715ab1;">dt_naive</span> = dt.datetime<span style="color: #3a81c3;">(</span>2022,9,19,9,30,0<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(dt_naive)                                    # 2022-09-19 09:30:00</span>
+<span style="color: #715ab1;">New_York_tz</span> = pytz.timezone<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'America/New_York'</span><span style="color: #3a81c3;">)</span> 
+<span style="color: #715ab1;">dt_New_York_tz</span> = New_York_tz.localize<span style="color: #3a81c3;">(</span>dt_naive<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>dt_New_York_tz<span style="color: #3a81c3;">)</span>                                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2022-09-19 09:30:00-04:00</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">India Stand Time  + 5:30 </span>
+<span style="color: #715ab1;">ist</span>= <span style="color: #2d9574;">'Asia/Calcutta'</span>
+<span style="color: #715ab1;">India_timezone</span> = pytz.timezone<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Asia/Calcutta'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">timezone = pytz.timezone('Asia/Calcutta')</span>
+<span style="color: #715ab1;">India_time_tz</span> = new_york_time_tz.astimezone<span style="color: #3a81c3;">(</span>India_timezone<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">India_time_tz = India_timezone.localize(new_york_time_tz)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>India_time_tz<span style="color: #3a81c3;">)</span>                                 <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2022-09-19 19:00:00+05:30 </span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>India_time_tz.tz_localize<span style="color: #6c3163;">(</span><span style="color: #4e3163;">None</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>               <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">To get utc time and remove timezone</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>India_time_tz.tz_convert<span style="color: #6c3163;">(</span><span style="color: #4e3163;">None</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">To get local indian time </span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">from</span> datetime <span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #3a81c3; font-weight: bold;">import</span> pytz
+
+<span style="color: #715ab1;">naive</span>= datetime.now<span style="color: #3a81c3;">()</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">## </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Adding a timezone</span>
+<span style="color: #715ab1;">timezone</span> = pytz.timezone<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"Asia/Kolkata"</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">aware1</span> = naive.astimezone<span style="color: #3a81c3;">(</span>timezone<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">## </span><span style="color: #2aa1ae; background-color: #ecf3ec;">After adding the timezone info, </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">## </span><span style="color: #2aa1ae; background-color: #ecf3ec;">the object it becomes aware</span>
+<span style="color: #715ab1;">timezone</span> = pytz.timezone<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"Asia/Tokyo"</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">aware2</span> = aware1.astimezone<span style="color: #3a81c3;">(</span>timezone<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"naive</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">="</span>,naive<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"aware1</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">="</span>,aware1<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"aware2</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">="</span>,aware2<span style="color: #3a81c3;">)</span>
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-result">naive	= 2022-09-02 08:34:45.727176
+aware1	= 2022-09-02 08:34:45.727176+05:30
+aware2	= 2022-09-02 12:04:45.727176+09:00
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-nil">
+df = df.tz_convert(None)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge84e749" class="outline-4">
+<h4 id="orge84e749">Naive to timezone (tz -naive dt) to (tz-aware dt) or (naive dt to datetime withtimezone)</h4>
+<div class="outline-text-4" id="text-orge84e749">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">given naive datetime to timezone</span>
+
+<span style="color: #715ab1;">dt_naive</span> = datetime.datetime.now<span style="color: #3a81c3;">()</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(dt_naive)                                         # 2018-11-27 02:10:09:10.0000</span>
+<span style="color: #715ab1;">UsMountain_tz</span> = pytz.timezone<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'US/Mountain'</span><span style="color: #3a81c3;">)</span> 
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(UsMountain_tz)                                    # US/Mountain</span>
+<span style="color: #715ab1;">dt_UsMountain_tz</span> = UsMountain_tz.localize<span style="color: #3a81c3;">(</span>dt_naive<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"time zone US/Moun : </span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">"</span>,dt_UsMountain_tz<span style="color: #3a81c3;">)</span>                                <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2018-11-27 02:10:19.941388-07:00</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0d49472" class="outline-4">
+<h4 id="org0d49472">String 2 Datetime or Datetime 2 String</h4>
+<div class="outline-text-4" id="text-org0d49472">
+<p>
+Python strftime cheatsheet  <a href="https://strftime.org/">https://strftime.org/</a> <br />
+<a href="https://www.programiz.com/python-programming/datetime/strftime">https://www.programiz.com/python-programming/datetime/strftime</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Code</th>
+<th scope="col" class="org-right">Example</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">%a</td>
+<td class="org-right">Sun</td>
+<td class="org-left">Weekday as locale’s abbreviated name.</td>
+</tr>
+
+<tr>
+<td class="org-left">%A</td>
+<td class="org-right">Sunday</td>
+<td class="org-left">Weekday as locale’s full name.</td>
+</tr>
+
+<tr>
+<td class="org-left">%w</td>
+<td class="org-right">0</td>
+<td class="org-left">Weekday as a decimal number, where 0 is Sunday and 6 is Saturday.</td>
+</tr>
+
+<tr>
+<td class="org-left">%d</td>
+<td class="org-right">08</td>
+<td class="org-left">Day of the month as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%-d</td>
+<td class="org-right">8</td>
+<td class="org-left">Day of the month as a decimal number. (Platform specific)</td>
+</tr>
+
+<tr>
+<td class="org-left">%b</td>
+<td class="org-right">Sep</td>
+<td class="org-left">Month as locale’s abbreviated name.</td>
+</tr>
+
+<tr>
+<td class="org-left">%B</td>
+<td class="org-right">September</td>
+<td class="org-left">Month as locale’s full name.</td>
+</tr>
+
+<tr>
+<td class="org-left">%m</td>
+<td class="org-right">09</td>
+<td class="org-left">Month as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%-m</td>
+<td class="org-right">9</td>
+<td class="org-left">Month as a decimal number. (Platform specific)</td>
+</tr>
+
+<tr>
+<td class="org-left">%y</td>
+<td class="org-right">13</td>
+<td class="org-left">Year without century as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%Y</td>
+<td class="org-right">2013</td>
+<td class="org-left">Year with century as a decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%H</td>
+<td class="org-right">07</td>
+<td class="org-left">Hour (24-hour clock) as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%-H</td>
+<td class="org-right">7</td>
+<td class="org-left">Hour (24-hour clock) as a decimal number. (Platform specific)</td>
+</tr>
+
+<tr>
+<td class="org-left">%I</td>
+<td class="org-right">07</td>
+<td class="org-left">Hour (12-hour clock) as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%-I</td>
+<td class="org-right">7</td>
+<td class="org-left">Hour (12-hour clock) as a decimal number. (Platform specific)</td>
+</tr>
+
+<tr>
+<td class="org-left">%p</td>
+<td class="org-right">AM</td>
+<td class="org-left">Locale’s equivalent of either AM or PM.</td>
+</tr>
+
+<tr>
+<td class="org-left">%M</td>
+<td class="org-right">06</td>
+<td class="org-left">Minute as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%-M</td>
+<td class="org-right">6</td>
+<td class="org-left">Minute as a decimal number. (Platform specific)</td>
+</tr>
+
+<tr>
+<td class="org-left">%S</td>
+<td class="org-right">05</td>
+<td class="org-left">Second as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%-S</td>
+<td class="org-right">5</td>
+<td class="org-left">Second as a decimal number. (Platform specific)</td>
+</tr>
+
+<tr>
+<td class="org-left">%f</td>
+<td class="org-right">000000</td>
+<td class="org-left">Microsecond as a decimal number, zero-padded on the left.</td>
+</tr>
+
+<tr>
+<td class="org-left">%z</td>
+<td class="org-right">+0000</td>
+<td class="org-left">UTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).</td>
+</tr>
+
+<tr>
+<td class="org-left">%Z</td>
+<td class="org-right">UTC</td>
+<td class="org-left">Time zone name (empty string if the object is naive).</td>
+</tr>
+
+<tr>
+<td class="org-left">%j</td>
+<td class="org-right">251</td>
+<td class="org-left">Day of the year as a zero-padded decimal number.</td>
+</tr>
+
+<tr>
+<td class="org-left">%-j</td>
+<td class="org-right">251</td>
+<td class="org-left">Day of the year as a decimal number. (Platform specific)</td>
+</tr>
+
+<tr>
+<td class="org-left">%U</td>
+<td class="org-right">36</td>
+<td class="org-left">Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.</td>
+</tr>
+
+<tr>
+<td class="org-left">%W</td>
+<td class="org-right">35</td>
+<td class="org-left">Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.</td>
+</tr>
+
+<tr>
+<td class="org-left">%c</td>
+<td class="org-right">Sun Sep 8 07:06:05 2013</td>
+<td class="org-left">Locale’s appropriate date and time representation.</td>
+</tr>
+
+<tr>
+<td class="org-left">%x</td>
+<td class="org-right">09/08/13</td>
+<td class="org-left">Locale’s appropriate date representation.</td>
+</tr>
+
+<tr>
+<td class="org-left">%X</td>
+<td class="org-right">07:06:05</td>
+<td class="org-left">Locale’s appropriate time representation.</td>
+</tr>
+
+<tr>
+<td class="org-left">%%</td>
+<td class="org-right">%</td>
+<td class="org-left">A literal '%' character.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #3a81c3; font-weight: bold;">import</span> pytz
+
+<span style="color: #715ab1;">dt_mtn</span> = datetime.datetime.now<span style="color: #3a81c3;">(</span>tz=pytz.time<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'US/Mountain'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>dt_mtn.isoformat<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span><span style="color: #e0211d; text-decoration: overline;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #e0211d; text-decoration: overline;">(</span>dt_mtn.strftime<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'%B %d, %Y'</span><span style="color: #3a81c3;">)</span><span style="color: #e0211d; text-decoration: overline;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">August 15, 2021</span>
+
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">CONVERT STRING TO DATETIME </span>
+<span style="color: #715ab1;">dt_str</span>  = <span style="color: #2d9574;">'August 15, 2021'</span>
+
+<span style="color: #715ab1;">dt</span>= datetime.datetime.strptime<span style="color: #e0211d; text-decoration: overline;">(</span>dt_str,<span style="color: #2d9574;">'%B %d, %Y'</span><span style="color: #e0211d; text-decoration: overline;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #e0211d; text-decoration: overline;">(</span>dt<span style="color: #e0211d; text-decoration: overline;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">strftime - Datetime to String </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">strptime - String to Datetime</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org56e6d96" class="outline-4">
+<h4 id="org56e6d96">Ex Datetime and</h4>
+<div class="outline-text-4" id="text-org56e6d96">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> os
+<span style="color: #3a81c3; font-weight: bold;">from</span> datetime <span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># Change Dir</span>
+os.chdir<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'/home/dan/Desktop'</span><span style="color: #3a81c3;">)</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">/home/dan/Desktop</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.getcwd<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Status of demo</span>
+os.stats<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'game'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; os.stat_result(st_mode=16877, st_ino=8524201, st_dev=2049, st_nlink=2, st_uid=1000, st_gid=1000, st_size=4096, st_atime=1543198458, st_mtime=1543082778, st_ctime=1543082778)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Size of file</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Size of file: game is :'</span> + os.status<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'game'</span><span style="color: #6c3163;">)</span>.st_size<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt; 4096</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Last Modified Time </span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>os.stat<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'game'</span><span style="color: #6c3163;">)</span>.st_mtime<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 1543082778 (this is in timestamp formate )</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Modified time stamps</span>
+<span style="color: #715ab1;">mod_time</span> = os.stat<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'game'</span><span style="color: #3a81c3;">)</span>.st_mtime
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>datetime.fromtimestap<span style="color: #6c3163;">(</span>mod_time<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 2018-11-24 23:36:18.194036</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">See entire directory (child director)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd5ce4ce" class="outline-2">
+<h2 id="orgd5ce4ce">File Module or File Object</h2>
+<div class="outline-text-2" id="text-orgd5ce4ce">
+</div>
+<div id="outline-container-orgb7ccf96" class="outline-4">
+<h4 id="orgb7ccf96">File acess modes</h4>
+<div class="outline-text-4" id="text-orgb7ccf96">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">read only</td>
+<td class="org-left">'r'</td>
+</tr>
+
+<tr>
+<td class="org-left">read and write</td>
+<td class="org-left">'r+</td>
+</tr>
+
+<tr>
+<td class="org-left">write only</td>
+<td class="org-left">'w'</td>
+</tr>
+
+<tr>
+<td class="org-left">write and read</td>
+<td class="org-left">'w+'</td>
+</tr>
+
+<tr>
+<td class="org-left">append only</td>
+<td class="org-left">'a'</td>
+</tr>
+
+<tr>
+<td class="org-left">append and read</td>
+<td class="org-left">'a+'</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #715ab1;">f</span> = <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test.txt'</span>,<span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f.name<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f.mode<span style="color: #3a81c3;">)</span>
+f.close 
+
+
+
+<span style="color: #715ab1;">f</span> = <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'newfile.txt'</span>, <span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span>
+f.write<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Hello</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">'</span><span style="color: #3a81c3;">)</span>
+f.writelines<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">'Hello'</span>,<span style="color: #2d9574;">'World</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">'</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
+
+f.close
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga373622" class="outline-4">
+<h4 id="orga373622">Contant manager</h4>
+<div class="outline-text-4" id="text-orga373622">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span> <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'text.txt'</span>,<span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> f:
+   <span style="color: #715ab1;">f_contents</span> = f.read<span style="color: #3a81c3;">()</span>              <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">read entire file</span>
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_contents<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Disadvantages:    # if file size is more then memory is more &gt; slower</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Advantages :      # To read a small size file</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">what if  we need to read large  we n't  wanted to load in memory </span>
+   <span style="color: #715ab1;">f_contents</span> = f.readlines<span style="color: #3a81c3;">()</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">list of lines ['line1 \n', 'line2 \n'..........etc]</span>
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_contents<span style="color: #3a81c3;">)</span>
+
+   <span style="color: #715ab1;">f_id_line</span> = f.readline<span style="color: #3a81c3;">()</span>
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_f_id_line, end=<span style="color: #2d9574;">''</span><span style="color: #3a81c3;">)</span>                <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; line1 </span>
+
+   <span style="color: #715ab1;">f_id_line</span> = f.readline<span style="color: #3a81c3;">()</span>
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_f_id_line, end=<span style="color: #2d9574;">''</span><span style="color: #3a81c3;">)</span>                <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; line2</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">####################</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Using for loop to read line</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">####################</span>
+   <span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> f:
+     <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>line, end=<span style="color: #2d9574;">''</span><span style="color: #3a81c3;">)</span>
+      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">effiecient for read line</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">#############</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">More control read 10 char</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">###################</span>
+<span style="color: #715ab1;">size_to_read</span> = 10
+<span style="color: #715ab1;">f_content</span> = f.read<span style="color: #3a81c3;">(</span>size_to_read<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_content, end =<span style="color: #2d9574;">'*'</span><span style="color: #3a81c3;">)</span>     <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">read 10 char for index seperate by *</span>
+
+<span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>f_contents <span style="color: #3a81c3;">)</span> &gt;0:
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_contents, end=<span style="color: #2d9574;">'*'</span><span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;"> index or current possion:</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;"> "</span>f.tell<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">current possion</span>
+  <span style="color: #715ab1;">f_content</span> = f.read<span style="color: #3a81c3;">(</span>size_to_read<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#   </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(f_tell()) # </span>
+  f.seek<span style="color: #3a81c3;">(</span>0<span style="color: #3a81c3;">)</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">to change the position to starting of file </span>
+  <span style="color: #715ab1;">f_content</span> = f.read<span style="color: #3a81c3;">(</span>size_to_read<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_content, end =<span style="color: #2d9574;">'*'</span><span style="color: #3a81c3;">)</span>     <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">read 10 char for index seperate by *</span>
+  <span style="color: #715ab1;">f_content</span> = f.read<span style="color: #3a81c3;">(</span>size_to_read<span style="color: #3a81c3;">)</span>
+  f.seek<span style="color: #3a81c3;">(</span>0<span style="color: #3a81c3;">)</span>
+  <span style="color: #715ab1;">f_content</span> = f.read<span style="color: #3a81c3;">(</span>size_to_read<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f_content, end =<span style="color: #2d9574;">'*'</span><span style="color: #3a81c3;">)</span>     <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">read 10 char for index seperate by *</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org057cea5" class="outline-4">
+<h4 id="org057cea5">Write mode or Overwrite mode with Contant Manager</h4>
+<div class="outline-text-4" id="text-org057cea5">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test2.txt'</span>, <span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> f:
+     <span style="color: #3a81c3; font-weight: bold;">pass</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#    </span><span style="color: #2aa1ae; background-color: #ecf3ec;">f.write("Test")</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test3.txt'</span>, <span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> f:
+    f.write<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Test First line'</span><span style="color: #3a81c3;">)</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">str 'Test' is write in file</span>
+    f.seek<span style="color: #3a81c3;">(</span>0<span style="color: #3a81c3;">)</span>
+    f.write<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Second line'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Disadvange:</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">If text3.txt is already existed then it will start write at the EOF</span>
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">If use to movke to begin of flie : f.seek(0)</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># Copy a file</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test.txt'</span>, <span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> rf:
+    <span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test_copy.txt'</span>, <span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> wf:
+        <span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> rf:
+            wf.write<span style="color: #3a81c3;">(</span>line<span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># Copy a Image</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test.txt'</span>, <span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> rf:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ERROR UnicodeDecoder: utf-8 can't decode bytes at Addre in position 0</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">For Image we use binary mode</span>
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test.jpg'</span>, <span style="color: #2d9574;">'rb'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> rf:
+    <span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'test_copy.jpg'</span>, <span style="color: #2d9574;">'wb'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> wf:
+        <span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> rf:
+            wf.write<span style="color: #3a81c3;">(</span>line<span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">More control : in chunk_size</span>
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'bronx.jpg'</span>,<span style="color: #2d9574;">'rb'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> rf:
+    <span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'bronx_copy,jpg'</span>, <span style="color: #2d9574;">'wb'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> wf:
+        <span style="color: #715ab1;">chunk_size</span> = 1024
+        <span style="color: #715ab1;">rf_chunk</span> = rf.read<span style="color: #3a81c3;">(</span>chunk_size<span style="color: #3a81c3;">)</span>
+        <span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3;">len</span><span style="color: #3a81c3;">(</span>rf_chunk<span style="color: #3a81c3;">)</span>:
+            wf.write<span style="color: #3a81c3;">(</span>rf_chunk<span style="color: #3a81c3;">)</span>
+            <span style="color: #715ab1;">rf_chunk</span> = rf.read<span style="color: #3a81c3;">(</span>chunk_size<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4028e1b" class="outline-4">
+<h4 id="org4028e1b">Append Mode with Contant Manager</h4>
+<div class="outline-text-4" id="text-org4028e1b">
+<p>
+srource: <a href="https://stackoverflow.com/questions/59308996/how-to-fix-python-overwriting-file-in-append-mode">https://stackoverflow.com/questions/59308996/how-to-fix-python-overwriting-file-in-append-mode</a>
+I'm making a register (e.g. a school one) program in python using tkinter and i'm trying to add a new person to the register every time the person clicks submit but all that is happening is that it is overwriting the previous name meaning that the file that it is being saved to only have one name.<br />
+Does anyone have any suggestions on how to fix this?<br />
+Some clarity: register_info and listees_info are the name of the register and the name of the latest person that is being saved to the file.<br />
+This is the part of my code: <br />
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">create_register</span><span style="color: #3a81c3;">()</span>:
+    <span style="color: #715ab1;">register_info</span> = registername.get<span style="color: #3a81c3;">()</span>
+    <span style="color: #715ab1;">listees_info</span> = listees.get<span style="color: #3a81c3;">()</span>
+    <span style="color: #715ab1;">list_of_registers</span>=os.listdir<span style="color: #3a81c3;">()</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> register_info <span style="color: #3a81c3; font-weight: bold;">in</span> list_of_registers:
+        <span style="color: #3a81c3;">file</span>=<span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span>register_info,<span style="color: #2d9574;">"w"</span><span style="color: #3a81c3;">)</span>
+        <span style="color: #3a81c3;">file</span>.close<span style="color: #3a81c3;">()</span>
+        Label<span style="color: #3a81c3;">(</span>create, text = <span style="color: #2d9574;">"Register Created"</span>, fg = <span style="color: #2d9574;">"green"</span> ,font = <span style="color: #6c3163;">(</span><span style="color: #2d9574;">"calibri"</span>, 8<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>.pack<span style="color: #3a81c3;">()</span>
+    <span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span>register_info,<span style="color: #2d9574;">"a"</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> file_info:
+        file_info.write<span style="color: #3a81c3;">(</span>register_info+<span style="color: #2d9574;">"</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">"</span><span style="color: #3a81c3;">)</span>
+        file_info.write<span style="color: #3a81c3;">(</span>listees_info+<span style="color: #2d9574;">"</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">"</span><span style="color: #3a81c3;">)</span>
+        file_info.close<span style="color: #3a81c3;">()</span>
+</pre>
+</div>
+</div>
+<ul class="org-ul">
+<li><a id="orgf8b79d3"></a>Solution:<br />
+<div class="outline-text-5" id="text-orgf8b79d3">
+<p>
+The <code>w</code> mode you pass to open (in your line that reads <code>file=open(register_info,"w")</code>) tells python you want to open the file for writing. By design, this gets rid of anything else in the file and places the cursor at the beginning. It sounds like you want to open the file and append information to the end, without overwriting anything.<br />
+To do this, you should use the a mode for append. This opens the file for writing and places the cursor at the end of the file.<br />
+So, you need to say <code>open(register_info, "a")</code>. <br />
+I also suggest switching to a context manager which ensures the file is closed if any unexpected behavior happens. You would do this like:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span>register_info, <span style="color: #2d9574;">"a"</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> <span style="color: #3a81c3;">file</span>:
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Any code that needs to use "file" here</span>
+</pre>
+</div>
+<p>
+More information about file opening modes (taken from another answer of mine):
+</p>
+<blockquote>
+<p>
+<code>r</code>: Opens the file in read-only mode. Starts reading from the beginning of the file and is the default mode for the open() function.<br />
+<code>rb</code>: Opens the file as read-only in binary format. Places the cursor at the start of the file.<br />
+<code>r+</code>: Opens a file for reading and writing. Places the cursor at the beginning of the file. <br />
+<code>w</code>: Opens in write-only mode. Places the cursor at the beginning of the file. This will overwrite any existing file with the same name. It will create a new file if one with the same name doesn't exist.<br />
+<code>wb</code>: Same behavior as w, except the file is opened in binary mode. <br />
+<code>w+</code>: Opens a file for writing and reading. Replaces all content and creates the file if it doesn't exist. This mode is used when you need to write to an empty-file and potentially read from it later in your code (before closing). <br />
+<code>wb+</code>: Same behavior as w+ except the file is in binary mode. <br />
+<code>a</code>: Opens a file for appending new information to it. The cursor is placed at the end of the file. A new file is created if one with the same name doesn't exist. <br />
+<code>ab</code>: Same behavior as a except the file is in binary mode. <br />
+<code>a+</code>: Opens a file for both appending and reading. The cursor is placed at the beginning of the file. <br />
+<code>ab+</code>: Same as a+ except the file is in binary mode.<br />
+</p>
+</blockquote>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgbd81558" class="outline-4">
+<h4 id="orgbd81558">Rename mulitple files</h4>
+<div class="outline-text-4" id="text-orgbd81558">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Consister a dir as unorder videos which are to sorted by index in name</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">dir(path)</span>
+<span style="color: #da8b55;">"""</span>
+<span style="color: #da8b55;">&gt;&gt;&gt;</span>
+<span style="color: #da8b55;">Earth - Our Solor System - #4</span>
+<span style="color: #da8b55;">Jupiter - Our Solar System -#6</span>
+<span style="color: #da8b55;">Mar - Our Solor System - #5</span>
+<span style="color: #da8b55;">Mecury - Our Solor System - #2</span>
+<span style="color: #da8b55;">Neptune - Our Solor System - #8</span>
+<span style="color: #da8b55;">Pluto - Our Solor System - #10</span>
+<span style="color: #da8b55;">Saturn - Our Solor System - #7</span>
+<span style="color: #da8b55;">The Sun - Our Solor System - #1</span>
+<span style="color: #da8b55;">Urans - Our Solor System - #9</span>
+<span style="color: #da8b55;">Venus- Our Solor System - #3</span>
+<span style="color: #da8b55;">"""</span>
+
+<span style="color: #3a81c3; font-weight: bold;">import</span> os
+
+<span style="color: #715ab1;">path</span> =<span style="color: #2d9574;">'/home/dan/Downloads'</span>
+
+os.chdir<span style="color: #3a81c3;">(</span>path<span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">file</span> <span style="color: #3a81c3; font-weight: bold;">in</span> os.listdir<span style="color: #3a81c3;">()</span>:
+    <span style="color: #715ab1;">f_name</span>,<span style="color: #715ab1;">f_ext</span> = os.path.split<span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">file</span><span style="color: #3a81c3;">)</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(file_name,f_ext)</span>
+
+    <span style="color: #715ab1;">f_title</span>, <span style="color: #715ab1;">f_course</span>, <span style="color: #715ab1;">f_num</span> = f_name.split<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'-'</span><span style="color: #3a81c3;">)</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(f_title, f_course, f_num) = f_name.split('-')</span>
+
+    <span style="color: #715ab1;">f_title</span> = f_title.strip<span style="color: #3a81c3;">()</span>
+    <span style="color: #715ab1;">f_course</span> = f_course.strip<span style="color: #3a81c3;">()</span>
+    <span style="color: #715ab1;">f_num</span> = f_num.strip.<span style="color: #3a81c3;">()[</span>1:<span style="color: #3a81c3;">]</span>.zfill<span style="color: #3a81c3;">(</span>2<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">zero padding by 2 and remove #</span>
+
+
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print('{}-{}-{}{}'.format(f_num, f_course, f_title,f_ext))</span>
+    <span style="color: #715ab1;">new_name</span> = <span style="color: #2d9574;">'{}-{}-{}{}'</span>.<span style="color: #3a81c3;">format</span><span style="color: #3a81c3;">(</span>f_num, f_course, f_title,f_ext<span style="color: #3a81c3;">)</span>
+    os.rename<span style="color: #3a81c3;">(</span>f, new_name<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb61aca7" class="outline-2">
+<h2 id="orgb61aca7">Read CSV module- read, parse, write</h2>
+<div class="outline-text-2" id="text-orgb61aca7">
+<p>
+CSV file: a plane txt and use delimiters like ',' '\n' 
+First line : Consist of field like 'first_name', 'last_name','email'
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgf2eaf3b"></a>Ex: Read a csv file (as list)<br />
+<div class="outline-text-5" id="text-orgf2eaf3b">
+<p>
+first_name, last_name, email
+John, Doe, john-doe@guseemail.com
+mary,smith,smith-mary@gmail.com&#x2026;..
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> csv
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">read csv file</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'names.csv'</span>, <span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> csv_file:
+   <span style="color: #715ab1;">csv_reader</span>= csv.read<span style="color: #3a81c3;">(</span>csv_file<span style="color: #3a81c3;">)</span>
+
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>csv_reader<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; object</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> csv_reader:
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>line<span style="color: #3a81c3;">)</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ['first_name', 'last_name','email']</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ['John', 'Doe', 'john-doe@guseemail.com']</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ['mary','smith','smith-mary@gmail.com']</span>
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>line<span style="color: #6c3163;">[</span>2<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ['email']</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; [ 'john-doe@guseemail.com']</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ['smith-mary@gmail.com']</span>
+
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">#    </span><span style="color: #2aa1ae; background-color: #ecf3ec;">to remove ['email']</span>
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'names.csv'</span>, <span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> csv_file:
+  <span style="color: #715ab1;">csv_reader</span>= csv.read<span style="color: #3a81c3;">(</span>csv_file<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3;">next</span><span style="color: #3a81c3;">(</span>csv_reader<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Remove the first line</span>
+  <span style="color: #3a81c3; font-weight: bold;">for</span> line  <span style="color: #3a81c3; font-weight: bold;">in</span> csv_reader:
+     <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>line<span style="color: #6c3163;">[</span>2<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>      
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">##################3</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">CSV WRITE WITH DIFFEERENT DELEMITTER </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#####################</span><span style="color: #2aa1ae; background-color: #ecf3ec;">333</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'names.csv'</span>, <span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> csv_file:
+  <span style="color: #715ab1;">csv_reader</span>= csv.read<span style="color: #3a81c3;">(</span>csv_file<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'new_names.csv'</span>, <span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> new_file:
+     <span style="color: #715ab1;">csv_writer</span> = csv.writer<span style="color: #3a81c3;">(</span>new_file,delimiter= <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">'</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">'-'</span>
+     <span style="color: #3a81c3; font-weight: bold;">for</span> line  <span style="color: #3a81c3; font-weight: bold;">in</span> csv_reader:
+        csv_writer.writerow<span style="color: #6c3163;">(</span>line<span style="color: #6c3163;">)</span>
+
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">#####################3</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">READ csv WITH different delimiter</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">#################33</span>
+
+
+<span style="color: #3a81c3; font-weight: bold;">import</span> csv 
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span> <span style="color: #6c3163;">(</span><span style="color: #2d9574;">'new_name.csv'</span>,<span style="color: #2d9574;">'r'</span><span style="color: #6c3163;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> csv_file:
+    csv_reader = csv.reader<span style="color: #6c3163;">(</span>csv_file, delimiter=<span style="color: #2d9574;">'</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">'</span><span style="color: #6c3163;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> csv_reader:
+       <span style="color: #3a81c3;">print</span><span style="color: #6c3163;">(</span>line<span style="color: #6c3163;">)</span>
+
+
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org711394f"></a>Ex: Read and Write a csv file (as dict)<br />
+<div class="outline-text-5" id="text-org711394f">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> csv
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'name.csv'</span>, <span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> csv_file:
+  <span style="color: #715ab1;">csv_reader</span> = csv.DictReader<span style="color: #3a81c3;">(</span>csv_file<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> csv_reader:
+     <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>line<span style="color: #6c3163;">[</span><span style="color: #2d9574;">'email'</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">To select unique card or no</span>
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'name.csv'</span>, <span style="color: #2d9574;">'r'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> csv_file:
+  <span style="color: #715ab1;">csv_reader</span> = csv.DictReader<span style="color: #3a81c3;">(</span>csv_file<span style="color: #3a81c3;">)</span>
+  <span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'name_copy.csv'</span>,<span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> dictwirte_file:
+     <span style="color: #715ab1;">field_name</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'first_name'</span>,<span style="color: #2d9574;">'last_name'</span>, <span style="color: #2d9574;">'email'</span><span style="color: #3a81c3;">]</span>
+     <span style="color: #715ab1;">csv_writer</span> = csv.DictWriter<span style="color: #3a81c3;">(</span>new_file, fieldnames = field_name, dellimiter =<span style="color: #2d9574;">'</span><span style="color: #4e3163;">\t</span><span style="color: #2d9574;">'</span> <span style="color: #3a81c3;">)</span>
+     csv_write.writeheader<span style="color: #3a81c3;">()</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> csv_reader:
+   <span style="color: #3a81c3; font-weight: bold;">del</span> line<span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'email'</span><span style="color: #3a81c3;">]</span>
+   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">remove email</span>
+   csv_writer.writerow<span style="color: #3a81c3;">(</span>line<span style="color: #3a81c3;">)</span>
+
+
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6c94ba0"></a>Example<br />
+<div class="outline-text-5" id="text-org6c94ba0">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> csv
+
+<span style="color: #715ab1;">html_output</span> = <span style="color: #2d9574;">''</span>
+
+<span style="color: #715ab1;">name</span> =<span style="color: #3a81c3;">[]</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'patrons.csv'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> data_file:
+   <span style="color: #715ab1;">csv_data</span> = csv.reader<span style="color: #3a81c3;">(</span>data_file<span style="color: #3a81c3;">)</span>
+   <span style="color: #3a81c3;">next</span><span style="color: #3a81c3;">(</span>csv_data<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">remove headerline</span>
+   <span style="color: #3a81c3;">next</span><span style="color: #3a81c3;">(</span>csv_data<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">remove contribution flag, description</span>
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>csv_data<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">it is object</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">print(list(csv_data))</span>
+   <span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> csv_data:
+       <span style="color: #3a81c3; font-weight: bold;">if</span> line <span style="color: #3a81c3;">[</span>0<span style="color: #3a81c3;">]</span> == <span style="color: #2d9574;">'No Reward'</span>:
+          <span style="color: #3a81c3; font-weight: bold;">break</span>
+       <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>line<span style="color: #3a81c3;">)</span>
+       name.append <span style="color: #3a81c3;">(</span>f<span style="color: #2d9574;">"</span>{line[0]}<span style="color: #2d9574;"> </span>{line[1]}<span style="color: #2d9574;">"</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> name <span style="color: #3a81c3; font-weight: bold;">in</span> names:
+    <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>name<span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">html_output</span> += f<span style="color: #2d9574;">'&lt;p&gt;There are currently </span>{<span style="color: #3a81c3;">len</span>(name) public  Contributors. Thank You!}<span style="color: #2d9574;">&lt;/p&gt;'</span>
+
+<span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span>html_output<span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">html_output</span> += <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">&lt;ul&gt;'</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> name <span style="color: #3a81c3; font-weight: bold;">in</span> names:
+  <span style="color: #715ab1;">html_output</span> +=f<span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n\t</span><span style="color: #2d9574;">&lt;li&gt; </span>{name}<span style="color: #2d9574;"> &lt;/li&gt;'</span>   
+
+<span style="color: #715ab1;">html_output</span> += <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">&lt;\ul&gt;'</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>html_output<span style="color: #3a81c3;">)</span> 
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgc203494"></a>Example with dict reader<br />
+<div class="outline-text-5" id="text-orgc203494">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> csv
+
+<span style="color: #715ab1;">html_output</span> = <span style="color: #2d9574;">''</span>
+
+<span style="color: #715ab1;">name</span> =<span style="color: #3a81c3;">[]</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'patrons.csv'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> data_file:
+   <span style="color: #715ab1;">csv_data</span> = csv.DictReader<span style="color: #3a81c3;">(</span>data_file<span style="color: #3a81c3;">)</span>
+   <span style="color: #3a81c3;">next</span><span style="color: #3a81c3;">(</span>csv_data<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">remove No Reward line  </span>
+   <span style="color: #3a81c3; font-weight: bold;">for</span> line <span style="color: #3a81c3; font-weight: bold;">in</span> csv_data:
+       <span style="color: #3a81c3; font-weight: bold;">if</span> line <span style="color: #3a81c3;">[</span>FirstName<span style="color: #3a81c3;">]</span> == <span style="color: #2d9574;">'No Reward'</span>:
+          <span style="color: #3a81c3; font-weight: bold;">break</span>
+       <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>line<span style="color: #3a81c3;">)</span>
+       name.append <span style="color: #3a81c3;">(</span>f<span style="color: #2d9574;">"</span>{line[FristName]}<span style="color: #2d9574;"> </span>{line[LastName]}<span style="color: #2d9574;">"</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> name <span style="color: #3a81c3; font-weight: bold;">in</span> names:
+    <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>name<span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">html_output</span> += f<span style="color: #2d9574;">'&lt;p&gt;There are currently </span>{<span style="color: #3a81c3;">len</span>(name) public  Contributors. Thank You!}<span style="color: #2d9574;">&lt;/p&gt;'</span>
+
+<span style="color: #3a81c3;">print</span> <span style="color: #3a81c3;">(</span>html_output<span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">html_output</span> += <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">&lt;ul&gt;'</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> name <span style="color: #3a81c3; font-weight: bold;">in</span> names:
+  <span style="color: #715ab1;">html_output</span> +=f<span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n\t</span><span style="color: #2d9574;">&lt;li&gt; </span>{name}<span style="color: #2d9574;"> &lt;/li&gt;'</span>   
+
+<span style="color: #715ab1;">html_output</span> += <span style="color: #2d9574;">'</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">&lt;\ul&gt;'</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>html_output<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgec0a86d" class="outline-2">
+<h2 id="orgec0a86d">Time Module</h2>
+<div class="outline-text-2" id="text-orgec0a86d">
+</div>
+<div id="outline-container-org292b068" class="outline-4">
+<h4 id="org292b068">time</h4>
+<div class="outline-text-4" id="text-org292b068">
+</div>
+<ul class="org-ul">
+<li><a id="orga916cba"></a>defination<br />
+<div class="outline-text-5" id="text-orga916cba">
+<p>
+tick is unit of time : instance of time expressed in seconds since 12.00am, Jan 1, 1970
+</p>
+<div class="org-src-container">
+<pre class="src src-python"> <span style="color: #3a81c3; font-weight: bold;">import</span> time
+<span style="color: #715ab1;">tick</span> = time.time 
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org170dcab" class="outline-4">
+<h4 id="org170dcab">Time Tuple</h4>
+<div class="outline-text-4" id="text-org170dcab">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Index</th>
+<th scope="col" class="org-left">Field</th>
+<th scope="col" class="org-left">Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0</td>
+<td class="org-left">4-digit year</td>
+<td class="org-left">2008</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">Month</td>
+<td class="org-left">1 to 12</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Day</td>
+<td class="org-left">1 to 31</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">Hour</td>
+<td class="org-left">0 to 23</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">Minute</td>
+<td class="org-left">0 to 59</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">second</td>
+<td class="org-left">0 to 61(60/61 are leap-sec)</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">Day of Week</td>
+<td class="org-left">0 to 6 (0 is Monday)</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">Day of year</td>
+<td class="org-left">1 to 366 (Julian day)</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">Daylight saving</td>
+<td class="org-left">-1, 0, 1 (-1: library determines DST)</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>time.localtime<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">time.struct_time<span style="color: #3a81c3;">(</span>tm_year=2016, tm_mon=9, tm_mday=27, tm_hour=0,tm_min=34,tm_sec=57,tm_wday=1,tm_year=271,tm_isdst=0<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org17c6a4f" class="outline-4">
+<h4 id="org17c6a4f">Getting Current Time</h4>
+</div>
+<div id="outline-container-orgdd794ee" class="outline-4">
+<h4 id="orgdd794ee">Getting Formatted Time</h4>
+</div>
+<div id="outline-container-org16b3ea0" class="outline-4">
+<h4 id="org16b3ea0">Getting Calendar for a Month</h4>
+</div>
+<div id="outline-container-orge794409" class="outline-4">
+<h4 id="orge794409">Time Module</h4>
+</div>
+<div id="outline-container-org2ff2ff0" class="outline-4">
+<h4 id="org2ff2ff0">Calender Module</h4>
+</div>
+<div id="outline-container-org15cb207" class="outline-4">
+<h4 id="org15cb207">Other Module &amp; Functions</h4>
+</div>
+</div>
+<div id="outline-container-org263b380" class="outline-2">
+<h2 id="org263b380">pprint</h2>
+<div class="outline-text-2" id="text-org263b380">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> datetime
+<span style="color: #3a81c3; font-weight: bold;">import</span> pprint
+<span style="color: #715ab1;">data</span> = <span style="color: #3a81c3;">{</span><span style="color: #2d9574;">'user_type'</span>: <span style="color: #2d9574;">'individual'</span>, <span style="color: #2d9574;">'email'</span>: <span style="color: #2d9574;">'dankarthik25@gmail.com'</span>, <span style="color: #2d9574;">'user_name'</span>: <span style="color: #2d9574;">'Karthik Danchuka'</span>, <span style="color: #2d9574;">'user_shortname'</span>: <span style="color: #2d9574;">'Karthik'</span>, <span style="color: #2d9574;">'broker'</span>: <span style="color: #2d9574;">'ZERODHA'</span>, <span style="color: #2d9574;">'exchanges'</span>: <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'MF'</span>, <span style="color: #2d9574;">'BCD'</span>, <span style="color: #2d9574;">'NFO'</span>, <span style="color: #2d9574;">'BFO'</span>, <span style="color: #2d9574;">'CDS'</span>, <span style="color: #2d9574;">'BSE'</span>, <span style="color: #2d9574;">'NSE'</span><span style="color: #6c3163;">]</span>, <span style="color: #2d9574;">'products'</span>: <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'CNC'</span>, <span style="color: #2d9574;">'NRML'</span>, <span style="color: #2d9574;">'MIS'</span>, <span style="color: #2d9574;">'BO'</span>, <span style="color: #2d9574;">'CO'</span><span style="color: #6c3163;">]</span>, <span style="color: #2d9574;">'order_types'</span>: <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'MARKET'</span>, <span style="color: #2d9574;">'LIMIT'</span>, <span style="color: #2d9574;">'SL'</span>, <span style="color: #2d9574;">'SL-M'</span><span style="color: #6c3163;">]</span>, <span style="color: #2d9574;">'avatar_url'</span>: <span style="color: #4e3163;">None</span>, <span style="color: #2d9574;">'user_id'</span>: <span style="color: #2d9574;">'SLT899'</span>, <span style="color: #2d9574;">'api_key'</span>: <span style="color: #2d9574;">'s47dosfc0f1kisi4'</span>, <span style="color: #2d9574;">'access_token'</span>: <span style="color: #2d9574;">'asRJexUFotIsqgL3LL5bRG2i9pxDg93s'</span>, <span style="color: #2d9574;">'public_token'</span>: <span style="color: #2d9574;">'LPgnl4rJfCBe1Kxmbq3dF6f8j3YtQ3Ek'</span>, <span style="color: #2d9574;">'refresh_token'</span>: <span style="color: #2d9574;">''</span>, <span style="color: #2d9574;">'enctoken'</span>: <span style="color: #2d9574;">'1DjbLLy6i1/tnP5tKUBfhqreyyJkcb0IEAZdTSqzhVNVrVrGMIOdRHzu4DlyiRoukX/3/WLz8un/WIBL/S+zXj/FK6nrtFR/EGzPfw07Ud2280fDmOjWTyX80RS+4Zk='</span>, <span style="color: #2d9574;">'login_time'</span>: datetime.datetime<span style="color: #6c3163;">(</span>2022, 8, 29, 12, 7, 26<span style="color: #6c3163;">)</span>, <span style="color: #2d9574;">'meta'</span>: <span style="color: #6c3163;">{</span><span style="color: #2d9574;">'demat_consent'</span>: <span style="color: #2d9574;">'consent'</span><span style="color: #6c3163;">}</span><span style="color: #3a81c3;">}</span>
+pprint.pprint<span style="color: #3a81c3;">(</span>data<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-result">{'access_token': 'asRJexUFotIsqgL3LL5bRG2i9pxDg93s',
+ 'api_key': 's47dosfc0f1kisi4',
+ 'avatar_url': None,
+ 'broker': 'ZERODHA',
+ 'email': 'dankarthik25@gmail.com',
+ 'enctoken': '1DjbLLy6i1/tnP5tKUBfhqreyyJkcb0IEAZdTSqzhVNVrVrGMIOdRHzu4DlyiRoukX/3/WLz8un/WIBL/S+zXj/FK6nrtFR/EGzPfw07Ud2280fDmOjWTyX80RS+4Zk=',
+ 'exchanges': ['MF', 'BCD', 'NFO', 'BFO', 'CDS', 'BSE', 'NSE'],
+ 'login_time': datetime.datetime(2022, 8, 29, 12, 7, 26),
+ 'meta': {'demat_consent': 'consent'},
+ 'order_types': ['MARKET', 'LIMIT', 'SL', 'SL-M'],
+ 'products': ['CNC', 'NRML', 'MIS', 'BO', 'CO'],
+ 'public_token': 'LPgnl4rJfCBe1Kxmbq3dF6f8j3YtQ3Ek',
+ 'refresh_token': '',
+ 'user_id': 'SLT899',
+ 'user_name': 'Karthik Danchuka',
+ 'user_shortname': 'Karthik',
+ 'user_type': 'individual'}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfdd090c" class="outline-2">
+<h2 id="orgfdd090c">Json Module</h2>
+<div class="outline-text-2" id="text-orgfdd090c">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Import required libraries</span>
+<span style="color: #3a81c3; font-weight: bold;">import</span> json
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Initialize JSON data</span>
+<span style="color: #715ab1;">json_data</span> = <span style="color: #2d9574;">'[ {"studentid": 1, "name": "ABC", \</span>
+<span style="color: #2d9574;">"subjects": ["Python", "Data Structures"]}, \</span>
+<span style="color: #2d9574;">                                {"studentid": 2, "name": "PQR",\</span>
+<span style="color: #2d9574;">                                "subjects": ["Java", "Operating System"]} ]'</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Create Python object from JSON string data</span>
+<span style="color: #715ab1;">obj</span> = json.loads<span style="color: #3a81c3;">(</span>json_data<span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Pretty Print JSON</span>
+<span style="color: #715ab1;">json_formatted_str</span> = json.dumps<span style="color: #3a81c3;">(</span>obj, indent=4<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>json_formatted_str<span style="color: #3a81c3;">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeaa7a7a" class="outline-2">
+<h2 id="orgeaa7a7a">Regular expression</h2>
+<div class="outline-text-2" id="text-orgeaa7a7a">
+</div>
+<div id="outline-container-orgf31624d" class="outline-4">
+<h4 id="orgf31624d">Cheat Sheet:</h4>
+<div class="outline-text-4" id="text-orgf31624d">
+<p>
+Special seq of char that helps you match or find other stings or set of strings or set of string used specialized sysntax held in a pattern
+</p>
+
+<p>
+moudle re provides full support for perl-like regualr expression in python
+</p>
+
+<p>
+raises the expception re.error if error occurs while compiling or using regular expression
+</p>
+
+<p>
+Raw string as r'expression'
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Basic Patterns</th>
+<th scope="col" class="org-left">matchs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">. (period)</td>
+<td class="org-left">any char except '\n'</td>
+</tr>
+
+<tr>
+<td class="org-left">\d</td>
+<td class="org-left">Digit [0-9]</td>
+</tr>
+
+<tr>
+<td class="org-left">\D</td>
+<td class="org-left">Not a Digit(0-9)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">\w</td>
+<td class="org-left">Word Character (letters(a-z A-Z,0-9,'_')</td>
+</tr>
+
+<tr>
+<td class="org-left">\W</td>
+<td class="org-left">Not word charcter</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">\s</td>
+<td class="org-left">Whitespace (space, \n, tab )</td>
+</tr>
+
+<tr>
+<td class="org-left">&sect;</td>
+<td class="org-left">Non-whitespcae(except space, \t, tab)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">ANCHORS</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">^</td>
+<td class="org-left">matches start of string</td>
+</tr>
+
+<tr>
+<td class="org-left">$</td>
+<td class="org-left">matches end of string</td>
+</tr>
+
+<tr>
+<td class="org-left">\b</td>
+<td class="org-left">Word Boundary btw word and non-word</td>
+</tr>
+
+<tr>
+<td class="org-left">\B</td>
+<td class="org-left">Not a Word Boundary</td>
+</tr>
+
+<tr>
+<td class="org-left">\t \n\r</td>
+<td class="org-left">tab newline return</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a,X,9</td>
+<td class="org-left">ordinary char just match themselves exactly</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org3b86899" class="outline-4">
+<h4 id="org3b86899">Quantifiers</h4>
+<div class="outline-text-4" id="text-org3b86899">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">symbols</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">0 or more</td>
+</tr>
+
+<tr>
+<td class="org-left">+</td>
+<td class="org-left">1 or more</td>
+</tr>
+
+<tr>
+<td class="org-left">?</td>
+<td class="org-left">0 or One</td>
+</tr>
+
+<tr>
+<td class="org-left">{3}</td>
+<td class="org-left">Exact Number</td>
+</tr>
+
+<tr>
+<td class="org-left">{3,4}</td>
+<td class="org-left">Range of Number{minimum, maximum}</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">[ch]at</td>
+<td class="org-left">search for &#x2026;cat&#x2026; or .. hat&#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">'[0-9]'</td>
+<td class="org-left">search nubmer</td>
+</tr>
+
+<tr>
+<td class="org-left">'[a-z]'</td>
+<td class="org-left">seach lower char</td>
+</tr>
+
+<tr>
+<td class="org-left">'[A-Z]'</td>
+<td class="org-left">seach upper char</td>
+</tr>
+
+<tr>
+<td class="org-left">'[a-z][A-Z]'</td>
+<td class="org-left">search all lower and upper char</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org17bebbf" class="outline-4">
+<h4 id="org17bebbf">Example</h4>
+<div class="outline-text-4" id="text-org17bebbf">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> re
+
+<span style="color: #715ab1;">text_2_search</span> = <span style="color: #2d9574;">"""</span>
+<span style="color: #2d9574;">abcdefghijklmnopqrstuvwxyz</span>
+<span style="color: #2d9574;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+
+<span style="color: #2d9574;">Ha HaHa</span>
+
+<span style="color: #2d9574;">MetaCharacters (Need to be escape)</span>
+<span style="color: #2d9574;">. ^ $ * + { } [ ] \ | ()</span>
+
+
+<span style="color: #2d9574;">coremys.com'</span>
+
+<span style="color: #2d9574;">321-555-4321</span>
+<span style="color: #2d9574;">123.555.1234</span>
+<span style="color: #2d9574;">123*555*1234</span>
+<span style="color: #2d9574;">800-555-4321</span>
+<span style="color: #2d9574;">900-555-4321</span>
+<span style="color: #2d9574;">Mr. Schafer</span>
+<span style="color: #2d9574;">Mr Smith</span>
+<span style="color: #2d9574;">Ms Davis</span>
+
+<span style="color: #2d9574;">Mrs. Robinson</span>
+<span style="color: #2d9574;">Mr. T</span>
+
+
+<span style="color: #2d9574;">cat</span>
+<span style="color: #2d9574;">batman</span>
+<span style="color: #2d9574;">path</span>
+<span style="color: #2d9574;">bat</span>
+<span style="color: #2d9574;">match</span>
+
+<span style="color: #2d9574;">"""</span>
+
+<span style="color: #715ab1;">emails</span> = <span style="color: #2d9574;">"""</span>
+<span style="color: #2d9574;">CoreyMSchafer@gmail.com</span>
+<span style="color: #2d9574;">corey.schafer@university.edu</span>
+<span style="color: #2d9574;">corey-321-schafer@my-work.net</span>
+
+<span style="color: #2d9574;">"""</span>
+<span style="color: #715ab1;">sentence</span> = <span style="color: #2d9574;">'Start a sentence and then bring it to end'</span>
+<span style="color: #715ab1;">urls</span> = <span style="color: #2d9574;">"""</span>
+<span style="color: #2d9574;">https://www.google.com</span>
+<span style="color: #2d9574;">https://coreyms.com</span>
+<span style="color: #2d9574;">https://youtube.com</span>
+<span style="color: #2d9574;">https://www.nasa.gov """</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\tTab'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'abc'</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches for abc but not ABCd</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">IT is case sensitive</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'.'</span><span style="color: #3a81c3;">)</span>      <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches any character {a-z A-Z 0-9 _ }</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\.'</span><span style="color: #3a81c3;">)</span>     <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches any '.' present in string</span>
+<span style="color: #715ab1;">pattern</span> =  re.compiler<span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'coreyms\.com'</span><span style="color: #3a81c3;">)</span>    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches any string 'coreym.com'</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\d'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span>  = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\D'</span><span style="color: #3a81c3;">)</span> 
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\w'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\W'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\s'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\S'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Word Boundary</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\bHa'</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">match two Ha HaHa starting 'Ha' as at starting</span>
+
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\BHa'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">match last Ha because it has no word boundary</span>
+
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'^abc'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">match word/char starting with </span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'xyz$'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">match word/char ending with </span>
+
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\d\d\d.\d\d\d.\d\d\d\d'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\d{3}.\d{3}.\d{4}'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\d{3}[-.]\d{3}[-.]\d{4}'</span><span style="color: #3a81c3;">)</span> 
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\d{3}.\d{3}.\d{4}'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'[89]00-.\d{3}.\d{4}'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'[a-zA-Z]'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">match char with a-z and A-Z</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'[^a-zA-Z]'</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">match char which is not a-z and A-Z</span>
+
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'[^b]at'</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">match which doesnot include bat </span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">quantifiers</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">' Mr\.?'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches Mr. Schafer or Mr Smith  </span>
+
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">' Mr\.?\s[A-Z]'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches Mr. S or Mr S</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">' Mr\.?\s[A-Z]\w+'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches all word but not Mr T </span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">' Mr\.?\s[A-Z]\w*'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches all word and  Mr T</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Groups ()</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">' M(r|s|rs)\.?\s[A-Z]\w+'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches all word with Mr Ms Mrs </span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">' (Mr|Ms|Mrs)\.?\s[A-Z]\w+'</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">matches all word with Mr Ms Mrs </span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">emails</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'[a-zA-Z]+ @ [a-zA-Z]+\.com'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'[a-zA-Z0-9.-_]+ @ [a-zA-Z]+\.(com|edu|in|net)'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.<span style="color: #3a81c3;">compile</span><span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'[a-zA-Z0-9.-_]+ @ [a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">urls</span>
+
+<span style="color: #715ab1;">pattern</span> = re.compiler <span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'https?://(www\.)?\w+\.\w+'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">pattern</span> = re.compiler <span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'https?://(www\.)?(\w+)(\.\w+)'</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">sub_urls</span> = pattern.sub<span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'\2\3'</span>, urls<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>sub_urls<span style="color: #3a81c3;">)</span>
+
+ <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Note we can seperate domain name </span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3; font-weight: bold;">match</span> <span style="color: #3a81c3; font-weight: bold;">in</span> matches :
+  <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">match</span>.group<span style="color: #6c3163;">(</span>0<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">1,2,3</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span>
+
+<span style="color: #715ab1;">matches</span> = pattern.finditer<span style="color: #3a81c3;">(</span>text_2_search<span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">matches</span> = pattern.findall<span style="color: #3a81c3;">(</span>text_2_search<span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">matches</span> = pattern.<span style="color: #3a81c3; font-weight: bold;">match</span><span style="color: #3a81c3;">(</span>sentence<span style="color: #3a81c3;">)</span>
+<span style="color: #715ab1;">matches</span> = pattern.search<span style="color: #3a81c3;">(</span>sentence<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">only 1st match </span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">flages</span>
+
+<span style="color: #715ab1;">pattern</span> = recompile<span style="color: #3a81c3;">(</span>r<span style="color: #2d9574;">'start'</span>, re.IGNORE<span style="color: #3a81c3;">)</span>
+
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3; font-weight: bold;">match</span> <span style="color: #3a81c3; font-weight: bold;">in</span> matches:
+   <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">match</span><span style="color: #3a81c3;">)</span>
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9f55f1d" class="outline-2">
+<h2 id="org9f55f1d">Random module</h2>
+<div class="outline-text-2" id="text-org9f55f1d">
+</div>
+<div id="outline-container-orgb7496ae" class="outline-4">
+<h4 id="orgb7496ae">Introdution</h4>
+<div class="outline-text-4" id="text-orgb7496ae">
+<p>
+Shoulded to be used for crypthography use sectrets module instead
+</p>
+
+<p>
+Cread a random value btw (0 1)
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> random
+
+<span style="color: #715ab1;">value</span> = random.random<span style="color: #3a81c3;">()</span>         <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0.2426467353658334</span>
+<span style="color: #715ab1;">value</span> = random.uniform<span style="color: #3a81c3;">(</span>1, 10<span style="color: #3a81c3;">)</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">6.223664645274</span>
+<span style="color: #715ab1;">dice</span> = random.randint<span style="color: #3a81c3;">(</span>1, 6<span style="color: #3a81c3;">)</span>    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1,2,6,2,3,5,4</span>
+<span style="color: #715ab1;">coin</span> = random.randint<span style="color: #3a81c3;">(</span>0, 1<span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>value<span style="color: #3a81c3;">)</span>
+
+<span style="color: #715ab1;">greeting</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'Hello'</span>, <span style="color: #2d9574;">'Hi'</span>, <span style="color: #2d9574;">'Hey'</span>, <span style="color: #2d9574;">'Howdy'</span>, <span style="color: #2d9574;">'Hola'</span><span style="color: #3a81c3;">]</span>
+
+<span style="color: #715ab1;">value</span> = random.choice<span style="color: #3a81c3;">(</span>greetins<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span> value + <span style="color: #2d9574;">" Corey"</span><span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Multiple choiess</span>
+
+<span style="color: #715ab1;">colors</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'Red'</span>, <span style="color: #2d9574;">'Black'</span>,<span style="color: #2d9574;">'Green'</span><span style="color: #3a81c3;">]</span>
+
+<span style="color: #715ab1;">results</span> = random.choices<span style="color: #3a81c3;">(</span>colors, k=10<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">how many time we pick a value</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>results<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ['Red', 'Green', 'Red', ' Black', ' Red', ......]( size is 10)</span>
+
+<span style="color: #715ab1;">results</span> = random.choices<span style="color: #3a81c3;">(</span>colors,, weight = <span style="color: #6c3163;">[</span>18, 18, 2<span style="color: #6c3163;">]</span> k=10<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">total w = 38, red is 18/38 chance, black is 18/38, green = 2/38</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>results<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; ['Red', 'Green', 'Red', ' Black', ' Red', ......]( size is 10)</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Random generate a list of num of size 63 and range from [1 63]</span>
+
+<span style="color: #715ab1;">deck</span> = <span style="color: #3a81c3;">list</span><span style="color: #3a81c3;">(</span><span style="color: #3a81c3;">range</span><span style="color: #6c3163;">(</span>1, 53<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>desk<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; [1, 2, 3, 4, ..........53 ]</span>
+
+random.shuffle<span style="color: #3a81c3;">(</span>deck<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>deck<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; [41 ,39, 29, 38,47, 50,6,20.....]</span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">To select unique card or no</span>
+
+random.sample<span style="color: #3a81c3;">(</span>deck<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>deck, k =5<span style="color: #3a81c3;">)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; [41 ,39, 29, 38,47]</span>
+
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Grenerate fake  fist_names,last_name, street_name, fake_cites, states</span>
+
+<span style="color: #715ab1;">f_n</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'John'</span>, <span style="color: #2d9574;">'Jane'</span>, <span style="color: #2d9574;">'Corey'</span>, <span style="color: #2d9574;">'Travis'</span><span style="color: #3a81c3;">]</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">frist name </span>
+<span style="color: #715ab1;">l_n</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'Smith'</span>, <span style="color: #2d9574;">'Doe'</span>, <span style="color: #2d9574;">'Jenkins'</span>, <span style="color: #2d9574;">'Robinson'</span><span style="color: #3a81c3;">]</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">last name</span>
+<span style="color: #715ab1;">s_n</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'Main'</span>, <span style="color: #2d9574;">'High'</span>, <span style="color: #2d9574;">'Pearl'</span>, <span style="color: #2d9574;">'Maple'</span> <span style="color: #3a81c3;">]</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">street name</span>
+<span style="color: #715ab1;">c_n</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'Metropolics'</span>, <span style="color: #2d9574;">'Eerie'</span>,<span style="color: #2d9574;">'King'</span>, <span style="color: #2d9574;">'Landing'</span><span style="color: #3a81c3;">]</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">fake cite </span>
+<span style="color: #715ab1;">states</span> = <span style="color: #3a81c3;">[</span> <span style="color: #2d9574;">'AL'</span>,<span style="color: #2d9574;">'AK'</span>,<span style="color: #2d9574;">'AR'</span>,<span style="color: #2d9574;">'Pearl'</span>,<span style="color: #2d9574;">'Oak'</span>,<span style="color: #2d9574;">'Cedar'</span>,<span style="color: #2d9574;">'Elm'</span><span style="color: #3a81c3;">]</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> num <span style="color: #3a81c3; font-weight: bold;">in</span> <span style="color: #3a81c3;">range</span><span style="color: #3a81c3;">(</span>100<span style="color: #3a81c3;">)</span>:
+    <span style="color: #715ab1;">first</span> = random.choice<span style="color: #3a81c3;">(</span>f_n<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">last</span> = random.choice<span style="color: #3a81c3;">(</span>l_n<span style="color: #3a81c3;">)</span>
+
+    <span style="color: #715ab1;">phone</span> = f<span style="color: #2d9574;">'</span>{random.randint(100,999)}<span style="color: #2d9574;">-555-</span>{random.randint(1000,9999)}<span style="color: #2d9574;">'</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">548-555-6572</span>
+
+    <span style="color: #715ab1;">s_num</span> = random.randint<span style="color: #3a81c3;">(</span>100,999<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">street</span> = random.choice<span style="color: #3a81c3;">(</span>s_n<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">city</span> = random.choice<span style="color: #3a81c3;">(</span>c_n<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">state</span> = random.choice<span style="color: #3a81c3;">(</span>states<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">zip_code</span> = random.randint<span style="color: #3a81c3;">(</span>10000,99999<span style="color: #3a81c3;">)</span>
+    <span style="color: #715ab1;">address</span> = f<span style="color: #2d9574;">'</span>{street_name}{street}<span style="color: #2d9574;"> St., </span>{city}{state}{zip_code}<span style="color: #2d9574;">'</span>
+
+    <span style="color: #715ab1;">email</span> = first.lower<span style="color: #3a81c3;">()</span> + last.lower<span style="color: #3a81c3;">()</span> + <span style="color: #2d9574;">'@gmail.com'</span>
+    <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>f<span style="color: #2d9574;">'</span>{first}{last}<span style="color: #2d9574;"> </span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;"> </span>{phone}<span style="color: #2d9574;"> </span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;"> </span>{address}<span style="color: #2d9574;"> </span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;"> </span>{email}<span style="color: #2d9574;"> </span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">'</span><span style="color: #3a81c3;">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd07876e" class="outline-2">
+<h2 id="orgd07876e">Subprocess</h2>
+<div class="outline-text-2" id="text-orgd07876e">
+<p>
+<a href="python_subprocess_push_dockerfile.ipynb">python_subprocess_push_dockerfile.ipynb</a>
+</p>
+
+<p>
+<a href="python_subprocess_push_dockerfile.html">python_subprocess_push_dockerfile.html</a>
+</p>
+
+<p>
+Example :
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #715ab1;">sub_title_dir</span> = <span style="color: #2d9574;">'images'</span>
+
+<span style="color: #715ab1;">frame_dir</span> = <span style="color: #2d9574;">'recorded-video'</span> 
+<span style="color: #715ab1;">frame_img_reg</span> = <span style="color: #2d9574;">'%06d.png'</span>
+<span style="color: #715ab1;">frame_rate</span> = <span style="color: #2d9574;">'25'</span>
+<span style="color: #715ab1;">screen_aspect_ratio</span> = <span style="color: #2d9574;">'1280x720'</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">720p</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">1920 &#215; 1080 # 1080p</span>
+<span style="color: #715ab1;">output_video</span> = <span style="color: #2d9574;">'output4.mp4'</span>
+<span style="color: #715ab1;">resolution</span> = <span style="color: #2d9574;">'yuv420p'</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">pixel formate 720p</span>
+
+
+<span style="color: #715ab1;">shell_cmd</span> =f<span style="color: #2d9574;">'ffmpeg -i </span>{frame_dir}<span style="color: #2d9574;">/</span>{frame_img_reg}<span style="color: #2d9574;"> -c:v libx264 -r </span>{frame_rate}<span style="color: #2d9574;"> -s </span>{screen_aspect_ratio}<span style="color: #2d9574;">  -pix_fmt </span>{resolution}<span style="color: #2d9574;"> </span>{output_video}<span style="color: #2d9574;">'</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>shell_cmd<span style="color: #3a81c3;">)</span>
+subprocess.run <span style="color: #3a81c3;">(</span>shell_cmd,shell=<span style="color: #4e3163;">True</span>,  stdout=subprocess.PIPE<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org62c7d02" class="outline-2">
+<h2 id="org62c7d02">Subprocess Details Explaination</h2>
+<div class="outline-text-2" id="text-org62c7d02">
+<p>
+<a href="https://www.youtube.com/watch?v=yOBBq3dl0to">https://www.youtube.com/watch?v=yOBBq3dl0to</a> <br />
+<a href="https://www.youtube.com/watch?v=2Fp1N6dof0Y">https://www.youtube.com/watch?v=2Fp1N6dof0Y</a> <br />
+</p>
+
+
+
+<p>
+<a href="https://stackoverflow.com/questions/4256107/running-bash-commands-in-python">https://stackoverflow.com/questions/4256107/running-bash-commands-in-python</a>
+To somewhat expand on the earlier answers here, there are a number of details which are commonly overlooked.
+</p>
+<ul class="org-ul">
+<li>Prefer <code>subprocess.run()</code> over <code>subprocess.check_call()</code> and friends over <code>subprocess.call()</code> over <code>subprocess.Popen()</code> over <code>os.system()</code> <code>over os.popen()</code></li>
+<li>Understand and probably use <code>text=True</code>, aka <code>universal_newlines=True</code>.</li>
+<li>Understand the meaning of <code>shell=True</code> or <code>shell=False</code> and how it changes quoting and the availability of shell conveniences.</li>
+<li>Understand differences between <code>sh</code> and Bash</li>
+<li>Understand how a subprocess is separate from its parent, and generally cannot change the parent.</li>
+<li>Avoid running the Python interpreter as a subprocess of Python.</li>
+</ul>
+
+<p>
+Prefer subprocess.run() or subprocess.check_call()
+</p>
+
+<blockquote>
+<p>
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, <br />
+\(\;\;\;\;\;\;\;\)  capture_output=False, shell=False,<br />
+\(\;\;\;\;\;\;\;\)  cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, <br />
+\(\;\;\;\;\;\;\;\) env=None, universal_newlines=None, **other_popen_kwargs) <br />
+</p>
+</blockquote>
+
+
+<p>
+soruce : <a href="https://docs.python.org/3/library/subprocess.html">https://docs.python.org/3/library/subprocess.html</a>
+</p>
+
+<p>
+Input argumetns:
+args : bash_cmd or shell cmd
+</p>
+
+<p>
+stdin=None
+input=None
+stdout=None
+stderr=None
+capture_output=False, if True  then stdout and stderr will be captured
+shell=False         , if True then give args is shell cmd and we can run them even in windows or mac system    
+env=None
+universal_newlines=None
+check=False,         if True raise Error or terminate execution of <code>subprocess.run</code> fails
+</p>
+
+<p>
+The <code>return value</code> from <code>run()</code>, representing a process that has finished.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">class</span> <span style="color: #ba2f59; font-weight: bold;">subprocess</span>.CompletedProcess
+
+   <span style="color: #3a81c3; font-weight: bold;">return</span> args:
+       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">The arguments used to launch the process. This may be a list or a string.</span>
+   <span style="color: #3a81c3; font-weight: bold;">return</span> returncode:
+       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Exit status of the child process. Typically, an exit status of 0 indicates that it ran successfully.</span>
+       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">A negative value -N indicates that the child was terminated by signal N (POSIX only).</span>
+   <span style="color: #3a81c3; font-weight: bold;">return</span> stdout:
+       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Captured stdout from the child process. A bytes sequence,</span>
+       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">or a string if run() was called with an encoding, errors, or text=True.</span>
+       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">None if stdout was not captured.</span>
+       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">If you ran the process with stderr=subprocess.STDOUT,</span>
+       <span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">stdout and stderr will be combined in this attribute, and stderr will be None.</span>
+   <span style="color: #3a81c3; font-weight: bold;">return</span> stderr:
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Captured stderr from the child process.</span>
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">A bytes sequence, or a string if run() was called with an encoding, errors,</span>
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">or text=True. None if stderr was not captured</span>
+   check_returncode<span style="color: #3a81c3;">()</span>:
+        <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">If returncode is non-zero, raise a CalledProcessError.</span>
+</pre>
+</div>
+
+
+
+
+<p>
+Example
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">filename = test.py</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">! /usr/bin/env python3 # run in bash $ ./filename.py</span>
+<span style="color: #3a81c3; font-weight: bold;">import</span> subprocess
+subprocess.run <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"echo Hello"</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">give error</span>
+subprocess.run <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"echo Hello"</span>,shell=<span style="color: #4e3163;">True</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt; Hello</span>
+<span style="color: #715ab1;">res</span> = subprocess.run <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"echo Hello $USER ~"</span>,shell=<span style="color: #4e3163;">True</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Hello karthik /home/karthik</span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>*<span style="color: #3a81c3;">dir</span><span style="color: #6c3163;">(</span>res<span style="color: #6c3163;">)</span> , sep=<span style="color: #2d9574;">"</span><span style="color: #4e3163;">\n</span><span style="color: #2d9574;">"</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output stdout, stderr, returncode</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # # # # # # # # # </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">capture_output=True, function return stdout, and stderr as output in binary format</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # # # # # #  # # # #</span>
+
+<span style="color: #715ab1;">res</span> = subprocess.run <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"echo Hello $USER\!"</span>,shell=<span style="color: #4e3163;">True</span>, capture_output=<span style="color: #4e3163;">True</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.stdout<span style="color: #3a81c3;">)</span>           <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; b'Hello, karthik!</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.stderr<span style="color: #3a81c3;">)</span>           <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; b''             # No error</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.stdout.decode<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; Hello, karthik!</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.stderr.decode<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;                 # No error </span>
+
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.returncode<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; 0 executed run successfully </span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # # # # # # # # # </span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">capture_output in Text format</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;"># # # # # # #  # # # #</span>
+
+
+<span style="color: #715ab1;">res</span> = subprocess.run <span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"echo Hello $USER\!"</span>,shell=<span style="color: #4e3163;">True</span>, capture_output=<span style="color: #4e3163;">True</span>, text=<span style="color: #4e3163;">True</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.stdout<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; Hello, karthik!</span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.stderr<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt;              # No error </span>
+<span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>res.returncode<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0 executed run successfully </span>
+
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Store the std out and std error in a file</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'output.txt'</span>,<span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> f:
+   <span style="color: #715ab1;">p1</span>=subprocess.run<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"ls -la"</span>, stdout=f, text=<span style="color: #4e3163;">True</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">This will save output in output.txt</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">set stderr to NOT SHOW ANY ERROR IN EXEC with `stderr=subprocess.DEVNULL`</span>
+
+<span style="color: #3a81c3; font-weight: bold;">with</span> <span style="color: #3a81c3;">open</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'output.txt'</span>,<span style="color: #2d9574;">'w'</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3; font-weight: bold;">as</span> f:
+   <span style="color: #715ab1;">p1</span>=subprocess.run<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"ls -la"</span>, stdout=f, text=<span style="color: #4e3163;">True</span><span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">This will save output in output.txt</span>
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Karthik Karthik D</p>
+<p class="date">Created: 2025-08-01 Fri 04:36</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,22 +1,10 @@
-#+TITLE: Numpy
+#+TITLE: Numpy_Complete
 #+SETUPFILE:/media/karthik/myVolume/workspace/github_Notes/css/emacs-org.setup
 
 
-[ [[./index.html][Home]] ] $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
+[  [[./Index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
 
 ------
-
-
-
-- [[file:numpy-img/jupyterhtml2orghtml.ipynb]]
-  - Python Code(ipynb) to convert the jupyterHtml page to orgHtml
-   
-- [[file:numpy-img/Numpy_Complete.ipynb]]
-  - Numpy code which is converted into below JupyterHtml file 
-- [[file:numpy-img/Numpy_Complete.html]]
-  - [View Code in JupyterHtml format]  
-- file:Numpy_Complete_org.org
-  - [Generated org code which is used to create this org-theme html file]
 
 
 * Numpy faster than List
@@ -448,7 +436,7 @@ size. resize() is used to create a new array of different sizes and
 dimensions.
 * Indexing and Slicing
 
-[[file:numpy-img/th-3753005622.png]]
+[[file:th-3753005622.png]]
 
 Array element of\\
 ith row, jth col element = A[i,j] 2nd row = A[1,:] 3rd col = A[:,2]
@@ -981,7 +969,7 @@ Cell <span class="ansi-green-fg">In[102], line 4</span>
 * TODO Mesh Grid
 * Boardcasting
 
-[[file:numpy-img/Broacasting_2_rule.png]]
+[[file:Broacasting_2_rule.png]]
 * Copy and View
 #+BEGIN_SRC python
 a_backup = a.copy()

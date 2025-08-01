@@ -1,0 +1,92 @@
+#+TITLE: Git 
+#+SETUPFILE:css/emacs-org.setup
+[  [[./index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
+-----
+
+* Introduction to Elisp
+
+Emacs Lisp, commonly referred to as Elisp, is a powerful dialect of the Lisp programming language tailored specifically for the GNU Emacs text editor. Elisp is integral to the functionality and customization of Emacs, enabling users to extend and modify the editor to meet their specific needs.
+
+** Key Features of Elisp
+
+1. *Deep Integration with Emacs*:
+   - Elisp is embedded within Emacs, allowing users to write, evaluate, and debug code directly in the editor.
+   - Many of Emacs’s core functionalities are implemented in Elisp, providing a seamless and highly customizable user experience.
+
+2. *Lisp Syntax*:
+   - Elisp uses the prefix notation typical of Lisp languages, where the operator comes before its operands.
+   - Example:
+     #+begin_src elisp
+     (+ 2 3 4)  ; Adds 2, 3, and 4, resulting in 9
+     #+end_src
+
+3. *Dynamic Typing*:
+   - Elisp is dynamically typed, meaning that variable types are determined at runtime rather than compile-time.
+   - This flexibility allows for rapid prototyping and interactive development.
+
+4. *Interactive Development*:
+   - Emacs users can write Elisp functions and immediately test them within the editor using commands like ~M-x eval-buffer~ or ~M-x eval-region~.
+   - The ~interactive~ keyword allows functions to be called directly with ~M-x~, integrating custom scripts seamlessly into the Emacs command system.
+
+** Basic Elisp Constructs
+
+*** Variables
+
+Variables in Elisp can be defined using ~setq~ or ~defvar~:
+#+begin_src elisp
+(setq my-variable 42)  ; Sets my-variable to 42
+
+(defvar another-variable "Hello, Emacs!")  ; Declares another-variable with a default value
+#+end_src
+
+*** Functions
+
+Functions are defined using ~defun~:
+#+begin_src elisp
+(defun greet (name)
+  "Greet a person by their NAME."
+  (message "Hello, %s!" name))
+
+(greet "World")  ; Outputs: Hello, World!
+#+end_src
+
+*** Control Structures
+
+Elisp includes typical control structures like conditionals and loops:
+#+begin_src elisp
+(if (> 10 5)
+    (message "10 is greater than 5")
+  (message "10 is not greater than 5"))
+
+(let ((i 0))
+  (while (< i 5)
+    (message "i is %d" i)
+    (setq i (1+ i))))
+#+end_src
+
+** Customizing Emacs with Elisp
+
+One of the most common uses of Elisp is to customize Emacs. Users can add Elisp code to their ~.emacs~ or ~init.el~ file to modify the editor’s behavior:
+#+begin_src elisp
+(defun my-custom-setup ()
+  "Custom setup for Emacs."
+  (setq make-backup-files nil)  ; Disable backup files
+  (global-linum-mode t))        ; Enable line numbers globally
+
+(my-custom-setup)
+#+end_src
+
+** Extending Emacs with Packages
+
+Elisp is also used to create and install Emacs packages. These packages can extend the functionality of Emacs in numerous ways, from providing new editing modes to integrating with external tools.
+
+** Learning and Resources
+
+Emacs provides extensive documentation for Elisp:
+- ~C-h f~ to look up function documentation.
+- ~C-h v~ to look up variable documentation.
+- ~C-h i~ to access the built-in info manuals, including the Emacs Lisp Reference Manual.
+
+** Conclusion
+
+Elisp is a versatile and essential part of the Emacs ecosystem. By learning Elisp, users can unlock the full potential of Emacs, transforming it into a highly personalized and powerful tool tailored to their workflows. Whether you are automating repetitive tasks, creating complex configurations, or developing new features, Elisp provides the flexibility and power to make Emacs your own.

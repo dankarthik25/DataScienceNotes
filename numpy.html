@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-06-11 Tue 21:15 -->
+<!-- 2025-08-01 Fri 05:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Numpy</title>
 <meta name="author" content="Karthik D" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -240,63 +240,63 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6017b58">Numpy faster than List</a></li>
-<li><a href="#orgc785c6f">Create</a>
+<li><a href="#orgc2aa0a3">Numpy faster than List</a></li>
+<li><a href="#orgdcaed14">Create</a>
 <ul>
-<li><a href="#org87a99fa">Datatype:</a></li>
+<li><a href="#orgcc61706">Datatype:</a></li>
 </ul>
 </li>
-<li><a href="#org06dbf4c">Info</a></li>
-<li><a href="#org1113a11">Operation</a>
+<li><a href="#orgf487c2b">Info</a></li>
+<li><a href="#org5ac0860">Operation</a>
 <ul>
-<li><a href="#orgb7191a4">Scalar Operation</a></li>
-<li><a href="#org61990a9">Condtional Operations</a></li>
-<li><a href="#orgb7acbd3">Vector Operator</a></li>
-<li><a href="#orgc11edb2">LinearAlgebra (Matrix</a></li>
+<li><a href="#org6b515f6">Scalar Operation</a></li>
+<li><a href="#orgefb4ae5">Condtional Operations</a></li>
+<li><a href="#org8b49d20">Vector Operator</a></li>
+<li><a href="#orgb3f1125">LinearAlgebra (Matrix</a></li>
 </ul>
 </li>
-<li><a href="#orgf53b0e8">Load numpy from file</a></li>
-<li><a href="#orgb5c6e72">input/output:</a>
+<li><a href="#orgf1840cc">Load numpy from file</a></li>
+<li><a href="#orgd2eb4fa">input/output:</a>
 <ul>
-<li><a href="#org737e46b"><code>LoadText</code> file in numpy:</a></li>
+<li><a href="#orgfcd3b43"><code>LoadText</code> file in numpy:</a></li>
 </ul>
 </li>
-<li><a href="#org32684c4">Indexing and Slicing</a>
+<li><a href="#org2555baf">Indexing and Slicing</a>
 <ul>
-<li><a href="#org2a54f38">Slicing</a></li>
+<li><a href="#orgca8f6e3">Slicing</a></li>
 </ul>
 </li>
-<li><a href="#orgf6e3648">Boolean Index</a></li>
-<li><a href="#org6cea49e">Reshape</a></li>
-<li><a href="#org6fb4e17">Stacking</a></li>
-<li><a href="#org689c9eb">Missing Values</a></li>
-<li><a href="#orgaaaa852">Random</a></li>
-<li><a href="#org33d290f">BuildIn Function</a></li>
-<li><a href="#orgea8c4bc">Custom Function</a></li>
-<li><a href="#orge95ece0">Iteration (Loop)</a></li>
-<li><a href="#orgbb2302c">nditer</a>
+<li><a href="#orgdad7f93">Boolean Index</a></li>
+<li><a href="#org73c0289">Reshape</a></li>
+<li><a href="#org9880a3d">Stacking</a></li>
+<li><a href="#orgdda33c2">Missing Values</a></li>
+<li><a href="#org4e5a4a7">Random</a></li>
+<li><a href="#org3e69eb5">BuildIn Function</a></li>
+<li><a href="#orga63d61c">Custom Function</a></li>
+<li><a href="#orgb26f58c">Iteration (Loop)</a></li>
+<li><a href="#org630bbd8">nditer</a>
 <ul>
-<li><a href="#orgcb434c8">C style ordering</a>
+<li><a href="#orgbd886c7">C style ordering</a>
 <ul>
-<li><a href="#org0d77ed1">External loop</a></li>
-<li><a href="#orge9a8ba4">Modify array values while</a></li>
+<li><a href="#orgc67d85e">External loop</a></li>
+<li><a href="#org78567e9">Modify array values while</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5769ddb">Sort</a></li>
-<li><a href="#orge7e2878">Append</a></li>
-<li><a href="#org669fc86">Concat</a></li>
-<li><a href="#org2395697">Unique</a></li>
-<li><a href="#org9b7e683">Where</a></li>
-<li><a href="#orgb747419">Histogram</a></li>
-<li><a href="#org62b6e47">Correlation Co-efficient</a></li>
-<li><a href="#org04ba6f3">Plot</a></li>
-<li><a href="#org9946052"><span class="todo TODO">TODO</span> Mesh Grid</a></li>
-<li><a href="#orga2e19df">Boardcasting</a></li>
-<li><a href="#orgb57ccfd">Copy and View</a>
+<li><a href="#org62690ee">Sort</a></li>
+<li><a href="#org8f7077f">Append</a></li>
+<li><a href="#org1de5061">Concat</a></li>
+<li><a href="#orge9eddac">Unique</a></li>
+<li><a href="#orgb0f6cc2">Where</a></li>
+<li><a href="#org84287a9">Histogram</a></li>
+<li><a href="#org3277518">Correlation Co-efficient</a></li>
+<li><a href="#orgf04eb1f">Plot</a></li>
+<li><a href="#org82716c4"><span class="todo TODO">TODO</span> Mesh Grid</a></li>
+<li><a href="#org70b8d8c">Boardcasting</a></li>
+<li><a href="#org1379236">Copy and View</a>
 <ul>
-<li><a href="#org75fe59b">Learn More from</a></li>
+<li><a href="#org1554a37">Learn More from</a></li>
 </ul>
 </li>
 </ul>
@@ -309,9 +309,29 @@
 <hr />
 
 
-<div id="outline-container-org6017b58" class="outline-2">
-<h2 id="org6017b58">Numpy faster than List</h2>
-<div class="outline-text-2" id="text-org6017b58">
+
+<ul class="org-ul">
+<li><a href="numpy-img/jupyterhtml2orghtml.ipynb">numpy-img/jupyterhtml2orghtml.ipynb</a>
+<ul class="org-ul">
+<li>Python Code(ipynb) to convert the jupyterHtml page to orgHtml</li>
+</ul></li>
+
+<li><a href="numpy-img/Numpy_Complete.ipynb">numpy-img/Numpy_Complete.ipynb</a>
+<ul class="org-ul">
+<li>Numpy code which is converted into below JupyterHtml file</li>
+</ul></li>
+<li><a href="numpy-img/Numpy_Complete.html">numpy-img/Numpy_Complete.html</a>
+<ul class="org-ul">
+<li>[View Code in JupyterHtml format]</li>
+</ul></li>
+<li><a href="Numpy_Complete_org.html">Numpy_Complete_org.html</a>
+<ul class="org-ul">
+<li>[Generated org code which is used to create this org-theme html file]</li>
+</ul></li>
+</ul>
+<div id="outline-container-orgc2aa0a3" class="outline-2">
+<h2 id="orgc2aa0a3">Numpy faster than List</h2>
+<div class="outline-text-2" id="text-orgc2aa0a3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">import</span> numpy <span style="color: #3a81c3; font-weight: bold;">as</span> np
 <span style="color: #3a81c3; font-weight: bold;">import</span> time
@@ -342,9 +362,9 @@ numpy took:  11.291265487670898
 </div>
 </div>
 </div>
-<div id="outline-container-orgc785c6f" class="outline-2">
-<h2 id="orgc785c6f">Create</h2>
-<div class="outline-text-2" id="text-orgc785c6f">
+<div id="outline-container-orgdcaed14" class="outline-2">
+<h2 id="orgdcaed14">Create</h2>
+<div class="outline-text-2" id="text-orgdcaed14">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">[</span>1,2,3<span style="color: #2d9574;">]</span>,<span style="color: #2d9574;">[</span>4,5,6<span style="color: #2d9574;">]</span>,<span style="color: #2d9574;">[</span>7,8,9<span style="color: #2d9574;">]</span><span style="color: #6c3163;">]</span>, dtype=<span style="color: #2d9574;">'int8'</span><span style="color: #3a81c3;">)</span>
 <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&gt;&gt;&gt; array([[1, 2, 3],</span>
@@ -426,9 +446,9 @@ np.arange<span style="color: #3a81c3;">(</span>0,15<span style="color: #3a81c3;"
 </div>
 </div>
 </div>
-<div id="outline-container-org87a99fa" class="outline-3">
-<h3 id="org87a99fa">Datatype:</h3>
-<div class="outline-text-3" id="text-org87a99fa">
+<div id="outline-container-orgcc61706" class="outline-3">
+<h3 id="orgcc61706">Datatype:</h3>
+<div class="outline-text-3" id="text-orgcc61706">
 <p>
 Numpy support different DataTypes like <code>int8</code>, <code>uint8</code>, <code>int16</code>,
 <code>uint16</code>, <code>int32</code>, <code>int64</code>, <code>float32</code>, <code>float64</code>, <code>np.uint8</code>,&#x2026;..etc
@@ -436,7 +456,7 @@ for more details:
 <a href="https://numpy.org/doc/stable/user/basics.types.html">https://numpy.org/doc/stable/user/basics.types.html</a>
 </p>
 
-<pre class="example" id="orgcfc39b0">
+<pre class="example" id="orge46c2d2">
 a = np.array([[1,2,3],[4,5,6],[7,8,9]], dtype='int32')
 # Change data Type
 a.astype(int) # change to type int
@@ -444,9 +464,9 @@ a.astype(int) # change to type int
 </div>
 </div>
 </div>
-<div id="outline-container-org06dbf4c" class="outline-2">
-<h2 id="org06dbf4c">Info</h2>
-<div class="outline-text-2" id="text-org06dbf4c">
+<div id="outline-container-orgf487c2b" class="outline-2">
+<h2 id="orgf487c2b">Info</h2>
+<div class="outline-text-2" id="text-orgf487c2b">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">[</span>1,2,3<span style="color: #2d9574;">]</span>,<span style="color: #2d9574;">[</span>4,5,6<span style="color: #2d9574;">]</span>,<span style="color: #2d9574;">[</span>7,8,9<span style="color: #2d9574;">]</span><span style="color: #6c3163;">]</span>, dtype=<span style="color: #2d9574;">'int8'</span><span style="color: #3a81c3;">)</span> 
 
@@ -511,9 +531,9 @@ np.<span style="color: #3a81c3;">min</span><span style="color: #3a81c3;">(</span
 </div>
 </div>
 </div>
-<div id="outline-container-org1113a11" class="outline-2">
-<h2 id="org1113a11">Operation</h2>
-<div class="outline-text-2" id="text-org1113a11">
+<div id="outline-container-org5ac0860" class="outline-2">
+<h2 id="org5ac0860">Operation</h2>
+<div class="outline-text-2" id="text-org5ac0860">
 <p>
 Numpy Array Operation Can be broadly classified into 3 types
 </p>
@@ -524,9 +544,9 @@ Numpy Array Operation Can be broadly classified into 3 types
 <li>Vector Operation</li>
 </ul>
 </div>
-<div id="outline-container-orgb7191a4" class="outline-3">
-<h3 id="orgb7191a4">Scalar Operation</h3>
-<div class="outline-text-3" id="text-orgb7191a4">
+<div id="outline-container-org6b515f6" class="outline-3">
+<h3 id="org6b515f6">Scalar Operation</h3>
+<div class="outline-text-3" id="text-org6b515f6">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span>1,2,5,7,8,3<span style="color: #6c3163;">]</span>,dtype =<span style="color: #2d9574;">'int8'</span><span style="color: #3a81c3;">)</span>
 
@@ -541,9 +561,9 @@ Numpy Array Operation Can be broadly classified into 3 types
 </div>
 </div>
 </div>
-<div id="outline-container-org61990a9" class="outline-3">
-<h3 id="org61990a9">Condtional Operations</h3>
-<div class="outline-text-3" id="text-org61990a9">
+<div id="outline-container-orgefb4ae5" class="outline-3">
+<h3 id="orgefb4ae5">Condtional Operations</h3>
+<div class="outline-text-3" id="text-orgefb4ae5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span>1,2,5,7,8,3<span style="color: #6c3163;">]</span>,dtype =<span style="color: #2d9574;">'uint8'</span><span style="color: #3a81c3;">)</span>
 
@@ -566,9 +586,9 @@ a !=5   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span 
 </div>
 </div>
 </div>
-<div id="outline-container-orgb7acbd3" class="outline-3">
-<h3 id="orgb7acbd3">Vector Operator</h3>
-<div class="outline-text-3" id="text-orgb7acbd3">
+<div id="outline-container-org8b49d20" class="outline-3">
+<h3 id="org8b49d20">Vector Operator</h3>
+<div class="outline-text-3" id="text-org8b49d20">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span>= np.arange<span style="color: #3a81c3;">(</span>0,6<span style="color: #3a81c3;">)</span>.reshape<span style="color: #3a81c3;">(</span>2,3<span style="color: #3a81c3;">)</span>   <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">array([[0, 1, 2],</span>
                                         <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[3, 4, 5]])</span>
@@ -606,9 +626,9 @@ a % b  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span s
 </div>
 </div>
 </div>
-<div id="outline-container-orgc11edb2" class="outline-3">
-<h3 id="orgc11edb2">LinearAlgebra (Matrix</h3>
-<div class="outline-text-3" id="text-orgc11edb2">
+<div id="outline-container-orgb3f1125" class="outline-3">
+<h3 id="orgb3f1125">LinearAlgebra (Matrix</h3>
+<div class="outline-text-3" id="text-orgb3f1125">
 <p>
 Operation)
 </p>
@@ -692,9 +712,9 @@ b.T                     <span style="color: #2aa1ae; background-color: #ecf3ec;"
 </div>
 </div>
 </div>
-<div id="outline-container-orgf53b0e8" class="outline-2">
-<h2 id="orgf53b0e8">Load numpy from file</h2>
-<div class="outline-text-2" id="text-orgf53b0e8">
+<div id="outline-container-orgf1840cc" class="outline-2">
+<h2 id="orgf1840cc">Load numpy from file</h2>
+<div class="outline-text-2" id="text-orgf1840cc">
 <p>
 There are two ways (constructs) in NumPy to load data from a text
 file:<br />
@@ -723,14 +743,14 @@ file:<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgb5c6e72" class="outline-2">
-<h2 id="orgb5c6e72">input/output:</h2>
-<div class="outline-text-2" id="text-orgb5c6e72">
+<div id="outline-container-orgd2eb4fa" class="outline-2">
+<h2 id="orgd2eb4fa">input/output:</h2>
+<div class="outline-text-2" id="text-orgd2eb4fa">
 </div>
-<div id="outline-container-org737e46b" class="outline-3">
-<h3 id="org737e46b"><code>LoadText</code> file in numpy:</h3>
-<div class="outline-text-3" id="text-org737e46b">
-<pre class="example" id="orgea4cc01">
+<div id="outline-container-orgfcd3b43" class="outline-3">
+<h3 id="orgfcd3b43"><code>LoadText</code> file in numpy:</h3>
+<div class="outline-text-3" id="text-orgfcd3b43">
+<pre class="example" id="org98d71d1">
 dtype_dict ={'names': ('longitude','latitude','housing_median_age','total_rooms','total_bedrooms',
                        'population','households','median_income','median_house_value','ocean_proximity'),
              'formats': ('f8', 'f8', 'f8', 'f8', 'f8', 'f8', 'f8', 'f8', 'f8', '|S15')}
@@ -800,12 +820,12 @@ dimensions.
 </div>
 </div>
 </div>
-<div id="outline-container-org32684c4" class="outline-2">
-<h2 id="org32684c4">Indexing and Slicing</h2>
-<div class="outline-text-2" id="text-org32684c4">
+<div id="outline-container-org2555baf" class="outline-2">
+<h2 id="org2555baf">Indexing and Slicing</h2>
+<div class="outline-text-2" id="text-org2555baf">
 
-<div id="org247adcb" class="figure">
-<p><img src="th-3753005622.png" alt="th-3753005622.png" />
+<div id="org77cb336" class="figure">
+<p><img src="numpy-img/th-3753005622.png" alt="th-3753005622.png" />
 </p>
 </div>
 
@@ -814,10 +834,9 @@ Array element of<br />
 ith row, jth col element = A[i,j] 2nd row = A[1,:] 3rd col = A[:,2]
 </p>
 </div>
-
-<div id="outline-container-org2a54f38" class="outline-3">
-<h3 id="org2a54f38">Slicing</h3>
-<div class="outline-text-3" id="text-org2a54f38">
+<div id="outline-container-orgca8f6e3" class="outline-3">
+<h3 id="orgca8f6e3">Slicing</h3>
+<div class="outline-text-3" id="text-orgca8f6e3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span> = np.arange<span style="color: #3a81c3;">(</span>0,10<span style="color: #3a81c3;">)</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[0,1,2,3,4,5,6,7,8,9]</span>
 a<span style="color: #3a81c3;">[</span>2:5<span style="color: #3a81c3;">]</span>     <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[2,3,4]</span>
@@ -861,9 +880,9 @@ a<span style="color: #3a81c3;">[</span><span style="color: #6c3163;">[</span>0,2
 </div>
 </div>
 </div>
-<div id="outline-container-orgf6e3648" class="outline-2">
-<h2 id="orgf6e3648">Boolean Index</h2>
-<div class="outline-text-2" id="text-orgf6e3648">
+<div id="outline-container-orgdad7f93" class="outline-2">
+<h2 id="orgdad7f93">Boolean Index</h2>
+<div class="outline-text-2" id="text-orgdad7f93">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">A</span> = np.arange<span style="color: #3a81c3;">(</span>0,25<span style="color: #3a81c3;">)</span>.reshape<span style="color: #3a81c3;">(</span>5,5<span style="color: #3a81c3;">)</span>
 <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">array([[ 0,  1,  2,  3,  4],</span>
@@ -901,9 +920,9 @@ A <span style="color: #3a81c3;">[</span>~<span style="color: #6c3163;">(</span>A
 </div>
 </div>
 </div>
-<div id="outline-container-org6cea49e" class="outline-2">
-<h2 id="org6cea49e">Reshape</h2>
-<div class="outline-text-2" id="text-org6cea49e">
+<div id="outline-container-org73c0289" class="outline-2">
+<h2 id="org73c0289">Reshape</h2>
+<div class="outline-text-2" id="text-org73c0289">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">A</span> = np.arange<span style="color: #3a81c3;">(</span>1,10<span style="color: #3a81c3;">)</span>
 <span style="color: #715ab1;">B</span> =A.reshape<span style="color: #3a81c3;">(</span>3,3<span style="color: #3a81c3;">)</span>       <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[[1,2,3][4,5,6],[7,8,9]]</span>
@@ -957,9 +976,9 @@ np.vsplit<span style="color: #3a81c3;">(</span>B,2<span style="color: #3a81c3;">
 </div>
 </div>
 </div>
-<div id="outline-container-org6fb4e17" class="outline-2">
-<h2 id="org6fb4e17">Stacking</h2>
-<div class="outline-text-2" id="text-org6fb4e17">
+<div id="outline-container-org9880a3d" class="outline-2">
+<h2 id="org9880a3d">Stacking</h2>
+<div class="outline-text-2" id="text-org9880a3d">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">A</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">[</span>0,1<span style="color: #2d9574;">]</span>,<span style="color: #2d9574;">[</span>2,7<span style="color: #2d9574;">]</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
 <span style="color: #715ab1;">B</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">[</span>4,5<span style="color: #2d9574;">]</span>,<span style="color: #2d9574;">[</span>6,7<span style="color: #2d9574;">]</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
@@ -985,9 +1004,9 @@ np.vstack<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">(</
 </div>
 </div>
 </div>
-<div id="outline-container-org689c9eb" class="outline-2">
-<h2 id="org689c9eb">Missing Values</h2>
-<div class="outline-text-2" id="text-org689c9eb">
+<div id="outline-container-orgdda33c2" class="outline-2">
+<h2 id="orgdda33c2">Missing Values</h2>
+<div class="outline-text-2" id="text-orgdda33c2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">s</span> =np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span>1,2,np.nan,6<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
 np.isnan<span style="color: #3a81c3;">(</span>s<span style="color: #3a81c3;">)</span>    <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[False, False, True, False]</span>
@@ -1002,9 +1021,9 @@ s<span style="color: #3a81c3;">[</span> ~ np.isnan<span style="color: #6c3163;">
 </div>
 </div>
 </div>
-<div id="outline-container-orgaaaa852" class="outline-2">
-<h2 id="orgaaaa852">Random</h2>
-<div class="outline-text-2" id="text-orgaaaa852">
+<div id="outline-container-org4e5a4a7" class="outline-2">
+<h2 id="org4e5a4a7">Random</h2>
+<div class="outline-text-2" id="text-org4e5a4a7">
 <div class="org-src-container">
 <pre class="src src-python">np.random.seed<span style="color: #3a81c3;">(</span>47<span style="color: #3a81c3;">)</span>
 np.random.random<span style="color: #3a81c3;">(</span>size=10<span style="color: #3a81c3;">)</span> 
@@ -1037,9 +1056,9 @@ np.random.randint<span style="color: #3a81c3;">(</span>-4,8, size=<span style="c
 </div>
 </div>
 </div>
-<div id="outline-container-org33d290f" class="outline-2">
-<h2 id="org33d290f">BuildIn Function</h2>
-<div class="outline-text-2" id="text-org33d290f">
+<div id="outline-container-org3e69eb5" class="outline-2">
+<h2 id="org3e69eb5">BuildIn Function</h2>
+<div class="outline-text-2" id="text-org3e69eb5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">import </span>
 <span style="color: #715ab1;">a</span> = np.random.randint<span style="color: #3a81c3;">(</span>1,10, size=<span style="color: #6c3163;">(</span>3,4<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
@@ -1083,9 +1102,9 @@ np.ceil<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</s
 </div>
 </div>
 </div>
-<div id="outline-container-orgea8c4bc" class="outline-2">
-<h2 id="orgea8c4bc">Custom Function</h2>
-<div class="outline-text-2" id="text-orgea8c4bc">
+<div id="outline-container-orga63d61c" class="outline-2">
+<h2 id="orga63d61c">Custom Function</h2>
+<div class="outline-text-2" id="text-orga63d61c">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #3a81c3; font-weight: bold;">def</span> <span style="color: #6c3163; font-weight: bold;">sigmod</span><span style="color: #3a81c3;">(</span>x<span style="color: #3a81c3;">)</span>:
     <span style="color: #3a81c3; font-weight: bold;">return</span> 1/ <span style="color: #3a81c3;">(</span>1+np.exp<span style="color: #6c3163;">(</span>x<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>
@@ -1093,9 +1112,9 @@ np.ceil<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</s
 </div>
 </div>
 </div>
-<div id="outline-container-orge95ece0" class="outline-2">
-<h2 id="orge95ece0">Iteration (Loop)</h2>
-<div class="outline-text-2" id="text-orge95ece0">
+<div id="outline-container-orgb26f58c" class="outline-2">
+<h2 id="orgb26f58c">Iteration (Loop)</h2>
+<div class="outline-text-2" id="text-orgb26f58c">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">[</span>0,1,2,3<span style="color: #2d9574;">]</span>,<span style="color: #2d9574;">[</span>4,5,6,7<span style="color: #2d9574;">]</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
 
@@ -1119,13 +1138,13 @@ np.ceil<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</s
 </div>
 </div>
 </div>
-<div id="outline-container-orgbb2302c" class="outline-2">
-<h2 id="orgbb2302c">nditer</h2>
-<div class="outline-text-2" id="text-orgbb2302c">
+<div id="outline-container-org630bbd8" class="outline-2">
+<h2 id="org630bbd8">nditer</h2>
+<div class="outline-text-2" id="text-org630bbd8">
 </div>
-<div id="outline-container-orgcb434c8" class="outline-3">
-<h3 id="orgcb434c8">C style ordering</h3>
-<div class="outline-text-3" id="text-orgcb434c8">
+<div id="outline-container-orgbd886c7" class="outline-3">
+<h3 id="orgbd886c7">C style ordering</h3>
+<div class="outline-text-3" id="text-orgbd886c7">
 <ul class="org-ul">
 <li>TODO: Fortran order add image and practice</li>
 <li>TODO: C order add image and practice</li>
@@ -1186,9 +1205,9 @@ np.ceil<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</s
 </div>
 </div>
 </div>
-<div id="outline-container-org0d77ed1" class="outline-4">
-<h4 id="org0d77ed1">External loop</h4>
-<div class="outline-text-4" id="text-org0d77ed1">
+<div id="outline-container-orgc67d85e" class="outline-4">
+<h4 id="orgc67d85e">External loop</h4>
+<div class="outline-text-4" id="text-orgc67d85e">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</span>
 <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'# '</span>*10<span style="color: #3a81c3;">)</span>
@@ -1212,9 +1231,9 @@ np.ceil<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</s
 </div>
 </div>
 </div>
-<div id="outline-container-orge9a8ba4" class="outline-4">
-<h4 id="orge9a8ba4">Modify array values while</h4>
-<div class="outline-text-4" id="text-orge9a8ba4">
+<div id="outline-container-org78567e9" class="outline-4">
+<h4 id="org78567e9">Modify array values while</h4>
+<div class="outline-text-4" id="text-org78567e9">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a</span> = np.arange<span style="color: #3a81c3;">(</span>12<span style="color: #3a81c3;">)</span>.reshape<span style="color: #3a81c3;">(</span>3,4<span style="color: #3a81c3;">)</span>
 <span style="color: #3a81c3;">print</span><span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</span>
@@ -1260,9 +1279,9 @@ np.ceil<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</s
 </div>
 </div>
 </div>
-<div id="outline-container-org5769ddb" class="outline-2">
-<h2 id="org5769ddb">Sort</h2>
-<div class="outline-text-2" id="text-org5769ddb">
+<div id="outline-container-org62690ee" class="outline-2">
+<h2 id="org62690ee">Sort</h2>
+<div class="outline-text-2" id="text-org62690ee">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #2aa1ae; background-color: #ecf3ec;">#</span><span style="color: #2aa1ae; background-color: #ecf3ec;">a = np.random.random(9).reshape(3,3)  </span>
 <span style="color: #715ab1;">a</span> = np.array<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span><span style="color: #2d9574;">[</span>0.75405387, 0.77445802, 0.87904851<span style="color: #2d9574;">]</span>,
@@ -1293,9 +1312,9 @@ np.sort<span style="color: #3a81c3;">(</span>a, axis=0<span style="color: #3a81c
 </div>
 </div>
 </div>
-<div id="outline-container-orge7e2878" class="outline-2">
-<h2 id="orge7e2878">Append</h2>
-<div class="outline-text-2" id="text-orge7e2878">
+<div id="outline-container-org8f7077f" class="outline-2">
+<h2 id="org8f7077f">Append</h2>
+<div class="outline-text-2" id="text-org8f7077f">
 <div class="org-src-container">
 <pre class="src src-python">np.append<span style="color: #3a81c3;">(</span>a, row_new, axis=0<span style="color: #3a81c3;">)</span>
 np.append<span style="color: #3a81c3;">(</span>a, col_new, axis=1<span style="color: #3a81c3;">)</span>
@@ -1303,9 +1322,9 @@ np.append<span style="color: #3a81c3;">(</span>a, col_new, axis=1<span style="co
 </div>
 </div>
 </div>
-<div id="outline-container-org669fc86" class="outline-2">
-<h2 id="org669fc86">Concat</h2>
-<div class="outline-text-2" id="text-org669fc86">
+<div id="outline-container-org1de5061" class="outline-2">
+<h2 id="org1de5061">Concat</h2>
+<div class="outline-text-2" id="text-org1de5061">
 <div class="org-src-container">
 <pre class="src src-python">np.concat<span style="color: #3a81c3;">(</span>c,d<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new row is added </span>
 np.concat<span style="color: #3a81c3;">(</span>c,d, axis=1<span style="color: #3a81c3;">)</span>  <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">new col is added</span>
@@ -1313,9 +1332,9 @@ np.concat<span style="color: #3a81c3;">(</span>c,d, axis=1<span style="color: #3
 </div>
 </div>
 </div>
-<div id="outline-container-org2395697" class="outline-2">
-<h2 id="org2395697">Unique</h2>
-<div class="outline-text-2" id="text-org2395697">
+<div id="outline-container-orge9eddac" class="outline-2">
+<h2 id="orge9eddac">Unique</h2>
+<div class="outline-text-2" id="text-orge9eddac">
 <div class="org-src-container">
 <pre class="src src-python">np.unique<span style="color: #3a81c3;">(</span>a<span style="color: #3a81c3;">)</span>
 </pre>
@@ -1329,9 +1348,9 @@ np.concat<span style="color: #3a81c3;">(</span>c,d, axis=1<span style="color: #3
 </div>
 </div>
 </div>
-<div id="outline-container-org9b7e683" class="outline-2">
-<h2 id="org9b7e683">Where</h2>
-<div class="outline-text-2" id="text-org9b7e683">
+<div id="outline-container-orgb0f6cc2" class="outline-2">
+<h2 id="orgb0f6cc2">Where</h2>
+<div class="outline-text-2" id="text-orgb0f6cc2">
 <p>
 np.where(a&gt;50,0,a) if a_elem &gt; a then it is same value else a_elem = 0<br />
 if a_ele &gt; 50 then a = a<br />
@@ -1361,9 +1380,9 @@ np.where<span style="color: #3a81c3;">(</span>a&lt; 0.5,0,a<span style="color: #
 </div>
 </div>
 </div>
-<div id="outline-container-orgb747419" class="outline-2">
-<h2 id="orgb747419">Histogram</h2>
-<div class="outline-text-2" id="text-orgb747419">
+<div id="outline-container-org84287a9" class="outline-2">
+<h2 id="org84287a9">Histogram</h2>
+<div class="outline-text-2" id="text-org84287a9">
 <div class="org-src-container">
 <pre class="src src-python">np.histogram<span style="color: #3a81c3;">(</span>a,<span style="color: #3a81c3;">bin</span>=<span style="color: #6c3163;">[</span>10,20,30,.....100<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span> 
 np.histogram<span style="color: #3a81c3;">(</span>a,<span style="color: #3a81c3;">bin</span>=<span style="color: #6c3163;">[</span>10,20,50,100<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
@@ -1371,9 +1390,9 @@ np.histogram<span style="color: #3a81c3;">(</span>a,<span style="color: #3a81c3;
 </div>
 </div>
 </div>
-<div id="outline-container-org62b6e47" class="outline-2">
-<h2 id="org62b6e47">Correlation Co-efficient</h2>
-<div class="outline-text-2" id="text-org62b6e47">
+<div id="outline-container-org3277518" class="outline-2">
+<h2 id="org3277518">Correlation Co-efficient</h2>
+<div class="outline-text-2" id="text-org3277518">
 <div class="org-src-container">
 <pre class="src src-python">np.corrcoef<span style="color: #3a81c3;">(</span><span style="color: #6c3163;">[</span>20,40,25,36,60<span style="color: #6c3163;">]</span>,<span style="color: #6c3163;">[</span>1,3,4,2,7<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>
 
@@ -1390,9 +1409,9 @@ np.histogram<span style="color: #3a81c3;">(</span>a,<span style="color: #3a81c3;
 </div>
 </div>
 </div>
-<div id="outline-container-org04ba6f3" class="outline-2">
-<h2 id="org04ba6f3">Plot</h2>
-<div class="outline-text-2" id="text-org04ba6f3">
+<div id="outline-container-orgf04eb1f" class="outline-2">
+<h2 id="orgf04eb1f">Plot</h2>
+<div class="outline-text-2" id="text-orgf04eb1f">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">x</span> = np.linspace<span style="color: #3a81c3;">(</span>10,10,10<span style="color: #3a81c3;">)</span>
 <span style="color: #715ab1;">y</span>= np.sin<span style="color: #3a81c3;">(</span>x<span style="color: #3a81c3;">)</span>
@@ -1419,31 +1438,31 @@ Cell <span class="ansi-green-fg">In[102], line 4</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org9946052" class="outline-2">
-<h2 id="org9946052"><span class="todo TODO">TODO</span> Mesh Grid</h2>
+<div id="outline-container-org82716c4" class="outline-2">
+<h2 id="org82716c4"><span class="todo TODO">TODO</span> Mesh Grid</h2>
 </div>
-<div id="outline-container-orga2e19df" class="outline-2">
-<h2 id="orga2e19df">Boardcasting</h2>
-<div class="outline-text-2" id="text-orga2e19df">
+<div id="outline-container-org70b8d8c" class="outline-2">
+<h2 id="org70b8d8c">Boardcasting</h2>
+<div class="outline-text-2" id="text-org70b8d8c">
 
-<div id="org0e879f9" class="figure">
-<p><img src="Broacasting_2_rule.png" alt="Broacasting_2_rule.png" />
+<div id="orgcf4b710" class="figure">
+<p><img src="numpy-img/Broacasting_2_rule.png" alt="Broacasting_2_rule.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb57ccfd" class="outline-2">
-<h2 id="orgb57ccfd">Copy and View</h2>
-<div class="outline-text-2" id="text-orgb57ccfd">
+<div id="outline-container-org1379236" class="outline-2">
+<h2 id="org1379236">Copy and View</h2>
+<div class="outline-text-2" id="text-org1379236">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #715ab1;">a_backup</span> = a.copy<span style="color: #3a81c3;">()</span>
 <span style="color: #715ab1;">a_ref</span> = a.view<span style="color: #3a81c3;">()</span> <span style="color: #2aa1ae; background-color: #ecf3ec;"># </span><span style="color: #2aa1ae; background-color: #ecf3ec;">it is refer any change in a_ref will change in a</span>
 </pre>
 </div>
 </div>
-<div id="outline-container-org75fe59b" class="outline-3">
-<h3 id="org75fe59b">Learn More from</h3>
-<div class="outline-text-3" id="text-org75fe59b">
+<div id="outline-container-org1554a37" class="outline-3">
+<h3 id="org1554a37">Learn More from</h3>
+<div class="outline-text-3" id="text-org1554a37">
 <p>
 freecodeCamp: Python NumPy Tutorial for Beginners
 </p>
@@ -1465,7 +1484,7 @@ Learn more about numpy with
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Karthik D</p>
-<p class="date">Created: 2024-06-11 Tue 21:15</p>
+<p class="date">Created: 2025-08-01 Fri 05:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

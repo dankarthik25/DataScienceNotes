@@ -1,0 +1,1436 @@
+#+TITLE: My Python Notes
+#+AUTHOR:    Karthik
+#+OPTIONS: num:nil
+# +OPTIONS: ^:nil p:t
+# +OPTIONS: toc:nil  Timestamp: nil toc:nil date:nil author:nil
+#+OPTIONS: broken-links:t
+
+#+SETUPFILE:css/emacs-org.setup
+# +SETUPFILE: ~/mynotes/org2html/org-theme-collection/theme-readtheorg.setup
+ 
+[  [[./index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
+-----
+
+Grouping related method,attribues, class into a module
+
+- Easier to understand and Write
+- Module  allows to logically organize your code
+- Module in py  is objects  with arbitrarily named attributes that you can bind and reference
+- Simply a module is a file =.py file= consistign of py code
+- Module can define functions,classes and varibale
+- Module can also include runnable code
+* Os module
+*** Intoduction Shortcut method:
+#+BEGIN_SRC python
+import os 
+print(os.__file__)             # /usr/lib/python2.7/os.pyc
+
+#+END_SRC
+ all the method are linux based cmd
+
+| method                      | Describtion                                               |
+|-----------------------------+-----------------------------------------------------------|
+| os.getcwd()                 | '/User/coreyshafer/Desktop/'                              |
+| os.listdir(path)            | return list names of files in current dir                 |
+| os.chdir(path)              | change dir to path                                        |
+| os.makedir(path)            | create dir and it sub dir (mkdir can't)                   |
+| os.mkdir(path[, mode])      | create a directory                                        |
+| os.rmdir(path)              | remove dir path                                           |
+| os.removedirs(path)         | remove dir ectory and it sub directory                    |
+| os.remdir(path)             | re directory                                              |
+| os.rename (src,dst)         | rename file or dir src to dst                             |
+| os.chroot(path)             | change root dir to current working path                   |
+|-----------------------------+-----------------------------------------------------------|
+|-----------------------------+-----------------------------------------------------------|
+| os.status(file)             |                                                           |
+| os.open(file,flags[,model]) | open file, set flags and mode                             |
+| os.read(fd,n)               |                                                           |
+| os.closed(fd)               | clsoe the file descriptor                                 |
+| os.chflags(path,flags)      | set flags of path to numeric flags                        |
+| os.chmod(path,mode)         | Change mode of path to numeric mode                       |
+| os.chown(path,uid,gid)      | Change owner and group id of path to numerial uid and gid |
+| os.symlink(src,dst)         | Create a symbolic link(short cut) point to src name dst   |
+| os.remove(path)             | remove the file for the path                              |
+| os.write                    |                                                           |
+|-----------------------------+-----------------------------------------------------------|
+| os.path.isdir(dir_path)     | True if dir exist                                         |
+| os.path.exists(file_path)   | True if file exist                                        |
+
+#+BEGIN_SRC python
+os.stat('103041478_electricity_bill_11_payment.pdf')
+# >>> os.stat_result(st_mode=33279, st_ino=14816496, st_dev=2049, st_nlink=1, st_uid=1000, st_gid=1000, st_size=108238, st_atime=1545121417, st_mtime=1542892011, st_ctime=1543569248)
+
+ os.stat('103041478_electricity_bill_11_payment.pdf').st_size
+# >>> 108238
+
+mod_time = os.stat('103041478_electricity_bill_11_payment.pdf').st_mtime
+# 1542892011.625957 time stamp formate  for human readable formate
+
+from datetime import datetime
+print(datetime.fromtimestamp(mod_time))
+# 2018-11-22 18:36:51.625957
+
+#+END_SRC
+
+**** File Objects 
+***** Cheat Sheet
+| method                             | Describtion                       |
+| os.read                            | open file in editor               |
+| os.write                           | write a file                      |
+| os.rename(test001.txt, test02.txt) | Rename test001.txt to test002.txt |
+| os.remove(test001.txt)             | Delete test001.txt                |
+|                                    |                                   |
+***** read,write, rename, remove,
+***** change dir, make dir , del dir
+***** Example writing/reading a file using 'os.open'
+#+BEGIN_SRC python
+import os,sys
+
+fd = os.open ("f1.txt", os.O_RDWR|os.O_CREAT)
+
+# Writing one string
+line = "this is test"
+b = str.encode(line)
+ret = os.write(fd,b) # consist of no of bytes writen in f1.txt
+
+print("the no of bytes written: ", ret)
+os.close(fd)
+
+print("Closed the file successfully!")
+input()
+
+fd = os.open("f1.txt",os.O_RDWR)
+ret = os.read(fd,12)
+
+print(ret.decode())
+os.close(fd)
+print("Closed the file successfully!")
+
+#+END_SRC
+
+***** Rename and Del file
+#+BEGIN_SRC python
+os.rename(current_file.txt, new_file_name.txt)
+os.remove(current_file_name.txt)
+#+END_SRC
+***** Directory mange
+#+BEGIN_SRC python
+os.mkdir("newdir") # make a dir
+os.chdir(dir_path) # change current dir
+# find at which dir you are present
+os.getcwd()
+# del dir
+os.rmdir("test")
+#+END_SRC
+**** File Objet Ex2
+Whether you use destop or web applications File Objest are basics used
+
+built-in open cmd :
+         Noraml is not re-commanded
+         
+#+BEGIN_SRC python
+  f= open('text.txt','r')  # In general dir :'path' is given  , defalut: current dir, python searchpath
+
+  print(f.name)
+  print(f.mode)
+
+  f.close()
+
+  # f.close()  is complusory defined
+  # If file is n't close then it may memory leak
+
+  # So content-text manger is used insted of open()
+
+  with open('text.txt','r') as f:
+      pass
+
+  # Advantages
+     # Automatically close file
+     # auto close if there is exception
+
+  # EX
+  print(f.closed)          # >> True
+  # return True if file is closed
+
+  # print(f.read()) # VALUE ERROR: i/O operator of closed file
+
+#+END_SRC
+***** os.open
+os.open (file, flags, mode)
+os.read,os.close
+
+#+BEGIN_SRC python
+os.open(file, flage[, mode])
+#+END_SRC
+
+| flag          | Describtion                      | mode |
+|---------------+----------------------------------+------|
+| os.O_RDONLY   | open for reading only            | 'r'  |
+| os.O_WRONLY   | open for writing only            | 'w'  |
+| os.O_RDWR     | open for reading and wring       | 'r+' |
+| os.O_NONBLOCK | do not block on open             |      |
+| os.O_APPEND   | append on each write             | 'a'  |
+| os.O_CREAT    | create file if it does not exist |      |
+
+*** Ex of Dir managements
+#+BEGIN_SRC python
+import os
+form datetime import datetime
+print(dir(os))        # show all attribues and method in module
+
+
+# Get current working Dir [os.getcwd()]   [pwd in linux]
+print(os.getcwd())              # /home/dan
+
+# Change Dir
+os.chdir('/home/dan/Desktop')   # /home/dan/Desktop
+print(os.getcwd())
+
+# List of file and folders in current dir
+print(os.listdir())
+
+
+# Make a dir
+os.mkdir('Os-Demo-1')
+
+# os.mkdir('Os-Demo-1/Sub-DEMO') # ERROR: CANNOT CREATE DIR INSIDE
+os.makedirs('Os-Demo-1/Sub-DEMO')    # advange os makedirs is it can create dir inside dirs
+
+# Delete a dir(folders)
+os.rmdir('Os-Demo-1')
+os.remodedirs('Os-Demo-1')
+
+# Rename a dir
+os.rename('old.txt', 'new.txt')
+
+
+# Status of demo
+
+print(os.stat('demo.txt'))
+
+# >>> os.stat_result(st_mode=16877, st_ino=8524201, st_dev=2049, st_nlink=2, st_uid=1000, st_gid=1000, st_size=4096, st_atime=1543198458, st_mtime=1543082778, st_ctime=1543082778)
+
+# Size of file
+print('Size of file: demo.txt is :' + os.status('demo.txt').st_size)
+# >> 4096
+
+# Last Modified Time 
+print(os.stat('demo.txt').st_mtime)
+#>>> 1543082778 (this is in timestamp formate )
+
+# Modified time stamps
+mod_time = os.stat('demo.txt').st_mtime
+print(datetime.fromtimestap(mod_time))
+# >>> 2018-11-24 23:36:18.194036
+
+# See entire directory (child director)
+#+END_SRC
+*** Os walk [tree of all file/sub-dir]
+#+BEGIN_SRC python
+import os
+
+path = '/home/dan/Desktop'
+
+for dirpath in os.walk(path):
+  # dirpath  = ('seach_path', [list of dir in search_path],[list of files in search_path])
+  drp = dirpath[0]
+  dirnames = dirpath[1]
+  filenames = dirpath[2]
+  print('path :',drp[len(path):])
+  print('dir:'+ '\n  ' +  '\n  '.join(dirnames))
+  print('files:'+ '\n   ' + '\n '.join(filenames))
+  print()
+
+#+END_SRC
+*** Os path [JOIN AND SPLIT PATH]
+#+BEGIN_SRC python
+ # Joining , Spiliting,
+print(os.environ.get('HOME')) #>> /User/jayradhe
+
+file_path = os.path.join(os.environ.get('HOME'), 'text.txt')
+
+print(file_path)
+
+os.path.basename('/temp/test.txt'))
+# test.txt
+os.path.dirname('/temp/test.txt'))
+# /temp
+os.path.split('/temp/test.txt'))
+# ('/temp', 'test.txt')
+os.path.exists('/temp/test.txt'))
+os.path.isdir('/temp/test.txt'))
+# False
+os.path.isfile('/temp/test.txt'))
+# False
+os.path.splitext('/temp/test.txt'))
+# ('/temp/test','.txt')
+
+#+END_SRC
+*** Os Flags
+#+BEGIN_SRC python
+  os.environ.get('HOME')                                      # >>>'/home/dan'
+  path1 = os.environ.get('HOME') + '/' + 'test.txt'           # >>>'/home/dan/test.txt'
+  path2 = os.path.join(os.environ.get('HOME'),'text.txt')     #>>> '/home/dan/text.txt'
+
+  temp = '/home/dan/text.txt'
+
+  os.path.basename(temp)      # >>>'text.txt'
+  os.path.dirname(temp)       # >>>'/home/dan'
+  os.path.split(temp)         # >>>('/home/dan', 'text.txt')
+  os.path.exists(temp)        # >>>False
+  os.path.isdir(temp)         # >>>False
+  os.path.isfile(temp)        # >>> False
+  os.path.splitext(temp)      # >>> ('/home/dan/text', '.txt')
+#+END_SRC
+* Datetime module
+*** Introduction
+There are two types of model 
+- navie datetime
+- aware datetime
+
+In navie datetime consist of 
+ - date      [year, month, day, weekday]
+ - time      [hh,mm,ss,msec]
+ - date&time [year, month, day, weekday],[hh,mm,ss,msec]
+
+In aware datetime in addtion to navie consist of timezone
+  - timezone +/- 00:00
+
+In general datetime module does n't consist of database of timezone
+so we use other package like pytz, dateulti.tz 
+
+*** Date
+#+BEGIN_SRC python
+# navie datetime, aware datetime
+import datetime
+d = datetime.date(2016,7,24)  # YYYY,MM,DD
+print(d)      # >>>2016-07-24
+
+tday = datetime.date.today()
+print(tday)     # 2018-11-28
+
+import datetime
+
+
+tday = datetime.date.today()
+print(tday.year)                # 2018
+print(tday.month)               # 11
+print(tday.day)                 # 26
+print(tday)                     # 2018-11-20
+
+print(tday.weekday())           # 0 # weekday MONDAY :0, SUNDAY :6
+print(tday.isoweekday())        # 1 # iso weekday MONDAY:1 SUNDAY:7
+
+
+
+
+#+END_SRC
+
+*** Time
+#+BEGIN_SRC python
+import datetime
+
+t = datetime.time(9, 30, 45, 100000)  #  hh,mm,ss,micro ss
+print(t)                  #  09:30:45.100000
+print(t.hour)               # 9
+print(t.min)                # 00:00:00
+print(t.minute)             # 30
+
+print(t.min)                # 00:00:00
+print(t.minute)             # 30
+
+#+END_SRC
+*** timedelda
+https://pynatixbve.com/python-timedelta/
+
+https://www.includehelp.com/python/timedelta-total_seconds-method-with-example.aspx
+#+begin_src pythons
+import datetime
+datetime.timedelta(weeks=0, days=0, hours=0,  minutes=0, seconds=0, milliseconds=0, microseconds=0 )
+#Returns : Date
+
+###############
+#  tdelta
+#################
+tday = datetime.datetime.now()
+tdelta = dt.timedelta(days=7)
+
+# print(tday +tdelta)                 # 2018-12-03
+# print(tday - tdelta)                # 2018-11-19
+bday = datetime.datetime(2022,8,25,0,0,0)
+till_day = bday-tday
+print(f'bday \t\t= {bday}')
+print(f'till_day \t={till_day} and has remaing days {till_day.days}')                     # -93 days, 0:00:00
+
+
+
+print("Calculate time")
+total_seconds = till_day.total_seconds()
+remain_seconds = int(total_seconds % 60)
+remain_minutes = int(((total_seconds -remain_seconds)% 3600) // 60)
+remain_hours =  total_seconds//3600
+remain_days = int(remain_hours//24)
+remain_hours = int(remain_hours - remain_days*24)
+print(f"\t remaining time = {remain_days} days {remain_hours}:{remain_minutes}:{remain_seconds}")
+print(f"\t total minutes \t= {(remain_days*24 + remain_hours)*60 + remain_minutes}")
+print(f"\t total hours \t= {(remain_days*24 + remain_hours) }")
+print(f"\t total second \t= {till_day.total_seconds()}")     # -8035200.0
+
+#+end_src
+*** datetime  tz-naive or with default Timezone
+#+BEGIN_SRC python
+dt_today = datetime.datetime.today()        # current local time NO-TIMEZOME
+dt_now = datetime.datetime.now()            # give TIMEZONE : default: NONE
+dt_utcnow = datetime.datetime.utcnow()      # UTC info: NONE
+
+print(dt_today)             # 2018-11-26 21:20:31.829934
+print(dt_now)               # 2018-11-26 21:20:49.192463
+print(dt_utcnow)            # 2018-11-26 15:51:51.149416
+
+#+END_SRC
+*** From datetime to only time
+#+begin_src 
+from datetime import datetime
+
+strg = "2017-07-20-10-30"
+
+dt = datetime.strptime(strg, '%Y-%m-%d-%H-%M')
+tme = dt.time()
+print(tme)  # 10:30:00
+
+#+end_src
+* datetime tz-aware
+*** pytz module for Timezone
+
+by default python set timezone :default +00:00 or utc time 
+indian time zone ='Asia/Kolkata'=
+#+BEGIN_SRC python
+import pytz
+import datetime
+import pytz
+
+print("\n".join(pytz.all_timezones))
+dt_today = datetime.datetime.today()
+
+#
+yy = dt_today.year
+mm = dt_today.month
+dd = dt_today.day
+hh = dt_today.hour
+mn = dt_today.minute
+sec = dt_today.second
+msec = dt_today.microsecond
+# WRONG :
+dt = datetime.datetime(yy,mm,dd,hh,mn,sec,msec,tzinfo=pytz.UTC)
+# # we are in timezone india(koltala) we can't assign timzone to default
+print('datetime.today:\t',dt)               # 2018-11-27 12:30:45+00:00
+
+
+dt_now = datetime.datetime.now(tz=pytz.UTC)
+print('datetime.now:\t',dt_now)           # 2018-11-26 20:32:32.911316+00:00
+
+dt_utcnow = datetime.datetime.utcnow().replace(tzinfo=pytz.UTC)
+print('utcnow:\t \t',dt_utcnow)        # 2018-11-26 20:33:24.122555+00:00
+
+dt_dtz = datetime.datetime.now(tz=pytz.UTC)
+print ("time zone defalut :\t", dt_dtz)
+dt_UsMountain_tz = dt_dtz.astimezone(pytz.timezone('US/Mountain'))
+print("time zone US/Moun : \t", dt_UsMountain_tz)                                 # 2018-11-26 13:36:10.214904-07:00
+#+END_SRC
+
+*** List of Timezone
+#+BEGIN_SRC python
+## List of all timezones
+for tz in pytz.all_timezones:
+  print(tz)
+#+END_SRC
+
+*** set timezone with datatime.timezone
+https://queirozf.com/entries/python-datetime-with-timezones-examples-and-reference
+*** Convert timezone or remove timezone
+*** Change one timezone to other timezone(using astimezone)
+#+begin_src python
+# temp_date.tz_convert(None)
+import datetime as dt
+import pytz
+# Naive Date Time 
+dt_naive = dt.datetime(2022,9,19,9,30,0)
+# print(dt_naive)                                    # 2022-09-19 09:30:00
+New_York_tz = pytz.timezone('America/New_York') 
+dt_New_York_tz = New_York_tz.localize(dt_naive)
+print(dt_New_York_tz)                                # 2022-09-19 09:30:00-04:00
+
+# India Stand Time  + 5:30 
+ist= 'Asia/Calcutta'
+India_timezone = pytz.timezone('Asia/Calcutta')
+# timezone = pytz.timezone('Asia/Calcutta')
+India_time_tz = new_york_time_tz.astimezone(India_timezone)
+# India_time_tz = India_timezone.localize(new_york_time_tz)
+print(India_time_tz)                                 # 2022-09-19 19:00:00+05:30 
+print(India_time_tz.tz_localize(None))               # To get utc time and remove timezone
+print(India_time_tz.tz_convert(None))                # To get local indian time 
+#+end_src
+
+#+begin_src python
+from datetime import datetime
+import pytz
+
+naive= datetime.now()
+## Adding a timezone
+timezone = pytz.timezone("Asia/Kolkata")
+aware1 = naive.astimezone(timezone)
+## After adding the timezone info, 
+## the object it becomes aware
+timezone = pytz.timezone("Asia/Tokyo")
+aware2 = aware1.astimezone(timezone)
+print("naive\t=",naive)
+print("aware1\t=",aware1)
+print("aware2\t=",aware2)
+
+#+end_src
+
+#+begin_src result
+naive	= 2022-09-02 08:34:45.727176
+aware1	= 2022-09-02 08:34:45.727176+05:30
+aware2	= 2022-09-02 12:04:45.727176+09:00
+#+end_src
+
+#+begin_src 
+
+df = df.tz_convert(None)
+#+end_src
+*** Naive to timezone (tz -naive dt) to (tz-aware dt) or (naive dt to datetime withtimezone)
+#+BEGIN_SRC python
+# given naive datetime to timezone
+
+dt_naive = datetime.datetime.now()
+# print(dt_naive)                                         # 2018-11-27 02:10:09:10.0000
+UsMountain_tz = pytz.timezone('US/Mountain') 
+# print(UsMountain_tz)                                    # US/Mountain
+dt_UsMountain_tz = UsMountain_tz.localize(dt_naive)
+print("time zone US/Moun : \t",dt_UsMountain_tz)                                # 2018-11-27 02:10:19.941388-07:00
+#+END_SRC
+
+*** String 2 Datetime or Datetime 2 String
+Python strftime cheatsheet  https://strftime.org/ \\
+https://www.programiz.com/python-programming/datetime/strftime
+
+| Code | Example | Description |
+|------+---------+-------------|
+|%a |Sun |Weekday as locale’s abbreviated name.|
+|%A |Sunday |Weekday as locale’s full name.|
+|%w |0 |Weekday as a decimal number, where 0 is Sunday and 6 is Saturday.|
+|%d |08 |Day of the month as a zero-padded decimal number.|
+|%-d |8 |Day of the month as a decimal number. (Platform specific)|
+|%b |Sep |Month as locale’s abbreviated name.|
+|%B |September |Month as locale’s full name.|
+|%m |09 |Month as a zero-padded decimal number.|
+|%-m |9 |Month as a decimal number. (Platform specific)|
+|%y |13 |Year without century as a zero-padded decimal number.|
+|%Y |2013 |Year with century as a decimal number.|
+|%H |07 |Hour (24-hour clock) as a zero-padded decimal number.|
+|%-H |7 |Hour (24-hour clock) as a decimal number. (Platform specific)|
+|%I |07 |Hour (12-hour clock) as a zero-padded decimal number.|
+|%-I |7 |Hour (12-hour clock) as a decimal number. (Platform specific)|
+|%p |AM |Locale’s equivalent of either AM or PM.|
+|%M |06 |Minute as a zero-padded decimal number.|
+|%-M |6 |Minute as a decimal number. (Platform specific)|
+|%S |05 |Second as a zero-padded decimal number.|
+|%-S |5 |Second as a decimal number. (Platform specific)|
+|%f |000000 |Microsecond as a decimal number, zero-padded on the left.|
+|%z |+0000 |UTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).|
+|%Z |UTC |Time zone name (empty string if the object is naive).|
+|%j |251 |Day of the year as a zero-padded decimal number.|
+|%-j |251 |Day of the year as a decimal number. (Platform specific)|
+|%U |36 |Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.|
+|%W |35 |Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.|
+|%c |Sun Sep 8 07:06:05 2013 |Locale’s appropriate date and time representation.|
+|%x |09/08/13 |Locale’s appropriate date representation.|
+|%X |07:06:05 |Locale’s appropriate time representation.|
+|%% |% |A literal '%' character.|
+
+#+begin_src python
+import datetime
+import pytz
+
+dt_mtn = datetime.datetime.now(tz=pytz.time('US/Mountain'))
+print(dt_mtn.isoformat()))
+print(dt_mtn.strftime('%B %d, %Y'))  # August 15, 2021
+
+
+
+# CONVERT STRING TO DATETIME 
+dt_str  = 'August 15, 2021'
+
+dt= datetime.datetime.strptime(dt_str,'%B %d, %Y')
+print(dt)
+
+# strftime - Datetime to String 
+# strptime - String to Datetime
+#+end_src
+*** Ex Datetime and 
+#+BEGIN_SRC python
+  import os
+  from datetime import datetime
+  # # Change Dir
+  os.chdir('/home/dan/Desktop')   # /home/dan/Desktop
+  print(os.getcwd())
+
+
+  # Status of demo
+  os.stats('game')
+
+  # >>> os.stat_result(st_mode=16877, st_ino=8524201, st_dev=2049, st_nlink=2, st_uid=1000, st_gid=1000, st_size=4096, st_atime=1543198458, st_mtime=1543082778, st_ctime=1543082778)
+
+  # Size of file
+  print('Size of file: game is :' + os.status('game').st_size)
+  # >> 4096
+
+  # Last Modified Time 
+  print(os.stat('game').st_mtime)
+  #>>> 1543082778 (this is in timestamp formate )
+
+  # Modified time stamps
+  mod_time = os.stat('game').st_mtime
+  print(datetime.fromtimestap(mod_time))
+  # >>> 2018-11-24 23:36:18.194036
+
+  # See entire directory (child director)
+#+END_SRC
+
+* File Module or File Object 
+*** File acess modes 
+| read only       | 'r'  |
+| read and write  | 'r+  |
+| write only      | 'w'  |
+| write and read  | 'w+' |
+| append only     | 'a'  |
+| append and read | 'a+' |
+|                 |      |
+
+#+BEGIN_SRC python
+f = open('test.txt','r')
+print(f.name)
+print(f.mode)
+f.close 
+
+
+
+f = open('newfile.txt', 'w')
+f.write('Hello\n')
+f.writelines(['Hello','World\n'])
+
+f.close
+#+END_SRC
+*** Contant manager
+#+BEGIN_SRC python
+with open ('text.txt','r') as f:
+   f_contents = f.read()              # read entire file
+   print(f_contents)
+# Disadvantages:    # if file size is more then memory is more > slower
+# Advantages :      # To read a small size file
+# what if  we need to read large  we n't  wanted to load in memory 
+   f_contents = f.readlines()   # list of lines ['line1 \n', 'line2 \n'..........etc]
+   print(f_contents)
+
+   f_id_line = f.readline()
+   print(f_f_id_line, end='')                #  >>> line1 
+
+   f_id_line = f.readline()
+   print(f_f_id_line, end='')                #  >>> line2
+# ####################
+# Using for loop to read line
+# ####################
+   for line in f:
+     print(line, end='')
+      # effiecient for read line
+# #############
+# More control read 10 char
+# ###################
+size_to_read = 10
+f_content = f.read(size_to_read)
+print(f_content, end ='*')     # read 10 char for index seperate by *
+
+while len(f_contents ) >0:
+  print(f_contents, end='*')
+  print("\n index or current possion:\n "f.tell())      # current possion
+  f_content = f.read(size_to_read)
+#   print(f_tell()) # 
+  f.seek(0)   # to change the position to starting of file 
+  f_content = f.read(size_to_read)
+  print(f_content, end ='*')     # read 10 char for index seperate by *
+  f_content = f.read(size_to_read)
+  f.seek(0)
+  f_content = f.read(size_to_read)
+  print(f_content, end ='*')     # read 10 char for index seperate by *
+#+END_SRC
+
+*** Write mode or Overwrite mode with Contant Manager
+#+BEGIN_SRC python
+with open('test2.txt', 'w') as f:
+     pass
+#    f.write("Test")
+
+with open('test3.txt', 'w') as f:
+    f.write('Test First line')   # str 'Test' is write in file
+    f.seek(0)
+    f.write('Second line')
+# Disadvange:
+    # If text3.txt is already existed then it will start write at the EOF
+
+    # If use to movke to begin of flie : f.seek(0)
+
+
+# # Copy a file
+
+with open('test.txt', 'r') as rf:
+    with open('test_copy.txt', 'w') as wf:
+        for line in rf:
+            wf.write(line)
+
+
+# # Copy a Image
+
+with open('test.txt', 'r') as rf:
+    # ERROR UnicodeDecoder: utf-8 can't decode bytes at Addre in position 0
+
+# For Image we use binary mode
+with open('test.jpg', 'rb') as rf:
+    with open('test_copy.jpg', 'wb') as wf:
+        for line in rf:
+            wf.write(line)
+
+# More control : in chunk_size
+with open('bronx.jpg','rb') as rf:
+    with open('bronx_copy,jpg', 'wb') as wf:
+        chunk_size = 1024
+        rf_chunk = rf.read(chunk_size)
+        while len(rf_chunk):
+            wf.write(rf_chunk)
+            rf_chunk = rf.read(chunk_size)
+#+END_SRC
+
+*** Append Mode with Contant Manager
+srource: https://stackoverflow.com/questions/59308996/how-to-fix-python-overwriting-file-in-append-mode
+I'm making a register (e.g. a school one) program in python using tkinter and i'm trying to add a new person to the register every time the person clicks submit but all that is happening is that it is overwriting the previous name meaning that the file that it is being saved to only have one name.\\
+Does anyone have any suggestions on how to fix this?\\
+Some clarity: register_info and listees_info are the name of the register and the name of the latest person that is being saved to the file.\\
+This is the part of my code: \\
+#+begin_src python
+def create_register():
+    register_info = registername.get()
+    listees_info = listees.get()
+    list_of_registers=os.listdir()
+    if register_info in list_of_registers:
+        file=open(register_info,"w")
+        file.close()
+        Label(create, text = "Register Created", fg = "green" ,font = ("calibri", 8)).pack()
+    with open(register_info,"a") as file_info:
+        file_info.write(register_info+"\n")
+        file_info.write(listees_info+"\n")
+        file_info.close()
+#+end_src
+**** Solution:
+The =w= mode you pass to open (in your line that reads =file=open(register_info,"w")=) tells python you want to open the file for writing. By design, this gets rid of anything else in the file and places the cursor at the beginning. It sounds like you want to open the file and append information to the end, without overwriting anything.\\
+To do this, you should use the a mode for append. This opens the file for writing and places the cursor at the end of the file.\\
+So, you need to say =open(register_info, "a")=. \\
+I also suggest switching to a context manager which ensures the file is closed if any unexpected behavior happens. You would do this like:
+#+begin_src python
+with open(register_info, "a") as file:
+    # Any code that needs to use "file" here
+#+end_src
+More information about file opening modes (taken from another answer of mine):
+#+begin_quote
+=r=: Opens the file in read-only mode. Starts reading from the beginning of the file and is the default mode for the open() function.\\
+=rb=: Opens the file as read-only in binary format. Places the cursor at the start of the file.\\
+=r+=: Opens a file for reading and writing. Places the cursor at the beginning of the file. \\
+=w=: Opens in write-only mode. Places the cursor at the beginning of the file. This will overwrite any existing file with the same name. It will create a new file if one with the same name doesn't exist.\\
+=wb=: Same behavior as w, except the file is opened in binary mode. \\
+=w+=: Opens a file for writing and reading. Replaces all content and creates the file if it doesn't exist. This mode is used when you need to write to an empty-file and potentially read from it later in your code (before closing). \\
+=wb+=: Same behavior as w+ except the file is in binary mode. \\
+=a=: Opens a file for appending new information to it. The cursor is placed at the end of the file. A new file is created if one with the same name doesn't exist. \\
+=ab=: Same behavior as a except the file is in binary mode. \\
+=a+=: Opens a file for both appending and reading. The cursor is placed at the beginning of the file. \\
+=ab+=: Same as a+ except the file is in binary mode.\\
+#+end_quote
+*** Rename mulitple files
+#+BEGIN_SRC python
+# Consister a dir as unorder videos which are to sorted by index in name
+
+# dir(path)
+"""
+>>>
+Earth - Our Solor System - #4
+Jupiter - Our Solar System -#6
+Mar - Our Solor System - #5
+Mecury - Our Solor System - #2
+Neptune - Our Solor System - #8
+Pluto - Our Solor System - #10
+Saturn - Our Solor System - #7
+The Sun - Our Solor System - #1
+Urans - Our Solor System - #9
+Venus- Our Solor System - #3
+"""
+
+import os
+
+path ='/home/dan/Downloads'
+
+os.chdir(path)
+
+for file in os.listdir():
+    f_name,f_ext = os.path.split(file)
+    # print(file_name,f_ext)
+
+    f_title, f_course, f_num = f_name.split('-')
+    # print(f_title, f_course, f_num) = f_name.split('-')
+
+    f_title = f_title.strip()
+    f_course = f_course.strip()
+    f_num = f_num.strip.()[1:].zfill(2) # zero padding by 2 and remove #
+    
+
+    #  print('{}-{}-{}{}'.format(f_num, f_course, f_title,f_ext))
+    new_name = '{}-{}-{}{}'.format(f_num, f_course, f_title,f_ext)
+    os.rename(f, new_name)
+#+END_SRC
+* Read CSV module- read, parse, write
+CSV file: a plane txt and use delimiters like ',' '\n' 
+First line : Consist of field like 'first_name', 'last_name','email'
+
+**** Ex: Read a csv file (as list)
+first_name, last_name, email
+John, Doe, john-doe@guseemail.com
+mary,smith,smith-mary@gmail.com.....
+
+#+BEGIN_SRC python
+import csv
+
+# read csv file
+
+with open('names.csv', 'r') as csv_file:
+   csv_reader= csv.read(csv_file)
+
+   print(csv_reader) # >>> object
+
+for line in csv_reader:
+   print(line)
+   # >>> ['first_name', 'last_name','email']
+   # >>> ['John', 'Doe', 'john-doe@guseemail.com']
+   # >>> ['mary','smith','smith-mary@gmail.com']
+   print(line[2])
+   # >>> ['email']
+   # >>> [ 'john-doe@guseemail.com']
+   # >>> ['smith-mary@gmail.com']
+
+  #    to remove ['email']
+with open('names.csv', 'r') as csv_file:
+  csv_reader= csv.read(csv_file)
+  next(csv_reader)  # Remove the first line
+  for line  in csv_reader:
+     print(line[2])      
+
+# ##################3
+# CSV WRITE WITH DIFFEERENT DELEMITTER 
+#####################333
+
+with open('names.csv', 'r') as csv_file:
+  csv_reader= csv.read(csv_file)
+  with open('new_names.csv', 'w') as new_file:
+     csv_writer = csv.writer(new_file,delimiter= '\t'  # '-'
+     for line  in csv_reader:
+        csv_writer.writerow(line)
+
+
+
+# #####################3
+# READ csv WITH different delimiter
+# #################33
+
+
+import csv 
+with open ('new_name.csv','r') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter='\t')
+    for line in csv_reader:
+       print(line)
+
+
+#+END_SRC
+
+**** Ex: Read and Write a csv file (as dict)
+#+BEGIN_SRC python
+import csv
+
+with open('name.csv', 'r') as csv_file:
+  csv_reader = csv.DictReader(csv_file)
+  for line in csv_reader:
+     print(line['email'])
+
+
+# To select unique card or no
+with open('name.csv', 'r') as csv_file:
+  csv_reader = csv.DictReader(csv_file)
+  with open('name_copy.csv','w') as dictwirte_file:
+     field_name = ['first_name','last_name', 'email']
+     csv_writer = csv.DictWriter(new_file, fieldnames = field_name, dellimiter ='\t' )
+     csv_write.writeheader()
+
+for line in csv_reader:
+   del line['email']
+   # remove email
+   csv_writer.writerow(line)
+
+
+#+END_SRC
+
+**** Example 
+#+begin_src python 
+import csv
+
+html_output = ''
+
+name =[]
+
+with open('patrons.csv') as data_file:
+   csv_data = csv.reader(data_file)
+   next(csv_data) # remove headerline
+   next(csv_data) # remove contribution flag, description
+   print(csv_data) # it is object
+#  print(list(csv_data))
+   for line in csv_data:
+       if line [0] == 'No Reward':
+          break
+       print(line)
+       name.append (f"{line[0]} {line[1]}")
+
+for name in names:
+    print(name)
+
+html_output += f'<p>There are currently {len(name) public  Contributors. Thank You!}</p>'
+
+print (html_output)
+
+html_output += '\n<ul>'
+for name in names:
+  html_output +=f'\n\t<li> {name} </li>'   
+      
+html_output += '\n<\ul>'
+
+print(html_output) 
+#+end_src
+
+**** Example with dict reader
+
+#+begin_src python
+import csv
+
+html_output = ''
+
+name =[]
+
+with open('patrons.csv') as data_file:
+   csv_data = csv.DictReader(data_file)
+   next(csv_data) # remove No Reward line  
+   for line in csv_data:
+       if line [FirstName] == 'No Reward':
+          break
+       print(line)
+       name.append (f"{line[FristName]} {line[LastName]}")
+
+for name in names:
+    print(name)
+
+html_output += f'<p>There are currently {len(name) public  Contributors. Thank You!}</p>'
+
+print (html_output)
+
+html_output += '\n<ul>'
+for name in names:
+  html_output +=f'\n\t<li> {name} </li>'   
+      
+html_output += '\n<\ul>'
+
+print(html_output)
+#+end_src
+
+* Time Module
+*** time
+**** defination
+tick is unit of time : instance of time expressed in seconds since 12.00am, Jan 1, 1970
+ #+BEGIN_SRC python
+ import time
+tick = time.time 
+ #+END_SRC
+*** Time Tuple
+| Index | Field           | Values                                |
+|-------+-----------------+---------------------------------------|
+|     0 | 4-digit year    | 2008                                  |
+|     1 | Month           | 1 to 12                               |
+|     2 | Day             | 1 to 31                               |
+|     3 | Hour            | 0 to 23                               |
+|     4 | Minute          | 0 to 59                               |
+|     5 | second          | 0 to 61(60/61 are leap-sec)           |
+|     6 | Day of Week     | 0 to 6 (0 is Monday)                  |
+|     7 | Day of year     | 1 to 366 (Julian day)                 |
+|     8 | Daylight saving | -1, 0, 1 (-1: library determines DST) |
+|       |                 |                                       |
+
+#+BEGIN_SRC python
+print(time.localtime())
+#+END_SRC  
+
+#+BEGIN_SRC python
+time.struct_time(tm_year=2016, tm_mon=9, tm_mday=27, tm_hour=0,tm_min=34,tm_sec=57,tm_wday=1,tm_year=271,tm_isdst=0)
+#+END_SRC
+*** Getting Current Time
+*** Getting Formatted Time
+*** Getting Calendar for a Month
+*** Time Module
+*** Calender Module
+*** Other Module & Functions
+* pprint
+#+begin_src python
+import datetime
+import pprint
+data = {'user_type': 'individual', 'email': 'dankarthik25@gmail.com', 'user_name': 'Karthik Danchuka', 'user_shortname': 'Karthik', 'broker': 'ZERODHA', 'exchanges': ['MF', 'BCD', 'NFO', 'BFO', 'CDS', 'BSE', 'NSE'], 'products': ['CNC', 'NRML', 'MIS', 'BO', 'CO'], 'order_types': ['MARKET', 'LIMIT', 'SL', 'SL-M'], 'avatar_url': None, 'user_id': 'SLT899', 'api_key': 's47dosfc0f1kisi4', 'access_token': 'asRJexUFotIsqgL3LL5bRG2i9pxDg93s', 'public_token': 'LPgnl4rJfCBe1Kxmbq3dF6f8j3YtQ3Ek', 'refresh_token': '', 'enctoken': '1DjbLLy6i1/tnP5tKUBfhqreyyJkcb0IEAZdTSqzhVNVrVrGMIOdRHzu4DlyiRoukX/3/WLz8un/WIBL/S+zXj/FK6nrtFR/EGzPfw07Ud2280fDmOjWTyX80RS+4Zk=', 'login_time': datetime.datetime(2022, 8, 29, 12, 7, 26), 'meta': {'demat_consent': 'consent'}}
+pprint.pprint(data)
+#+end_src
+
+#+begin_src result
+{'access_token': 'asRJexUFotIsqgL3LL5bRG2i9pxDg93s',
+ 'api_key': 's47dosfc0f1kisi4',
+ 'avatar_url': None,
+ 'broker': 'ZERODHA',
+ 'email': 'dankarthik25@gmail.com',
+ 'enctoken': '1DjbLLy6i1/tnP5tKUBfhqreyyJkcb0IEAZdTSqzhVNVrVrGMIOdRHzu4DlyiRoukX/3/WLz8un/WIBL/S+zXj/FK6nrtFR/EGzPfw07Ud2280fDmOjWTyX80RS+4Zk=',
+ 'exchanges': ['MF', 'BCD', 'NFO', 'BFO', 'CDS', 'BSE', 'NSE'],
+ 'login_time': datetime.datetime(2022, 8, 29, 12, 7, 26),
+ 'meta': {'demat_consent': 'consent'},
+ 'order_types': ['MARKET', 'LIMIT', 'SL', 'SL-M'],
+ 'products': ['CNC', 'NRML', 'MIS', 'BO', 'CO'],
+ 'public_token': 'LPgnl4rJfCBe1Kxmbq3dF6f8j3YtQ3Ek',
+ 'refresh_token': '',
+ 'user_id': 'SLT899',
+ 'user_name': 'Karthik Danchuka',
+ 'user_shortname': 'Karthik',
+ 'user_type': 'individual'}
+#+end_src
+* Json Module
+#+begin_src python
+# Import required libraries
+import json
+
+# Initialize JSON data
+json_data = '[ {"studentid": 1, "name": "ABC", \
+"subjects": ["Python", "Data Structures"]}, \
+				{"studentid": 2, "name": "PQR",\
+				"subjects": ["Java", "Operating System"]} ]'
+
+# Create Python object from JSON string data
+obj = json.loads(json_data)
+
+# Pretty Print JSON
+json_formatted_str = json.dumps(obj, indent=4)
+print(json_formatted_str)
+
+#+end_src
+
+* Regular expression 
+
+*** Cheat Sheet:
+Special seq of char that helps you match or find other stings or set of strings or set of string used specialized sysntax held in a pattern
+
+moudle re provides full support for perl-like regualr expression in python
+
+raises the expception re.error if error occurs while compiling or using regular expression
+
+Raw string as r'expression'
+
+
+| Basic Patterns | matchs                                   |
+|----------------+------------------------------------------|
+| . (period)     | any char except '\n'                     |
+| \d             | Digit [0-9]                              |
+| \D             | Not a Digit(0-9)                         |
+|                |                                          |
+| \w             | Word Character (letters(a-z A-Z,0-9,'_') |
+| \W             | Not word charcter                        |
+|                |                                          |
+| \s             | Whitespace (space, \n, tab )             |
+| \S             | Non-whitespcae(except space, \t, tab)    |
+|----------------+------------------------------------------|
+| ANCHORS        |                                          |
+|----------------+------------------------------------------|
+| ^              | matches start of string                  |
+| $              | matches end of string                    |
+| \b             | Word Boundary btw word and non-word      |
+| \B             | Not a Word Boundary                      |
+| \t \n\r        | tab newline return                       |
+|                |                                          |
+
+| a,X,9          | ordinary char just match themselves exactly              |
+
+*** Quantifiers
+| symbols | Function                          |
+|---------+-----------------------------------|
+| *       | 0 or more                         |
+| +       | 1 or more                         |
+| ?       | 0 or One                          |
+| {3}     | Exact Number                      |
+| {3,4}   | Range of Number{minimum, maximum} |
+
+| [ch]at       | search for ...cat... or .. hat... |
+| '[0-9]'      | search nubmer                     |
+| '[a-z]'      | seach lower char                  |
+| '[A-Z]'      | seach upper char                  |
+| '[a-z][A-Z]' | search all lower and upper char   |
+|              |                                   |
+*** Example 
+#+begin_src python 
+import re
+
+text_2_search = """
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+Ha HaHa
+
+MetaCharacters (Need to be escape)
+. ^ $ * + { } [ ] \ | ()
+
+
+coremys.com'
+
+321-555-4321
+123.555.1234
+123*555*1234
+800-555-4321
+900-555-4321
+Mr. Schafer
+Mr Smith
+Ms Davis
+
+Mrs. Robinson
+Mr. T
+
+
+cat
+batman
+path
+bat
+match
+
+"""
+
+emails = """
+CoreyMSchafer@gmail.com
+corey.schafer@university.edu
+corey-321-schafer@my-work.net
+
+"""
+sentence = 'Start a sentence and then bring it to end'
+urls = """
+https://www.google.com
+https://coreyms.com
+https://youtube.com
+https://www.nasa.gov """
+
+print(r'\tTab')
+
+pattern = re.compile(r'abc')  # matches for abc but not ABCd
+# IT is case sensitive
+pattern = re.compile(r'.')      # matches any character {a-z A-Z 0-9 _ }
+pattern = re.compile(r'\.')     # matches any '.' present in string
+pattern =  re.compiler(r'coreyms\.com')    # matches any string 'coreym.com'
+pattern = re.compile(r'\d')
+pattern  = re.compile(r'\D') 
+pattern = re.compile(r'\w')
+pattern = re.compile(r'\W')
+pattern = re.compile(r'\s')
+pattern = re.compile(r'\S')
+
+# Word Boundary
+pattern = re.compile(r'\bHa')  # match two Ha HaHa starting 'Ha' as at starting
+
+pattern = re.compile(r'\BHa') # match last Ha because it has no word boundary
+
+pattern = re.compile(r'^abc') # match word/char starting with 
+pattern = re.compile(r'xyz$') # match word/char ending with 
+
+pattern = re.compile(r'\d\d\d.\d\d\d.\d\d\d\d')
+pattern = re.compile(r'\d{3}.\d{3}.\d{4}')
+pattern = re.compile(r'\d{3}[-.]\d{3}[-.]\d{4}') 
+pattern = re.compile(r'\d{3}.\d{3}.\d{4}')
+pattern = re.compile(r'[89]00-.\d{3}.\d{4}')
+
+pattern = re.compile(r'[a-zA-Z]') # match char with a-z and A-Z
+pattern = re.compile(r'[^a-zA-Z]')  # match char which is not a-z and A-Z
+
+pattern = re.compile(r'[^b]at')  # match which doesnot include bat 
+
+# quantifiers
+pattern = re.compile(r' Mr\.?') # matches Mr. Schafer or Mr Smith  
+
+pattern = re.compile(r' Mr\.?\s[A-Z]') # matches Mr. S or Mr S
+pattern = re.compile(r' Mr\.?\s[A-Z]\w+') # matches all word but not Mr T 
+pattern = re.compile(r' Mr\.?\s[A-Z]\w*') # matches all word and  Mr T
+
+
+# Groups ()
+pattern = re.compile(r' M(r|s|rs)\.?\s[A-Z]\w+') # matches all word with Mr Ms Mrs 
+pattern = re.compile(r' (Mr|Ms|Mrs)\.?\s[A-Z]\w+') # matches all word with Mr Ms Mrs 
+
+# emails
+pattern = re.compile(r'[a-zA-Z]+ @ [a-zA-Z]+\.com')
+pattern = re.compile(r'[a-zA-Z0-9.-_]+ @ [a-zA-Z]+\.(com|edu|in|net)')
+pattern = re.compile(r'[a-zA-Z0-9.-_]+ @ [a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+')
+
+# urls
+
+pattern = re.compiler (r'https?://(www\.)?\w+\.\w+')
+pattern = re.compiler (r'https?://(www\.)?(\w+)(\.\w+)')
+
+sub_urls = pattern.sub(r'\2\3', urls)
+print(sub_urls)
+
+ # Note we can seperate domain name 
+for match in matches :
+  print(match.group(0)) #1,2,3
+
+# 
+
+matches = pattern.finditer(text_2_search)
+matches = pattern.findall(text_2_search)
+matches = pattern.match(sentence)
+matches = pattern.search(sentence) # only 1st match 
+
+# flages
+
+pattern = recompile(r'start', re.IGNORE)
+
+
+for match in matches:
+   print(match)
+
+
+#+end_src
+* Random module
+*** Introdution
+Shoulded to be used for crypthography use sectrets module instead
+
+Cread a random value btw (0 1)
+#+BEGIN_SRC python
+import random
+
+value = random.random()         # 0.2426467353658334
+value = random.uniform(1, 10)   # 6.223664645274
+dice = random.randint(1, 6)    # 1,2,6,2,3,5,4
+coin = random.randint(0, 1)
+
+print(value)
+
+greeting = ['Hello', 'Hi', 'Hey', 'Howdy', 'Hola']
+
+value = random.choice(greetins)
+print( value + " Corey")
+
+# Multiple choiess
+
+colors = ['Red', 'Black','Green']
+
+results = random.choices(colors, k=10) # how many time we pick a value
+print(results)
+# >>> ['Red', 'Green', 'Red', ' Black', ' Red', ......]( size is 10)
+
+results = random.choices(colors,, weight = [18, 18, 2] k=10) # total w = 38, red is 18/38 chance, black is 18/38, green = 2/38
+print(results)
+# >>> ['Red', 'Green', 'Red', ' Black', ' Red', ......]( size is 10)
+
+
+# Random generate a list of num of size 63 and range from [1 63]
+
+deck = list(range(1, 53))
+print(desk)
+# >>> [1, 2, 3, 4, ..........53 ]
+
+random.shuffle(deck)
+print(deck)
+# >>> [41 ,39, 29, 38,47, 50,6,20.....]
+
+
+# To select unique card or no
+
+random.sample(deck)
+print(deck, k =5)
+# >>> [41 ,39, 29, 38,47]
+
+
+
+# Grenerate fake  fist_names,last_name, street_name, fake_cites, states
+
+f_n = ['John', 'Jane', 'Corey', 'Travis'] #frist name 
+l_n = ['Smith', 'Doe', 'Jenkins', 'Robinson'] # last name
+s_n = ['Main', 'High', 'Pearl', 'Maple' ]   # street name
+c_n = ['Metropolics', 'Eerie','King', 'Landing'] # fake cite 
+states = [ 'AL','AK','AR','Pearl','Oak','Cedar','Elm']
+for num in range(100):
+    first = random.choice(f_n)
+    last = random.choice(l_n)
+
+    phone = f'{random.randint(100,999)}-555-{random.randint(1000,9999)}'
+    # 548-555-6572
+
+    s_num = random.randint(100,999)
+    street = random.choice(s_n)
+    city = random.choice(c_n)
+    state = random.choice(states)
+    zip_code = random.randint(10000,99999)
+    address = f'{street_name}{street} St., {city}{state}{zip_code}'
+
+    email = first.lower() + last.lower() + '@gmail.com'
+    print(f'{first}{last} \n {phone} \n {address} \n {email} \n')
+
+#+END_SRC
+
+* Subprocess
+[[file:python_subprocess_push_dockerfile.ipynb]]
+
+file:python_subprocess_push_dockerfile.html
+
+Example :
+
+#+begin_src python
+sub_title_dir = 'images'
+
+frame_dir = 'recorded-video' 
+frame_img_reg = '%06d.png'
+frame_rate = '25'
+screen_aspect_ratio = '1280x720' # 720p
+#1920 × 1080 # 1080p
+output_video = 'output4.mp4'
+resolution = 'yuv420p'  # pixel formate 720p
+
+
+shell_cmd =f'ffmpeg -i {frame_dir}/{frame_img_reg} -c:v libx264 -r {frame_rate} -s {screen_aspect_ratio}  -pix_fmt {resolution} {output_video}'
+print(shell_cmd)
+subprocess.run (shell_cmd,shell=True,  stdout=subprocess.PIPE)
+#+end_src
+
+* Subprocess Details Explaination
+
+https://www.youtube.com/watch?v=yOBBq3dl0to \\
+https://www.youtube.com/watch?v=2Fp1N6dof0Y \\
+
+
+
+https://stackoverflow.com/questions/4256107/running-bash-commands-in-python
+To somewhat expand on the earlier answers here, there are a number of details which are commonly overlooked.
+- Prefer =subprocess.run()= over =subprocess.check_call()= and friends over =subprocess.call()= over =subprocess.Popen()= over =os.system()= =over os.popen()=
+- Understand and probably use =text=True=, aka =universal_newlines=True=.
+- Understand the meaning of =shell=True= or =shell=False= and how it changes quoting and the availability of shell conveniences.
+- Understand differences between =sh= and Bash
+- Understand how a subprocess is separate from its parent, and generally cannot change the parent.
+- Avoid running the Python interpreter as a subprocess of Python.
+
+Prefer subprocess.run() or subprocess.check_call()
+
+#+begin_quote
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, \\
+$\;\;\;\;\;\;\;$  capture_output=False, shell=False,\\ 
+$\;\;\;\;\;\;\;$  cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, \\
+$\;\;\;\;\;\;\;$ env=None, universal_newlines=None, **other_popen_kwargs) \\
+#+end_quote
+
+ 
+soruce : https://docs.python.org/3/library/subprocess.html
+
+Input argumetns:
+args : bash_cmd or shell cmd
+
+stdin=None
+input=None
+stdout=None
+stderr=None
+capture_output=False, if True  then stdout and stderr will be captured
+shell=False         , if True then give args is shell cmd and we can run them even in windows or mac system    
+env=None
+universal_newlines=None
+check=False,         if True raise Error or terminate execution of =subprocess.run= fails
+
+The =return value= from =run()=, representing a process that has finished.
+#+begin_src python
+class subprocess.CompletedProcess
+
+   return args:
+       # The arguments used to launch the process. This may be a list or a string.
+   return returncode:
+       # Exit status of the child process. Typically, an exit status of 0 indicates that it ran successfully.
+       # A negative value -N indicates that the child was terminated by signal N (POSIX only).
+   return stdout:
+       # Captured stdout from the child process. A bytes sequence,
+       # or a string if run() was called with an encoding, errors, or text=True.
+       # None if stdout was not captured.
+       # If you ran the process with stderr=subprocess.STDOUT,
+       #stdout and stderr will be combined in this attribute, and stderr will be None.
+   return stderr:
+        # Captured stderr from the child process.
+        # A bytes sequence, or a string if run() was called with an encoding, errors,
+        # or text=True. None if stderr was not captured
+   check_returncode():
+        # If returncode is non-zero, raise a CalledProcessError.
+#+end_src
+
+
+
+
+Example
+
+#+begin_src python
+# filename = test.py
+#! /usr/bin/env python3 # run in bash $ ./filename.py
+import subprocess
+subprocess.run ("echo Hello") # give error
+subprocess.run ("echo Hello",shell=True) # >> Hello
+res = subprocess.run ("echo Hello $USER ~",shell=True) # Hello karthik /home/karthik
+
+print(*dir(res) , sep="\n") # output stdout, stderr, returncode
+
+# # # # # # # # # # # 
+# capture_output=True, function return stdout, and stderr as output in binary format
+# # # # # # # #  # # # #
+
+res = subprocess.run ("echo Hello $USER\!",shell=True, capture_output=True)
+print(res.stdout)           # >>> b'Hello, karthik!
+print(res.stderr)           # >>> b''             # No error
+print(res.stdout.decode())  # >>> Hello, karthik!
+print(res.stderr.decode())  # >>>                 # No error 
+
+print(res.returncode)  # >>> 0 executed run successfully 
+
+# # # # # # # # # # # 
+# capture_output in Text format
+# # # # # # # #  # # # #
+
+
+res = subprocess.run ("echo Hello $USER\!",shell=True, capture_output=True, text=True)
+print(res.stdout)  # >>> Hello, karthik!
+print(res.stderr)  # >>>              # No error 
+print(res.returncode)  # 0 executed run successfully 
+
+
+# Store the std out and std error in a file
+
+with open('output.txt','w') as f:
+   p1=subprocess.run("ls -la", stdout=f, text=True) # This will save output in output.txt
+
+# set stderr to NOT SHOW ANY ERROR IN EXEC with `stderr=subprocess.DEVNULL`
+
+with open('output.txt','w') as f:
+   p1=subprocess.run("ls -la", stdout=f, text=True) # This will save output in output.txt
+
+
+#+end_src
+
+
+- [[file:python_subprocess_push_dockerfile.ipynb][Download ipynb file]]
+- [[-file:python_subprocess_push_dockerfile.html][view python code]]

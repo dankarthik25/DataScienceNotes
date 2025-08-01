@@ -69,6 +69,10 @@ conda remove <package-name>  # uninstall or remove package
 # ENV 
 conda env list   # list of virtual `environment`  
 conda create --name <venv_name> <py modules>  # create env with <venv_name> and install package py modules
+# Note: when create env with out specifiying python version then it will randomly select a python version which will cause issuse
+        # It is good practice to specify the python version each time you use
+conda create -n myenv python=3.12
+
 conda activate <venv_name>
 
 conda env export > environment.yml # save and export env
@@ -1913,7 +1917,8 @@ print(os.__file__)             # /usr/lib/python2.7/os.pyc
 | os.remove(path)             | remove the file for the path                              |
 | os.write                    |                                                           |
 |-----------------------------+-----------------------------------------------------------|
-|                             |                                                           |
+| os.path.isdir(dir_path)     | True if dir exist                                         |
+| os.path.exists(file_path)   | True if file exist                                        |
 
 #+BEGIN_SRC python
 os.stat('103041478_electricity_bill_11_payment.pdf')

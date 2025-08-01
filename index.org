@@ -3,6 +3,14 @@
 [  [[./index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
 -----
 
+#+begin_quote
+Tools used to convert jupyter notebook code (.ipyb) -> (ipynb to jupyter html) -> code to org mode -> (org mode to html)
+- [[file:numpy-img/jupyterhtml2orghtml.ipynb]]
+  - Python Code(ipynb) to convert the jupyterHtml page to orgHtml
+#+end_quote
+
+Required tools, programming languages for Data Science
+
 * Git 
 ** [[./git.html][Git]]
 ** [[./gitMyConfig.html][Git My Configuration ]]
@@ -10,8 +18,44 @@
 ** [[./linuxBasic.html][Linux Basic]]
 ** [[./shell.html][Shell/Bash Script ]]
 * [[./python.html][Python]]
+** [[./py_modules.html][Python Modules]]
+Each Module are explain seperately
+
+** OS Module 
+** Datatime Module 
+*** - Date Module 
+*** - Time Module 
+** Datatme Timezone Aware 
+** File Module  
+** CSV Module
+** json Module
+** pprint 
+** Regular Expression 
+** Randow Module 
+
+
+** subprocess
+*** -  [[file:python_subprocess_push_dockerfile.html][view python code]]
+*** -  [[file:python_subprocess_push_dockerfile.ipynb][Download python ipynd]]  
 ** [[./pandas.html][Pandas]]
 ** [[./numpy.html][Numpy]]
+
+- [[file:numpy-img/jupyterhtml2orghtml.ipynb]]
+  - Python Code(ipynb) to convert the jupyterHtml page to orgHtml
+   
+- [[file:numpy-img/Numpy_Complete.ipynb]]
+  - Numpy code which is converted into below JupyterHtml file 
+- [[file:numpy-img/Numpy_Complete.html]]
+  - [View Code in JupyterHtml format]  
+- file:Numpy_Complete_org.org
+  - [Generated org code which is used to create this org-theme html file]
+
+** TODO Matplotlib
+** [[file:Note_flask.html][Flask]]
+** Python Backend API
+* [[file:DBMS.html][DBMS]]
+Basic required for DataScience
+
 * TODO [[./sql.html][SQL]]
 * [[./DAS.html][Data Structure and Algorithms]]
 
