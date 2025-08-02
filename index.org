@@ -52,10 +52,22 @@ Each Module are explain seperately
 
 ** TODO Matplotlib
 ** [[file:Note_flask.html][Flask]]
-** Python Backend API
+** TODO Python Backend API
+** TODO Create Custome Module and upload in piptest, pip repo
 * [[file:DBMS.html][DBMS]]
 Basic required for DataScience
 
 * TODO [[./sql.html][SQL]]
 * [[./DAS.html][Data Structure and Algorithms]]
 
+
+
+* Web Dev
+
+** [[./Notes_html.html][HTML]]
+** [[./Notes_css.html][CSS]]
+** [[./javascript.html][JavaScript]]
+
+** Udemy JavaScript by Jonas Schmedtmann
+*** [[./JavaScript_udemyPart-I.html][JavaScript UdemyPart-I]]
+*** [[./JavaScript_udemyPart-II.html][JavaScript UdemyPart-II]]

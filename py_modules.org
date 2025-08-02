@@ -19,6 +19,133 @@ Grouping related method,attribues, class into a module
 - Simply a module is a file =.py file= consistign of py code
 - Module can define functions,classes and varibale
 - Module can also include runnable code
+* File Management
+*** Open/ Closing a File
+Open/Closing a file is done by file-oriented API(Application Program Interface)
+
+Can represent standard input/output stream, in-memory buffers, sockets,pipes, etc.
+
+File object are two categories :
+-binary file
+-text files
+
+**** open/close file :
+***** Syntax
+#+BEGIN_SRC python
+# To OPEN a file
+file_obj = open(file_name, [access_mode],[buffering])
+
+# To CLOSE a file
+file_obj.close()
+#+END_SRC
+
+****** buffering mode:
+Buffer is tempory memory allocat to communicate between process and prog or device
+
+|         0 | No buffering take place (slow)                          |
+|         1 | Line buffer will be performed                           |One line at a time increase speed
+|        >1 | buffer will be performed with the indicated buffer size |
+| Neg value | operating sys will set the size of buffer (default)     |
+|           |                                                         |
+
+****** access mode 
+r,rb,rb+,w,wb,w+,a,ab,a+,ab+  
+read ,binary,write (create or rewrite ),append(editing )
+
+****** closing file
+
+closing file is imp if not it will corrupt the file
+
+***** Example
+#+BEGIN_SRC python
+fo = open('foo.txt','w')
+fo.write("Welcome")
+fo.write("to Tutorials Points \n")
+
+
+# Close open file
+fo.close()
+#+END_SRC
+**** TODO File  Object attributes:
+
+| ATTRIBUTES     | Description                                          |
+|----------------+------------------------------------------------------|
+| file.colsed    | return true if file is closed                        |
+| file.mode      | return access mode                                   |
+| file.name      | return name of file                                  |
+| file.softspace | returns false if space explicity required with print |
+|                | returns true  other wise not support in py3          |
+
+#+BEGIN_SRC python
+fo = open("foo.txt",'wb')
+print("Name of the file: ", fo.name)
+print("Closed or not: ", fo.closed)
+print("Opening mode : ",fo.mode)
+fo.close()
+print("Closed or not :",fo.closed)
+#+END_SRC
+
+
+
+jabber
+
+
+
+In python3.  =with= is used 
+
+with is
+if file is not used with is used to close the file
+ used if a error occure in file which an execptions and
+
+file=city_file  (no space )
+*** flush parameter
+Flush is introduced in py3.**
+   print as a flush arg true/ flase  , 
+       flase : data is not flush
+
+When py write on file the external devies screen is slow so data is writen in buffer and content is display in background. cpu will not be idel and sys is faster
+
+
+ if flush == true flush is cleaned  implices data is writen immediately 
+
+ to able to control when the writen immedialty  or not will able prg'es to write code effectively
+
+
+strip("del") 
+
+ 
+
+Modes :
+not specified : r
++ both 
+*** Read and write binary files
+
+process bin data img or store variabels and load in laters
+
+big indian and little indian writing 
+
+when computer manufacre has to make a decision how to store data
+big  store most signifited bit is store
+and vice verse by littel
+ibm uses big
+intel uses little
+
+ we have to store the variable 
+
+*** pickle 
+to write binary file 
+when store py3 
+5 types of 
+pi
+
+*** String Encoding Function 
+There two functions
+decode (encoding="UTF-8",errors='strict')
+encode (encoding="UTF-8",errors= 'strict')
+ 
+To use this function we have to import base64 module in prg
+for converting 
+  
 * Os module
 *** Intoduction Shortcut method:
 #+BEGIN_SRC python
@@ -399,6 +526,41 @@ tme = dt.time()
 print(tme)  # 10:30:00
 
 #+end_src
+* Time Module
+*** time
+**** defination
+tick is unit of time : instance of time expressed in seconds since 12.00am, Jan 1, 1970
+ #+BEGIN_SRC python
+ import time
+tick = time.time 
+ #+END_SRC
+*** Time Tuple
+| Index | Field           | Values                                |
+|-------+-----------------+---------------------------------------|
+|     0 | 4-digit year    | 2008                                  |
+|     1 | Month           | 1 to 12                               |
+|     2 | Day             | 1 to 31                               |
+|     3 | Hour            | 0 to 23                               |
+|     4 | Minute          | 0 to 59                               |
+|     5 | second          | 0 to 61(60/61 are leap-sec)           |
+|     6 | Day of Week     | 0 to 6 (0 is Monday)                  |
+|     7 | Day of year     | 1 to 366 (Julian day)                 |
+|     8 | Daylight saving | -1, 0, 1 (-1: library determines DST) |
+|       |                 |                                       |
+
+#+BEGIN_SRC python
+print(time.localtime())
+#+END_SRC  
+
+#+BEGIN_SRC python
+time.struct_time(tm_year=2016, tm_mon=9, tm_mday=27, tm_hour=0,tm_min=34,tm_sec=57,tm_wday=1,tm_year=271,tm_isdst=0)
+#+END_SRC
+*** Getting Current Time
+*** Getting Formatted Time
+*** Getting Calendar for a Month
+*** Time Module
+*** Calender Module
+*** Other Module & Functions
 * datetime tz-aware
 *** pytz module for Timezone
 
@@ -953,41 +1115,6 @@ html_output += '\n<\ul>'
 print(html_output)
 #+end_src
 
-* Time Module
-*** time
-**** defination
-tick is unit of time : instance of time expressed in seconds since 12.00am, Jan 1, 1970
- #+BEGIN_SRC python
- import time
-tick = time.time 
- #+END_SRC
-*** Time Tuple
-| Index | Field           | Values                                |
-|-------+-----------------+---------------------------------------|
-|     0 | 4-digit year    | 2008                                  |
-|     1 | Month           | 1 to 12                               |
-|     2 | Day             | 1 to 31                               |
-|     3 | Hour            | 0 to 23                               |
-|     4 | Minute          | 0 to 59                               |
-|     5 | second          | 0 to 61(60/61 are leap-sec)           |
-|     6 | Day of Week     | 0 to 6 (0 is Monday)                  |
-|     7 | Day of year     | 1 to 366 (Julian day)                 |
-|     8 | Daylight saving | -1, 0, 1 (-1: library determines DST) |
-|       |                 |                                       |
-
-#+BEGIN_SRC python
-print(time.localtime())
-#+END_SRC  
-
-#+BEGIN_SRC python
-time.struct_time(tm_year=2016, tm_mon=9, tm_mday=27, tm_hour=0,tm_min=34,tm_sec=57,tm_wday=1,tm_year=271,tm_isdst=0)
-#+END_SRC
-*** Getting Current Time
-*** Getting Formatted Time
-*** Getting Calendar for a Month
-*** Time Module
-*** Calender Module
-*** Other Module & Functions
 * pprint
 #+begin_src python
 import datetime
@@ -1293,9 +1420,11 @@ for num in range(100):
 #+END_SRC
 
 * Subprocess
-[[file:python_subprocess_push_dockerfile.ipynb]]
 
-file:python_subprocess_push_dockerfile.html
+- [[file:python_subprocess_push_dockerfile.ipynb][Download ipynb file]]
+- [[-file:python_subprocess_push_dockerfile.html][view python code]]
+
+
 
 Example :
 

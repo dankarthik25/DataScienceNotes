@@ -1,4 +1,6 @@
+
 Githup pages: https://dankarthik25.github.io/DataScienceNotes/
+
 # Notes Repository
 
 Welcome to the Notes Repository! This repository contains comprehensive notes on various topics including Python, Shell, Linux, Pandas, NumPy, Data Structures, and Algorithms. Each section is carefully organized to help you learn and reference the topics efficiently.
