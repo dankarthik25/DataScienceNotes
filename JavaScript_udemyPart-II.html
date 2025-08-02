@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-02 Sat 19:15 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Udemy JS Part-II</title>
+<meta name="author" content="Karthik D" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/jupyter2org.css" />
+<link rel="stylesheet" type="text/css" href="css/readtheorg-htmlize.css"/>
+<script src="css/jquery.min.js"></script>
+<script src="css/bootstrap.min.js"></script>
+<script type="text/javascript" src="css/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="css/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Udemy JS Part-II</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#javascript-fundamentals-part-2"># 2. JavaScript Fundamentals Part 2</a></li>
+<li><a href="#activating-strict-mode">32. Activating Strict Mode</a></li>
+<li><a href="#functions">33. Functions</a></li>
+<li><a href="#function-declarations-vs.-expressions">34. Function Declarations vs. Expressions</a></li>
+<li><a href="#arrow-functions">35. Arrow Functions</a></li>
+<li><a href="#functions-calling-other-functions">36. Functions Calling Other Functions</a></li>
+<li><a href="#reviewing-functions">37. Reviewing Functions</a></li>
+<li><a href="#coding-challenge-1">38. Coding Challenge 1</a></li>
+<li><a href="#introduction-to-arrays">39. Introduction to Arrays</a></li>
+<li><a href="#basic-array-operations-methods">40. Basic Array Operations (Methods)</a></li>
+<li><a href="#coding-challenge-2">41. Coding Challenge ##2</a></li>
+<li><a href="#introduction-to-objects">42. Introduction to Objects</a></li>
+<li><a href="#dot-vs.-bracket-notation">43. Dot vs. Bracket Notation</a></li>
+<li><a href="#object-methods">44. Object Methods</a></li>
+<li><a href="#coding-challenge-3">45. Coding Challenge ##3</a></li>
+<li><a href="#org37d7882">2 = mass / (height * height). (mass in kg and height in meter)</a></li>
+<li><a href="#iteration-the-for-loop">46. Iteration: The for Loop</a></li>
+<li><a href="#looping-arrays-breaking-and-continuing">47. Looping Arrays, Breaking and Continuing</a></li>
+<li><a href="#looping-backwards-and-loops-in-loops">48. Looping Backwards and Loops in Loops</a></li>
+<li><a href="#the-while-loop">49. The while Loop</a></li>
+<li><a href="#coding-challenge-4">50. Coding Challenge ##4</a></li>
+</ul>
+</div>
+</div>
+<p>
+[  <a href="./index.html">Home</a> ]  \(&ensp;\)  | \(&ensp;\) \(&ensp;\) [text] \(&ensp;\)  \(&ensp;\) | \(&ensp;\) \(&ensp;\) [link] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [title] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [icon] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [target]  \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [expanded]  \(&ensp;\) \(&ensp;\)
+</p>
+<hr />
+
+<p>
+resource : <a href="https://www.udemy.com/course/the-complete-javascript-course">https://www.udemy.com/course/the-complete-javascript-course</a>
+</p>
+<div id="outline-container-javascript-fundamentals-part-2" class="outline-2">
+<h2 id="javascript-fundamentals-part-2"># 2. JavaScript Fundamentals Part 2</h2>
+<div class="outline-text-2" id="text-javascript-fundamentals-part-2">
+</div>
+</div>
+<div id="outline-container-activating-strict-mode" class="outline-2">
+<h2 id="activating-strict-mode">32. Activating Strict Mode</h2>
+<div class="outline-text-2" id="text-activating-strict-mode">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2d9574;">'use strict'</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">to activate strict mode to </span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Always put strict mode in the beginning of the file</li>
+<li>It makes it easier for developer to avoid accidental errors.</li>
+</ul>
+
+<p>
+First, strict mode forbids us to do certain things and second, it will
+actually create visible errors for us in certain situations in which
+without strict mode JavaScript will simply fail silently without letting
+us know that we did a mistake.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2d9574;">'use strict'</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">hasDriversLicense</span> = <span style="color: #4e3163;">false</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">passTest</span> = <span style="color: #4e3163;">true</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>passTest<span style="color: #3a81c3;">)</span> hasDriversLicense = <span style="color: #4e3163;">true</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">if in  hasDriver(s)License s is missing the code will behave  unexpectedly</span>
+<span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>hasDriversLicense<span style="color: #3a81c3;">)</span> console.log<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'I can drive :D'</span><span style="color: #3a81c3;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">const interface = 'Audio'; // Uncaught SyntaxError: Missing initializer in const declaration</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">const private = 534; // Uncaught SyntaxError: Missing initializer in const declaration</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-functions" class="outline-2">
+<h2 id="functions">33. Functions</h2>
+<div class="outline-text-2" id="text-functions">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">logger</span><span style="color: #3a81c3;">()</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'My name is xoraus'</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">calling / running / invoking function</span>
+logger<span style="color: #3a81c3;">()</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: My name is xoraus</span>
+logger<span style="color: #3a81c3;">()</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: My name is xoraus</span>
+logger<span style="color: #3a81c3;">()</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: My name is xoraus</span>
+
+<span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">fruitProcessor</span><span style="color: #3a81c3;">(</span><span style="color: #715ab1;">apples</span>, <span style="color: #715ab1;">oranges</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">juice</span> = <span style="color: #2d9574;">`Juice with ${apples} apples and ${oranges} oranges.`</span>;
+  <span style="color: #3a81c3; font-weight: bold;">return</span> juice;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">appleJuice</span> = fruitProcessor<span style="color: #3a81c3;">(</span>10, 5<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>appleJuice<span style="color: #3a81c3;">)</span>;1
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">appleOrangeJuice</span> = fruitProcessor<span style="color: #3a81c3;">(</span>4, 8<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>appleOrangeJuice<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">num</span> = Number<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'6833'</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<p>
+Clean Code - <b>DRY Principle</b> that is <i>Don't Repeat Yourself</i>
+</p>
+</div>
+</div>
+<div id="outline-container-function-declarations-vs.-expressions" class="outline-2">
+<h2 id="function-declarations-vs.-expressions">34. Function Declarations vs. Expressions</h2>
+<div class="outline-text-2" id="text-function-declarations-vs.-expressions">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Function declaration</span>
+<span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">calcAge1</span><span style="color: #3a81c3;">(</span><span style="color: #715ab1;">birthYeah</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> 2047 - birthYeah;
+<span style="color: #3a81c3;">}</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age1</span> = calcAge1<span style="color: #3a81c3;">(</span>1997<span style="color: #3a81c3;">)</span>;
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Function expression</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">calcAge2</span> = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">birthYeah</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span> <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Anonymous Functions - this function is an expression. Expressions produce value.</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> 2047 - birthYeah;
+<span style="color: #3a81c3;">}</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age2</span> = calcAge2<span style="color: #3a81c3;">(</span>1997<span style="color: #3a81c3;">)</span>;
+
+console.log<span style="color: #3a81c3;">(</span>age1, age2<span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>The parameter is a kind of placeholder in the function and the
+argument is then the actual value that we use to fill in that
+placeholder that is the parameter.</li>
+<li>In Javascript functions are just values</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-arrow-functions" class="outline-2">
+<h2 id="arrow-functions">35. Arrow Functions</h2>
+<div class="outline-text-2" id="text-arrow-functions">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">calcAge3</span> = birthYeah =&gt; 2047 - birthYeah;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age3</span> = calcAge3<span style="color: #3a81c3;">(</span>1997<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>age3<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">yearsUntilRetirement</span> = <span style="color: #3a81c3;">(</span>birthYeah, firstName<span style="color: #3a81c3;">)</span> =&gt; <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age</span> = 2047 - birthYeah;
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">retirement</span> = 65 - age;
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">return retirement;</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">`${firstName} retires in ${retirement} years`</span>;
+<span style="color: #3a81c3;">}</span>
+
+console.log<span style="color: #3a81c3;">(</span>yearsUntilRetirement<span style="color: #6c3163;">(</span>1997, <span style="color: #2d9574;">'xoraus'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>; console.log<span style="color: #3a81c3;">(</span>yearsUntilRetirement<span style="color: #6c3163;">(</span>2005, <span style="color: #2d9574;">'ahmed'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-functions-calling-other-functions" class="outline-2">
+<h2 id="functions-calling-other-functions">36. Functions Calling Other Functions</h2>
+<div class="outline-text-2" id="text-functions-calling-other-functions">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">cutFruitPieces</span><span style="color: #3a81c3;">(</span><span style="color: #715ab1;">fruit</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> fruit * 4;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">fruitProcessor</span><span style="color: #3a81c3;">(</span><span style="color: #715ab1;">apples</span>, <span style="color: #715ab1;">oranges</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">applePieces</span> = cutFruitPieces<span style="color: #6c3163;">(</span>apples<span style="color: #6c3163;">)</span>;
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">orangePieces</span> = cutFruitPieces<span style="color: #6c3163;">(</span>oranges<span style="color: #6c3163;">)</span>;
+
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">juice</span> = <span style="color: #2d9574;">`Juice with ${applePieces} piece of apple and ${orangePieces} pieces of orange.`</span>;
+  <span style="color: #3a81c3; font-weight: bold;">return</span> juice;
+<span style="color: #3a81c3;">}</span>
+console.log<span style="color: #3a81c3;">(</span>fruitProcessor<span style="color: #6c3163;">(</span>2, 3<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Arrow functions do not get the <b>this Keyword</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-reviewing-functions" class="outline-2">
+<h2 id="reviewing-functions">37. Reviewing Functions</h2>
+<div class="outline-text-2" id="text-reviewing-functions">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">calcAge</span> = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">birthYeah</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> 2047 - birthYeah;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">yearsUntilRetirement</span> = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">birthYeah</span>, <span style="color: #715ab1;">firstName</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age</span> = calcAge<span style="color: #6c3163;">(</span>birthYeah<span style="color: #6c3163;">)</span>;
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">retirement</span> = 65 - age;
+
+  <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #6c3163;">(</span>retirement &gt; 0<span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+    console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">`${firstName} retires in ${retirement} years`</span><span style="color: #2d9574;">)</span>;
+    <span style="color: #3a81c3; font-weight: bold;">return</span> retirement;
+  <span style="color: #6c3163;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #6c3163;">{</span>
+    console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">`${firstName} has already retired &#127881;`</span><span style="color: #2d9574;">)</span>;
+    <span style="color: #3a81c3; font-weight: bold;">return</span> -1;
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>
+
+console.log<span style="color: #3a81c3;">(</span>yearsUntilRetirement<span style="color: #6c3163;">(</span>1997, <span style="color: #2d9574;">'xoraus'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>yearsUntilRetirement<span style="color: #6c3163;">(</span>1980, <span style="color: #2d9574;">'Jordan'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<p>
+
+</p>
+</div>
+</div>
+<div id="outline-container-coding-challenge-1" class="outline-2">
+<h2 id="coding-challenge-1">38. Coding Challenge 1</h2>
+<div class="outline-text-2" id="text-coding-challenge-1">
+<p>
+Back to the two gymnastics teams, the Dolphins and the Koalas! There is
+a new gymnastics discipline, which works differently. Each team competes
+3 times, and then the average of the 3 scores is calculated (so one
+average score per team). A team ONLY wins if it has at least DOUBLE the
+average score of the other team. Otherwise, no team wins!
+</p>
+
+<ol class="org-ol">
+<li>Create an arrow function 'calcAverage' to calculate the average of 3
+scores</li>
+<li>Use the function to calculate the average for both teams</li>
+<li>Create a function 'checkWinner' that takes the average score of each
+team as parameters ('avgDolhins' and 'avgKoalas'), and then logs the
+winner to the console, together with the victory points, according to
+the rule above. Example: "Koalas win (30 vs. 13)".</li>
+<li>Use the 'checkWinner' function to determine the winner for both DATA
+1 and DATA 2.</li>
+<li>Ignore draws this time.</li>
+</ol>
+
+<p>
+TEST DATA 1: Dolphins score 44, 23 and 71. Koalas score 65, 54 and 49
+TEST DATA 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
+</p>
+
+<p>
+HINT: To calculate average of 3 values, add them all together and divide
+by 3 HINT: To check if number A is at least double number B, check for A
+&gt;= 2 * B. Apply this to the team's average scores 😉
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">calcAverage = <span style="color: #3a81c3;">(</span>scoreA, scoreB, scoreC<span style="color: #3a81c3;">)</span> =&gt; <span style="color: #3a81c3;">(</span>scoreA, scoreB, scoreC<span style="color: #3a81c3;">)</span> / 3
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">teamDolphinAvg</span> = Math.floor<span style="color: #3a81c3;">(</span>calcAverage<span style="color: #6c3163;">(</span>85,54,41<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">teamKoalaAvg</span> = Math.floor<span style="color: #3a81c3;">(</span>calcAverage<span style="color: #6c3163;">(</span>23,34,27<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+
+console.log<span style="color: #3a81c3;">(</span>teamDolphinAvg,teamKoalaAvg<span style="color: #3a81c3;">)</span>
+
+<span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">checkWinner</span><span style="color: #3a81c3;">(</span><span style="color: #715ab1;">teamDolphinAvg</span>,<span style="color: #715ab1;">teamKoalaAvg</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+ <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #6c3163;">(</span>teamDolphinAvg &gt;= 2 * teamKoalaAvg<span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+     console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">`Dolphins win &#127942; ${teamDolphinAvg} vs ${teamKoalaAvg}`</span><span style="color: #2d9574;">)</span>
+ <span style="color: #6c3163;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #6c3163;">(</span>teamKoalaAvg &gt;= 2 * teamDolphinAvg<span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+     console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">`Koalas win &#127942; ${teamKoalaAvg} vs. ${teamDolphinAvg}`</span><span style="color: #2d9574;">)</span>
+ <span style="color: #6c3163;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #6c3163;">{</span>
+     console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">`No body won :(`</span><span style="color: #2d9574;">)</span>
+ <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>
+
+checkWinner<span style="color: #3a81c3;">(</span>800,351<span style="color: #3a81c3;">)</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Test 2</span>
+scoreDolphins = calcAverage<span style="color: #3a81c3;">(</span>85, 54, 41<span style="color: #3a81c3;">)</span>;
+scoreKoalas = calcAverage<span style="color: #3a81c3;">(</span>23, 34, 27<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>scoreDolphins, scoreKoalas<span style="color: #3a81c3;">)</span>;
+checkWinner<span style="color: #3a81c3;">(</span>scoreDolphins, scoreKoalas<span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-introduction-to-arrays" class="outline-2">
+<h2 id="introduction-to-arrays">39. Introduction to Arrays</h2>
+<div class="outline-text-2" id="text-introduction-to-arrays">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">friend1</span> = <span style="color: #2d9574;">'Al-Farabi'</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">friend2</span> = <span style="color: #2d9574;">'Al-Ghazali'</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">friend3</span> = <span style="color: #2d9574;">'Al- Razi'</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">friends</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'Al-Farabi'</span>, <span style="color: #2d9574;">'Al-Ghazali'</span>, <span style="color: #2d9574;">'Al- Razi'</span><span style="color: #3a81c3;">]</span>;
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">y</span> = <span style="color: #3a81c3; font-weight: bold;">new</span> <span style="color: #ba2f59; font-weight: bold;">Array</span><span style="color: #3a81c3;">(</span>1991, 1984, 2008, 2020<span style="color: #3a81c3;">)</span>;
+
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #6c3163;">[</span>0<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Al-Farabi</span>
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #6c3163;">[</span>2<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Al- Razi</span>
+
+console.log<span style="color: #3a81c3;">(</span>friends.length<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">outpt: 3</span>
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #6c3163;">[</span>friends.length - 1<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Peter</span>
+
+friends<span style="color: #3a81c3;">[</span>3<span style="color: #3a81c3;">]</span> = <span style="color: #2d9574;">'Al-Qalbi'</span>;
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Al-Farabi, Al-Ghazali, Al- Razi</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">friends = ['Bob', 'Alice']</span>
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">firstName</span> = <span style="color: #2d9574;">'Jordan'</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">xoraus</span> = <span style="color: #3a81c3;">[</span>firstName, <span style="color: #2d9574;">'Ahmed'</span>, 2047 - 1997, <span style="color: #2d9574;">'teacher'</span>, friends<span style="color: #3a81c3;">]</span>;
+console.log<span style="color: #3a81c3;">(</span>xoraus<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>xoraus.length<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Exercise</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">calcAge</span> = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">birthYeah</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> 2047 - birthYeah;
+<span style="color: #3a81c3;">}</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">years</span> = <span style="color: #3a81c3;">[</span>1990, 1967, 2002, 2010, 2018<span style="color: #3a81c3;">]</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age1</span> = calcAge<span style="color: #3a81c3;">(</span>years<span style="color: #6c3163;">[</span>0<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age2</span> = calcAge<span style="color: #3a81c3;">(</span>years<span style="color: #6c3163;">[</span>1<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">age3</span> = calcAge<span style="color: #3a81c3;">(</span>years<span style="color: #6c3163;">[</span>years.length - 1<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>age1, age2, age3<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">ages</span> = <span style="color: #3a81c3;">[</span>calcAge<span style="color: #6c3163;">(</span>years<span style="color: #2d9574;">[</span>0<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>, calcAge<span style="color: #6c3163;">(</span>years<span style="color: #2d9574;">[</span>1<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>, calcAge<span style="color: #6c3163;">(</span>years<span style="color: #2d9574;">[</span>years.length - 1<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">]</span>;
+console.log<span style="color: #3a81c3;">(</span>ages<span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-basic-array-operations-methods" class="outline-2">
+<h2 id="basic-array-operations-methods">40. Basic Array Operations (Methods)</h2>
+<div class="outline-text-2" id="text-basic-array-operations-methods">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">friends</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'Al-Farabi'</span>, <span style="color: #2d9574;">'Al-Ghazali'</span>, <span style="color: #2d9574;">'Al- Razi'</span><span style="color: #3a81c3;">]</span>;
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">const friends = ['Michael', 'Steven', 'Peter'];</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Add elements</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">newLength</span> = friends.push<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'xoraus'</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>newLength<span style="color: #3a81c3;">)</span>;
+
+friends.unshift<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'Jordan'</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Remove elements</span>
+friends.pop<span style="color: #3a81c3;">()</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Last</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">popped</span> = friends.pop<span style="color: #3a81c3;">()</span>;
+console.log<span style="color: #3a81c3;">(</span>popped<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #3a81c3;">)</span>;
+
+friends.shift<span style="color: #3a81c3;">()</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">First</span>
+console.log<span style="color: #3a81c3;">(</span>friends<span style="color: #3a81c3;">)</span>;
+
+console.log<span style="color: #3a81c3;">(</span>friends.indexOf<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'Al-Farabi'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>friends.indexOf<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'Al-Ghazali'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+
+friends.push<span style="color: #3a81c3;">(</span>25<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>friends.includes<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'Al- Razi'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>friends.includes<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'Ahmed'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>friends.includes<span style="color: #6c3163;">(</span>25<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>friends.includes<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'Al-Ghazali'</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'You have a friend called Al-Ghazali'</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-coding-challenge-2" class="outline-2">
+<h2 id="coding-challenge-2">41. Coding Challenge ##2</h2>
+<div class="outline-text-2" id="text-coding-challenge-2">
+<p>
+Ahmed is still building his tip calculator, using the same rules as
+before: Tip 15% of the bill if the bill value is between 50 and 300, and
+if the value is different, the tip is 20%.
+</p>
+
+<ol class="org-ol">
+<li>Write a function 'calcTip' that takes any bill value as an input and
+returns the corresponding tip, calculated based on the rules above
+(you can check out the code from first tip calculator challenge if
+you need to). Use the function type you like the most. Test the
+function using a bill value of 100.</li>
+<li>And now let's use arrays! So create an array 'bills' containing the
+test data below.</li>
+<li>Create an array 'tips' containing the tip value for each bill,
+calculated from the function you created before.</li>
+<li>BONUS: Create an array 'total' containing the total values, so the
+bill + tip.</li>
+</ol>
+
+<p>
+TEST DATA: 125, 555 and 44
+</p>
+
+<p>
+HINT: Remember that an array needs a value in each position, and that
+value can actually be the returned value of a function! So you can just
+call a function as array values (so don't store the tip values in
+separate variables first, but right in the new array)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">calcTip</span> = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">bill</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> bill &gt;= 50 &amp;&amp; bill &lt;= 300 ? bill * 0.15 : bill * 0.2;
+<span style="color: #3a81c3;">}</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">const calcTip = bill =&gt; bill &gt;= 50 &amp;&amp; bill &lt;= 300 ? bill * 0.15 : bill * 0.2;</span>
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">bills</span> = <span style="color: #3a81c3;">[</span>125, 555, 44<span style="color: #3a81c3;">]</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">tips</span> = <span style="color: #3a81c3;">[</span>calcTip<span style="color: #6c3163;">(</span>bills<span style="color: #2d9574;">[</span>0<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>, calcTip<span style="color: #6c3163;">(</span>bills<span style="color: #2d9574;">[</span>1<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>, calcTip<span style="color: #6c3163;">(</span>bills<span style="color: #2d9574;">[</span>2<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">]</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">totals</span> = <span style="color: #3a81c3;">[</span>bills<span style="color: #6c3163;">[</span>0<span style="color: #6c3163;">]</span> + tips<span style="color: #6c3163;">[</span>0<span style="color: #6c3163;">]</span>, bills<span style="color: #6c3163;">[</span>1<span style="color: #6c3163;">]</span> + tips<span style="color: #6c3163;">[</span>1<span style="color: #6c3163;">]</span>, bills<span style="color: #6c3163;">[</span>2<span style="color: #6c3163;">]</span> + tips<span style="color: #6c3163;">[</span>2<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">]</span>;
+
+console.log<span style="color: #3a81c3;">(</span>bills, tips, totals<span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-introduction-to-objects" class="outline-2">
+<h2 id="introduction-to-objects">42. Introduction to Objects</h2>
+<div class="outline-text-2" id="text-introduction-to-objects">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">xorausArray</span> = <span style="color: #3a81c3;">[</span>
+  <span style="color: #2d9574;">'Jordan'</span>,
+  <span style="color: #2d9574;">'Ahmed'</span>,
+  2027 - 1997,
+  <span style="color: #2d9574;">'teacher'</span>,
+  <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'Ali'</span>, <span style="color: #2d9574;">'Khan'</span>, <span style="color: #2d9574;">'Sal'</span><span style="color: #6c3163;">]</span>
+<span style="color: #3a81c3;">]</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">xoraus</span> = <span style="color: #3a81c3;">{</span>
+  firstName: <span style="color: #2d9574;">'Jordan'</span>,
+  lastName: <span style="color: #2d9574;">'Ahmed'</span>,
+  age: 2027 - 1997,
+  job: <span style="color: #2d9574;">'teacher'</span>,
+  friends: <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'Ali'</span>, <span style="color: #2d9574;">'K'</span>, <span style="color: #2d9574;">'Sal'</span><span style="color: #6c3163;">]</span>
+<span style="color: #3a81c3;">}</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-dot-vs.-bracket-notation" class="outline-2">
+<h2 id="dot-vs.-bracket-notation">43. Dot vs. Bracket Notation</h2>
+<div class="outline-text-2" id="text-dot-vs.-bracket-notation">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">xoraus</span> = <span style="color: #3a81c3;">{</span>
+  firstName: <span style="color: #2d9574;">'Jordan'</span>,
+  lastName: <span style="color: #2d9574;">'Ahmed'</span>,
+  age: 2027 - 1997,
+  job: <span style="color: #2d9574;">'teacher'</span>,
+  friends: <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'Plato'</span>, <span style="color: #2d9574;">'Aristotle'</span>, <span style="color: #2d9574;">'Socrates'</span><span style="color: #6c3163;">]</span>
+<span style="color: #3a81c3;">}</span>;
+console.log<span style="color: #3a81c3;">(</span>xoraus<span style="color: #3a81c3;">)</span>; 
+
+console.log<span style="color: #3a81c3;">(</span>xoraus.lastName<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Ahmed</span>
+console.log<span style="color: #3a81c3;">(</span>xoraus<span style="color: #6c3163;">[</span><span style="color: #2d9574;">'lastName'</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Ahmed</span>
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">nameKey</span> = <span style="color: #2d9574;">'Name'</span>;
+console.log<span style="color: #3a81c3;">(</span>xoraus<span style="color: #6c3163;">[</span><span style="color: #2d9574;">'first'</span> + nameKey<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Jordan</span>
+console.log<span style="color: #3a81c3;">(</span>xoraus<span style="color: #6c3163;">[</span><span style="color: #2d9574;">'last'</span> + nameKey<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">output: Ahmed</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log(xoraus.'last' + nameKey) // this will not work</span>
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">interestedIn</span> = prompt<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'What do you want to know about Jordan? Choose between firstName, lastName, age, job, and friends'</span><span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>xoraus<span style="color: #6c3163;">[</span>interestedIn<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span>xoraus<span style="color: #2d9574;">[</span>interestedIn<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'Wrong request! Choose between firstName, lastName, age, job, and friends'</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+
+xoraus.location = <span style="color: #2d9574;">'India'</span>;
+xoraus<span style="color: #3a81c3;">[</span><span style="color: #2d9574;">'twitter'</span><span style="color: #3a81c3;">]</span> = <span style="color: #2d9574;">'@xoraus'</span>;
+console.log<span style="color: #3a81c3;">(</span>xoraus<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Challenge</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"Jonas has 3 friends, and his best friend is called Aristotle"</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">`${xoraus.firstName} has ${xoraus.friends.length} friends, and his best friend is called ${xoraus.friends[1]}`</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>when we need to first compute the property name, then we have to use
+the bracket notation otherwise use dot notation.</li>
+<li>we get *undefined * when when we try to access a property on an object
+that does not exist.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-object-methods" class="outline-2">
+<h2 id="object-methods">44. Object Methods</h2>
+<div class="outline-text-2" id="text-object-methods">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">xoraus</span> = <span style="color: #3a81c3;">{</span>
+  firstName: <span style="color: #2d9574;">'Jordan'</span>,
+  lastName: <span style="color: #2d9574;">'Ahmed'</span>,
+  birthYeah: 1997,
+  job: <span style="color: #2d9574;">'Programmer'</span>,
+  friends: <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'Socrates'</span>, <span style="color: #2d9574;">'Plato'</span>, <span style="color: #2d9574;">'Aristotle'</span><span style="color: #6c3163;">]</span>,
+  hasDriversLicense: <span style="color: #4e3163;">true</span>,
+
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">calcAge: function (birthYeah) {</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">//   </span><span style="color: #2aa1ae; background-color: #ecf3ec;">return 2037 - birthYeah;</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">}</span>
+
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">calcAge: function () {</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">//   </span><span style="color: #2aa1ae; background-color: #ecf3ec;">// console.log(this);</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">//   </span><span style="color: #2aa1ae; background-color: #ecf3ec;">return 2027 - this.birthYeah;</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">}</span>
+
+  <span style="color: #6c3163; font-weight: bold;">calcAge</span>: <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #4e3163;">this</span>.age = 2027 - <span style="color: #4e3163;">this</span>.birthYeah;
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #4e3163;">this</span>.age;
+  <span style="color: #6c3163;">}</span>,
+
+  <span style="color: #6c3163; font-weight: bold;">getSummary</span>: <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">`${this.firstName} is a ${this.calcAge()}-year old ${xoraus.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`</span>
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>;
+
+console.log<span style="color: #3a81c3;">(</span>xoraus.calcAge<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>;
+
+console.log<span style="color: #3a81c3;">(</span>xoraus.age<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>xoraus.age<span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>xoraus.age<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Challenge</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"Jonas is a 30-year old programmer, and he has a driver's license"</span>
+console.log<span style="color: #3a81c3;">(</span>xoraus.getSummary<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Any function that is attached to an object is called a method.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-coding-challenge-3" class="outline-2">
+<h2 id="coding-challenge-3">45. Coding Challenge ##3</h2>
+<div class="outline-text-2" id="text-coding-challenge-3">
+<p>
+Let's go back to Mark and John comparing their BMIs! This time, let's
+use objects to implement the calculations! Remember: BMI = mass / height
+</p>
+</div>
+</div>
+<div id="outline-container-org37d7882" class="outline-2">
+<h2 id="org37d7882">2 = mass / (height * height). (mass in kg and height in meter)</h2>
+<div class="outline-text-2" id="text-org37d7882">
+<ol class="org-ol">
+<li>For each of them, create an object with properties for their full
+name, mass, and height (Mark Miller and John Smith)</li>
+<li>Create a 'calcBMI' method on each object to calculate the BMI (the
+same method on both objects). Store the BMI value to a property, and
+also return it from the method.</li>
+<li>Log to the console who has the higher BMI, together with the full
+name and the respective BMI. Example: "John Smith's BMI (28.3) is
+higher than Mark Miller's (23.9)!"</li>
+</ol>
+
+<p>
+TEST DATA: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg
+and is 1.95 m tall.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">mark</span> = <span style="color: #3a81c3;">{</span>
+  fullName: <span style="color: #2d9574;">'Mark Miller'</span>,
+  mass: 78,
+  height: 1.69,
+  <span style="color: #6c3163; font-weight: bold;">calcBMI</span>: <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #4e3163;">this</span>.bmi = <span style="color: #4e3163;">this</span>.mass / <span style="color: #4e3163;">this</span>.height ** 2;
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #4e3163;">this</span>.bmi;
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">john</span> = <span style="color: #3a81c3;">{</span>
+  fullName: <span style="color: #2d9574;">'John Smith'</span>,
+  mass: 92,
+  height: 1.95,
+  <span style="color: #6c3163; font-weight: bold;">calcBMI</span>: <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #4e3163;">this</span>.bmi = <span style="color: #4e3163;">this</span>.mass / <span style="color: #4e3163;">this</span>.height ** 2;
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #4e3163;">this</span>.bmi;
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>;
+
+mark.calcBMI<span style="color: #3a81c3;">()</span>;
+john.calcBMI<span style="color: #3a81c3;">()</span>;
+
+console.log<span style="color: #3a81c3;">(</span>mark.bmi, john.bmi<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!"</span>
+
+<span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>mark.bmi &gt; john.bmi<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})`</span><span style="color: #6c3163;">)</span>
+<span style="color: #3a81c3;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>john.bmi &gt; mark.bmi<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`</span><span style="color: #6c3163;">)</span>
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-iteration-the-for-loop" class="outline-2">
+<h2 id="iteration-the-for-loop">46. Iteration: The for Loop</h2>
+<div class="outline-text-2" id="text-iteration-the-for-loop">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 1 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 2 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 3 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 4 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 5 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 6 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 7 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 8 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 9 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log('Lifting weights repetition 10 &#127947;&#65039;&#8205;&#9792;&#65039;');</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">for loop keeps running while condition is TRUE</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">rep</span> = 1; rep &lt;= 30; rep++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">`Lifting weights repetition ${rep} &#127947;&#65039;&#8205;&#9792;&#65039;`</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-looping-arrays-breaking-and-continuing" class="outline-2">
+<h2 id="looping-arrays-breaking-and-continuing">47. Looping Arrays, Breaking and Continuing</h2>
+<div class="outline-text-2" id="text-looping-arrays-breaking-and-continuing">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">jonas</span> = <span style="color: #3a81c3;">[</span>
+  <span style="color: #2d9574;">'Jonas'</span>,
+  <span style="color: #2d9574;">'Schmedtmann'</span>,
+  2037 - 1991,
+  <span style="color: #2d9574;">'teacher'</span>,
+  <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'Michael'</span>, <span style="color: #2d9574;">'Peter'</span>, <span style="color: #2d9574;">'Steven'</span><span style="color: #6c3163;">]</span>,
+  <span style="color: #4e3163;">true</span>
+<span style="color: #3a81c3;">]</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">types</span> = <span style="color: #3a81c3;">[]</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log(jonas[0])</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log(jonas[1])</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">...</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log(jonas[4])</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">jonas[5] does NOT exist</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = 0; i &lt; jonas.length; i++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Reading from jonas array</span>
+  console.log<span style="color: #6c3163;">(</span>jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span>, <span style="color: #3a81c3; font-weight: bold;">typeof</span> jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Filling types array</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">types[i] = typeof jonas[i];</span>
+  types.push<span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+
+console.log<span style="color: #3a81c3;">(</span>types<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">years</span> = <span style="color: #3a81c3;">[</span>1991, 2007, 1969, 2020<span style="color: #3a81c3;">]</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">ages</span> = <span style="color: #3a81c3;">[]</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = 0; i &lt; years.length; i++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  ages.push<span style="color: #6c3163;">(</span>2037 - years<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+console.log<span style="color: #3a81c3;">(</span>ages<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">continue and break</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'--- ONLY STRINGS ---'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = 0; i &lt; jonas.length; i++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span> !== <span style="color: #2d9574;">'string'</span><span style="color: #6c3163;">)</span> <span style="color: #3a81c3; font-weight: bold;">continue</span>;
+
+  console.log<span style="color: #6c3163;">(</span>jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span>, <span style="color: #3a81c3; font-weight: bold;">typeof</span> jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+
+console.log<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">'--- BREAK WITH NUMBER ---'</span><span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = 0; i &lt; jonas.length; i++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span> === <span style="color: #2d9574;">'number'</span><span style="color: #6c3163;">)</span> <span style="color: #3a81c3; font-weight: bold;">break</span>;
+
+  console.log<span style="color: #6c3163;">(</span>jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span>, <span style="color: #3a81c3; font-weight: bold;">typeof</span> jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-looping-backwards-and-loops-in-loops" class="outline-2">
+<h2 id="looping-backwards-and-loops-in-loops">48. Looping Backwards and Loops in Loops</h2>
+<div class="outline-text-2" id="text-looping-backwards-and-loops-in-loops">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">jonas</span> = <span style="color: #3a81c3;">[</span>
+  <span style="color: #2d9574;">'Jonas'</span>,
+  <span style="color: #2d9574;">'Schmedtmann'</span>,
+  2037 - 1991,
+  <span style="color: #2d9574;">'teacher'</span>,
+  <span style="color: #6c3163;">[</span><span style="color: #2d9574;">'Michael'</span>, <span style="color: #2d9574;">'Peter'</span>, <span style="color: #2d9574;">'Steven'</span><span style="color: #6c3163;">]</span>,
+  <span style="color: #4e3163;">true</span>
+<span style="color: #3a81c3;">]</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0, 1, ..., 4</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">4, 3, ..., 0</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = jonas.length - 1; i &gt;= 0; i--<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span>i, jonas<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">exercise</span> = 1; exercise &lt; 4; exercise++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">`-------- Starting exercise ${exercise}`</span><span style="color: #6c3163;">)</span>;
+
+  <span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">rep</span> = 1; rep &lt; 6; rep++<span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+    console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">`Exercise ${exercise}: Lifting weight repetition ${rep} &#127947;&#65039;&#8205;&#9792;&#65039;`</span><span style="color: #2d9574;">)</span>;
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-the-while-loop" class="outline-2">
+<h2 id="the-while-loop">49. The while Loop</h2>
+<div class="outline-text-2" id="text-the-while-loop">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">rep</span> = 1; rep &lt;= 10; rep++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">`Lifting weights repetition ${rep} &#127947;&#65039;&#8205;&#9792;&#65039;`</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">rep</span> = 1;
+<span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3;">(</span>rep &lt;= 10<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">console.log(`WHILE: Lifting weights repetition ${rep} &#127947;&#65039;&#8205;&#9792;&#65039;`);</span>
+  rep++;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">dice</span> = Math.trunc<span style="color: #3a81c3;">(</span>Math.random<span style="color: #6c3163;">()</span> * 6<span style="color: #3a81c3;">)</span> + 1;
+
+<span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3;">(</span>dice !== 6<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">`You rolled a ${dice}`</span><span style="color: #6c3163;">)</span>;
+  dice = Math.trunc<span style="color: #6c3163;">(</span>Math.random<span style="color: #2d9574;">()</span> * 6<span style="color: #6c3163;">)</span> + 1;
+  <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #6c3163;">(</span>dice === 6<span style="color: #6c3163;">)</span> console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">'Loop is about to end...'</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-coding-challenge-4" class="outline-2">
+<h2 id="coding-challenge-4">50. Coding Challenge ##4</h2>
+<div class="outline-text-2" id="text-coding-challenge-4">
+<p>
+Let's improve Steven's tip calculator even more, this time using
+loops! 1. Create an array 'bills' containing all 10 test bill values 2.
+Create empty arrays for the tips and the totals ('tips' and 'totals') 3.
+Use the 'calcTip' function we wrote before (no need to repeat) to
+calculate tips and total values (bill + tip) for every bill value in the
+bills array. Use a for loop to perform the 10 calculations!
+</p>
+
+<p>
+TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+</p>
+
+<p>
+HINT: Call calcTip in the loop and use the push method to add values to
+the tips and totals arrays 😉
+</p>
+
+<ol class="org-ol">
+<li>BONUS: Write a function 'calcAverage' which takes an array called
+'arr' as an argument. This function calculates the average of all
+numbers in the given array. This is a DIFFICULT challenge (we haven't
+done this before)! Here is how to solve it: 4.1. First, you will need
+to add up all values in the array. To do the addition, start by
+creating a variable 'sum' that starts at 0. Then loop over the array
+using a for loop. In each iteration, add the current value to the
+'sum' variable. This way, by the end of the loop, you have all values
+added together 4.2. To calculate the average, divide the sum you
+calculated before by the length of the array (because that's the
+number of elements) 4.3. Call the function with the 'totals' array</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">calcTip</span> = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">bill</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> bill &gt;= 50 &amp;&amp; bill &lt;= 300 ? bill * 0.15 : bill * 0.2;
+<span style="color: #3a81c3;">}</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">bills</span> = <span style="color: #3a81c3;">[</span>22, 295, 176, 440, 37, 105, 10, 1100, 86, 52<span style="color: #3a81c3;">]</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">tips</span> = <span style="color: #3a81c3;">[]</span>;
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">totals</span> = <span style="color: #3a81c3;">[]</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = 0; i &lt; bills.length; i++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">tip</span> = calcTip<span style="color: #6c3163;">(</span>bills<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+  tips.push<span style="color: #6c3163;">(</span>tip<span style="color: #6c3163;">)</span>;
+  totals.push<span style="color: #6c3163;">(</span>tip + bills<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+console.log<span style="color: #3a81c3;">(</span>bills, tips, totals<span style="color: #3a81c3;">)</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">calcAverage</span> = <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #3a81c3;">(</span><span style="color: #715ab1;">arr</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">sum</span> = 0;
+  <span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #6c3163;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = 0; i &lt; arr.length; i++<span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">sum = sum + arr[i];</span>
+    sum += arr<span style="color: #2d9574;">[</span>i<span style="color: #2d9574;">]</span>;
+  <span style="color: #6c3163;">}</span>
+  <span style="color: #3a81c3; font-weight: bold;">return</span> sum / arr.length;
+<span style="color: #3a81c3;">}</span>
+console.log<span style="color: #3a81c3;">(</span>calcAverage<span style="color: #6c3163;">(</span><span style="color: #2d9574;">[</span>2, 3, 7<span style="color: #2d9574;">]</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>calcAverage<span style="color: #6c3163;">(</span>totals<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span>calcAverage<span style="color: #6c3163;">(</span>tips<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Karthik D</p>
+<p class="date">Created: 2025-08-02 Sat 19:15</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

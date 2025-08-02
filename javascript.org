@@ -1,0 +1,906 @@
+#+TITLE: JavaScript Tutorial
+#+AUTHOR: Your Name
+# +DATE: 2025-08-02
+# +OPTIONS: toc:2 num:nil
+
+#+SETUPFILE:css/emacs-org.setup
+[  [[./index.html][Home]] ]  $&ensp;$  | $&ensp;$ $&ensp;$ [text] $&ensp;$  $&ensp;$ | $&ensp;$ $&ensp;$ [link] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [title] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [icon] $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [target]  $&ensp;$ $&ensp;$ | $&ensp;$ $&ensp;$ [expanded]  $&ensp;$ $&ensp;$
+-----
+
+
+* Introduction
+JavaScript is a versatile programming language primarily used for adding interactivity to websites. This tutorial introduces the basics of JavaScript with code examples.
+
+* Setting Up
+
+To run JavaScript:
+- Use your browser's developer tools console.
+- Or use an HTML file with a `<script>` tag.
+- Or use Node.js for backend or CLI development.
+
+* Variables
+** Definition
+
+A variable in programming is a named storage location in a computer’s memory that holds a value, which can be modified during the execution of a program.
+
+Key Points :
+- *Name*: Every variable has a name (also called an identifier).
+- *Type*: It has a data type (like int, string, float, etc.) that determines the kind of value it can store. \\
+  Also Know as =DataTypes=
+- *Value*: It holds some data (like a number, text, or boolean).
+- *Memory*: It occupies space in memory to store the value.
+- *Changeable*: The value stored in a variable can be changed during program execution.
+
+#+begin_src jss
+var, let, const  // key word are used to inicilize variable  
+  
+// Using var is function scoped
+var name = "Alice";
+
+// Using let (block-scoped)
+let age = 25;
+
+// Using const (constant)
+const PI = 3.1415;
+#+end_src
+
+** Variable Naming Syntax Convention
+
+JavaScript has specific syntax rules for naming variables:
+- Synatx Rule
+ - ✅  Allowed 
+  - Names must begin with a *letter* (a–z, A–Z), *underscore (_)*, or *dollar sign ($)*.
+  - After the first character, digits (0–9) are also allowed.
+  - Names are *case-sensitive* (`myVar` ≠ `myvar`).
+  - Can use Unicode letters (e.g., Greek, Hindi, Chinese), but it's discouraged for readability.
+ - ❌ Not Allowed:
+  - Cannot start with a digit.
+  - Cannot use *reserved keywords* (like `var`, `let`, `function`, etc.)
+  - Cannot contain spaces or hyphens.
+ #+begin_src js
+let name = "Alice";
+let _privateVar = 123;
+let $price = 99.99;
+let user1 = "John";        // Digits allowed after the first character
+
+let 1user = "Nope";        // ❌ Starts with digit
+let let = "invalid";       // ❌ Reserved word
+let my-name = "hyphen";    // ❌ Hyphen not allowed
+let full name = "space";   // ❌ Space not allowed
+#+end_src
+- General Rule 
+  - For variable and fucntion we use *camelCase* ; eg:userName,, myDate, dateTime, getItem, setItem
+  - For Class we use *PascalCase*; eg :Document.getElementById(), 
+  - For Constant we use *UPPER_SNAKE_CASE*     
+More info: [[https://developer.mozilla.org/en-US/docs/Glossary/Identifier][MDN: JavaScript Identifiers]]
+
+#+begin_src js
+// camelCase → Preferred for variables & functions
+let firstName = "John";
+
+// PascalCase → Used for class names
+class UserProfile {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+// UPPER_SNAKE_CASE → Often used for constants
+const MAX_ATTEMPTS = 3;
+#+end_src
+
+*** Best Practices
+- Use `const` by default, unless you need to reassign.
+- Avoid short or vague names like `a`, `b`, `data`.
+- Use verbs for functions: `getData()`, `sendRequest()`
+- Use nouns for variables/objects: `user`, `emailList`
+- Reserved Words to Avoid \\
+  eg : `let`, `var`, `const`, `function`, `return`, `if`, `else`, `new`, `class`, etc.
+
+More here: [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords][JavaScript Keywords - MDN Docs]]
+
+* Data Types
+
+JavaScript supports several data types (Null, Undefined, Boolean, Number, String, Object, Array(simillar to list in python))
+#+begin_src js
+let str = "Hello";      // String
+let num = 42;           // Number (no difference between integer, float)
+let isTrue = true;      // Boolean
+let nothing = null;     // Null
+let notDefined;         // Undefined
+let obj = {x: 1, y: 2}; // Object
+let arr = [1, 2, 3];    // Array
+#+end_src
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures][MDN: JavaScript Data Types]]
+** Number DataType
+JavaScript uses a single `Number` type for all numeric values — including integers and floating-point numbers. Internally, all numbers are stored as *64-bit floating-point (IEEE 754)*.
+- Examples
+#+begin_src js
+let age = 25;          // Integer
+let price = 99.99;     // Floating-point
+let negative = -100;   // Negative number
+let pi = 3.1415926535; // Decimal
+#+end_src
+
+*** Special Numeric Values
+
+| Value       | Meaning                         |
+|-------------+----------------------------------|
+| `Infinity`  | Positive infinity                |
+| `-Infinity` | Negative infinity                |
+| `NaN`       | "Not-a-Number" (invalid result) |
+
+#+begin_src js
+console.log(1 / 0);       // Infinity
+console.log(-1 / 0);      // -Infinity
+console.log("abc" * 3);   // NaN
+#+end_src
+
+*** Checking for NaN and Finite
+
+#+begin_src js
+isNaN("hello");         // true
+isNaN(123);             // false
+Number.isNaN(NaN);      // true
+
+isFinite(10);           // true
+isFinite(Infinity);     // false
+#+end_src
+
+*** Number Limits
+
+JavaScript has some numeric precision and size limits:
+
+#+begin_src js
+console.log(Number.MAX_VALUE);        // Largest positive number
+console.log(Number.MIN_VALUE);        // Smallest positive number > 0
+console.log(Number.MAX_SAFE_INTEGER); // 2^53 - 1
+console.log(Number.MIN_SAFE_INTEGER); // -(2^53 - 1)
+#+end_src
+*** Numeric Literals
+
+| Syntax        | Example     |
+|---------------+-------------|
+| Decimal       | `123`       |
+| Binary (0b)   | `0b1010`    |
+| Octal (0o)    | `0o755`     |
+| Hex (0x)      | `0xFF`      |
+
+#+begin_src js
+let dec = 255;
+let bin = 0b11111111;
+let oct = 0o377;
+let hex = 0xFF;
+
+console.log(dec === bin); // true
+#+end_src
+
+*** Converting Strings to Numbers
+
+#+begin_src js
+Number("42");         // 42
+parseInt("42px");     // 42
+parseFloat("3.14m");  // 3.14
++"123";               // 123 (unary plus)
+#+end_src
+
+*** Number Formatting
+
+#+begin_src js
+let n = 12345.6789;
+
+n.toFixed(2);     // "12345.68" — 2 decimal places
+n.toPrecision(4); // "1.235e+4"
+n.toString();     // "12345.6789"
+#+end_src
+
+- More Info:
+ - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#number_type][MDN: Number Type]]
+ - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number][MDN: Number Object]]
+
+*** Operators
+JavaScript supports standard arithmetic operators to perform calculations on numbers.
+**** 1) Arthimetic operator
+
+
+| Operator | Description     | Example        | Result |
+|----------+-----------------+----------------+--------|
+| +        | Addition         | 5 + 3          | 8      |
+| -        | Subtraction      | 10 - 4         | 6      |
+| *        | Multiplication   | 7 * 2          | 14     |
+| /        | Division         | 12 / 3         | 4      |
+| %        | Modulus (Remainder) | 10 % 3     | 1      |
+| **       | Exponentiation   | 2 ** 3         | 8      |
+
+#+begin_src js
+let a = 10, b = 3;
+
+console.log(a + b);  // 13
+console.log(a - b);  // 7
+console.log(a * b);  // 30
+console.log(a / b);  // 3.333...
+console.log(a % b);  // 1
+console.log(a ** b); // 1000
+#+end_src
+
+#+begin_quote
+- JavaScript uses *floating-point arithmetic* — results may not always be exact (e.g. `0.1 + 0.2 !== 0.3`).
+- Use `Math` functions (e.g. `Math.floor()`, `Math.round()`, `Math.sqrt()`) for advanced numeric operations.
+#+end_quote
+More on this: [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#arithmetic_operators][MDN: Arithmetic Operators]]
+**** 2) Assignment Operator (Increment and Decrement) 
+
+| Operator | Description         | Example        |
+|----------+---------------------+----------------|
+| ++       | Increment by 1      | x++ or ++x     |
+| --       | Decrement by 1      | x-- or --x     |
+
+#+begin_src js
+let x = 5;
+
+console.log(x++); // 5 (then x becomes 6)
+console.log(++x); // 7 (x is incremented before)
+console.log(x--); // 7 (then x becomes 6)
+console.log(--x); // 5
+#+end_src
+
+**** 3) Assignment Operator  (Compound Assignment) 
+
+| Operator | Example     | Equivalent To   |
+|----------+-------------+-----------------|
+| +=       | x += 3      | x = x + 3       |
+| -=       | x -= 2      | x = x - 2       |
+| *=       | x *= 4      | x = x * 4       |
+| /=       | x /= 2      | x = x / 2       |
+| %=       | x %= 5      | x = x % 5       |
+| **=      | x **= 2     | x = x ** 2      |
+
+#+begin_src js
+let y = 4;
+
+y += 2;  // 6
+y *= 3;  // 18
+y **= 2; // 324
+console.log(y);
+#+end_src
+
+**** 4) Comparison operator
+JavaScript provides several comparison operators for comparing numbers and other values. These operators return boolean results: `true` or `false`.
+
+| Operator | Name                    | Example     | Result     |
+|----------+-------------------------+-------------+------------|
+| `==`     | Equal to (loose)        | 5 `==` '5'  | true       |
+| `===`    | Equal to (strict)       | 5 `===` '5'  | false      |
+| !=       | Not equal (loose)       | 5 != '5'    | false      |
+| !==      | Not equal (strict)      | 5 !== '5'   | true       |
+| >        | Greater than            | 7 > 3       | true       |
+| <        | Less than               | 2 < 4       | true       |
+| >=       | Greater than or equal   | 5 >= 5      | true       |
+| <=       | Less than or equal      | 3 <= 2      | false      |
+
+#+begin_src js
+let a = 10;
+let b = 5;
+
+console.log(a > b);     // true
+console.log(a < b);     // false
+console.log(a == "10"); // true (loose equality)
+console.log(a === "10");// false (strict equality)
+console.log(a != b);    // true
+console.log(a !== 10);  // false
+#+end_src
+
+***** Loose vs Strict Comparison
+
+- `==` and `!=` perform *type coercion* (i.e., convert types before comparing).
+- `===` and `!==` do *not* convert types — both value and type must match.
+
+#+begin_src js
+console.log(5 == "5");   // true (number vs string, coerced)
+console.log(5 === "5");  // false (different types)
+console.log(null == undefined);  // true
+console.log(null === undefined); // false
+#+end_src
+
+#+begin_quote
+*Always use `===` and `!==`* unless you explicitly want type coercion.
+#+end_quote Best Practice
+
+
+
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators][MDN: Comparison Operators]]
+
+
+**** 5) Conditional (Ternary) Operator
+
+#+BEGIN_SRC js
+    const age = 23;
+    // age >= 18 ? console.log('I like to drink wine 🍷') : console.log('I like to drink water 💧');
+
+    const drink = age >= 18 ? 'Sharbat-e-Jaam 🍷' : 'water 💧';
+    console.log(drink);
+
+    let drink2;
+    if (age >= 18) {
+      drink2 = 'Sharbat-e-Jaam 🍷';
+    } else {
+      drink2 = 'water 💧';
+    }
+    console.log(drink2);
+
+    console.log(`I like to drink ${age >= 18 ? 'Sharbat-e-Jaam 🍷' : 'water 💧'}`);
+#+END_SRC
+
+**** 6) Logical Operators 
+
+Logical operators are used to combine or invert boolean values. While they work with any data type (not just numbers), they are especially useful in conditions involving numeric comparisons.
+
+#+BEGIN_EXPORT html
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&amp;&amp;</td>
+<td class="org-left">Logical AND</td>
+<td class="org-left">(5 &gt; 3) &amp;&amp; (2 &lt; 4)</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;||</td>
+<td class="org-left">Logical OR</td>
+<td class="org-left">(5 &gt; 6) || (2 &lt; 4)</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">!</td>
+<td class="org-left">Logical NOT</td>
+<td class="org-left">!(5 &gt; 3)</td>
+<td class="org-left">false</td>
+</tr>
+</tbody>
+</table>
+
+#+END_EXPORT
+
+
+
+#+begin_src js
+let a = 10;
+let b = 5;
+
+console.log(a > 5 && b < 10); // true (both true)
+console.log(a < 5 || b < 10); // true (one is true)
+console.log(!(a == 10));      // false (negation)
+
+#+end_src
+
+**** Truthy and Falsy in JavaScript
+
+JavaScript treats certain values as "truthy" or "falsy" in logical expressions.
+
+- *Falsy values:* `false`, `0`, `-0`, `""` (empty string), `null`, `undefined`, `NaN`
+- *Everything else is truthy* — including `"0"`, `[]`, `{}`, etc.
+
+#+begin_src js
+console.log(0 && 100);     // 0 (falsy short-circuits)
+console.log(100 && 0);     // 0 (returns first falsy)
+console.log(100 && 200);   // 200 (both truthy)
+
+console.log(0 || 200);     // 200 (returns first truthy)
+console.log(100 || 0);     // 100 (first is truthy)
+
+console.log(!0);           // true
+console.log(!100);         // false
+#+end_src
+
+**** Short-Circuit Evaluation
+
+- `&&` returns the first falsy value (or the last if none are falsy).
+- `||` returns the first truthy value.
+
+Example:  Real-world Use Case
+
+#+begin_src js
+let username = inputName || "Guest";  // default value
+let isValid = score > 0 && score <= 100;
+#+end_src
+
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators][MDN: Logical Operators]]
+**** TODO 5)  Bitwise  operator
+  | or         |    |
+  | and        | &  |
+  | xor        | ^  |
+  | RIGHTSHIFT | >> |
+  | Leftshift  | << |
+  |            |    |
+#+BEGIN_SRC python
+
+ #+END_SRC
+**** TODO 7) Membership  operator 
+#+BEGIN_SRC python
+
+#+END_SRC
+** String DataType
+A `String` in JavaScript is a sequence of characters used to represent text. Strings are immutable — once created, they cannot be changed (only replaced).
+
+*** Declaring Strings
+
+You can use single quotes (`'`), double quotes (`"`), or backticks (`` ` ``) for template literals.
+
+#+begin_src js
+let name1 = "Alice";
+let name2 = 'Bob';
+let name3 = `Charlie`; // Template literal
+#+end_src
+
+*** String Operations
+
+#+begin_src js
+let first = "Hello";
+let second = "World";
+
+// Concatenation
+let result = first + " " + second; // "Hello World"
+
+// Template literals
+let greeting = `Hi, ${name1}!`; // "Hi, Alice!"
+
+// Length of a string
+console.log(greeting.length); // 10
+#+end_src
+
+*** Accessing Characters
+
+JavaScript strings are zero-indexed.
+
+#+begin_src js
+let text = "JavaScript";
+
+console.log(text[0]);     // "J"
+console.log(text.charAt(4)); // "S"
+console.log(text[text.length - 1]); // "t"
+#+end_src
+
+*** Common String Methods
+
+| Method              | Description                            | Example                         |
+|---------------------+----------------------------------------+----------------------------------|
+| `length`            | Returns string length                  | `"abc".length` → 3              |
+| `toUpperCase()`     | Converts to uppercase                  | `"hello".toUpperCase()` → "HELLO" |
+| `toLowerCase()`     | Converts to lowercase                  | `"HELLO".toLowerCase()` → "hello" |
+| `trim()`            | Removes whitespace                     | `"  hi  ".trim()` → "hi"        |
+| `includes()`        | Checks if substring exists             | `"abc".includes("b")` → true    |
+| `indexOf()`         | Returns first index of substring       | `"hello".indexOf("l")` → 2      |
+| `lastIndexOf()`     | Returns last index of substring        | `"hello".lastIndexOf("l")` → 3  |
+| `slice(start, end)` | Extracts part of string                | `"hello".slice(1, 3)` → "el"    |
+| `substring(start, end)` | Similar to slice                   | `"hello".substring(1, 3)` → "el"|
+| `replace()`         | Replaces first match                   | `"Hi Joe".replace("Joe", "Sam")`|
+| `split()`           | Splits string into array               | `"a,b,c".split(",")` → `["a","b","c"]` |
+| `repeat()`          | Repeats the string                     | `"ha".repeat(3)` → "hahaha"     |
+
+#+begin_src js
+let str = "  JavaScript is fun!  ";
+
+console.log(str.trim());             // "JavaScript is fun!"
+console.log(str.toUpperCase());     // "  JAVASCRIPT IS FUN!  "
+console.log(str.includes("fun"));   // true
+console.log(str.indexOf("Script")); // 4
+console.log(str.slice(2, 12));      // "JavaScript"
+console.log(str.replace("fun", "awesome")); // "  JavaScript is awesome!  "
+#+end_src
+
+*** Escape Characters
+
+| Escape | Meaning         |
+|--------+-----------------|
+| `\'`   | Single quote    |
+| `\"`   | Double quote    |
+| `\\`   | Backslash       |
+| `\n`   | New line        |
+| `\t`   | Tab             |
+
+#+begin_src js
+let msg = "Line1\nLine2";
+console.log(msg);
+/* Output:
+Line1
+Line2
+*/
+#+end_src
+
+*** Template Literals (Backticks)
+
+Allows embedded expressions and multi-line strings.
+
+#+begin_src js
+let user = "Karthik";
+let greeting = `Welcome, ${user}!`;
+let multiLine = `Line 1
+Line 2`;
+
+console.log(greeting); // "Welcome, Karthik!"
+console.log(multiLine);
+#+end_src
+
+*** String Immutability
+
+Strings are immutable in JavaScript — operations create a new string.
+
+#+begin_src js
+let original = "hello";
+let upper = original.toUpperCase();
+
+console.log(original); // "hello" (unchanged)
+console.log(upper);    // "HELLO"
+#+end_src
+
+*** More Info:
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String][MDN: String Reference]]
+
+** Boolean DataType
+The `Boolean` data type represents one of two values:
+- `true`
+- `false`
+
+Booleans are commonly used in conditions, logic, and flow control.
+
+- Declaring Booleans
+
+#+begin_src js
+let isOnline = true;
+let isLoggedIn = false;
+
+console.log(typeof isOnline); // "boolean"
+#+end_src
+
+*** Boolean Expressions
+
+Booleans often result from comparisons or logical operations.
+
+#+begin_src js
+let a = 10;
+let b = 5;
+
+console.log(a > b);       // true
+console.log(a === 5);     // false
+console.log(a !== b);     // true
+#+end_src
+
+
+*** Boolean Conversion
+
+JavaScript converts other types to boolean in logical contexts (truthy/falsy).
+
+*** Falsy values (convert to false):
+
+- `false`
+- `0`, `-0`
+- `""` (empty string)
+- `null`
+- `undefined`
+- `NaN`
+
+*** Everything else is truthy:
+
+- `true`, `"0"`, `"false"`, `[]`, `{}`, `function(){}`
+- Any non-zero number
+
+#+begin_src js
+console.log(Boolean(0));        // false
+console.log(Boolean(""));      // false
+console.log(Boolean([]));      // true
+console.log(Boolean("false")); // true
+#+end_src
+
+---
+
+*** Logical Operators (with Booleans)
+
+| Operator | Description         | Example              | Result |
+|----------+---------------------+----------------------|--------|
+| `&&`     | AND                 | `true && false`      | false  |
+| `||`     | OR                  | `false || true`      | true   |
+| `!`      | NOT (negation)      | `!true`              | false  |
+
+#+begin_src js
+let x = true;
+let y = false;
+
+console.log(x && y); // false
+console.log(x || y); // true
+console.log(!x);     // false
+#+end_src
+
+---
+
+*** Boolean Object (Not Recommended)
+
+You can create a Boolean object with `new Boolean()`, but this is rarely used and discouraged because it behaves unexpectedly in conditions.
+
+#+begin_src js
+let boolObj = new Boolean(false);
+console.log(typeof boolObj);     // "object"
+console.log(boolObj == false);   // true
+console.log(boolObj === false);  // false
+if (boolObj) {
+  console.log("Still true!");    // This runs, because objects are truthy
+}
+#+end_src
+
+Use primitive `true`/`false` values instead of the `Boolean` object.
+
+---
+
+*** Summary Table
+
+| Type        | Value   | Use Case                          |
+|-------------+---------+-----------------------------------|
+| `boolean`   | `true`  | Condition satisfied               |
+|             | `false` | Condition failed                  |
+| `Boolean()` | Function to convert any type to boolean     |
+| `new Boolean()` | Creates a Boolean object (⚠️ avoid)  |
+
+---
+
+*** More Info:
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type][MDN: Boolean Type]]
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean][MDN: Boolean Object]]
+
+** Null DataType
+
+`null` is an assigned value that represents the intentional absence of any object value.
+
+#+begin_src js
+let value = null;
+console.log(value);         // null
+console.log(typeof value);  // "object" (this is a known quirk in JavaScript)
+#+end_src
+
+Use `null` to reset a variable or indicate "empty" data explicitly.
+
+** Undefined DatType
+
+`undefined` means a variable has been declared but not assigned a value.
+
+#+begin_src js
+let notAssigned;
+console.log(notAssigned);       // undefined
+console.log(typeof notAssigned); // "undefined"
+#+end_src
+
+When comparing `null` and `undefined`:
+
+#+begin_src js
+console.log(null == undefined);  // true (loose equality)
+console.log(null === undefined); // false (strict equality)
+#+end_src
+
+---
+
+** Object DataType
+
+Objects are key-value pairs used to store structured data.
+
+#+begin_src js
+let person = {
+  name: "Alice",
+  age: 30,
+  isStudent: false
+};
+
+// Accessing values
+console.log(person.name);       // "Alice"
+console.log(person["age"]);     // 30
+
+// Adding new property
+person.country = "India";
+
+// Deleting a property
+delete person.isStudent;
+#+end_src
+
+***  Object Methods
+
+| Method                    | Description                           |
+|---------------------------+---------------------------------------|
+| `Object.keys(obj)`        | Returns an array of keys              |
+| `Object.values(obj)`      | Returns an array of values            |
+| `Object.entries(obj)`     | Returns an array of key-value pairs   |
+| `hasOwnProperty("key")`   | Checks if object contains the key     |
+
+#+begin_src js
+console.log(Object.keys(person));    // ["name", "age", "country"]
+console.log(Object.values(person));  // ["Alice", 30, "India"]
+console.log(person.hasOwnProperty("name")); // true
+#+end_src
+
+Objects can also contain functions:
+
+#+begin_src js
+let calculator = {
+  add: function(a, b) {
+    return a + b;
+  }
+};
+
+console.log(calculator.add(2, 3)); // 5
+#+end_src
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object][MDN: Object]]
+
+** Array DataType
+
+Arrays are ordered collections of values (indexed from 0). Arrays are objects in JavaScript.
+
+#+begin_src js
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[0]);    // "Apple"
+console.log(fruits.length); // 3
+#+end_src
+
+
+
+*** Array Methods
+
+| Method            | Description                             |
+|-------------------+-----------------------------------------|
+| `push()`          | Add to end                              |
+| `pop()`           | Remove from end                         |
+| `shift()`         | Remove from beginning                   |
+| `unshift()`       | Add to beginning                        |
+| `splice()`        | Add/remove elements                     |
+| `slice()`         | Get subarray                            |
+| `join()`          | Join array to string                    |
+| `indexOf()`       | Get index of element                    |
+| `includes()`      | Check if value exists                   |
+| `forEach()`       | Loop over elements                      |
+| `map()`           | Create new array by applying function   |
+| `filter()`        | Filter elements by condition            |
+
+#+begin_src js
+let numbers = [1, 2, 3, 4, 5];
+
+let doubled = numbers.map(n => n * 2);    // [2, 4, 6, 8, 10]
+let evens = numbers.filter(n => n % 2 === 0); // [2, 4]
+
+numbers.forEach(n => console.log(n));     // Logs each number
+#+end_src
+
+
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array][MDN: Array]]
+** Check Data Type
+
+#+begin_src js
+console.log(typeof null);              // "object" (legacy bug)
+console.log(typeof undefined);         // "undefined"
+console.log(typeof {});                // "object"
+console.log(typeof []);                // "object" (Array is a type of object)
+console.log(Array.isArray([]));        // true
+#+end_src
+
+
+
+
+
+
+** Summary
+
+| Type       | Description                               |
+|------------+-------------------------------------------|
+| `null`     | Explicitly empty, value placeholder       |
+| `undefined`| Variable declared but not yet assigned    |
+| `object`   | Key-value pair structure for complex data |
+| `array`    | Ordered list of values (indexed object)   |
+
+
+
+
+
+
+* Functions
+
+#+begin_src js
+// Function Declaration
+function greet(name) {
+    return "Hello, " + name;
+}
+
+// Arrow Function
+const add = (a, b) => a + b;
+#+end_src
+
+* Control Flow
+
+#+begin_src js
+let score = 85;
+
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 80) {
+    console.log("Grade: B");
+} else {
+    console.log("Grade: C or lower");
+}
+#+end_src
+
+* Loops
+
+#+begin_src js
+// For loop
+for (let i = 0; i < 5; i++) {
+    console.log("i =", i);
+}
+
+// While loop
+let j = 0;
+while (j < 5) {
+    console.log("j =", j);
+    j++;
+}
+#+end_src
+
+* Objects and Arrays
+
+#+begin_src js
+let person = {
+    name: "Bob",
+    age: 30,
+    greet: function () {
+        console.log("Hi, I'm " + this.name);
+    }
+};
+
+person.greet();
+
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[1]); // Banana
+#+end_src
+
+* TODO DOM Manipulation (in browser)
+
+#+begin_src html
+<!-- HTML -->
+<button onclick="changeText()">Click Me</button>
+<p id="demo">Hello!</p>
+
+<script>
+function changeText() {
+    document.getElementById("demo").innerHTML = "Text changed!";
+}
+</script>
+#+end_src
+
+* TODO Events
+
+#+begin_src js
+document.getElementById("btn").addEventListener("click", function() {
+    alert("Button clicked!");
+});
+#+end_src
+
+* TODO Local Storage
+JavaScript Tutorial In Hindi (CodeWithHarry) : https://www.youtube.com/watch?v=hKB-YGF14SY
+* Conclusion
+
+You’ve now seen the basics of JavaScript including variables, control flow, functions, arrays, objects, and simple DOM interactions. For more, check:
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript][MDN JavaScript Docs]]
+- [[https://javascript.info][javascript.info]]

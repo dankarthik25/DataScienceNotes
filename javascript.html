@@ -1,0 +1,2101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-02 Sat 11:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JavaScript Tutorial</title>
+<meta name="author" content="Your Name Karthik D" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/jupyter2org.css" />
+<link rel="stylesheet" type="text/css" href="css/readtheorg-htmlize.css"/>
+<script src="css/jquery.min.js"></script>
+<script src="css/bootstrap.min.js"></script>
+<script type="text/javascript" src="css/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="css/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">JavaScript Tutorial</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org852a388">Introduction</a></li>
+<li><a href="#orge38f634">Setting Up</a></li>
+<li><a href="#org67ca716">Variables</a>
+<ul>
+<li><a href="#orgd775105">Definition</a></li>
+<li><a href="#org7899640">Variable Naming Syntax Convention</a>
+<ul>
+<li><a href="#org5f383a3">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org73f1e4d">Data Types</a>
+<ul>
+<li><a href="#org4ccf603">Number DataType</a>
+<ul>
+<li><a href="#org87df906">Special Numeric Values</a></li>
+<li><a href="#org70cd0eb">Checking for NaN and Finite</a></li>
+<li><a href="#org54276fe">Number Limits</a></li>
+<li><a href="#orgbf6ae4f">Numeric Literals</a></li>
+<li><a href="#orged9ff25">Converting Strings to Numbers</a></li>
+<li><a href="#org5ae26fb">Number Formatting</a></li>
+<li><a href="#org6b28c77">Operators</a></li>
+</ul>
+</li>
+<li><a href="#orga5c5308">String DataType</a>
+<ul>
+<li><a href="#org9b7a8bf">Declaring Strings</a></li>
+<li><a href="#org659d31b">String Operations</a></li>
+<li><a href="#orge0abb60">Accessing Characters</a></li>
+<li><a href="#org05356ed">Common String Methods</a></li>
+<li><a href="#org23f56ed">Escape Characters</a></li>
+<li><a href="#org210a1e8">Template Literals (Backticks)</a></li>
+<li><a href="#org5a9c37d">String Immutability</a></li>
+<li><a href="#org10ec036">More Info:</a></li>
+</ul>
+</li>
+<li><a href="#org5ec6e02">Boolean DataType</a>
+<ul>
+<li><a href="#orga0b0dbc">Boolean Expressions</a></li>
+<li><a href="#orge1b8409">Boolean Conversion</a></li>
+<li><a href="#orge2d783a">Falsy values (convert to false):</a></li>
+<li><a href="#org1db5f7a">Everything else is truthy:</a></li>
+<li><a href="#org1bd505e">Logical Operators (with Booleans)</a></li>
+<li><a href="#orgbdc0094">Boolean Object (Not Recommended)</a></li>
+<li><a href="#org0296144">Summary Table</a></li>
+<li><a href="#org80e9389">More Info:</a></li>
+</ul>
+</li>
+<li><a href="#org43c4f5e">Null DataType</a></li>
+<li><a href="#orgae2521c">Undefined DatType</a></li>
+<li><a href="#org16ee79c">Object DataType</a>
+<ul>
+<li><a href="#orgf077903">Object Methods</a></li>
+</ul>
+</li>
+<li><a href="#org685aed8">Array DataType</a>
+<ul>
+<li><a href="#org1774e9d">Array Methods</a></li>
+</ul>
+</li>
+<li><a href="#orgd136656">Check Data Type</a></li>
+<li><a href="#orgcadbae9">Summary</a></li>
+</ul>
+</li>
+<li><a href="#org7aea051">Functions</a></li>
+<li><a href="#org0593383">Control Flow</a></li>
+<li><a href="#org9bf4768">Loops</a></li>
+<li><a href="#org4c4cb99">Objects and Arrays</a></li>
+<li><a href="#org863ce1d"><span class="todo TODO">TODO</span> DOM Manipulation (in browser)</a></li>
+<li><a href="#orgcb69df5"><span class="todo TODO">TODO</span> Events</a></li>
+<li><a href="#org0dc9d77"><span class="todo TODO">TODO</span> Local Storage</a></li>
+<li><a href="#orge651afe">Conclusion</a></li>
+</ul>
+</div>
+</div>
+<p>
+[  <a href="./index.html">Home</a> ]  \(&ensp;\)  | \(&ensp;\) \(&ensp;\) [text] \(&ensp;\)  \(&ensp;\) | \(&ensp;\) \(&ensp;\) [link] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [title] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [icon] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [target]  \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [expanded]  \(&ensp;\) \(&ensp;\)
+</p>
+<hr />
+<div id="outline-container-org852a388" class="outline-2">
+<h2 id="org852a388">Introduction</h2>
+<div class="outline-text-2" id="text-org852a388">
+<p>
+JavaScript is a versatile programming language primarily used for adding interactivity to websites. This tutorial introduces the basics of JavaScript with code examples.
+</p>
+</div>
+</div>
+<div id="outline-container-orge38f634" class="outline-2">
+<h2 id="orge38f634">Setting Up</h2>
+<div class="outline-text-2" id="text-orge38f634">
+<p>
+To run JavaScript:
+</p>
+<ul class="org-ul">
+<li>Use your browser's developer tools console.</li>
+<li>Or use an HTML file with a `&lt;script&gt;` tag.</li>
+<li>Or use Node.js for backend or CLI development.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org67ca716" class="outline-2">
+<h2 id="org67ca716">Variables</h2>
+<div class="outline-text-2" id="text-org67ca716">
+</div>
+<div id="outline-container-orgd775105" class="outline-3">
+<h3 id="orgd775105">Definition</h3>
+<div class="outline-text-3" id="text-orgd775105">
+<p>
+A variable in programming is a named storage location in a computer’s memory that holds a value, which can be modified during the execution of a program.
+</p>
+
+<p>
+Key Points :
+</p>
+<ul class="org-ul">
+<li><b>Name</b>: Every variable has a name (also called an identifier).</li>
+<li><b>Type</b>: It has a data type (like int, string, float, etc.) that determines the kind of value it can store. <br />
+Also Know as <code>DataTypes</code></li>
+<li><b>Value</b>: It holds some data (like a number, text, or boolean).</li>
+<li><b>Memory</b>: It occupies space in memory to store the value.</li>
+<li><b>Changeable</b>: The value stored in a variable can be changed during program execution.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Using var</span>
+<span style="color: #3a81c3; font-weight: bold;">var</span> <span style="color: #715ab1;">name</span> = <span style="color: #2d9574;">"Alice"</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Using let (block-scoped)</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">age</span> = 25;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Using const (constant)</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">PI</span> = 3.1415;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7899640" class="outline-3">
+<h3 id="org7899640">Variable Naming Syntax Convention</h3>
+<div class="outline-text-3" id="text-org7899640">
+<p>
+JavaScript has specific syntax rules for naming variables:
+</p>
+<ul class="org-ul">
+<li><p>
+Synatx Rule
+</p>
+<ul class="org-ul">
+<li>✅  Allowed 
+<ul class="org-ul">
+<li>Names must begin with a <b>letter</b> (a–z, A–Z), <b>underscore (_)</b>, or <b>dollar sign ($)</b>.</li>
+<li>After the first character, digits (0–9) are also allowed.</li>
+<li>Names are <b>case-sensitive</b> (`myVar` ≠ `myvar`).</li>
+<li>Can use Unicode letters (e.g., Greek, Hindi, Chinese), but it's discouraged for readability.</li>
+</ul></li>
+<li>❌ Not Allowed:
+<ul class="org-ul">
+<li>Cannot start with a digit.</li>
+<li>Cannot use <b>reserved keywords</b> (like `var`, `let`, `function`, etc.)</li>
+<li>Cannot contain spaces or hyphens.</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">name</span> = <span style="color: #2d9574;">"Alice"</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">_privateVar</span> = 123;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">$price</span> = 99.99;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">user1</span> = <span style="color: #2d9574;">"John"</span>;        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Digits allowed after the first character</span>
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> 1user = <span style="color: #2d9574;">"Nope"</span>;        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&#10060; Starts with digit</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #3a81c3; font-weight: bold;">let</span> = <span style="color: #2d9574;">"invalid"</span>;       <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&#10060; Reserved word</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">my</span>-name = <span style="color: #2d9574;">"hyphen"</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&#10060; Hyphen not allowed</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">full</span> name = <span style="color: #2d9574;">"space"</span>;   <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">&#10060; Space not allowed</span>
+</pre>
+</div></li>
+<li>General Rule 
+<ul class="org-ul">
+<li>For variable and fucntion we use <b>camelCase</b> ; eg:userName,, myDate, dateTime, getItem, setItem</li>
+<li>For Class we use <b>PascalCase</b>; eg :Document.getElementById(),</li>
+<li>For Constant we use <b>UPPER_SNAKE_CASE</b></li>
+</ul></li>
+</ul>
+<p>
+More info: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Identifier">MDN: JavaScript Identifiers</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">camelCase &#8594; Preferred for variables &amp; functions</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">firstName</span> = <span style="color: #2d9574;">"John"</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">PascalCase &#8594; Used for class names</span>
+<span style="color: #3a81c3; font-weight: bold;">class</span> UserProfile <span style="color: #3a81c3;">{</span>
+    constructor<span style="color: #6c3163;">(</span>name<span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+        <span style="color: #4e3163;">this</span>.name = name;
+    <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">UPPER_SNAKE_CASE &#8594; Often used for constants</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">MAX_ATTEMPTS</span> = 3;
+</pre>
+</div>
+</div>
+<div id="outline-container-org5f383a3" class="outline-4">
+<h4 id="org5f383a3">Best Practices</h4>
+<div class="outline-text-4" id="text-org5f383a3">
+<ul class="org-ul">
+<li>Use `const` by default, unless you need to reassign.</li>
+<li>Avoid short or vague names like `a`, `b`, `data`.</li>
+<li>Use verbs for functions: `getData()`, `sendRequest()`</li>
+<li>Use nouns for variables/objects: `user`, `emailList`</li>
+<li>Reserved Words to Avoid <br />
+eg : `let`, `var`, `const`, `function`, `return`, `if`, `else`, `new`, `class`, etc.</li>
+</ul>
+
+<p>
+More here: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords">JavaScript Keywords - MDN Docs</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org73f1e4d" class="outline-2">
+<h2 id="org73f1e4d">Data Types</h2>
+<div class="outline-text-2" id="text-org73f1e4d">
+<p>
+JavaScript supports several data types (Null, Undefined, Boolean, Number, String, Object, Array(simillar to list in python))
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">str</span> = <span style="color: #2d9574;">"Hello"</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">String</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">num</span> = 42;           <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Number (no difference between integer, float)</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">isTrue</span> = <span style="color: #4e3163;">true</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Boolean</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">nothing</span> = <span style="color: #4e3163;">null</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Null</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">notDefined</span>;         <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Undefined</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">obj</span> = <span style="color: #3a81c3;">{</span>x: 1, y: 2<span style="color: #3a81c3;">}</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Object</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">arr</span> = <span style="color: #3a81c3;">[</span>1, 2, 3<span style="color: #3a81c3;">]</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Array</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">MDN: JavaScript Data Types</a></li>
+</ul>
+</div>
+<div id="outline-container-org4ccf603" class="outline-3">
+<h3 id="org4ccf603">Number DataType</h3>
+<div class="outline-text-3" id="text-org4ccf603">
+<p>
+JavaScript uses a single `Number` type for all numeric values — including integers and floating-point numbers. Internally, all numbers are stored as <b>64-bit floating-point (IEEE 754)</b>.
+</p>
+<ul class="org-ul">
+<li>Examples</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">age</span> = 25;          <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Integer</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">price</span> = 99.99;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Floating-point</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">negative</span> = -100;   <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Negative number</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">pi</span> = 3.1415926535; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Decimal</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-org87df906" class="outline-4">
+<h4 id="org87df906">Special Numeric Values</h4>
+<div class="outline-text-4" id="text-org87df906">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Value</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`Infinity`</td>
+<td class="org-left">Positive infinity</td>
+</tr>
+
+<tr>
+<td class="org-left">`-Infinity`</td>
+<td class="org-left">Negative infinity</td>
+</tr>
+
+<tr>
+<td class="org-left">`NaN`</td>
+<td class="org-left">"Not-a-Number" (invalid result)</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span>1 / 0<span style="color: #3a81c3;">)</span>;       <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Infinity</span>
+console.log<span style="color: #3a81c3;">(</span>-1 / 0<span style="color: #3a81c3;">)</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">-Infinity</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"abc"</span> * 3<span style="color: #3a81c3;">)</span>;   <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">NaN</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org70cd0eb" class="outline-4">
+<h4 id="org70cd0eb">Checking for NaN and Finite</h4>
+<div class="outline-text-4" id="text-org70cd0eb">
+<div class="org-src-container">
+<pre class="src src-js">isNaN<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"hello"</span><span style="color: #3a81c3;">)</span>;         <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+isNaN<span style="color: #3a81c3;">(</span>123<span style="color: #3a81c3;">)</span>;             <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+Number.isNaN<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">NaN</span><span style="color: #3a81c3;">)</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+
+isFinite<span style="color: #3a81c3;">(</span>10<span style="color: #3a81c3;">)</span>;           <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+isFinite<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">Infinity</span><span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org54276fe" class="outline-4">
+<h4 id="org54276fe">Number Limits</h4>
+<div class="outline-text-4" id="text-org54276fe">
+<p>
+JavaScript has some numeric precision and size limits:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span>Number.MAX_VALUE<span style="color: #3a81c3;">)</span>;        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Largest positive number</span>
+console.log<span style="color: #3a81c3;">(</span>Number.MIN_VALUE<span style="color: #3a81c3;">)</span>;        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Smallest positive number &gt; 0</span>
+console.log<span style="color: #3a81c3;">(</span>Number.MAX_SAFE_INTEGER<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">2^53 - 1</span>
+console.log<span style="color: #3a81c3;">(</span>Number.MIN_SAFE_INTEGER<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">-(2^53 - 1)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf6ae4f" class="outline-4">
+<h4 id="orgbf6ae4f">Numeric Literals</h4>
+<div class="outline-text-4" id="text-orgbf6ae4f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Syntax</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Decimal</td>
+<td class="org-left">`123`</td>
+</tr>
+
+<tr>
+<td class="org-left">Binary (0b)</td>
+<td class="org-left">`0b1010`</td>
+</tr>
+
+<tr>
+<td class="org-left">Octal (0o)</td>
+<td class="org-left">`0o755`</td>
+</tr>
+
+<tr>
+<td class="org-left">Hex (0x)</td>
+<td class="org-left">`0xFF`</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">dec</span> = 255;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">bin</span> = 0b11111111;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">oct</span> = 0o377;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">hex</span> = 0xFF;
+
+console.log<span style="color: #3a81c3;">(</span>dec === bin<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orged9ff25" class="outline-4">
+<h4 id="orged9ff25">Converting Strings to Numbers</h4>
+<div class="outline-text-4" id="text-orged9ff25">
+<div class="org-src-container">
+<pre class="src src-js">Number<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"42"</span><span style="color: #3a81c3;">)</span>;         <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">42</span>
+parseInt<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"42px"</span><span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">42</span>
+parseFloat<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"3.14m"</span><span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">3.14</span>
++<span style="color: #2d9574;">"123"</span>;               <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">123 (unary plus)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5ae26fb" class="outline-4">
+<h4 id="org5ae26fb">Number Formatting</h4>
+<div class="outline-text-4" id="text-org5ae26fb">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">n</span> = 12345.6789;
+
+n.toFixed<span style="color: #3a81c3;">(</span>2<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"12345.68" &#8212; 2 decimal places</span>
+n.toPrecision<span style="color: #3a81c3;">(</span>4<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"1.235e+4"</span>
+n.toString<span style="color: #3a81c3;">()</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"12345.6789"</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>More Info:
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#number_type">MDN: Number Type</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">MDN: Number Object</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b28c77" class="outline-4">
+<h4 id="org6b28c77">Operators</h4>
+<div class="outline-text-4" id="text-org6b28c77">
+<p>
+JavaScript supports standard arithmetic operators to perform calculations on numbers.
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgab1dd82"></a>1) Arthimetic operator<br />
+<div class="outline-text-5" id="text-orgab1dd82">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">+</td>
+<td class="org-left">Addition</td>
+<td class="org-left">5 + 3</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-left">-</td>
+<td class="org-left">Subtraction</td>
+<td class="org-left">10 - 4</td>
+<td class="org-right">6</td>
+</tr>
+
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">Multiplication</td>
+<td class="org-left">7 * 2</td>
+<td class="org-right">14</td>
+</tr>
+
+<tr>
+<td class="org-left">%</td>
+<td class="org-left">Modulus (Remainder)</td>
+<td class="org-left">10 % 3</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">**</td>
+<td class="org-left">Exponentiation</td>
+<td class="org-left">2 ** 3</td>
+<td class="org-right">8</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">a</span> = 10, <span style="color: #715ab1;">b</span> = 3;
+
+console.log<span style="color: #3a81c3;">(</span>a + b<span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">13</span>
+console.log<span style="color: #3a81c3;">(</span>a - b<span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">7</span>
+console.log<span style="color: #3a81c3;">(</span>a * b<span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">30</span>
+console.log<span style="color: #3a81c3;">(</span>a / b<span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">3.333...</span>
+console.log<span style="color: #3a81c3;">(</span>a % b<span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1</span>
+console.log<span style="color: #3a81c3;">(</span>a ** b<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">1000</span>
+</pre>
+</div>
+
+<blockquote>
+<ul class="org-ul">
+<li>JavaScript uses <b>floating-point arithmetic</b> — results may not always be exact (e.g. `0.1 + 0.2 !== 0.3`).</li>
+<li>Use `Math` functions (e.g. `Math.floor()`, `Math.round()`, `Math.sqrt()`) for advanced numeric operations.</li>
+</ul>
+</blockquote>
+<p>
+More on this: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#arithmetic_operators">MDN: Arithmetic Operators</a>
+</p>
+</div>
+</li>
+<li><a id="org01394fe"></a>2) Assignment Operator (Increment and Decrement)<br />
+<div class="outline-text-5" id="text-org01394fe">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">++</td>
+<td class="org-left">Increment by 1</td>
+<td class="org-left">x++ or ++x</td>
+</tr>
+
+<tr>
+<td class="org-left">--</td>
+<td class="org-left">Decrement by 1</td>
+<td class="org-left">x&#x2013; or &#x2013;x</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">x</span> = 5;
+
+console.log<span style="color: #3a81c3;">(</span>x++<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">5 (then x becomes 6)</span>
+console.log<span style="color: #3a81c3;">(</span>++x<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">7 (x is incremented before)</span>
+console.log<span style="color: #3a81c3;">(</span>x--<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">7 (then x becomes 6)</span>
+console.log<span style="color: #3a81c3;">(</span>--x<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">5</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org617c604"></a>3) Assignment Operator  (Compound Assignment)<br />
+<div class="outline-text-5" id="text-org617c604">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Equivalent To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">+=</td>
+<td class="org-left">x += 3</td>
+<td class="org-left">x = x + 3</td>
+</tr>
+
+<tr>
+<td class="org-left">-=</td>
+<td class="org-left">x -= 2</td>
+<td class="org-left">x = x - 2</td>
+</tr>
+
+<tr>
+<td class="org-left">*=</td>
+<td class="org-left">x *= 4</td>
+<td class="org-left">x = x * 4</td>
+</tr>
+
+<tr>
+<td class="org-left">/=</td>
+<td class="org-left">x /= 2</td>
+<td class="org-left">x = x / 2</td>
+</tr>
+
+<tr>
+<td class="org-left">%=</td>
+<td class="org-left">x %= 5</td>
+<td class="org-left">x = x % 5</td>
+</tr>
+
+<tr>
+<td class="org-left">**=</td>
+<td class="org-left">x **= 2</td>
+<td class="org-left">x = x ** 2</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">y</span> = 4;
+
+y += 2;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">6</span>
+y *= 3;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">18</span>
+y **= 2; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">324</span>
+console.log<span style="color: #3a81c3;">(</span>y<span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgf7021d4"></a>4) Comparison operator<br />
+<div class="outline-text-5" id="text-orgf7021d4">
+<p>
+JavaScript provides several comparison operators for comparing numbers and other values. These operators return boolean results: `true` or `false`.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`==`</td>
+<td class="org-left">Equal to (loose)</td>
+<td class="org-left">5 `==` '5'</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">`===`</td>
+<td class="org-left">Equal to (strict)</td>
+<td class="org-left">5 `===` '5'</td>
+<td class="org-left">false</td>
+</tr>
+
+<tr>
+<td class="org-left">!=</td>
+<td class="org-left">Not equal (loose)</td>
+<td class="org-left">5 != '5'</td>
+<td class="org-left">false</td>
+</tr>
+
+<tr>
+<td class="org-left">!==</td>
+<td class="org-left">Not equal (strict)</td>
+<td class="org-left">5 !== '5'</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">&gt;</td>
+<td class="org-left">Greater than</td>
+<td class="org-left">7 &gt; 3</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;</td>
+<td class="org-left">Less than</td>
+<td class="org-left">2 &lt; 4</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">&gt;=</td>
+<td class="org-left">Greater than or equal</td>
+<td class="org-left">5 &gt;= 5</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;=</td>
+<td class="org-left">Less than or equal</td>
+<td class="org-left">3 &lt;= 2</td>
+<td class="org-left">false</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">a</span> = 10;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">b</span> = 5;
+
+console.log<span style="color: #3a81c3;">(</span>a &gt; b<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>a &lt; b<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+console.log<span style="color: #3a81c3;">(</span>a == <span style="color: #2d9574;">"10"</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true (loose equality)</span>
+console.log<span style="color: #3a81c3;">(</span>a === <span style="color: #2d9574;">"10"</span><span style="color: #3a81c3;">)</span>;<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false (strict equality)</span>
+console.log<span style="color: #3a81c3;">(</span>a != b<span style="color: #3a81c3;">)</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>a !== 10<span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+</pre>
+</div>
+</div>
+<ul class="org-ul">
+<li><a id="org51fb0fa"></a>Loose vs Strict Comparison<br />
+<div class="outline-text-6" id="text-org51fb0fa">
+<ul class="org-ul">
+<li>`==` and `!=` perform <b>type coercion</b> (i.e., convert types before comparing).</li>
+<li>`===` and `!==` do <b>not</b> convert types — both value and type must match.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span>5 == <span style="color: #2d9574;">"5"</span><span style="color: #3a81c3;">)</span>;   <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true (number vs string, coerced)</span>
+console.log<span style="color: #3a81c3;">(</span>5 === <span style="color: #2d9574;">"5"</span><span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false (different types)</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">null</span> == <span style="color: #4e3163;">undefined</span><span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">null</span> === <span style="color: #4e3163;">undefined</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+</pre>
+</div>
+
+<p>
+#+begin_quote
+<b>Always use `===` and `!==`</b> unless you explicitly want type coercion.
+#+end_quote Best Practice
+</p>
+
+
+
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators">MDN: Comparison Operators</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org99f87dc"></a>5) Logical Operators<br />
+<div class="outline-text-5" id="text-org99f87dc">
+<p>
+Logical operators are used to combine or invert boolean values. While they work with any data type (not just numbers), they are especially useful in conditions involving numeric comparisons.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&amp;&amp;</td>
+<td class="org-left">Logical AND</td>
+<td class="org-left">(5 &gt; 3) &amp;&amp; (2 &lt; 4)</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;||</td>
+<td class="org-left">Logical OR</td>
+<td class="org-left">(5 &gt; 6) || (2 &lt; 4)</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">!</td>
+<td class="org-left">Logical NOT</td>
+<td class="org-left">!(5 &gt; 3)</td>
+<td class="org-left">false</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">a</span> = 10;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">b</span> = 5;
+
+console.log<span style="color: #3a81c3;">(</span>a &gt; 5 &amp;&amp; b &lt; 10<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true (both true)</span>
+console.log<span style="color: #3a81c3;">(</span>a &lt; 5 || b &lt; 10<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true (one is true)</span>
+console.log<span style="color: #3a81c3;">(</span>!<span style="color: #6c3163;">(</span>a == 10<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false (negation)</span>
+
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org916ca78"></a>Truthy and Falsy in JavaScript<br />
+<div class="outline-text-5" id="text-org916ca78">
+<p>
+JavaScript treats certain values as "truthy" or "falsy" in logical expressions.
+</p>
+
+<ul class="org-ul">
+<li><b>Falsy values:</b> `false`, `0`, `-0`, `""` (empty string), `null`, `undefined`, `NaN`</li>
+<li><b>Everything else is truthy</b> — including `"0"`, `[]`, `{}`, etc.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span>0 &amp;&amp; 100<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0 (falsy short-circuits)</span>
+console.log<span style="color: #3a81c3;">(</span>100 &amp;&amp; 0<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">0 (returns first falsy)</span>
+console.log<span style="color: #3a81c3;">(</span>100 &amp;&amp; 200<span style="color: #3a81c3;">)</span>;   <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">200 (both truthy)</span>
+
+console.log<span style="color: #3a81c3;">(</span>0 || 200<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">200 (returns first truthy)</span>
+console.log<span style="color: #3a81c3;">(</span>100 || 0<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">100 (first is truthy)</span>
+
+console.log<span style="color: #3a81c3;">(</span>!0<span style="color: #3a81c3;">)</span>;           <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>!100<span style="color: #3a81c3;">)</span>;         <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgf402d17"></a>Short-Circuit Evaluation<br />
+<div class="outline-text-5" id="text-orgf402d17">
+<ul class="org-ul">
+<li>`&amp;&amp;` returns the first falsy value (or the last if none are falsy).</li>
+<li>`||` returns the first truthy value.</li>
+</ul>
+
+<p>
+Example:  Real-world Use Case
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">username</span> = inputName || <span style="color: #2d9574;">"Guest"</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">default value</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">isValid</span> = score &gt; 0 &amp;&amp; score &lt;= 100;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators">MDN: Logical Operators</a></li>
+</ul>
+</div>
+</li>
+<li><a id="orga290153"></a><span class="todo TODO">TODO</span> 5)  Bitwise  operator<br />
+<div class="outline-text-5" id="text-orga290153">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">or</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">and</td>
+<td class="org-left">&amp;</td>
+</tr>
+
+<tr>
+<td class="org-left">xor</td>
+<td class="org-left">^</td>
+</tr>
+
+<tr>
+<td class="org-left">RIGHTSHIFT</td>
+<td class="org-left">&gt;&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left">Leftshift</td>
+<td class="org-left">&lt;&lt;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<div class="org-src-container">
+<pre class="src src-python">
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgcf2f097"></a><span class="todo TODO">TODO</span> 7) Membership  operator<br />
+<div class="outline-text-5" id="text-orgcf2f097">
+<div class="org-src-container">
+<pre class="src src-python">
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga5c5308" class="outline-3">
+<h3 id="orga5c5308">String DataType</h3>
+<div class="outline-text-3" id="text-orga5c5308">
+<p>
+A `String` in JavaScript is a sequence of characters used to represent text. Strings are immutable — once created, they cannot be changed (only replaced).
+</p>
+</div>
+<div id="outline-container-org9b7a8bf" class="outline-4">
+<h4 id="org9b7a8bf">Declaring Strings</h4>
+<div class="outline-text-4" id="text-org9b7a8bf">
+<p>
+You can use single quotes (`'`), double quotes (`"`), or backticks (`` ` ``) for template literals.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">name1</span> = <span style="color: #2d9574;">"Alice"</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">name2</span> = <span style="color: #2d9574;">'Bob'</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">name3</span> = <span style="color: #2d9574;">`Charlie`</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Template literal</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org659d31b" class="outline-4">
+<h4 id="org659d31b">String Operations</h4>
+<div class="outline-text-4" id="text-org659d31b">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">first</span> = <span style="color: #2d9574;">"Hello"</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">second</span> = <span style="color: #2d9574;">"World"</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Concatenation</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">result</span> = first + <span style="color: #2d9574;">" "</span> + second; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"Hello World"</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Template literals</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">greeting</span> = <span style="color: #2d9574;">`Hi, ${name1}!`</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"Hi, Alice!"</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Length of a string</span>
+console.log<span style="color: #3a81c3;">(</span>greeting.length<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">10</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0abb60" class="outline-4">
+<h4 id="orge0abb60">Accessing Characters</h4>
+<div class="outline-text-4" id="text-orge0abb60">
+<p>
+JavaScript strings are zero-indexed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">text</span> = <span style="color: #2d9574;">"JavaScript"</span>;
+
+console.log<span style="color: #3a81c3;">(</span>text<span style="color: #6c3163;">[</span>0<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"J"</span>
+console.log<span style="color: #3a81c3;">(</span>text.charAt<span style="color: #6c3163;">(</span>4<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"S"</span>
+console.log<span style="color: #3a81c3;">(</span>text<span style="color: #6c3163;">[</span>text.length - 1<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"t"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org05356ed" class="outline-4">
+<h4 id="org05356ed">Common String Methods</h4>
+<div class="outline-text-4" id="text-org05356ed">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Method</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`length`</td>
+<td class="org-left">Returns string length</td>
+<td class="org-left">`"abc".length` → 3</td>
+</tr>
+
+<tr>
+<td class="org-left">`toUpperCase()`</td>
+<td class="org-left">Converts to uppercase</td>
+<td class="org-left">`"hello".toUpperCase()` → "HELLO"</td>
+</tr>
+
+<tr>
+<td class="org-left">`toLowerCase()`</td>
+<td class="org-left">Converts to lowercase</td>
+<td class="org-left">`"HELLO".toLowerCase()` → "hello"</td>
+</tr>
+
+<tr>
+<td class="org-left">`trim()`</td>
+<td class="org-left">Removes whitespace</td>
+<td class="org-left">`"  hi  ".trim()` → "hi"</td>
+</tr>
+
+<tr>
+<td class="org-left">`includes()`</td>
+<td class="org-left">Checks if substring exists</td>
+<td class="org-left">`"abc".includes("b")` → true</td>
+</tr>
+
+<tr>
+<td class="org-left">`indexOf()`</td>
+<td class="org-left">Returns first index of substring</td>
+<td class="org-left">`"hello".indexOf("l")` → 2</td>
+</tr>
+
+<tr>
+<td class="org-left">`lastIndexOf()`</td>
+<td class="org-left">Returns last index of substring</td>
+<td class="org-left">`"hello".lastIndexOf("l")` → 3</td>
+</tr>
+
+<tr>
+<td class="org-left">`slice(start, end)`</td>
+<td class="org-left">Extracts part of string</td>
+<td class="org-left">`"hello".slice(1, 3)` → "el"</td>
+</tr>
+
+<tr>
+<td class="org-left">`substring(start, end)`</td>
+<td class="org-left">Similar to slice</td>
+<td class="org-left">`"hello".substring(1, 3)` → "el"</td>
+</tr>
+
+<tr>
+<td class="org-left">`replace()`</td>
+<td class="org-left">Replaces first match</td>
+<td class="org-left">`"Hi Joe".replace("Joe", "Sam")`</td>
+</tr>
+
+<tr>
+<td class="org-left">`split()`</td>
+<td class="org-left">Splits string into array</td>
+<td class="org-left">`"a,b,c".split(",")` → `["a","b","c"]`</td>
+</tr>
+
+<tr>
+<td class="org-left">`repeat()`</td>
+<td class="org-left">Repeats the string</td>
+<td class="org-left">`"ha".repeat(3)` → "hahaha"</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">str</span> = <span style="color: #2d9574;">"  JavaScript is fun!  "</span>;
+
+console.log<span style="color: #3a81c3;">(</span>str.trim<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>;             <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"JavaScript is fun!"</span>
+console.log<span style="color: #3a81c3;">(</span>str.toUpperCase<span style="color: #6c3163;">()</span><span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"  JAVASCRIPT IS FUN!  "</span>
+console.log<span style="color: #3a81c3;">(</span>str.includes<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"fun"</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;   <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>str.indexOf<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"Script"</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">4</span>
+console.log<span style="color: #3a81c3;">(</span>str.slice<span style="color: #6c3163;">(</span>2, 12<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"JavaScript"</span>
+console.log<span style="color: #3a81c3;">(</span>str.replace<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"fun"</span>, <span style="color: #2d9574;">"awesome"</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"  JavaScript is awesome!  "</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org23f56ed" class="outline-4">
+<h4 id="org23f56ed">Escape Characters</h4>
+<div class="outline-text-4" id="text-org23f56ed">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Escape</th>
+<th scope="col" class="org-left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`\'`</td>
+<td class="org-left">Single quote</td>
+</tr>
+
+<tr>
+<td class="org-left">`\"`</td>
+<td class="org-left">Double quote</td>
+</tr>
+
+<tr>
+<td class="org-left">`\\`</td>
+<td class="org-left">Backslash</td>
+</tr>
+
+<tr>
+<td class="org-left">`\n`</td>
+<td class="org-left">New line</td>
+</tr>
+
+<tr>
+<td class="org-left">`\t`</td>
+<td class="org-left">Tab</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">msg</span> = <span style="color: #2d9574;">"Line1\nLine2"</span>;
+console.log<span style="color: #3a81c3;">(</span>msg<span style="color: #3a81c3;">)</span>;
+<span style="color: #2aa1ae; background-color: #ecf3ec;">/* </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Output:</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">Line1</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">Line2</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">*/</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org210a1e8" class="outline-4">
+<h4 id="org210a1e8">Template Literals (Backticks)</h4>
+<div class="outline-text-4" id="text-org210a1e8">
+<p>
+Allows embedded expressions and multi-line strings.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">user</span> = <span style="color: #2d9574;">"Karthik"</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">greeting</span> = <span style="color: #2d9574;">`Welcome, ${user}!`</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">multiLine</span> = <span style="color: #2d9574;">`Line 1</span>
+<span style="color: #2d9574;">Line 2`</span>;
+
+console.log<span style="color: #3a81c3;">(</span>greeting<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"Welcome, Karthik!"</span>
+console.log<span style="color: #3a81c3;">(</span>multiLine<span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5a9c37d" class="outline-4">
+<h4 id="org5a9c37d">String Immutability</h4>
+<div class="outline-text-4" id="text-org5a9c37d">
+<p>
+Strings are immutable in JavaScript — operations create a new string.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">original</span> = <span style="color: #2d9574;">"hello"</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">upper</span> = original.toUpperCase<span style="color: #3a81c3;">()</span>;
+
+console.log<span style="color: #3a81c3;">(</span>original<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"hello" (unchanged)</span>
+console.log<span style="color: #3a81c3;">(</span>upper<span style="color: #3a81c3;">)</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"HELLO"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org10ec036" class="outline-4">
+<h4 id="org10ec036">More Info:</h4>
+<div class="outline-text-4" id="text-org10ec036">
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">MDN: String Reference</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org5ec6e02" class="outline-3">
+<h3 id="org5ec6e02">Boolean DataType</h3>
+<div class="outline-text-3" id="text-org5ec6e02">
+<p>
+The `Boolean` data type represents one of two values:
+</p>
+<ul class="org-ul">
+<li>`true`</li>
+<li>`false`</li>
+</ul>
+
+<p>
+Booleans are commonly used in conditions, logic, and flow control.
+</p>
+
+<ul class="org-ul">
+<li>Declaring Booleans</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">isOnline</span> = <span style="color: #4e3163;">true</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">isLoggedIn</span> = <span style="color: #4e3163;">false</span>;
+
+console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> isOnline<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"boolean"</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-orga0b0dbc" class="outline-4">
+<h4 id="orga0b0dbc">Boolean Expressions</h4>
+<div class="outline-text-4" id="text-orga0b0dbc">
+<p>
+Booleans often result from comparisons or logical operations.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">a</span> = 10;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">b</span> = 5;
+
+console.log<span style="color: #3a81c3;">(</span>a &gt; b<span style="color: #3a81c3;">)</span>;       <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>a === 5<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+console.log<span style="color: #3a81c3;">(</span>a !== b<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge1b8409" class="outline-4">
+<h4 id="orge1b8409">Boolean Conversion</h4>
+<div class="outline-text-4" id="text-orge1b8409">
+<p>
+JavaScript converts other types to boolean in logical contexts (truthy/falsy).
+</p>
+</div>
+</div>
+<div id="outline-container-orge2d783a" class="outline-4">
+<h4 id="orge2d783a">Falsy values (convert to false):</h4>
+<div class="outline-text-4" id="text-orge2d783a">
+<ul class="org-ul">
+<li>`false`</li>
+<li>`0`, `-0`</li>
+<li>`""` (empty string)</li>
+<li>`null`</li>
+<li>`undefined`</li>
+<li>`NaN`</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1db5f7a" class="outline-4">
+<h4 id="org1db5f7a">Everything else is truthy:</h4>
+<div class="outline-text-4" id="text-org1db5f7a">
+<ul class="org-ul">
+<li>`true`, `"0"`, `"false"`, `[]`, `{}`, `function(){}`</li>
+<li>Any non-zero number</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span>Boolean<span style="color: #6c3163;">(</span>0<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+console.log<span style="color: #3a81c3;">(</span>Boolean<span style="color: #6c3163;">(</span><span style="color: #2d9574;">""</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+console.log<span style="color: #3a81c3;">(</span>Boolean<span style="color: #6c3163;">(</span><span style="color: #2d9574;">[]</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;      <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>Boolean<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"false"</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+</pre>
+</div>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+<div id="outline-container-org1bd505e" class="outline-4">
+<h4 id="org1bd505e">Logical Operators (with Booleans)</h4>
+<div class="outline-text-4" id="text-org1bd505e">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operator</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`&amp;&amp;`</td>
+<td class="org-left">AND</td>
+<td class="org-left">`true &amp;&amp; false`</td>
+<td class="org-left">false</td>
+</tr>
+
+<tr>
+<td class="org-left">`</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">`</td>
+<td class="org-left">OR</td>
+<td class="org-left">`false</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">true`</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">`!`</td>
+<td class="org-left">NOT (negation)</td>
+<td class="org-left">`!true`</td>
+<td class="org-left">false</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">x</span> = <span style="color: #4e3163;">true</span>;
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">y</span> = <span style="color: #4e3163;">false</span>;
+
+console.log<span style="color: #3a81c3;">(</span>x &amp;&amp; y<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+console.log<span style="color: #3a81c3;">(</span>x || y<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>!x<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+</pre>
+</div>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+<div id="outline-container-orgbdc0094" class="outline-4">
+<h4 id="orgbdc0094">Boolean Object (Not Recommended)</h4>
+<div class="outline-text-4" id="text-orgbdc0094">
+<p>
+You can create a Boolean object with `new Boolean()`, but this is rarely used and discouraged because it behaves unexpectedly in conditions.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">boolObj</span> = <span style="color: #3a81c3; font-weight: bold;">new</span> <span style="color: #ba2f59; font-weight: bold;">Boolean</span><span style="color: #3a81c3;">(</span><span style="color: #4e3163;">false</span><span style="color: #3a81c3;">)</span>;
+console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> boolObj<span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"object"</span>
+console.log<span style="color: #3a81c3;">(</span>boolObj == <span style="color: #4e3163;">false</span><span style="color: #3a81c3;">)</span>;   <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+console.log<span style="color: #3a81c3;">(</span>boolObj === <span style="color: #4e3163;">false</span><span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false</span>
+<span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>boolObj<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"Still true!"</span><span style="color: #6c3163;">)</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">This runs, because objects are truthy</span>
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+
+<p>
+Use primitive `true`/`false` values instead of the `Boolean` object.
+</p>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+<div id="outline-container-org0296144" class="outline-4">
+<h4 id="org0296144">Summary Table</h4>
+<div class="outline-text-4" id="text-org0296144">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Value</th>
+<th scope="col" class="org-left">Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`boolean`</td>
+<td class="org-left">`true`</td>
+<td class="org-left">Condition satisfied</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">`false`</td>
+<td class="org-left">Condition failed</td>
+</tr>
+
+<tr>
+<td class="org-left">`Boolean()`</td>
+<td class="org-left">Function to convert any type to boolean</td>
+</tr>
+
+<tr>
+<td class="org-left">`new Boolean()`</td>
+<td class="org-left">Creates a Boolean object (⚠️ avoid)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+<div id="outline-container-org80e9389" class="outline-4">
+<h4 id="org80e9389">More Info:</h4>
+<div class="outline-text-4" id="text-org80e9389">
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#boolean_type">MDN: Boolean Type</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">MDN: Boolean Object</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org43c4f5e" class="outline-3">
+<h3 id="org43c4f5e">Null DataType</h3>
+<div class="outline-text-3" id="text-org43c4f5e">
+<p>
+`null` is an assigned value that represents the intentional absence of any object value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">value</span> = <span style="color: #4e3163;">null</span>;
+console.log<span style="color: #3a81c3;">(</span>value<span style="color: #3a81c3;">)</span>;         <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">null</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> value<span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"object" (this is a known quirk in JavaScript)</span>
+</pre>
+</div>
+
+<p>
+Use `null` to reset a variable or indicate "empty" data explicitly.
+</p>
+</div>
+</div>
+<div id="outline-container-orgae2521c" class="outline-3">
+<h3 id="orgae2521c">Undefined DatType</h3>
+<div class="outline-text-3" id="text-orgae2521c">
+<p>
+`undefined` means a variable has been declared but not assigned a value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">notAssigned</span>;
+console.log<span style="color: #3a81c3;">(</span>notAssigned<span style="color: #3a81c3;">)</span>;       <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">undefined</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> notAssigned<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"undefined"</span>
+</pre>
+</div>
+
+<p>
+When comparing `null` and `undefined`:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">null</span> == <span style="color: #4e3163;">undefined</span><span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true (loose equality)</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #4e3163;">null</span> === <span style="color: #4e3163;">undefined</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">false (strict equality)</span>
+</pre>
+</div>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+<div id="outline-container-org16ee79c" class="outline-3">
+<h3 id="org16ee79c">Object DataType</h3>
+<div class="outline-text-3" id="text-org16ee79c">
+<p>
+Objects are key-value pairs used to store structured data.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">person</span> = <span style="color: #3a81c3;">{</span>
+  name: <span style="color: #2d9574;">"Alice"</span>,
+  age: 30,
+  isStudent: <span style="color: #4e3163;">false</span>
+<span style="color: #3a81c3;">}</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Accessing values</span>
+console.log<span style="color: #3a81c3;">(</span>person.name<span style="color: #3a81c3;">)</span>;       <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"Alice"</span>
+console.log<span style="color: #3a81c3;">(</span>person<span style="color: #6c3163;">[</span><span style="color: #2d9574;">"age"</span><span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">30</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Adding new property</span>
+person.country = <span style="color: #2d9574;">"India"</span>;
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Deleting a property</span>
+<span style="color: #3a81c3; font-weight: bold;">delete</span> person.isStudent;
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf077903" class="outline-4">
+<h4 id="orgf077903">Object Methods</h4>
+<div class="outline-text-4" id="text-orgf077903">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Method</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`Object.keys(obj)`</td>
+<td class="org-left">Returns an array of keys</td>
+</tr>
+
+<tr>
+<td class="org-left">`Object.values(obj)`</td>
+<td class="org-left">Returns an array of values</td>
+</tr>
+
+<tr>
+<td class="org-left">`Object.entries(obj)`</td>
+<td class="org-left">Returns an array of key-value pairs</td>
+</tr>
+
+<tr>
+<td class="org-left">`hasOwnProperty("key")`</td>
+<td class="org-left">Checks if object contains the key</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span>Object.keys<span style="color: #6c3163;">(</span>person<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">["name", "age", "country"]</span>
+console.log<span style="color: #3a81c3;">(</span>Object.values<span style="color: #6c3163;">(</span>person<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;  <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">["Alice", 30, "India"]</span>
+console.log<span style="color: #3a81c3;">(</span>person.hasOwnProperty<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"name"</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+</pre>
+</div>
+
+<p>
+Objects can also contain functions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">calculator</span> = <span style="color: #3a81c3;">{</span>
+  <span style="color: #6c3163; font-weight: bold;">add</span>: <span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #6c3163;">(</span><span style="color: #715ab1;">a</span>, <span style="color: #715ab1;">b</span><span style="color: #6c3163;">)</span> <span style="color: #6c3163;">{</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> a + b;
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>;
+
+console.log<span style="color: #3a81c3;">(</span>calculator.add<span style="color: #6c3163;">(</span>2, 3<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">5</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">MDN: Object</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org685aed8" class="outline-3">
+<h3 id="org685aed8">Array DataType</h3>
+<div class="outline-text-3" id="text-org685aed8">
+<p>
+Arrays are ordered collections of values (indexed from 0). Arrays are objects in JavaScript.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">fruits</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">"Apple"</span>, <span style="color: #2d9574;">"Banana"</span>, <span style="color: #2d9574;">"Cherry"</span><span style="color: #3a81c3;">]</span>;
+console.log<span style="color: #3a81c3;">(</span>fruits<span style="color: #6c3163;">[</span>0<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"Apple"</span>
+console.log<span style="color: #3a81c3;">(</span>fruits.length<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">3</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-org1774e9d" class="outline-4">
+<h4 id="org1774e9d">Array Methods</h4>
+<div class="outline-text-4" id="text-org1774e9d">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Method</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`push()`</td>
+<td class="org-left">Add to end</td>
+</tr>
+
+<tr>
+<td class="org-left">`pop()`</td>
+<td class="org-left">Remove from end</td>
+</tr>
+
+<tr>
+<td class="org-left">`shift()`</td>
+<td class="org-left">Remove from beginning</td>
+</tr>
+
+<tr>
+<td class="org-left">`unshift()`</td>
+<td class="org-left">Add to beginning</td>
+</tr>
+
+<tr>
+<td class="org-left">`splice()`</td>
+<td class="org-left">Add/remove elements</td>
+</tr>
+
+<tr>
+<td class="org-left">`slice()`</td>
+<td class="org-left">Get subarray</td>
+</tr>
+
+<tr>
+<td class="org-left">`join()`</td>
+<td class="org-left">Join array to string</td>
+</tr>
+
+<tr>
+<td class="org-left">`indexOf()`</td>
+<td class="org-left">Get index of element</td>
+</tr>
+
+<tr>
+<td class="org-left">`includes()`</td>
+<td class="org-left">Check if value exists</td>
+</tr>
+
+<tr>
+<td class="org-left">`forEach()`</td>
+<td class="org-left">Loop over elements</td>
+</tr>
+
+<tr>
+<td class="org-left">`map()`</td>
+<td class="org-left">Create new array by applying function</td>
+</tr>
+
+<tr>
+<td class="org-left">`filter()`</td>
+<td class="org-left">Filter elements by condition</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">numbers</span> = <span style="color: #3a81c3;">[</span>1, 2, 3, 4, 5<span style="color: #3a81c3;">]</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">doubled</span> = numbers.map<span style="color: #3a81c3;">(</span>n =&gt; n * 2<span style="color: #3a81c3;">)</span>;    <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[2, 4, 6, 8, 10]</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">evens</span> = numbers.filter<span style="color: #3a81c3;">(</span>n =&gt; n % 2 === 0<span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">[2, 4]</span>
+
+numbers.forEach<span style="color: #3a81c3;">(</span>n =&gt; console.log<span style="color: #6c3163;">(</span>n<span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;     <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Logs each number</span>
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN: Array</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd136656" class="outline-3">
+<h3 id="orgd136656">Check Data Type</h3>
+<div class="outline-text-3" id="text-orgd136656">
+<div class="org-src-container">
+<pre class="src src-js">console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> <span style="color: #4e3163;">null</span><span style="color: #3a81c3;">)</span>;              <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"object" (legacy bug)</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> <span style="color: #4e3163;">undefined</span><span style="color: #3a81c3;">)</span>;         <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"undefined"</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> <span style="color: #6c3163;">{}</span><span style="color: #3a81c3;">)</span>;                <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"object"</span>
+console.log<span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">typeof</span> <span style="color: #6c3163;">[]</span><span style="color: #3a81c3;">)</span>;                <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">"object" (Array is a type of object)</span>
+console.log<span style="color: #3a81c3;">(</span>Array.isArray<span style="color: #6c3163;">(</span><span style="color: #2d9574;">[]</span><span style="color: #6c3163;">)</span><span style="color: #3a81c3;">)</span>;        <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">true</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcadbae9" class="outline-3">
+<h3 id="orgcadbae9">Summary</h3>
+<div class="outline-text-3" id="text-orgcadbae9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">`null`</td>
+<td class="org-left">Explicitly empty, value placeholder</td>
+</tr>
+
+<tr>
+<td class="org-left">`undefined`</td>
+<td class="org-left">Variable declared but not yet assigned</td>
+</tr>
+
+<tr>
+<td class="org-left">`object`</td>
+<td class="org-left">Key-value pair structure for complex data</td>
+</tr>
+
+<tr>
+<td class="org-left">`array`</td>
+<td class="org-left">Ordered list of values (indexed object)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org7aea051" class="outline-2">
+<h2 id="org7aea051">Functions</h2>
+<div class="outline-text-2" id="text-org7aea051">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Function Declaration</span>
+<span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163; font-weight: bold;">greet</span><span style="color: #3a81c3;">(</span><span style="color: #715ab1;">name</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+    <span style="color: #3a81c3; font-weight: bold;">return</span> <span style="color: #2d9574;">"Hello, "</span> + name;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Arrow Function</span>
+<span style="color: #3a81c3; font-weight: bold;">const</span> <span style="color: #715ab1;">add</span> = <span style="color: #3a81c3;">(</span>a, b<span style="color: #3a81c3;">)</span> =&gt; a + b;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0593383" class="outline-2">
+<h2 id="org0593383">Control Flow</h2>
+<div class="outline-text-2" id="text-org0593383">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">score</span> = 85;
+
+<span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>score &gt;= 90<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+    console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"Grade: A"</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #3a81c3; font-weight: bold;">if</span> <span style="color: #3a81c3;">(</span>score &gt;= 80<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+    console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"Grade: B"</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #3a81c3;">{</span>
+    console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"Grade: C or lower"</span><span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9bf4768" class="outline-2">
+<h2 id="org9bf4768">Loops</h2>
+<div class="outline-text-2" id="text-org9bf4768">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">For loop</span>
+<span style="color: #3a81c3; font-weight: bold;">for</span> <span style="color: #3a81c3;">(</span><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">i</span> = 0; i &lt; 5; i++<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+    console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"i ="</span>, i<span style="color: #6c3163;">)</span>;
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">While loop</span>
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">j</span> = 0;
+<span style="color: #3a81c3; font-weight: bold;">while</span> <span style="color: #3a81c3;">(</span>j &lt; 5<span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+    console.log<span style="color: #6c3163;">(</span><span style="color: #2d9574;">"j ="</span>, j<span style="color: #6c3163;">)</span>;
+    j++;
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c4cb99" class="outline-2">
+<h2 id="org4c4cb99">Objects and Arrays</h2>
+<div class="outline-text-2" id="text-org4c4cb99">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">person</span> = <span style="color: #3a81c3;">{</span>
+    name: <span style="color: #2d9574;">"Bob"</span>,
+    age: 30,
+    <span style="color: #6c3163; font-weight: bold;">greet</span>: <span style="color: #3a81c3; font-weight: bold;">function</span> <span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+        console.log<span style="color: #2d9574;">(</span><span style="color: #2d9574;">"Hi, I'm "</span> + <span style="color: #4e3163;">this</span>.name<span style="color: #2d9574;">)</span>;
+    <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>;
+
+person.greet<span style="color: #3a81c3;">()</span>;
+
+<span style="color: #3a81c3; font-weight: bold;">let</span> <span style="color: #715ab1;">fruits</span> = <span style="color: #3a81c3;">[</span><span style="color: #2d9574;">"Apple"</span>, <span style="color: #2d9574;">"Banana"</span>, <span style="color: #2d9574;">"Cherry"</span><span style="color: #3a81c3;">]</span>;
+console.log<span style="color: #3a81c3;">(</span>fruits<span style="color: #6c3163;">[</span>1<span style="color: #6c3163;">]</span><span style="color: #3a81c3;">)</span>; <span style="color: #2aa1ae; background-color: #ecf3ec;">// </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Banana</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org863ce1d" class="outline-2">
+<h2 id="org863ce1d"><span class="todo TODO">TODO</span> DOM Manipulation (in browser)</h2>
+<div class="outline-text-2" id="text-org863ce1d">
+<div class="org-src-container">
+<pre class="src src-html"><span style="color: #2aa1ae; background-color: #ecf3ec;">&lt;!-- </span><span style="color: #2aa1ae; background-color: #ecf3ec;">HTML</span><span style="color: #2aa1ae; background-color: #ecf3ec;"> --&gt;</span>
+&lt;<span style="color: #6c3163; font-weight: bold;">button</span> <span style="color: #715ab1;">onclick</span>=<span style="color: #2d9574;">"changeText()"</span>&gt;Click Me&lt;/<span style="color: #6c3163; font-weight: bold;">button</span>&gt;
+&lt;<span style="color: #6c3163; font-weight: bold;">p</span> <span style="color: #715ab1;">id</span>=<span style="color: #2d9574;">"demo"</span>&gt;Hello!&lt;/<span style="color: #6c3163; font-weight: bold;">p</span>&gt;
+
+&lt;<span style="color: #6c3163; font-weight: bold;">script</span>&gt;
+function changeText() {
+    document.getElementById("demo").innerHTML = "Text changed!";
+}
+&lt;/<span style="color: #6c3163; font-weight: bold;">script</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcb69df5" class="outline-2">
+<h2 id="orgcb69df5"><span class="todo TODO">TODO</span> Events</h2>
+<div class="outline-text-2" id="text-orgcb69df5">
+<div class="org-src-container">
+<pre class="src src-js">document.getElementById<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"btn"</span><span style="color: #3a81c3;">)</span>.addEventListener<span style="color: #3a81c3;">(</span><span style="color: #2d9574;">"click"</span>, <span style="color: #3a81c3; font-weight: bold;">function</span><span style="color: #6c3163;">()</span> <span style="color: #6c3163;">{</span>
+    alert<span style="color: #2d9574;">(</span><span style="color: #2d9574;">"Button clicked!"</span><span style="color: #2d9574;">)</span>;
+<span style="color: #6c3163;">}</span><span style="color: #3a81c3;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0dc9d77" class="outline-2">
+<h2 id="org0dc9d77"><span class="todo TODO">TODO</span> Local Storage</h2>
+<div class="outline-text-2" id="text-org0dc9d77">
+<p>
+JavaScript Tutorial In Hindi (CodeWithHarry) : <a href="https://www.youtube.com/watch?v=hKB-YGF14SY">https://www.youtube.com/watch?v=hKB-YGF14SY</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge651afe" class="outline-2">
+<h2 id="orge651afe">Conclusion</h2>
+<div class="outline-text-2" id="text-orge651afe">
+<p>
+You’ve now seen the basics of JavaScript including variables, control flow, functions, arrays, objects, and simple DOM interactions. For more, check:
+</p>
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN JavaScript Docs</a></li>
+<li><a href="https://javascript.info">javascript.info</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Your Name Karthik D</p>
+<p class="date">Created: 2025-08-02 Sat 11:03</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

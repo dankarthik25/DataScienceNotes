@@ -1,0 +1,1821 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-02 Sat 13:08 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Html</title>
+<meta name="author" content="Karthik Karthik D" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/jupyter2org.css" />
+<link rel="stylesheet" type="text/css" href="css/readtheorg-htmlize.css"/>
+<script src="css/jquery.min.js"></script>
+<script src="css/bootstrap.min.js"></script>
+<script type="text/javascript" src="css/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="css/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Html</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org275d7fe">What is HTML 5 ?</a></li>
+<li><a href="#org9c4b83d">HTML boilerplate</a></li>
+<li><a href="#org5d50a80">Emmet</a></li>
+<li><a href="#org122db3b">HTML TAG all</a></li>
+<li><a href="#org57814d6">HTML ENTITIES</a></li>
+<li><a href="#org75e048a"><span class="todo TODO">TODO</span> SEMANTIC Element</a></li>
+<li><a href="#org84eca3f">Block and inline Element : Div &amp; Span</a></li>
+<li><a href="#org70a2c7f">Unrelated tab</a></li>
+<li><a href="#org8341bf4">Table</a>
+<ul>
+<li><a href="#org8645088">rowspan and colspan</a></li>
+</ul>
+</li>
+<li><a href="#org17ca1e9">input</a></li>
+<li><a href="#orgeb507bf">label</a></li>
+<li><a href="#orgc27922d">Form</a></li>
+</ul>
+</div>
+</div>
+<p>
+[  <a href="./index.html">Home</a> ]  \(&ensp;\)  | \(&ensp;\) \(&ensp;\) [text] \(&ensp;\)  \(&ensp;\) | \(&ensp;\) \(&ensp;\) [link] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [title] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [icon] \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [target]  \(&ensp;\) \(&ensp;\) | \(&ensp;\) \(&ensp;\) [expanded]  \(&ensp;\) \(&ensp;\)
+</p>
+<hr />
+
+
+<p>
+HTML Tutorial For Beginners (Codewith Harry) : <a href="https://www.youtube.com/watch?v=BsDoLVMnmZs&amp;t=10654s">https://www.youtube.com/watch?v=BsDoLVMnmZs&amp;t=10654s</a>
+</p>
+
+<p>
+replace: href="<a href="https://developer.mozilla.org/en-US/docs">https://developer.mozilla.org/en-US/docs</a> <br />
+with href="<a href="https://developer.mozilla.org/en-US/docs">https://developer.mozilla.org/en-US/docs</a>
+</p>
+
+
+<p>
+Reference: 
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">https://developer.mozilla.org/en-US/docs/Web/HTML/Element</a>  <br />
+<a href="https://developer.mozilla.org/en-US/">https://developer.mozilla.org/en-US/</a>
+</p>
+<div id="outline-container-org275d7fe" class="outline-2">
+<h2 id="org275d7fe">What is HTML 5 ?</h2>
+<div class="outline-text-2" id="text-org275d7fe">
+<p>
+HTML is latest evolution of standard that defines HTML. The term represents two different concept.
+</p>
+
+<p>
+It is a new version of langugae HTML, with new elements, attributes and behaviors and a large set of technologies that alows the building of more diverse and powerfull Web sites and application.
+</p>
+
+<p>
+Difference between html and html5
+<a href="https://www.hostinger.in/tutorials/difference-between-html-and-html5">https://www.hostinger.in/tutorials/difference-between-html-and-html5</a>
+</p>
+
+<p>
+html is the standard rules that browser implement 
+</p>
+
+<p>
+There is the html specification :  <a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org9c4b83d" class="outline-2">
+<h2 id="org9c4b83d">HTML boilerplate</h2>
+<div class="outline-text-2" id="text-org9c4b83d">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #3a81c3; font-weight: bold;">!DOCTYPE</span> html&gt;
+
+&lt;<span style="color: #6c3163; font-weight: bold;">html</span> <span style="color: #715ab1;">lang</span>=<span style="color: #2d9574;">"en"</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">head</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">meta</span> <span style="color: #715ab1;">charset</span>=<span style="color: #2d9574;">"UTF-8"</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">My First Webpage</span>&lt;/<span style="color: #6c3163; font-weight: bold;">title</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">head</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">html</span>&gt;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Header(h1,h2,h3,h4,h5,h6)</li>
+<li>paragaph(p)</li>
+<li>list
+<ul class="org-ul">
+<li><p>
+unorder list (ul)
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;Fruits&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;Vegitalbes&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;Roots&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+</pre>
+</div></li>
+<li><p>
+order list (ol)
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">ol</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;Fruits&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;Vegitalbes&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;Roots&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">ol</span>&gt;
+</pre>
+</div></li>
+</ul></li>
+<li><p>
+anchor
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">a</span> <span style="color: #715ab1;">href</span>=<span style="color: #2d9574;">"https://www.w3schools.com"</span>&gt;Visit W3Schools&lt;/<span style="color: #6c3163; font-weight: bold;">a</span>&gt;
+&lt;<span style="color: #6c3163; font-weight: bold;">a</span> <span style="color: #715ab1;">href</span>=<span style="color: #2d9574;">"about.html"</span>&gt;Visit W3Schools&lt;/<span style="color: #6c3163; font-weight: bold;">a</span>&gt;
+<span style="color: #2aa1ae; background-color: #ecf3ec;">&lt;!-- </span><span style="color: #2aa1ae; background-color: #ecf3ec;">In href: local file in can be given as input</span><span style="color: #2aa1ae; background-color: #ecf3ec;">--&gt;</span> 
+</pre>
+</div></li>
+<li><p>
+image
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">img</span> <span style="color: #715ab1;">src</span>=<span style="color: #2d9574;">"pic_trulli.jpg"</span> <span style="color: #715ab1;">alt</span>=<span style="color: #2d9574;">"Italian Trulli"</span>&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5d50a80" class="outline-2">
+<h2 id="org5d50a80">Emmet</h2>
+<div class="outline-text-2" id="text-org5d50a80">
+<p>
+<a href="https://emmet.io/">https://emmet.io/</a>
+Shortcut in html editor
+</p>
+
+<p>
+<a href="https://docs.emmet.io/cheat-sheet/">https://docs.emmet.io/cheat-sheet/</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">nav</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">nav</span>&gt;
+=PRESS TAB=
+
+&lt;<span style="color: #6c3163; font-weight: bold;">main</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">section</span>&gt;&lt;/<span style="color: #6c3163; font-weight: bold;">section</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">main</span>&gt;
+&lt;<span style="color: #6c3163; font-weight: bold;">nav</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">nav</span>&gt;
+
+nav&gt;ul&gt;li =PRESS TAB=
+&lt;<span style="color: #6c3163; font-weight: bold;">nav</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">li</span>&gt;&lt;/<span style="color: #6c3163; font-weight: bold;">li</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">ul</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">nav</span>&gt;
+=PRESS TAB=
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org122db3b" class="outline-2">
+<h2 id="org122db3b">HTML TAG all</h2>
+<div class="outline-text-2" id="text-org122db3b">
+<p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes</a>
+</p>
+
+<table class="standard-table">
+  <thead>
+    <tr>
+      <th>Attribute Name</th>
+      <th>Elements</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept">accept</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a></td>
+      <td>List of types the server accepts, typically a file type.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#accept-charset">accept-charset</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a></td>
+      <td>List of supported charsets.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey">accesskey</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Keyboard shortcut to activate or add focus to the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#action">action</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a></td>
+      <td>
+        The URI of a program that processes the information submitted via the
+        form.
+      </td>
+    </tr>
+    <tr>
+      <td><code>align</code> <abbr class="icon icon-deprecated" title="Deprecated. Not for use in new websites.">
+  <span class="visually-hidden">Deprecated</span>
+</abbr></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption"><code>&lt;caption&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col"><code>&lt;col&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup"><code>&lt;colgroup&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr"><code>&lt;hr&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody"><code>&lt;tbody&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"><code>&lt;td&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot"><code>&lt;tfoot&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead"><code>&lt;thead&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr"><code>&lt;tr&gt;</code></a>
+      </td>
+      <td>Specifies the horizontal alignment of the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#allow">allow</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a></td>
+      <td>Specifies a feature-policy for the iframe.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/alt" class="page-not-created" title="This is a link to an unwritten page">alt</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>
+      </td>
+      <td>Alternative text in case an image can't be displayed.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as">as</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a></td>
+      <td>Specifies the type of content being loaded by the link.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#async">async</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a></td>
+      <td>Executes the script asynchronously.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize">autocapitalize</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Sets whether input is automatically capitalized when entered by user</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">autocomplete</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>
+        Indicates whether controls in this form can by default have their values
+        automatically completed by the browser.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autoplay" class="page-not-created" title="This is a link to an unwritten page">autoplay</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>The audio or video should play as soon as possible.</td>
+    </tr>
+    <tr>
+      <td><code>background</code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"><code>&lt;body&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"><code>&lt;td&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th&gt;</code></a>
+      </td>
+      <td>Specifies the URL of an image file.
+        <div class="note notecard" id="sect1">
+          <p>
+            <strong>Note:</strong> Although browsers and email clients may still
+            support this attribute, it is obsolete. Use CSS
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-image"><code>background-image</code></a> instead.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code>bgcolor</code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"><code>&lt;body&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col"><code>&lt;col&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup"><code>&lt;colgroup&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee"><code>&lt;marquee&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody"><code>&lt;tbody&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot"><code>&lt;tfoot&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"><code>&lt;td&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr"><code>&lt;tr&gt;</code></a>
+      </td>
+      <td>
+        <p>Background color of the element.</p>
+        <div class="note notecard" id="sect2">
+          <p>
+            <strong>Note:</strong> This is a legacy attribute. Please use the
+            CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color"><code>background-color</code></a> property instead.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code>border</code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a>
+      </td>
+      <td>
+        <p>The border width.</p>
+        <div class="note notecard" id="sect3">
+          <p>
+            <strong>Note:</strong> This is a legacy attribute. Please use the
+            CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border"><code>border</code></a> property instead.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/capture">capture</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a></td>
+      <td>
+        From the <a href="https://w3c.github.io/html-media-capture/#the-capture-attribute" class="external" target="_blank">Media Capture specification</a>,
+        specifies a new file can be captured.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#charset">charset</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta"><code>&lt;meta&gt;</code></a></td>
+      <td>Declares the character encoding of the page or script.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked">checked</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a></td>
+      <td>Indicates whether the element should be checked on page load.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/cite" class="page-not-created" title="This is a link to an unwritten page">cite</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote"><code>&lt;blockquote&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del"><code>&lt;del&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins"><code>&lt;ins&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q"><code>&lt;q&gt;</code></a>
+      </td>
+      <td>Contains a URI which points to the source of the quote or change.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class">class</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Often used with CSS to style elements with common properties.</td>
+    </tr>
+    <tr>
+      <td><code>color</code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font"><code>&lt;font&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr"><code>&lt;hr&gt;</code></a></td>
+      <td>
+        <p>
+          This attribute sets the text color using either a named color or a
+          color specified in the hexadecimal #RRGGBB format.
+        </p>
+        <div class="note notecard" id="sect4">
+          <p>
+            <strong>Note:</strong> This is a legacy attribute. Please use the
+            CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color"><code>color</code></a> property instead.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols">cols</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a></td>
+      <td>Defines the number of columns in a textarea.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/colspan" class="page-not-created" title="This is a link to an unwritten page">colspan</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"><code>&lt;td&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th&gt;</code></a></td>
+      <td>The colspan attribute defines the number of columns a cell should span.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#content">content</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta"><code>&lt;meta&gt;</code></a></td>
+      <td>
+        A value associated with <code>http-equiv</code> or
+        <code>name</code> depending on the context.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable">contenteditable</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Indicates whether the element's content is editable.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/controls" class="page-not-created" title="This is a link to an unwritten page">controls</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>Indicates whether the browser should show playback controls to the user.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area#coords">coords</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a></td>
+      <td>A set of values specifying the coordinates of the hot-spot region.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin">crossorigin</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>How the element handles cross-origin requests</td>
+    </tr>
+    <tr>
+      <td>
+        <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp">csp</a></code>
+        <abbr class="icon icon-experimental" title="Experimental. Expect behavior to change in the future.">
+    <span class="visually-hidden">Experimental</span>
+</abbr>
+      </td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a></td>
+      <td>
+        Specifies the Content Security Policy that an embedded document must
+        agree to enforce upon itself.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#data">data</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a></td>
+      <td>Specifies the URL of the resource.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">data-*</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Lets you attach custom attributes to an HTML element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/datetime" class="page-not-created" title="This is a link to an unwritten page">datetime</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del"><code>&lt;del&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins"><code>&lt;ins&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time"><code>&lt;time&gt;</code></a>
+      </td>
+      <td>Indicates the date and time associated with the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#decoding">decoding</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a></td>
+      <td>Indicates the preferred method to decode the image.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#default">default</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"><code>&lt;track&gt;</code></a></td>
+      <td>
+        Indicates that the track should be enabled unless the user's preferences
+        indicate something different.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer">defer</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a></td>
+      <td>
+        Indicates that the script should be executed after the page has been
+        parsed.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">dir</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>
+        Defines the text direction. Allowed values are ltr (Left-To-Right) or
+        rtl (Right-To-Left)
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/dirname">dirname</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset"><code>&lt;fieldset&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup"><code>&lt;optgroup&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option"><code>&lt;option&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>Indicates whether the user can interact with the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/download" class="page-not-created" title="This is a link to an unwritten page">download</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a></td>
+      <td>Indicates that the hyperlink is to be used for downloading a resource.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable">draggable</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Defines whether the element can be dragged.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#enctype">enctype</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a></td>
+      <td>
+        Defines the content type of the form data when the
+        <code>method</code> is POST.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/enterkeyhint" class="page-not-created" title="This is a link to an unwritten page">enterkeyhint</a></code>
+        <abbr class="icon icon-experimental" title="Experimental. Expect behavior to change in the future.">
+    <span class="visually-hidden">Experimental</span>
+</abbr>
+      </td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable"><code>contenteditable</code></a>
+      </td>
+      <td>
+        The <a href="https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-enterkeyhint-attribute" class="external" target="_blank"><code>enterkeyhint</code></a>
+        specifies what action label (or icon) to present for the enter key on
+        virtual keyboards. The attribute can be used with form controls (such as
+        the value of <code>textarea</code> elements), or in elements in an
+        editing host (e.g., using <code>contenteditable</code> attribute).
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/for">for</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label"><code>&lt;label&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output"><code>&lt;output&gt;</code></a>
+      </td>
+      <td>Describes elements which belongs to this one.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/form" class="page-not-created" title="This is a link to an unwritten page">form</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset"><code>&lt;fieldset&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label"><code>&lt;label&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output"><code>&lt;output&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress"><code>&lt;progress&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>Indicates the form that is the owner of the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/formaction" class="page-not-created" title="This is a link to an unwritten page">formaction</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>
+      </td>
+      <td>
+        Indicates the action of the element, overriding the action defined in
+        the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a>.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/formenctype" class="page-not-created" title="This is a link to an unwritten page">formenctype</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>
+      </td>
+      <td>
+        If the button/input is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Submit_button">submit button</a> (e.g. <code>type="submit"</code>),
+        this attribute sets the encoding type to use during form submission. If
+        this attribute is specified, it overrides the
+        <code>enctype</code> attribute of the button's
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form</a> owner.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/formmethod" class="page-not-created" title="This is a link to an unwritten page">formmethod</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>
+      </td>
+      <td>
+        If the button/input is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Submit_button">submit button</a> (e.g. <code>type="submit"</code>),
+        this attribute sets the submission method to use during form submission
+        (<code>GET</code>, <code>POST</code>, etc.). If this attribute is
+        specified, it overrides the <code>method</code> attribute of the
+        button's <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form</a> owner.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/formnovalidate" class="page-not-created" title="This is a link to an unwritten page">formnovalidate</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>
+      </td>
+      <td>
+        If the button/input is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Submit_button">submit button</a> (e.g. <code>type="submit"</code>),
+        this boolean attribute specifies that the form is not to be validated
+        when it is submitted. If this attribute is specified, it overrides the
+        <code>novalidate</code> attribute of the button's
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form</a> owner.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/formtarget" class="page-not-created" title="This is a link to an unwritten page">formtarget</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>
+      </td>
+      <td>
+        If the button/input is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Submit_button">submit button</a> (e.g. <code>type="submit"</code>),
+        this attribute specifies the browsing context (for example, tab, window,
+        or inline frame) in which to display the response that is received after
+        submitting the form. If this attribute is specified, it overrides the
+        <code>target</code> attribute of the button's
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form</a> owner.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/headers" class="page-not-created" title="This is a link to an unwritten page">headers</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"><code>&lt;td&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th&gt;</code></a></td>
+      <td>
+        IDs of the <code>&lt;th&gt;</code> elements which applies to this
+        element.
+      </td>
+    </tr>
+    <tr>
+      <td><code>height</code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>
+        <p>
+          Specifies the height of elements listed here. For all other elements,
+          use the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height"><code>height</code></a> property.
+        </p>
+        <div class="note notecard" id="sect5">
+          <p>
+            <strong>Note:</strong> In some instances, such as
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a>, this is a legacy attribute, in
+            which case the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height"><code>height</code></a> property should
+            be used instead.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden">hidden</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>
+        Prevents rendering of given element, while keeping child elements, e.g.
+        script elements, active.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#high">high</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter&gt;</code></a></td>
+      <td>Indicates the lower bound of the upper range.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/href" class="page-not-created" title="This is a link to an unwritten page">href</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base"><code>&lt;base&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>
+      </td>
+      <td>The URL of a linked resource.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/hreflang" class="page-not-created" title="This is a link to an unwritten page">hreflang</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a></td>
+      <td>Specifies the language of the linked resource.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#http-equiv">http-equiv</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta"><code>&lt;meta&gt;</code></a></td>
+      <td>Defines a pragma directive.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id">id</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>
+        Often used with CSS to style a specific element. The value of this
+        attribute must be unique.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">integrity</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a></td>
+      <td>
+        <p>
+          Specifies a
+          <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">Subresource Integrity</a>
+          value that allows browsers to verify what they fetch.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#intrinsicsize"><code>intrinsicsize</code></a>
+        <abbr class="icon icon-deprecated" title="Deprecated. Not for use in new websites.">
+  <span class="visually-hidden">Deprecated</span>
+</abbr>
+      </td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a></td>
+      <td>
+        This attribute tells the browser to ignore the actual intrinsic size of
+        the image and pretend it's the size specified in the attribute.
+      </td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode"><code>inputmode</code></a></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable"><code>contenteditable</code></a>
+      </td>
+      <td>
+        Provides a hint as to the type of data that might be entered by the user
+        while editing the element or its contents. The attribute can be used
+        with form controls (such as the value of
+        <code>textarea</code> elements), or in elements in an editing host
+        (e.g., using <code>contenteditable</code> attribute).
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#ismap">ismap</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a></td>
+      <td>Indicates that the image is part of a server-side image map.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop">itemprop</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#kind">kind</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"><code>&lt;track&gt;</code></a></td>
+      <td>Specifies the kind of text track.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/label" class="page-not-created" title="This is a link to an unwritten page">label</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup"><code>&lt;optgroup&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option"><code>&lt;option&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"><code>&lt;track&gt;</code></a>
+      </td>
+      <td>Specifies a user-readable title of the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang">lang</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Defines the language used in the element.</td>
+    </tr>
+    <tr>
+      <td>
+        <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#language">language</a></code>
+        <abbr class="icon icon-deprecated" title="Deprecated. Not for use in new websites.">
+  <span class="visually-hidden">Deprecated</span>
+</abbr>
+      </td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a></td>
+      <td>Defines the script language used in the element.</td>
+    </tr>
+    <tr>
+      <td><code>loading</code> <abbr class="icon icon-experimental" title="Experimental. Expect behavior to change in the future.">
+    <span class="visually-hidden">Experimental</span>
+</abbr></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a></td>
+      <td>
+        Indicates if the element should be loaded lazily
+        (<code>loading="lazy"</code>) or loaded immediately
+        (<code>loading="eager"</code>).
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#list">list</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a></td>
+      <td>Identifies a list of pre-defined options to suggest to the user.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/loop" class="page-not-created" title="This is a link to an unwritten page">loop</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee"><code>&lt;marquee&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>
+        Indicates whether the media should start playing from the start when
+        it's finished.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#low">low</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter&gt;</code></a></td>
+      <td>Indicates the upper bound of the lower range.</td>
+    </tr>
+    <tr>
+      <td>
+        <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#manifest">manifest</a></code>
+        <abbr class="icon icon-deprecated" title="Deprecated. Not for use in new websites.">
+  <span class="visually-hidden">Deprecated</span>
+</abbr>
+      </td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html"><code>&lt;html&gt;</code></a></td>
+      <td>Specifies the URL of the document's cache manifest.
+        <div class="note notecard" id="sect6">
+          <p>
+            <strong>Note:</strong> This attribute is obsolete, use
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest"><code>&lt;link rel="manifest"&gt;</code></a>
+            instead.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max">max</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress"><code>&lt;progress&gt;</code></a>
+      </td>
+      <td>Indicates the maximum value allowed.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength">maxlength</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>Defines the maximum number of characters allowed in the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/minlength">minlength</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>Defines the minimum number of characters allowed in the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/media" class="page-not-created" title="This is a link to an unwritten page">media</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style"><code>&lt;style&gt;</code></a>
+      </td>
+      <td>
+        Specifies a hint of the media for which the linked resource was
+        designed.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method">method</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a></td>
+      <td>
+        Defines which <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">HTTP</a> method to use when
+        submitting the form. Can be <code>GET</code> (default) or
+        <code>POST</code>.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min">min</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter&gt;</code></a>
+      </td>
+      <td>Indicates the minimum value allowed.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/multiple">multiple</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>
+      </td>
+      <td>
+        Indicates whether multiple values can be entered in an input of the type
+        <code>email</code> or <code>file</code>.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/muted" class="page-not-created" title="This is a link to an unwritten page">muted</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>Indicates whether the audio will be initially silenced on page load.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/name" class="page-not-created" title="This is a link to an unwritten page">name</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset"><code>&lt;fieldset&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output"><code>&lt;output&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map"><code>&lt;map&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta"><code>&lt;meta&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param"><code>&lt;param&gt;</code></a>
+      </td>
+      <td>
+        Name of the element. For example used by the server to identify the
+        fields in form submits.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#novalidate">novalidate</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a></td>
+      <td>
+        This attribute indicates that the form shouldn't be validated when
+        submitted.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/open" class="page-not-created" title="This is a link to an unwritten page">open</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details"><code>&lt;details&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog"><code>&lt;dialog&gt;</code></a>
+      </td>
+      <td>
+        Indicates whether the contents are currently visible (in the case of
+        a <code>&lt;details&gt;</code> element) or whether the dialog is active
+        and can be interacted with (in the case of a
+        <code>&lt;dialog&gt;</code> element).
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter#optimum">optimum</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter&gt;</code></a></td>
+      <td>Indicates the optimal numeric value.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern">pattern</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a></td>
+      <td>
+        Defines a regular expression which the element's value will be validated
+        against.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#ping">ping</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a></td>
+      <td>
+        The <code>ping</code> attribute specifies a space-separated list of URLs
+        to be notified if a user follows the hyperlink.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/placeholder">placeholder</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>Provides a hint to the user of what can be entered in the field.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#playsinline">playsinline</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a></td>
+      <td>A Boolean attribute indicating that the video is to be played "inline"; that is, within the element's playback area. Note that the absence of this attribute does not imply that the video will always be played in fullscreen.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#poster">poster</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a></td>
+      <td>A URL indicating a poster frame to show until the user plays or seeks.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/preload" class="page-not-created" title="This is a link to an unwritten page">preload</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>
+        Indicates whether the whole resource, parts of it or nothing should be
+        preloaded.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly">readonly</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>Indicates whether the element can be edited.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/referralpolicy" class="page-not-created" title="This is a link to an unwritten page">referrerpolicy</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a>
+      </td>
+      <td>Specifies which referrer is sent when fetching the resource.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel">rel</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>
+      </td>
+      <td>Specifies the relationship of the target object to the link object.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required">required</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>
+      </td>
+      <td>Indicates whether this element is required to fill out or not.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol#reversed">reversed</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol"><code>&lt;ol&gt;</code></a></td>
+      <td>
+        Indicates whether the list should be displayed in a descending order
+        instead of an ascending order.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles">role</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Defines an explicit role for an element for use by assistive technologies.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows">rows</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a></td>
+      <td>Defines the number of rows in a text area.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rowspan" class="page-not-created" title="This is a link to an unwritten page">rowspan</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"><code>&lt;td&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th&gt;</code></a></td>
+      <td>Defines the number of rows a table cell should span over.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox">sandbox</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a></td>
+      <td>
+        Stops a document loaded in an iframe from using certain features (such
+        as submitting forms or opening new windows).
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#scope">scope</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th&gt;</code></a></td>
+      <td>
+        Defines the cells that the header test (defined in the
+        <code>th</code> element) relates to.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style#scoped">scoped</a></code>
+        <abbr class="icon icon-nonstandard" title="Non-standard. Check cross-browser support before using.">
+    <span class="visually-hidden">Non-standard</span>
+</abbr> <abbr class="icon icon-deprecated" title="Deprecated. Not for use in new websites.">
+  <span class="visually-hidden">Deprecated</span>
+</abbr>
+      </td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style"><code>&lt;style&gt;</code></a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#selected">selected</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option"><code>&lt;option&gt;</code></a></td>
+      <td>Defines a value which will be selected on page load.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/shape" class="page-not-created" title="This is a link to an unwritten page">shape</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size">size</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>
+      </td>
+      <td>
+        Defines the width of the element (in pixels). If the element's
+        <code>type</code> attribute is <code>text</code> or
+        <code>password</code> then it's the number of characters.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/sizes" class="page-not-created" title="This is a link to an unwritten page">sizes</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source&gt;</code></a>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot">slot</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Assigns a slot in a shadow DOM shadow tree to an element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/span" class="page-not-created" title="This is a link to an unwritten page">span</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col"><code>&lt;col&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup"><code>&lt;colgroup&gt;</code></a>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck">spellcheck</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Indicates whether spell checking is allowed for the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/src" class="page-not-created" title="This is a link to an unwritten page">src</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"><code>&lt;track&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>The URL of the embeddable content.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#srcdoc">srcdoc</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track#srclang">srclang</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"><code>&lt;track&gt;</code></a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/srcset" class="page-not-created" title="This is a link to an unwritten page">srcset</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source&gt;</code></a></td>
+      <td>One or more responsive image candidates.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol#start">start</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol"><code>&lt;ol&gt;</code></a></td>
+      <td>Defines the first number if other than 1.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step">step</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style">style</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Defines CSS styles which will override styles previously set.</td>
+    </tr>
+    <tr>
+      <td>
+        <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#summary">summary</a></code>
+        <abbr class="icon icon-deprecated" title="Deprecated. Not for use in new websites.">
+  <span class="visually-hidden">Deprecated</span>
+</abbr>
+      </td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex">tabindex</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>
+        Overrides the browser's default tab order and follows the one specified
+        instead.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/target" class="page-not-created" title="This is a link to an unwritten page">target</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base"><code>&lt;base&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a>
+      </td>
+      <td>
+        Specifies where to open the linked document (in the case of an
+        <code>&lt;a&gt;</code> element) or where to display the response received
+        (in the case of a <code>&lt;form&gt;</code> element)
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title">title</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>Text to be displayed in a tooltip when hovering over the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/translate">translate</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global attribute</a></td>
+      <td>
+        Specify whether an element's attribute values and the values of its
+        <code><a href="https://dom.spec.whatwg.org/#text" class="external" target="_blank">Text</a></code> node
+        children are to be translated when the page is localized, or whether to
+        leave them unchanged.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type" class="page-not-created" title="This is a link to an unwritten page">type</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol"><code>&lt;ol&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style"><code>&lt;style&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu"><code>&lt;menu&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a>
+      </td>
+      <td>Defines the type of the element.</td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/usemap" class="page-not-created" title="This is a link to an unwritten page">usemap</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/value" class="page-not-created" title="This is a link to an unwritten page">value</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data"><code>&lt;data&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li"><code>&lt;li&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option"><code>&lt;option&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress"><code>&lt;progress&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param"><code>&lt;param&gt;</code></a>
+      </td>
+      <td>
+        Defines a default value which will be displayed in the element on page
+        load.
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/width" class="page-not-created" title="This is a link to an unwritten page">width</a></code></td>
+      <td>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>
+      </td>
+      <td>
+        <p>For the elements listed here, this establishes the element's width.</p>
+        <div class="note notecard" id="sect7">
+          <p>
+            <strong>Note:</strong> For all other instances, such as
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a>, this is a legacy attribute, in
+            which case the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width"><code>width</code></a> property should be
+            used instead.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#wrap">wrap</a></code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a></td>
+      <td>Indicates whether the text should be wrapped.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org57814d6" class="outline-2">
+<h2 id="org57814d6">HTML ENTITIES</h2>
+<div class="outline-text-2" id="text-org57814d6">
+<p>
+An HTML entity is a piece of text ("string") that begins with an ampersand (&amp;) and ends with a semicolon (;). HTML entities are frequently used to display reserved characters (which would otherwise be interpreted as HTML code), and invisible characters (like non-breaking spaces). You can also use HTML character entities in place of other characters that are difficult to type with a standard keyboard.
+</p>
+
+<p>
+Full List of Entites
+<a href="https://www.freeformatter.com/html-entities.html">https://www.freeformatter.com/html-entities.html</a>
+<a href="https://en.wikipedia.org/w/index.php?title=List_of_XML_and_HTML_character_entity_references&amp;mobile-app=true&amp;theme=dark">https://en.wikipedia.org/w/index.php?title=List_of_XML_and_HTML_character_entity_references&amp;mobile-app=true&amp;theme=dark</a>
+<a href="https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references">https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references</a>
+</p>
+
+
+<table class="table table-striped">
+<thead>
+<tr>
+<th nowrap="nowrap">Symbol</th>
+<th nowrap="nowrap">Entity Name</th>
+<th nowrap="nowrap">Entity Number</th>
+<th nowrap="nowrap">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>&nbsp;</td><td>&amp;nbsp;</td><td>&amp;#160;</td><td>Non-breaking space</td></tr>
+<tr><td>ï¿½</td><td>&amp;iexcl;</td><td>&amp;#161;</td><td>Inverted exclamation mark</td></tr>
+<tr><td>ï¿½</td><td>&amp;cent;</td><td>&amp;#162;</td><td>Cent</td></tr>
+<tr><td>ï¿½</td><td>&amp;pound;</td><td>&amp;#163;</td><td>Pound</td></tr>
+<tr><td>ï¿½</td><td>&amp;curren;</td><td>&amp;#164;</td><td>Currency</td></tr>
+<tr><td>ï¿½</td><td>&amp;yen;</td><td>&amp;#165;</td><td>Yen</td></tr>
+<tr><td>ï¿½</td><td>&amp;brvbar;</td><td>&amp;#166;</td><td>Broken vertical bar</td></tr>
+<tr><td>ï¿½</td><td>&amp;sect;</td><td>&amp;#167;</td><td>Section</td></tr>
+<tr><td>ï¿½</td><td>&amp;uml;</td><td>&amp;#168;</td><td>Spacing diaeresis</td></tr>
+<tr><td>ï¿½</td><td>&amp;copy;</td><td>&amp;#169;</td><td>Copyright</td></tr>
+<tr><td>ï¿½</td><td>&amp;ordf;</td><td>&amp;#170;</td><td>Feminine ordinal indicator</td></tr>
+<tr><td>ï¿½</td><td>&amp;laquo;</td><td>&amp;#171;</td><td>Opening/Left angle quotation mark</td></tr>
+<tr><td>ï¿½</td><td>&amp;not;</td><td>&amp;#172;</td><td>Negation</td></tr>
+<tr><td>ï¿½</td><td>&amp;shy;</td><td>&amp;#173;</td><td>Soft hyphen</td></tr>
+<tr><td>ï¿½</td><td>&amp;reg;</td><td>&amp;#174;</td><td>Registered trademark</td></tr>
+<tr><td>ï¿½</td><td>&amp;macr;</td><td>&amp;#175;</td><td>Spacing macron</td></tr>
+<tr><td>ï¿½</td><td>&amp;deg;</td><td>&amp;#176;</td><td>Degree</td></tr>
+<tr><td>ï¿½</td><td>&amp;plusmn;</td><td>&amp;#177;</td><td>Plus or minus</td></tr>
+<tr><td>ï¿½</td><td>&amp;sup2;</td><td>&amp;#178;</td><td>Superscript 2</td></tr>
+<tr><td>ï¿½</td><td>&amp;sup3;</td><td>&amp;#179;</td><td>Superscript 3</td></tr>
+<tr><td>ï¿½</td><td>&amp;acute;</td><td>&amp;#180;</td><td>Spacing acute</td></tr>
+<tr><td>ï¿½</td><td>&amp;micro;</td><td>&amp;#181;</td><td>Micro</td></tr>
+<tr><td>ï¿½</td><td>&amp;para;</td><td>&amp;#182;</td><td>Paragraph</td></tr>
+<tr><td>ï¿½</td><td>&amp;cedil;</td><td>&amp;#184;</td><td>Spacing cedilla</td></tr>
+<tr><td>ï¿½</td><td>&amp;sup1;</td><td>&amp;#185;</td><td>Superscript 1</td></tr>
+<tr><td>ï¿½</td><td>&amp;ordm;</td><td>&amp;#186;</td><td>Masculine ordinal indicator</td></tr>
+<tr><td>ï¿½</td><td>&amp;raquo;</td><td>&amp;#187;</td><td>Closing/Right angle quotation mark</td></tr>
+<tr><td>ï¿½</td><td>&amp;frac14;</td><td>&amp;#188;</td><td>Fraction 1/4</td></tr>
+<tr><td>ï¿½</td><td>&amp;frac12;</td><td>&amp;#189;</td><td>Fraction 1/2</td></tr>
+<tr><td>ï¿½</td><td>&amp;frac34;</td><td>&amp;#190;</td><td>Fraction 3/4</td></tr>
+<tr><td>ï¿½</td><td>&amp;iquest;</td><td>&amp;#191;</td><td>Inverted question mark</td></tr>
+<tr><td>ï¿½</td><td>&amp;times;</td><td>&amp;#215;</td><td>Multiplication</td></tr>
+<tr><td>ï¿½</td><td>&amp;divide;</td><td>&amp;#247;</td><td>Divide</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org75e048a" class="outline-2">
+<h2 id="org75e048a"><span class="todo TODO">TODO</span> SEMANTIC Element</h2>
+<div class="outline-text-2" id="text-org75e048a">
+<p>
+explain: <a href="https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/21915924#overview">https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/21915924#overview</a>
+</p>
+
+<p>
+What are Semantic Elements?<br />
+A semantic element clearly describes its meaning to both the browser and the developer. <br />
+Examples of non-semantic elements: &lt;div&gt; and &lt;span&gt; - Tells nothing about its content.<br />
+Examples of semantic elements: &lt;form&gt;, &lt;table&gt;, and &lt;article&gt; - Clearly defines its content.<br />
+Semantic Elements in HTML<br />
+Many web sites contain HTML code like: &lt;div id="nav"&gt; &lt;div class="header"&gt; &lt;div id="footer"&gt; to indicate navigation, header, and footer.<br />
+</p>
+
+<p>
+In HTML there are some semantic elements that can be used to define different parts of a web page:  <br />
+</p>
+<img style="float:right;" src="https://www.w3schools.com/html/img_sem_elements.gif">
+<ul class="org-ul">
+<li>&lt;main&gt;</li>
+<li>&lt;header&gt;</li>
+<li>&lt;nav&gt; navigation:</li>
+<li>&lt;aside&gt; : sidebar:</li>
+<li>&lt;article&gt;</li>
+<li>&lt;section&gt;</li>
+<li>&lt;details&gt;</li>
+<li>&lt;figcaption&gt;</li>
+<li>&lt;figure&gt;</li>
+<li>&lt;footer&gt;</li>
+<li>&lt;mark&gt;</li>
+<li>&lt;summary&gt;</li>
+<li>&lt;time&gt;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84eca3f" class="outline-2">
+<h2 id="org84eca3f">Block and inline Element : Div &amp; Span</h2>
+<div class="outline-text-2" id="text-org84eca3f">
+<p>
+Div and Span are Block and inline respectively
+</p>
+
+<p>
+<b>Block-level Elements:</b> <br />
+A block-level element always starts on a new line, and the browsers automatically add some space (a margin) before and after the element.<br />
+A block-level element always takes up the full width available (stretches out to the left and right as far as it can).<br />
+Two commonly used block elements are: &lt;p&gt; and &lt;div&gt;.<br />
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div</a><br />
+</p>
+
+<p>
+<b>Inline Elements:</b> <br />
+An inline element does not start on a new line.<br />
+An inline element only takes up as much width as necessary. <br />
+This is a &lt;span&gt; element inside a paragraph.<br />
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span</a><br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">p</span>&gt;Hello World&lt;/<span style="color: #6c3163; font-weight: bold;">p</span>&gt;
+&lt;<span style="color: #6c3163; font-weight: bold;">div</span>&gt;Hello World&lt;/<span style="color: #6c3163; font-weight: bold;">div</span>&gt;
+
+&lt;<span style="color: #6c3163; font-weight: bold;">span</span>&gt;Hello World&lt;/<span style="color: #6c3163; font-weight: bold;">span</span>&gt; 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org70a2c7f" class="outline-2">
+<h2 id="org70a2c7f">Unrelated tab</h2>
+<div class="outline-text-2" id="text-org70a2c7f">
+<p>
+&lt;hr&gt;: horizontal line
+&lt;br&gt;: line break
+&lt;sub&gt;, &lt;sup&gt;:  supsrcript and subscript
+</p>
+<div style='float: right;  padding: 1px;  margin: 4px;'>
+a<sup>2</sup> <br><!--a power2 -->
+H<sub>2</sub>O
+</div>
+<div class="org-src-container">
+<pre class="src src-html">a&lt;<span style="color: #6c3163; font-weight: bold;">sup</span>&gt;2&lt;/<span style="color: #6c3163; font-weight: bold;">sup</span>&gt; <span style="color: #2aa1ae; background-color: #ecf3ec;">&lt;!--</span><span style="color: #2aa1ae; background-color: #ecf3ec;">a power2</span><span style="color: #2aa1ae; background-color: #ecf3ec;"> --&gt;</span>
+H&lt;<span style="color: #6c3163; font-weight: bold;">sub</span>&gt;2&lt;/<span style="color: #6c3163; font-weight: bold;">sub</span>&gt;O
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8341bf4" class="outline-2">
+<h2 id="org8341bf4">Table</h2>
+<div class="outline-text-2" id="text-org8341bf4">
+<table style="float:right">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">table</span> <span style="color: #715ab1;">style</span>=<span style="color: #2d9574;">"float:right"</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">th</span>&gt;Company&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">th</span>&gt;Contact&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">th</span>&gt;Country&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;Alfreds Futterkiste&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;Maria Anders&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;Germany&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;Centro comercial Moctezuma&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;Francisco Chang&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;Mexico&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">table</span>&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-org8645088" class="outline-3">
+<h3 id="org8645088">rowspan and colspan</h3>
+<div class="outline-text-3" id="text-org8645088">
+<p>
+Merge Row Cell: 
+Merge Col Cell:
+</p>
+
+<table style="float:right">
+  <thead>
+    <tr>
+      <th rowspan="2">Animal</th>
+      <th colspan="2">Average</th>
+      <th rowspan="2">Flighted</th>
+    </tr>
+    <tr>
+      <th>KG</th>
+      <th>LB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ostrich</td>
+      <td>104</td>
+      <td>230</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Ostrich</td>
+      <td>104</td>
+      <td>230</td>
+      <td>No</td>
+    </tr>    <tr>
+      <td>Ostrich</td>
+      <td>104</td>
+      <td>230</td>
+      <td>No</td>
+    </tr>  </tbody>
+</table>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #6c3163; font-weight: bold;">table</span> <span style="color: #715ab1;">style</span>=<span style="color: #2d9574;">"float:right"</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">thead</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">th</span> <span style="color: #715ab1;">rowspan</span>=<span style="color: #2d9574;">"2"</span>&gt;Animal&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">th</span> <span style="color: #715ab1;">colspan</span>=<span style="color: #2d9574;">"2"</span>&gt;Average&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">th</span> <span style="color: #715ab1;">rowspan</span>=<span style="color: #2d9574;">"2"</span>&gt;Flighted&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+    &lt;/<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">th</span>&gt;KG&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">th</span>&gt;LB&lt;/<span style="color: #6c3163; font-weight: bold;">th</span>&gt;
+    &lt;/<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">thead</span>&gt;
+  &lt;<span style="color: #6c3163; font-weight: bold;">tbody</span>&gt;
+    &lt;<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;Ostrich&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;104&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;230&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+      &lt;<span style="color: #6c3163; font-weight: bold;">td</span>&gt;No&lt;/<span style="color: #6c3163; font-weight: bold;">td</span>&gt;
+    &lt;/<span style="color: #6c3163; font-weight: bold;">tr</span>&gt;
+  &lt;/<span style="color: #6c3163; font-weight: bold;">tbody</span>&gt;
+&lt;/<span style="color: #6c3163; font-weight: bold;">table</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org17ca1e9" class="outline-2">
+<h2 id="org17ca1e9">input</h2>
+</div>
+
+<div id="outline-container-orgeb507bf" class="outline-2">
+<h2 id="orgeb507bf">label</h2>
+<div class="outline-text-2" id="text-orgeb507bf">
+<p>
+HTML element represents a caption for an item in a user interface.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc27922d" class="outline-2">
+<h2 id="orgc27922d">Form</h2>
+<div class="outline-text-2" id="text-orgc27922d">
+<p>
+Form  <code>action</code>
+</p>
+<ul class="org-ul">
+<li>"<i>search</i>"</li>
+</ul>
+
+
+<p>
+Form <code>method</code>
+</p>
+<ul class="org-ul">
+<li>get</li>
+<li>put</li>
+<li>post</li>
+<li></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Karthik Karthik D</p>
+<p class="date">Created: 2025-08-02 Sat 13:08</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
