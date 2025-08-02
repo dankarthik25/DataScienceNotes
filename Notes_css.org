@@ -44,7 +44,7 @@ We will create our first CSS website in this section.
 DOM stands for =Document Object Model=. When a page is loaded, the brower create a DOM of the page which is constructed as a tree of Objects
 Document Object Model (DOM) : https://web-dev.imgix.net/image/C47gYyWYVMMhDmtYSLOWazuyePF2/cSL20piziX7XLekCPCuD.png
 
-[[file:./images/dom-css.png]]
+[[file:./css_images/dom-css.png]]
 
 * HTML id and class attribues
 When an HTML element is given and id, it servers as a unique identifier for that element.\\
@@ -524,7 +524,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique vero pariatu
 * [CSS Box Model] - 02:00:39
 The CSS box model looks at all the html elements as boxes 
 #+STARTUP: inlineimages
-[[file:./images/th-625111471.jpeg]]
+[[file:./css_images/th-625111471.jpeg]]
 ** Set width and height
 #+begin_src css
 #box {
@@ -589,7 +589,7 @@ We can set border radius  to create rounded borders
 When two margins from difference elements overlap, the equivalent margin is the greate of the two.
 This is called margin collapse.
 #+STARTUP: inlineimages
-[[file:./images/sibling_collapsing.png]]
+[[file:./css_images/sibling_collapsing.png]]
 
 #+begin_src css
 *{
@@ -941,7 +941,7 @@ Float property is simple. It just flows the elements towards left/right
 #+end_src
 
 #+STARTUP: inlineimages
-[[file:./images/css-float.png]]
+[[file:./css_images/css-float.png]]
 
 *** Clear propert
 When we use the float property, and we want the next element below (not on right or left), we will have to use the clear property.
@@ -979,7 +979,7 @@ display can have
 ** Grid
 
 * [CSS Flexbox] - 04:35:59
-[[file:./images/vd9dc7wfk9471.png]]
+[[file:./css_images/vd9dc7wfk9471.png]]
 source: https://www.reddit.com/r/webdev/comments/nvzhi0/flexbox_css_cheat_sheet/
 
 
@@ -1003,7 +1003,7 @@ The flex container properties are:
 - align-content
 
 #+STARTUP: inlineimages
-[[file:./images/bw4hK0MYxFXbw7ylW2fR5Q.png]]
+[[file:./css_images/bw4hK0MYxFXbw7ylW2fR5Q.png]]
 
 *** Flex-direction property
 Defines the direction towards which items are laid can be {row, row-reverse, column, column-reverse}
